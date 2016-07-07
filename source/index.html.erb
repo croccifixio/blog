@@ -1,0 +1,69 @@
+---
+title: Odongo - Blog
+---
+
+<h1 class="title">Git & Heroku</h1>
+<div class="intro">
+	<p>
+		Git and Heroku are vital tools in any web developers repertoire. Git for the simplicity it introduces to version control, and Heroku for the ease with which it allows app deployment.
+	</p>
+	<p>
+		The following guide shows how to set up both for the very first time.
+	</p>
+</div>
+<article class="article-piece">
+	<h2 class="subtitle">Setting up Git</h2>
+	<p>
+		Enter the following commands in the console:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>git config --global user.name "Your_Name"
+<span class="prompt">$ </span>git config --global user.email "your@email.com"
+<span class="prompt">$ </span>git config --global push.default matching
+<span class="prompt">$ </span>git init</code></pre>
+	<p>
+		If you do not have an account at GitHub or a similar repository provider, now is the time to create one.
+	</p>
+	<p>
+        We can make our first commit. In the console, type:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>git status
+<span class="prompt">$ </span>git add .
+<span class="prompt">$ </span>git commit -m "Initial commit"</code></pre>
+	<p>
+        Now we need to find out what our SSH key is. Copy the output of the following command:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>cat ~/.ssh/id_rsa.pub</code></pre>
+	<p>
+		...and on GitHub locate the New Repository page and add the SSH key that you have copied. Give your repository a name, while your at it.
+	</p>
+	<p>
+		Next, we will push to GitHub:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>git remote add origin git@github.com:Your_Name/Repository_Name.git
+<span class="prompt">$ </span>git push -u origin master</code></pre>
+</article>
+<article class="article-piece">
+	<h2 class="subtitle">Setting up Heroku</h2>
+	<p>
+		Create an account on Heroku and verify your account by clicking the link they provide you by email. Then enter the following into the console:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>heroku login</code></pre>
+	<p>
+		Enter you email address and password as prompted
+	</p>
+	<p>
+		Next, we will add the same SSH key that we used with Git to Heroku:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>heroku keys:add</code></pre>
+	<p>
+		Create a server on Heroku:
+	</p><pre class="code-block"><code><span class="prompt">$ </span>heroku create</code></pre>
+	<p>
+		Finally, push the code to the Heroku server
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>git push heroku master</code></pre>
+	<p>
+		Just as a side note, if you ever need to check the address of your Heroku server, type the following:
+	</p>
+<pre class="code-block"><code><span class="prompt">$ </span>heroku domains</code></pre>
+</article>

@@ -1,0 +1,69 @@
+@import 'typography';
+
+.content-box {
+	margin: 0 auto;
+	max-width: 900px;
+	padding: 0 5vw;
+	@media (min-width: 481px) {padding: 0 7.5vw;}
+	@media (min-width: 769px) {padding: 0 10vw;}
+	> .title {
+		@include typi($title-font-map);
+		font-family: $body-font;
+		font-weight: normal;
+		margin: vr(1.5) 0;
+		padding: 0.25em 0 0.1em;
+		border: 0.075em solid $colour-black;
+		border-radius: 0.15em;
+		text-align: center;
+	}
+}
+
+.article-piece {
+	> .subtitle {
+		@include typi($subtitle-font-map);
+		font-family: $code-font;
+		font-weight: normal;
+		margin: 0 0 vr(1);
+		word-spacing: -0.35em;
+		text-transform: uppercase;
+		display: inline-block;
+		padding: 0 0.25em 0.075em 0.05em;
+		border-top: 0.12em solid $colour-black;
+		border-right: 0.12em solid $colour-black;
+		border-bottom: 0.12em solid $colour-black;
+	}
+}
+
+p {
+	font-family: $body-font;
+	word-spacing: 0.075em;
+	margin: 0 0 vr(1);
+	@media (max-width: 480px) {padding: 0 2vw;}
+	> code {
+		font-family: $code-font;
+		padding: 0 0.3em 0.15em;
+		border-radius: 0.2em;
+	}	
+}
+
+.code-block {
+	background-color: $colour-light-gray;
+	padding: vr(1);
+	white-space: pre;
+	overflow: auto;
+	margin: 0 0 vr(1);
+	border-radius: 0.2em;
+	> code {
+		font-family: $code-font;
+		background-color: $colour-light-gray;
+		padding-bottom: 0.15em;
+		box-sizing: border-box;
+	}
+	* .prompt {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		color: #666;
+	}
+}

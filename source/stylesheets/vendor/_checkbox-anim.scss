@@ -1,0 +1,52 @@
+/// Source: https://github.com/720kb/checkbox.css
+/// Demo:   https://720kb.github.io/checkbox.css/
+
+@mixin animation($animation, $speed, $method) {
+  -webkit-animation: $animation $speed $method;
+  -moz-animation: $animation $speed $method;
+  -ms-animation: $animation $speed $method;
+  animation: $animation $speed $method;
+}
+@mixin transform($transformation) {
+  -webkit-transform: $transformation;
+  -moz-transform: $transformation;
+  -o-transform: $transformation;
+  -ms-transform: $transformation;
+  transform: $transformation;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@include keyframes(inout) {
+  30% {
+    @include transform(scale(0.6));
+  }
+  70% {
+    @include transform(scale(1.2));
+  }
+  90% {
+    @include transform(scale(1));
+  }
+  100% {
+    transform:none;
+  }
+}
+
+input[type="checkbox"]{
+  &:checked {
+    @include animation(inout, .5s, linear);
+  }
+}

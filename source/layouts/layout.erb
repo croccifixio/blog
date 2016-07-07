@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title || "Odongo" %></title>
+
+    <%= stylesheet_link_tag :site %>
+    <%= javascript_include_tag :all %>
+  </head>
+  <body>
+    <header class="top-banner">
+  		<div>
+  			<%= image_tag("logo.png", alt: "odongo", class: "logo") %>
+  			<!--<nav class="nav-bar">-->
+  			<!--	<ul class="nav-list">-->
+  			<!--		<li class="link">Blog</li>-->
+  			<!--		<li class="link">About</li>-->
+  			<!--	</ul>-->
+  			<!--</nav>-->
+  		</div>	
+  	</header>
+  	<div class="content-box">
+  		<%= yield %>
+  	</div>
+  	<footer class="bottom-banner">
+  		&copy Emmanuel Odongo <%= DateTime::now.strftime "%Y" %>
+  	</footer>
+  
+  </body>
+</html>

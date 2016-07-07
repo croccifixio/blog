@@ -1,0 +1,63 @@
+@charset "utf-8";
+@import "fonts";
+@import "forms";
+@import "normalize";
+@import "pages";
+@import "typography";
+
+html {
+	@include typi-base();
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $colour-white;
+}
+
+.top-banner {
+	background-color: $colour-orange;
+	> div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 120px;
+		max-width: 1140px;
+		margin: 0 auto;
+	}
+	> div > .logo {
+		padding-left: 4.5vw;		
+		margin: 0;
+		height: 100px;
+		width: 200px;
+	}
+	> div > .nav-bar {
+		color: $colour-white;
+		padding-right: 5vw;
+		font: 1.15em/140% $body-font;
+	}
+}
+
+
+
+.nav-list {
+	list-style: none;
+	text-align: right;
+	padding-left: 0;
+	margin: 0;
+	display: flex;
+	@media (min-width: 481px) {justify-content: center;}
+	@media (max-width: 480px) {flex-direction: column;}
+	> .link {
+		@media (min-width: 481px) {margin-left: 4vw;}
+	}
+}
+
+.bottom-banner {
+		background-color: $colour-dark-gray;
+	text-align: center;
+	color: #efefef;
+	font: 0.9em/440% $body-font;
+	word-spacing: 0.07rem;
+	margin-top: vr(2);
+}

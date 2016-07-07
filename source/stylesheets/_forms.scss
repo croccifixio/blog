@@ -1,0 +1,73 @@
+@import 'typography';
+@import 'vendor/checkbox-anim';
+
+@mixin borderify($colour) {
+    border: 0.075em solid $colour;
+	border-radius: 0.15em;
+}
+
+.form {
+    text-align: center;
+    margin: 0 auto;
+    font-family: $body-font;
+    > .form-title {
+        @include typi($title-font-map);
+		font-family: $body-font;
+		font-weight: normal;
+		word-spacing: 0.08em;
+		margin: vr(1.5) 0 vr(2.5);
+		@include borderify($colour-black);
+		text-align: center;
+    }
+}
+
+.field {
+	
+    > input {
+    	margin: 0 0 vr(1.5);
+        @include typi($subtitle-font-map);
+        font-family: $body-font;
+		font-weight: normal;
+		padding: 0.5em;
+		max-width: 95vw;
+        @media (min-width: 481px) {width: 65vw;}
+	    @media (min-width: 769px) {width: 400px;}
+		@include borderify($colour-dark-gray);
+		transition: all 0.30s ease-in-out;
+		&:focus {
+		    outline: none;
+		    box-shadow: 0 0 3px $colour-orange;
+		    @include borderify(darken($colour-orange, 2%));
+		}
+    }
+    > input[type="checkbox"] {
+    	width: auto;
+    }
+}
+
+.actions {
+    > input {
+    	cursor: pointer;
+        @include typi($button-font-map);
+        font-family: $body-font;
+		font-weight: normal;
+		padding: 0.4em 1em;
+        margin: 0 10vw vr(1);
+        @include borderify($colour-white);
+        border-radius: 0.3em;
+        background-color: $colour-orange;
+        color: $colour-white;
+		transition: all 0.30s ease-in-out;
+		&:hover {
+		    background-color: adjust-hue($colour-orange, 9%);
+		}
+		&:active {
+            background-color: adjust-hue($colour-orange, 15%);
+        }
+    }
+}
+
+a {
+	text-decoration: none;
+	color: $colour-blue;
+}
