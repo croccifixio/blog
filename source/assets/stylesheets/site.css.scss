@@ -32,12 +32,10 @@ body {
 		width: 200px;
 	}
 	> div > .nav-bar {
-		color: $colour-white;
 		padding-right: 5vw;
 		font: 1.15em/140% $body-font;
 	}
 }
-
 
 
 .nav-list {
@@ -48,8 +46,11 @@ body {
 	display: flex;
 	@media (min-width: 481px) {justify-content: center;}
 	@media (max-width: 480px) {flex-direction: column;}
-	> .link {
+	> .nav-item {
 		@media (min-width: 481px) {margin-left: 4vw;}
+	}
+	> .nav-item .link {
+		color: $colour-white;
 	}
 }
 
