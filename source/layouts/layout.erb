@@ -15,19 +15,19 @@
     <header class="top-banner">
   		<div>
   			<%= image_tag("logo.png", alt: "odongo", class: "logo") %>
-  			<!--<nav class="nav-bar">-->
-  			<!--	<ul class="nav-list">-->
-  			<!--		<li class="link">Blog</li>-->
+  			<nav class="nav-bar">
+  				<ul class="nav-list">
+  					<li class="nav-item"><%= link_to 'Blog', '/blog', :class => "link" %></li>
   			<!--		<li class="link">About</li>-->
-  			<!--	</ul>-->
-  			<!--</nav>-->
+  				</ul>
+  			</nav>
   		</div>	
   	</header>
   	<div class="content-box">
   		<%= yield %>
   	</div>
   	<footer class="bottom-banner">
-  		<div>&copy Emmanuel Odongo <%= DateTime::now.strftime "%Y" %></div>
+  		<div>&copy; Emmanuel Odongo <%= DateTime::now.strftime "%Y" %></div>
   		<div>Powered by <a href="https://middlemanapp.com/" alt="Middleman Homepage">Middleman</a></div>
   	</footer>
   
