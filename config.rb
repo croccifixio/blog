@@ -30,10 +30,9 @@ activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
-  # blog.permalink = "{year}/{month}/{day}/{title}.html"
-  # Matcher for blog source files
-  blog.sources = "posts/{year}-{month}-{day}-{title}.html"
   blog.permalink = "blog/{year}/{title}.html"
+  # Matcher for blog source files
+  blog.sources = "blog/posts/{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
   # blog.layout = "layout"
   blog.summary_separator = /(READMORE)/
@@ -68,8 +67,8 @@ page "/feed.xml", layout: false
 # Build-specific configuration
 configure :build do
   # Minify CSS on build
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 end
