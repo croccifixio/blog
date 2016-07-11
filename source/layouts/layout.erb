@@ -14,7 +14,7 @@
   <body>
     <header class="top-banner">
   		<div>
-  			<%= image_tag("logo.png", alt: "odongo", class: "logo") %>
+  			<%= link_to image_tag("logo.png", alt: "odongo", class: "logo"), '/' %>
   			<nav class="nav-bar">
   				<ul class="nav-list">
   					<li class="nav-item"><%= link_to 'Blog', '/blog', :class => "link" %></li>
