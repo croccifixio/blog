@@ -55,7 +55,7 @@ body {
 }
 
 .bottom-banner {
-		background-color: $colour-dark-gray;
+	background-color: $colour-dark-gray;
 	text-align: center;
 	color: #efefef;
 	font: 0.9em/180% $body-font;
@@ -67,7 +67,7 @@ body {
 		margin: 0 auto;
 	}
 	> div > a {
-		color: mix(white, $colour-orange, 25%);
+		color: $colour-yellow;
 		text-decoration: underline;
 	}
 }
