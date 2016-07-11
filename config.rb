@@ -35,7 +35,7 @@ activate :blog do |blog|
   blog.sources = "blog/posts/{year}-{month}-{day}-{title}.html"
   blog.taglink = "blog/tags/{tag}.html"
   blog.layout = "layout"
-  blog.summary_separator = /(READMORE)/
+  blog.summary_separator = /END_OF_SUMMARY/
   # blog.summary_length = 250
   blog.year_link = "blog/{year}.html"
   blog.month_link = "blog/{year}/{month}.html"
