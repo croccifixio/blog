@@ -1,15 +1,21 @@
 @import 'vendor/typi';
 
+// Brand and site colours
 $colour-blue: #0e4b9f;
 $colour-white: #f7f7f7;
 $colour-orange: #f25c00; 
 $colour-black: #0a0a0a;
-$colour-yellow: #FFF38E;
+$colour-yellow: #fff38E;
 $colour-dark-gray: #666;
 $colour-light-gray: #d0d0d0;
+
+
+// Font stacks
 $body-font: TT-Rounds-Condensed,sans-serif;
 $code-font: Realtime-Rounded-Semibold,monospace;
 
+
+// Typi settings: breakpoints and font maps
 $breakpoints: (
 	small: 481px,
 	large: 769px
@@ -22,19 +28,57 @@ $typi: (
 );
 
 $button-font-map: (
-    null: 1.4em,
-    small: 1.3em,
-    large: 1.2em
+  null: 1.4em,
+  small: 1.3em,
+  large: 1.2em
 );
 
 $title-font-map: (
-    null: 2.5em,
-    small: 2.75em,
-    large: 3em
+  null: 2.5em,
+  small: 2.75em,
+  large: 3em
 );
 
 $subtitle-font-map: (
-    null: 1.4em,
-    small: 1.35em,
-    large: 1.3em
+  null: 1.4em,
+  small: 1.35em,
+  large: 1.3em
 );
+
+
+// Styling
+.title {
+	@include typi($title-font-map);
+	font-family: $body-font;
+	font-weight: normal;
+	text-align: center;
+}
+
+.subtitle {
+	@include typi($subtitle-font-map);
+	font-family: $code-font;
+	font-weight: normal;
+	word-spacing: -0.35em;
+	text-transform: uppercase;
+}
+
+p {
+	font-family: $body-font;
+	word-spacing: 0.075em;
+}
+
+code {
+	font-family: $code-font;
+}
+
+.code-block {
+	white-space: pre;
+}
+
+.prompt {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	color: $colour-dark-gray;
+}
