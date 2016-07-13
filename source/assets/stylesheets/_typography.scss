@@ -1,14 +1,5 @@
 @import 'vendor/typi';
 
-// Brand and site colours
-$colour-blue: #0e4b9f;
-$colour-white: #f7f7f7;
-$colour-orange: #f25c00; 
-$colour-black: #0a0a0a;
-$colour-yellow: #fff38E;
-$colour-dark-gray: #666;
-$colour-light-gray: #d0d0d0;
-
 
 // Font stacks
 $body-font: TT-Rounds-Condensed,sans-serif;
@@ -46,7 +37,26 @@ $subtitle-font-map: (
 );
 
 
+// Custom normalise
+a {
+	text-decoration: none;
+}
+
+
 // Styling
+.nav-bar {
+	font: 1.15em/140% $body-font;
+}
+
+.nav-list {
+	list-style: none;
+	text-align: right;
+}
+
+.nav-item .link {
+	color: $colour-white;
+}
+
 .title {
 	@include typi($title-font-map);
 	font-family: $body-font;
@@ -81,4 +91,17 @@ code {
 	-ms-user-select: none;
 	user-select: none;
 	color: $colour-dark-gray;
+}
+
+.bottom-banner {
+	text-align: center;
+	color: #efefef;
+	font: 0.9em/180% $body-font;
+	word-spacing: 0.07rem;
+	a {
+		color: $colour-yellow;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }

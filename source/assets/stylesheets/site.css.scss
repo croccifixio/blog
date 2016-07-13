@@ -1,9 +1,9 @@
 @charset "utf-8";
-@import "fonts";
-@import "forms";
 @import "normalize";
-@import "pages";
+@import "colours";
+@import "fonts";
 @import "typography";
+@import "pages";
 
 html {
 	@include typi-base();
@@ -33,14 +33,11 @@ body {
 	}
 	> div > .nav-bar {
 		padding-right: 5vw;
-		font: 1.15em/140% $body-font;
 	}
 }
 
 
 .nav-list {
-	list-style: none;
-	text-align: right;
 	padding-left: 0;
 	margin: 0;
 	display: flex;
@@ -49,27 +46,14 @@ body {
 	> .nav-item {
 		@media (min-width: 481px) {margin-left: 4vw;}
 	}
-	> .nav-item .link {
-		color: $colour-white;
-	}
 }
 
 .bottom-banner {
 	background-color: $colour-dark-gray;
-	text-align: center;
-	color: #efefef;
-	font: 0.9em/180% $body-font;
-	word-spacing: 0.07rem;
 	margin-top: vr(2);
 	padding-top: vr(1);
 	padding-bottom: vr(1);
 	> div {
 		margin: 0 auto;
-	}
-	> div > a {
-		color: $colour-yellow;
-	}
-	> div > a:hover {
-		text-decoration: underline;
 	}
 }
