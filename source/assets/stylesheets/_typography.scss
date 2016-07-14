@@ -17,15 +17,15 @@ $typi: (
 );
 
 $title-font-map: (
-  null: 2.5em,
-  small: 2.75em,
-  large: 3em
+  null: 2.4em,
+  small: 2.65em,
+  large: 2.9em
 );
 
 $subtitle-font-map: (
-  null: 1.4em,
-  small: 1.35em,
-  large: 1.3em
+  null: 1.3em,
+  small: 1.25em,
+  large: 1.2em
 );
 
 $code-font-map: (
@@ -58,13 +58,14 @@ a {
 	font-family: $body-font;
 	font-weight: normal;
 	text-align: center;
+	word-spacing: 0.05em;
 }
 
 .subtitle {
 	@include typi($subtitle-font-map);
 	font-family: $code-font;
 	font-weight: normal;
-	word-spacing: -0.35em;
+	word-spacing: -0.25em;
 	text-transform: uppercase;
 }
 
