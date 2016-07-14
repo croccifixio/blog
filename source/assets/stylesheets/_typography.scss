@@ -28,6 +28,10 @@ $subtitle-font-map: (
   large: 1.3em
 );
 
+$code-font-map: (
+	null: 0.95em
+);
+
 
 // Custom normalise
 a {
@@ -70,6 +74,7 @@ p {
 }
 
 code {
+	@include typi($code-font-map);
 	font-family: $code-font;
 }
 
