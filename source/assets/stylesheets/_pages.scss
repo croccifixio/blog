@@ -4,12 +4,13 @@
 	padding: 0 5vw;
 	@media (min-width: 481px) {padding: 0 7.5vw;}
 	@media (min-width: 769px) {padding: 0 10vw;}
-	> .title {
-		margin: vr(1.5) 0;
-		padding: 0.25em 0 0.1em;
-		border: 0.075em solid $colour-black;
-		border-radius: 0.15em;
-	}
+}
+
+.title {
+	margin: vr(1.5) 0;
+	padding: 0.25em 0 0.1em;
+	border: 0.075em solid $colour-black;
+	border-radius: 0.15em;
 }
 
 .subtitle {
