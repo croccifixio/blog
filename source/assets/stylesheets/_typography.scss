@@ -22,6 +22,12 @@ $title-font-map: (
   large: 2.9em
 );
 
+$title-listing-font-map: (
+	null: 2em,
+  small: 1.9em,
+  large: 1.8em
+);
+
 $subtitle-font-map: (
   null: 1.3em,
   small: 1.25em,
@@ -59,6 +65,23 @@ a {
 	font-weight: normal;
 	text-align: center;
 	word-spacing: 0.05em;
+}
+
+.title-listing {
+	@include typi($title-font-map);
+	margin-bottom: vr(1);
+	font-family: $body-font;
+	font-weight: normal;
+	a {
+		border-bottom: 3px solid transparent;
+		transition: border-color ease-out 0.2s;
+		&:hover {
+			border-color: $colour-dark-gray;
+		}
+		&:visited {
+			color: $colour-black;
+		}
+	}
 }
 
 .subtitle {
