@@ -12,7 +12,7 @@
     <%= javascript_include_tag :all %>
   </head>
   <body>
-    <header class="top-banner">
+    <header>
   		<div>
   			<%= link_to image_tag("logo.png", alt: "odongo", class: "logo"), '/' %>
   			<nav class="nav-bar">
@@ -26,7 +26,7 @@
   	<div class="content-box">
   		<%= yield %>
   	</div>
-  	<footer class="bottom-banner">
+  	<footer>
   		<div>&copy; Emmanuel Odongo <%= DateTime::now.strftime "%Y" %></div>
   		<div>Powered by <a href="https://middlemanapp.com/" alt="Middleman Homepage">Middleman</a></div>
   	</footer>
