@@ -73,11 +73,9 @@ a {
 	a {
 		border-bottom: 3px solid transparent;
 		transition: border-color ease-out 0.2s;
+		color: $colour-black;
 		&:hover {
 			border-color: $colour-dark-gray;
-		}
-		&:visited {
-			color: $colour-black;
 		}
 	}
 }
