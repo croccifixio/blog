@@ -9,6 +9,6 @@
 # Finally it checks out back to the master branch for further development.
 
 git checkout heroku
-git merge --no-commit master
+git merge --ff master
 git push heroku heroku:master
 git checkout master
