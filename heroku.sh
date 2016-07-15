@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This script checks out to the 'heroku' branch, which contains font files that
 # are not present on the publically available master branch.
 
