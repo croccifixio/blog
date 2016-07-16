@@ -10,5 +10,6 @@
 
 git checkout heroku
 git rebase master
-git push heroku heroku:master
+git update-index --assume-unchanged .gitignore
+git push -f heroku heroku:master
 git checkout master
