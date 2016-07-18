@@ -71,11 +71,19 @@ a {
 	font-family: $body-font;
 	font-weight: normal;
 	a {
-		border-bottom: 3px solid transparent;
-		transition: border-color ease-out 0.2s;
+	    text-decoration: none;
+    	text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    	background-repeat: repeat-x;
+    	background-size: 1px 3px;
+    	background-position: 0 100%;
+    	background-image: -webkit-linear-gradient(top, transparent 75%, transparent);
+    	background-image: linear-gradient(to bottom, transparent 75%, transparent);
+    	
+		transition: background-image ease-out 0.2s;
 		color: $colour-black;
 		&:hover {
-			border-color: $colour-dark-gray;
+		    background-image: -webkit-linear-gradient(top, $colour-dark-gray 75%, $colour-white);
+        	background-image: linear-gradient(to bottom, $colour-dark-gray 75%, $colour-white);
 		}
 	}
 }
