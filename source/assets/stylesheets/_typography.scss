@@ -59,14 +59,14 @@ a {
 	color: $colour-white;
 }
 
-.publish-date {
+.publish-date--mini {
 	font-family: $code-font;
 	color: $colour-dark-gray;
 	line-height: 1em;
-	margin-left: 0.05em;
+	padding-left: 0.15em;
 }
 
-.title-listing {
+.title--mini {
 	@include typi($title-font-map);
 	margin-bottom: 0;
 	font-family: $body-font;
