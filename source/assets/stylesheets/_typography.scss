@@ -89,7 +89,7 @@ a {
 	}
 }
 
-div .description {
+.description > p {
 	// vr(1) for first child, vr(0.5) for everything else
 	@include first(1) {
 		margin: vr(1) 0 0 0;
