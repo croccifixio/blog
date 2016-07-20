@@ -8,20 +8,20 @@ source/assets/fonts/ttroundscondensed-regular-webfont.woff2
 source/assets/fonts/ttroundscondensed-bold-webfont.woff
 source/assets/fonts/ttroundscondensed-bold-webfont.woff2"
 
-# for FONT in $FONT_LIST
-# do
-# 	git update-index --no-assume-unchanged $FONT
-# done
+for FONT in $FONT_LIST
+do
+	git update-index --no-assume-unchanged $FONT
+done
 
-# git commit -am "Push font files to server"
-# git push -f heroku master
+git commit -am "Push font files to server"
+git push -f heroku master
 
-# git reset --soft HEAD~1
+git reset --soft HEAD~1
 
-# for FONT in $FONT_LIST
-# do
-# 	git reset HEAD $FONT
-# done
+for FONT in $FONT_LIST
+do
+	git reset HEAD $FONT
+done
 
 for FONT in $FONT_LIST
 do
