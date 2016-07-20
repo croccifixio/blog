@@ -1,6 +1,6 @@
 This is the source code for [odongo.xyz][1] which I built using [Middleman][2].
 
-Feel free to send a pull request [:octocat:][3] or open an issue [:no_entry_sign:][4] if you notice any typos, wonky rendering issues, etc.
+Feel free to send a [:octocat:][3] pull request or open an [:no_entry_sign:][4] issue if you notice any typos, wonky rendering issues, etc.
 
 [1]: http://odongo.xyz
 [2]: https://middlemanapp.com
