@@ -82,12 +82,11 @@ html {
     	background-position: 0 100%;
     	background-image: -webkit-linear-gradient(top, transparent 75%, transparent);
     	background-image: linear-gradient(to bottom, transparent 75%, transparent);
-    	
-		transition: background-image ease-out 0.2s;
-		color: $colour-black;
+	  	transition: background-image ease-out 0.2s;
+	  	color: $colour-black;
 		&:hover {
-		    background-image: -webkit-linear-gradient(top, $colour-dark-gray 75%, $colour-white);
-        	background-image: linear-gradient(to bottom, $colour-dark-gray 75%, $colour-white);
+	    background-image: -webkit-linear-gradient(top, $colour-dark-gray 75%, $colour-white);
+    	background-image: linear-gradient(to bottom, $colour-dark-gray 75%, $colour-white);
 		}
 	}
 }
@@ -121,6 +120,16 @@ html {
 p {
 	font-family: $body-font;
 	word-spacing: 0.075em;
+	> a {
+    text-decoration: none;
+  	text-shadow: -1px -1px 0 $colour-white, 1px -1px 0 $colour-white, -1px 1px 0 $colour-white, 1px 1px 0 $colour-white;
+  	background-repeat: repeat-x;
+  	background-size: 1px 1px;
+  	background-position: 0 95%;
+  	background-image: -webkit-linear-gradient(top, $colour-dark-gray 75%, $colour-white);
+  	background-image: linear-gradient(to bottom, $colour-dark-gray 75%, $colour-white);
+  	color: $colour-black;
+	}
 }
 
 ol > li {
