@@ -37,7 +37,7 @@ p {
 	}	
 }
 
-li {
+ol > li {
 	@include first(1) {margin-top: vr(1);}
 	margin-bottom: vr(1.5);
 	@include last(1) {margin-bottom: 0;}
