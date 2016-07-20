@@ -10,5 +10,11 @@
 
 git checkout heroku
 git rebase master
+git update-index --assume-unchanged source/assets/fonts/realtimerounded-semibold-webfont.woff
+git update-index --assume-unchanged source/assets/fonts/realtimerounded-semibold-webfont.woff2
+git update-index --assume-unchanged source/assets/fonts/ttroundscondensed-bold-webfont.woff
+git update-index --assume-unchanged source/assets/fonts/ttroundscondensed-bold-webfont.woff2
+git update-index --assume-unchanged source/assets/fonts/ttroundscondensed-regular-webfont.woff
+git update-index --assume-unchanged source/assets/fonts/ttroundscondensed-regular-webfont.woff2
 git push -f heroku heroku:master
 git checkout master
