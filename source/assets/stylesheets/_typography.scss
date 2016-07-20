@@ -44,6 +44,10 @@ a {
 	text-decoration: none;
 }
 
+html {
+  font-family: $body-font;
+}
+
 
 // Styling
 .nav-bar {
@@ -117,6 +121,10 @@ a {
 p {
 	font-family: $body-font;
 	word-spacing: 0.075em;
+}
+
+ol > li {
+  list-style-type: lower-roman;
 }
 
 code {
