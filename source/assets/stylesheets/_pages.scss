@@ -66,6 +66,7 @@ code {
 	overflow: auto;
 	border-radius: 0.2em;
 	> code {
+		padding-left: 0;
 		background-color: $colour-light-gray;
 		padding-bottom: 0.15em;
 		box-sizing: border-box;
