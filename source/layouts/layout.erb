@@ -25,18 +25,17 @@
   			<nav class="nav-bar">
   				<ul class="nav-list">
   					<li class="nav-item"><%= link_to 'Blog', '/blog', :class => "link" %></li>
-  			<!--		<li class="link">About</li>-->
+  					<li class="nav-item"><%= link_to 'Contact', '/contact.html', :class => "link" %></li>
   				</ul>
   			</nav>
   		</div>	
   	</header>
   	<div class="content-box">
-  		<%= yield %>
+      <%= yield %>
   	</div>
   	<footer>
   		<div>&copy; Emmanuel Odongo <%= DateTime::now.strftime "%Y" %></div>
   		<div>Powered by <a href="https://middlemanapp.com/" alt="Middleman Homepage">Middleman</a></div>
   	</footer>
-  
   </body>
 </html>
