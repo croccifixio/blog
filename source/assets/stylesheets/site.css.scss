@@ -30,6 +30,7 @@ header, footer, .content-box {
 
 header {
 	background-color: $colour-orange;
+	margin-bottom: vr(1.5);
 	> div {
 		display: flex;
 		justify-content: space-between;

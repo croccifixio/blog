@@ -3,5 +3,9 @@
 }
 
 .u-display-block {
-	display: block;
+	display: block !important;
+}
+
+.u-clear-top-margin {
+	margin-top: 0 !important;
 }
