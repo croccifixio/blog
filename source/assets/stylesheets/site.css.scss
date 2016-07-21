@@ -12,9 +12,20 @@ html {
 }
 
 body {
+	display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 	margin: 0;
 	padding: 0;
 	background-color: $colour-white;
+}
+
+header, footer, .content-box {
+  width: 100%;
+}
+
+.content-box {
+  flex-grow: 1;
 }
 
 header {
