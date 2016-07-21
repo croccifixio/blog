@@ -38,10 +38,7 @@ header {
 	}
 }
 
-
 .nav-list {
-	padding-left: 0;
-	margin: 0;
 	display: flex;
 	@media (min-width: 481px) {justify-content: center;}
 	@media (max-width: 480px) {flex-direction: column;}
