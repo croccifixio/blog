@@ -29,7 +29,7 @@ $title-listing-font-map: (
 );
 
 $subtitle-font-map: (
-  null: 1.3em,
+  null: (1.3em, 1),
   small: 1.25em,
   large: 1.2em
 );
