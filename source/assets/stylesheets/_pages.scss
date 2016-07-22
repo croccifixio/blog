@@ -1,9 +1,10 @@
 .content-box {
 	margin: 0 auto;
 	max-width: 36em;
+	width: 93vw;
 	padding: 0 3.5vw;
-	@media (min-width: 481px) {padding: 0 7.5vw;}
-	@media (min-width: 769px) {padding: 0 10vw;}
+	@media (min-width: 481px) {width: 85vw; padding: 0 7.5vw;}
+	@media (min-width: 769px) {width: 80vw; padding: 0 10vw;}
 }
 
 .title--mini {
