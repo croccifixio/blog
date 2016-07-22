@@ -6,7 +6,7 @@ Feel free to send a [pull request][3] or open an [issue][4] if you notice any ty
 
 #License
 
-Copyright &copy; Emmanuel Odongo 2016. See [LICENSE][5] for details.
+Copyright &copy; 2016 Emmanuel Odongo. See [LICENSE][5] for details.
 
 [1]: http://odongo.xyz
 [2]: https://middlemanapp.com
