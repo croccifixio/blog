@@ -1,0 +1,52 @@
+;;;
+"title": "Commit Messages in GNU Nano",
+"date": "2016-07-19 07:48 UTC",
+"abstract": [
+	"When commiting any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project.",
+	"In this guide, I will discuss how to go about formatting git commit messages."
+]
+;;;
+
+<div>
+	<p>When commiting any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project. A decently crafted commit message can help speed up code comprehension, hopefully allowing others to quickly grasp what problem a commit is addressing and how it is going about solving it.</p>
+	<p>In this article, we will develop a workflow that utilises the GNU Nano editor &ndash; a terminal-based text editor that ships with several Linux distros &ndash; to format commit messages, so that they comply with the Tim Pope's <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">50/72 principle</a>. For insight on why we should bother abiding to this principle, see Chris Beam's article on <a href="http://chris.beams.io/posts/git-commit/">how to write git commit messages</a>.</p>
+</div>
+<article>
+	<h2 class="subtitle">Modifying the nanorc file</h2>
+	<p>We will start off by configuring GNU Nano to wrap lines of text after 72 characters.</p>
+	<p>First, we will navigate to the <code>/etc</code> directory.</p>
+<pre class="code-block"><code><span class="prompt">$ </span>cd /etc</code></pre>
+	<p>Now that we are in the directory containing the <code>nanorc</code> configuration file, we will open this file using the GNU Nano editor. Run the following command:</p>
+<pre class="code-block"><code><span class="prompt">$ </span>sudo nano nanorc</code></pre>
+	<p>The above command will open the <code>nanorc</code> file in the terminal. We can move the cursor up and down using the arrow keys on the keyboard. We can also make use of some <a href="#gnu-nano-shortcuts">GNU Nano shortcuts</a> to easily and comfortably edit the file.</p>
+	<p>There are 2 changes we need to make to the <code>nanorc</code> file. The first change enables line wrapping. The second one ensures that wrapping occurs at or before the 72<sup>nd</sup> character of a line.</p>
+	<ol>
+		<li>
+			<p><code>set nowrap</code> &rarr; <code># set nowrap</code></p>
+			<p>We comment out <code>nowrap</code> to disable its effect.</p>
+		</li>
+		<li>
+			<p><code>set fill -8</code> &rarr; <code>set fill 72</code></p>
+			<p>For the curious, the default value of <code>-8</code> means that lines will wrap at 8 characters less than the width of the terminal. So if the terminal were to be sized at 100 characters/columns wide, then lines would wrap at the 92 character mark.</p>
+		</li>
+	</ol>
+	<a name="save-file"></a>
+	<p>To save the changes we have made, press <code>Ctrl/Cmd + O</code> and to overwrite the file press <code>Enter</code>. The file will remain open in the editor, so to close the GNU Nano editor press <code>Ctrl/Cmd + X</code>.</p>
+</article>
+<article>
+	<h2 class="subtitle">Writing commit messages with Nano</h2>
+	<p>Assuming that in our local repository, there are some changes that have been staged for commit, we can run this command:</p>
+<pre class="code-block"><code><span class="prompt">$ </span>git commit</code></pre>
+	<p>This will open up the <code>COMMIT_EDITMSG</code> file using GNU Nano. Git uses this file to store the commit message that correspond to a particular commit.</p>
+	<p>Following the 50/72 principle, we will begin by typing out a subject line &ndash; ideally one that is at most 50 characters long. If the change we have made is small and does not need to be described further, we can save the file in the same way we <a href="#save-file">saved our changes</a> to the <code>nanorc</code> file.</p>
+	<p>However, if we want to provide more details about the changes introduced in our commit, we should type out a more detailed description in the body of our commit message. Remember to include a blank line between the subject and body.</p>
+	<p>Due to the changes we made to the <code>nanorc</code> file, the GNU Nano editor will automatically wrap text at 72 characters.</p>
+</article>
+<article>
+	<a name="gnu-nano-shortcuts"></a>
+	<h2 class="subtitle">GNU Nano shortcuts</h2>
+	<p>The bottom tab of the GNU Nano editor displays several shortcuts such as <code>^X Exit</code>. This means that to close the editor we should press <code>Ctrl/Cmd + X</code>. However, there can be scenarios where the same keybinding for a particlar shortcut in GNU Nano is the same one used for a shortcut in another program that may also be running &ndash; for instance, if we are using a code editor with an integrated terminal, some shortcuts may affect both.</p>
+	<p>A prime example of this would be while using the <a href="https://c9.io/">Cloud9 IDE</a> to develop in our web browser. The <code>^W Where Is</code> shortcut will present a few problems. Typically, pressing <code>Ctrl/Cmd + W</code> within a web browser will cause the current tab to close. Even if we disable this particular web browser shortcut or re-map it to a different keybinding, Cloud9 defaults to using <code>Ctrl/Cmd + W</code> to close a pane &ndash; a small window within the Cloud9 IDE interface that contains tabs, of which our terminal would be one.</p>
+	<p>To ciricumvent this issue, we can press the <code>Esc</code> key twice and then the key that appears after the <code>^</code>. For instance, to make use of the <code>^W Where Is</code> shortcut, we would use the following key sequence, pressing the keys one after the other: <span class="u-display-block"><code>Esc</code> &rarr; <code>Esc</code> &rarr; <code>W</code></span></p>
+	<p>The <code>^W Where Is</code> shortcut is used to search for strings. It is useful if you know what you are looking for within a file and are not too inclined to scroll and search for it yourself &ndash; case in point: finding the lines in the <code>nanorc</code> file that need to be changed.</p>
+</article>
