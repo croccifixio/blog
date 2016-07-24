@@ -12,9 +12,9 @@ per_page: 10
 
 <% page_articles.each_with_index do |article, i| %>
 	<div class="article--mini">
-	  <h2 class="title--mini<%= ' u-clear-top-margin' if i == 0 %>">
+	  <h1 class="title--mini<%= ' u-clear-top-margin' if i == 0 %>">
 	  	<%= link_to article.title, article %>
-  	</h2>
+  	</h1>
 	  <span class="publish-date--mini"><%= article.date.strftime('%e %b, %Y') %></span>
 		<div class="description">
 		<% article.data.abstract.each do |para|  %>
