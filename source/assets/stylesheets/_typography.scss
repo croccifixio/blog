@@ -13,9 +13,9 @@ $breakpoints: (
 );
 
 $typi: (
-	null: (23px, 1.25),
-	small: (23px, 1.3),
-	large: (23px, 1.36)
+	null: (23px, 1.36),
+	small: 23px,
+	large: 23px
 );
 
 $title-font-map: (
@@ -37,7 +37,11 @@ $subtitle-font-map: (
 );
 
 $code-font-map: (
-	null: (0.9em, 1.25)
+	null: 1em
+);
+
+$kbd-font-map: (
+  null: 0.85em
 );
 
 
@@ -142,6 +146,11 @@ p {
 
 ol > li {
   list-style-type: lower-roman;
+}
+
+kbd {
+	@include typi($kbd-font-map);
+	font-family: $code-font;
 }
 
 code {
