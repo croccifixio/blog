@@ -13,17 +13,18 @@ $breakpoints: (
 );
 
 $typi: (
-	null: (23px, 1.25)
+	null: (23px, 1.36),
+	small: (23px, 1.25)
 );
 
 $title-font-map: (
-  null: 2.4em,
+  null: (2.4em, 1.25),
   small: 2.65em,
   large: 2.9em
 );
 
 $title-listing-font-map: (
-	null: 2em,
+	null: (2em, 1.25),
   small: 1.9em,
   large: 1.8em
 );
@@ -35,7 +36,7 @@ $subtitle-font-map: (
 );
 
 $code-font-map: (
-	null: 0.95em
+	null: (0.95em, 1.25)
 );
 
 
