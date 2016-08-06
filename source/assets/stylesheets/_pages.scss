@@ -42,9 +42,7 @@ p {
 	@media (max-width: 480px) {padding: 0 2vw;}
 	> code {
 		display: inline;
-		line-height: 1.08;
-		padding: 0 0.3em 0.13em;
-		border-radius: 0.2em;
+		padding: 0 0.3em 0.2em;
 	}	
 }
 
@@ -63,7 +61,6 @@ ol > li {
 
 code {
 	background-color: $colour-light-gray;
-	padding: 0 0.3em 0.15em;
 	box-sizing: border-box;
 	border-radius: 0.2em;
 }
@@ -75,10 +72,7 @@ code {
 	overflow: auto;
 	border-radius: 0.2em;
 	> code {
-		padding-left: 0;
-		background-color: $colour-light-gray;
 		padding-bottom: 0.15em;
-		box-sizing: border-box;
 	}
 }
 
