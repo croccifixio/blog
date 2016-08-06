@@ -22,11 +22,11 @@
 	<p>There are 2 changes we need to make to the <code>nanorc</code> file. The first change enables line wrapping. The second one ensures that wrapping occurs at or before the 72<sup>nd</sup> character of a line.</p>
 	<ol>
 		<li>
-			<p><code>set nowrap</code> &rarr; <code># set nowrap</code></p>
+			<p><code>set&nbsp;nowrap</code> &rarr; <code>#&nbsp;set&nbsp;nowrap</code></p>
 			<p>We comment out <code>nowrap</code> to disable its effect.</p>
 		</li>
 		<li>
-			<p><code>set fill -8</code> &rarr; <code>set fill 72</code></p>
+			<p><code>set&nbsp;fill&nbsp;-8</code> &rarr; <code>set&nbsp;fill&nbsp;72</code></p>
 			<p>For the curious, the default value of <code>-8</code> means that lines will wrap at 8 characters less than the width of the terminal. So if the terminal were to be sized at 100 characters/columns wide, then lines would wrap at the 92 character mark.</p>
 		</li>
 	</ol>
@@ -45,8 +45,8 @@
 <article>
 	<a name="gnu-nano-shortcuts"></a>
 	<h2 class="subtitle">GNU Nano shortcuts</h2>
-	<p>The bottom tab of the GNU Nano editor displays several shortcuts such as <wbr><code>^X Exit</code>.<wbr> This means that to close the editor we should press <code>Ctrl</code>&nbsp;+&nbsp;<code>X</code>. However, there can be scenarios where the same keybinding for a particlar shortcut in GNU Nano is the same one used for a shortcut in another program that may also be running &ndash; for instance, if we are using a code editor with an integrated terminal, some shortcuts may affect both.</p>
-	<p>A prime example of this would be while using the <a href="https://c9.io/">Cloud9 IDE</a> to develop in our web browser. The <code>^W Where Is</code> shortcut will present a few problems. Typically, pressing <code>Ctrl</code>&nbsp;+&nbsp;<code>W</code> within a web browser will cause the current tab to close. Even if we disable this particular web browser shortcut or re-map it to a different keybinding, Cloud9 defaults to using <code>Ctrl</code>&nbsp;+&nbsp;<code>W</code> to close a pane &ndash; a small window within the Cloud9 IDE interface that contains tabs, of which our terminal would be one.</p>
-	<p>To ciricumvent this issue, we can press the <code>Esc</code> key twice and then the key that appears after the <code>^</code>. For instance, to make use of the <code>^W Where Is</code> shortcut, we would use the following key sequence, pressing the keys one after the other: <span class="u-display-block"><code>Esc</code> &rarr; <code>Esc</code> &rarr; <code>W</code></span></p>
-	<p>The <code>^W Where Is</code> shortcut is used to search for strings. It is useful if you know what you are looking for within a file and are not too inclined to scroll and search for it yourself &ndash; case in point: finding the lines in the <code>nanorc</code> file that need to be changed.</p>
+	<p>The bottom tab of the GNU Nano editor displays several shortcuts such as <code>^X&nbsp;Exit</code>. This means that to close the editor we should press <code>Ctrl</code>&nbsp;+&nbsp;<code>X</code>. However, there can be scenarios where the same keybinding for a particlar shortcut in GNU Nano is the same one used for a shortcut in another program that may also be running &ndash; for instance, if we are using a code editor with an integrated terminal, some shortcuts may affect both.</p>
+	<p>A prime example of this would be while using the <a href="https://c9.io/">Cloud9 IDE</a> to develop in our web browser. The <code>^W&nbsp;Where Is</code> shortcut will present a few problems. Typically, pressing <code>Ctrl</code>&nbsp;+&nbsp;<code>W</code> within a web browser will cause the current tab to close. Even if we disable this particular web browser shortcut or re-map it to a different keybinding, Cloud9 defaults to using <code>Ctrl</code>&nbsp;+&nbsp;<code>W</code> to close a pane &ndash; a small window within the Cloud9 IDE interface that contains tabs, of which our terminal would be one.</p>
+	<p>To ciricumvent this issue, we can press the <code>Esc</code> key twice and then the key that appears after the <code>^</code>. For instance, to make use of the <code>^W&nbsp;Where Is</code> shortcut, we would use the following key sequence, pressing the keys one after the other: <span class="u-display-block"><code>Esc</code> &rarr; <code>Esc</code> &rarr; <code>W</code></span></p>
+	<p>The <code>^W&nbsp;Where Is</code> shortcut is used to search for strings. It is useful if you know what you are looking for within a file and are not too inclined to scroll and search for it yourself &ndash; case in point: finding the lines in the <code>nanorc</code> file that need to be changed.</p>
 </article>
