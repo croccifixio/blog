@@ -63,6 +63,11 @@ html {
 
 .nav-item .link {
 	color: $colour-white;
+	
+	transition: text-shadow ease-out 0.3s;
+	&:hover {
+	  text-shadow: 1px 1px 4px lighten($colour-dark-gray, 12%);
+	}
 }
 
 .publish-date--mini {
