@@ -145,7 +145,7 @@ p {
 }
 
 ol > li {
-  list-style-type: lower-roman;
+  list-style-type: lower-roman;  
 }
 
 kbd {
@@ -168,6 +168,14 @@ code {
 	-ms-user-select: none;
 	user-select: none;
 	color: $colour-dark-gray;
+}
+
+.code-comment {
+  -webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  color: darken($colour-blue, 5%);
 }
 
 footer {
