@@ -29,26 +29,32 @@
 }
 
 .subtitle {
-	margin-bottom: 0;
+	margin: vr(1.5) 0 vr(0.5);
 	display: inline-block;
 	padding: 0 0.25em 0.25em 0.05em;
 	border-top: 0.12em solid $colour-black;
 	border-right: 0.12em solid $colour-black;
 	border-bottom: 0.12em solid $colour-black;
 }
-
 p {
-	margin-bottom: vr(1);
+	margin: 0;
+}
+
+p + p {
+	padding-top: vr(1);
+	padding-bottom: 0;
 	@media (max-width: 480px) {padding: 0 2vw;}
 }
 
-ol > li {
-	@include first(1) {margin-top: vr(1);}
-	margin-bottom: vr(1.5);
-	@include last(1) {margin-bottom: 0;}
-	> p {
-		margin: vr(0.5) 0;
-	}
+ol, .u-list {
+  margin: vr(0.5) 0 vr(1.5);
+  > li {
+    margin-top: vr(0.5);
+    > p {
+      margin: 0;
+      padding-top: vr(0.5);
+    }
+  }
 }
 
 .publish-date--mini {
@@ -68,7 +74,7 @@ code, kbd {
 .code-block {
 	background-color: $colour-light-gray;
 	padding: vr(1);
-	margin: 0 0 vr(1);
+	margin: vr(1) 0;
 	overflow: auto;
 	border-radius: 0.2em;
 	> code {
