@@ -36,6 +36,7 @@
 	border-right: 0.12em solid $colour-black;
 	border-bottom: 0.12em solid $colour-black;
 }
+
 p {
 	margin: 0;
 }
@@ -43,7 +44,6 @@ p {
 p + p {
 	padding-top: vr(1);
 	padding-bottom: 0;
-	@media (max-width: 480px) {padding: 0 2vw;}
 }
 
 ol, .u-list {
