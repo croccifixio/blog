@@ -103,16 +103,6 @@ html {
 	}
 }
 
-.description > p {
-	// vr(1) for first child, vr(0.5) for everything else
-	@include first(1) {
-		margin: vr(1) 0 0 0;
-	}
-	@include all-but(1) {
-		margin: vr(0.5) 0 0 0;
-	}
-}
-
 .title {
 	@include typi($title-font-map);
 	font-family: $body-font;

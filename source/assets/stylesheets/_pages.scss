@@ -8,17 +8,21 @@
 }
 
 .title--mini {
-  // @include first(1) { margin-top: 0; }
-	@include all-but-first-last(1) {
-		margin-bottom: 1px solid $colour-black;
-	}
-}
-
-.title--mini.u-clear-top-margin {
   // Add top padding so that if the user clicks the first blog post while the
   // page is scrolled to the top, the title on the actual blog page does not
   // appear to jump
-  padding-top: 0.325em;
+  @include first(1) {padding-top: 0.325em;}
+}
+
+.publish-date--mini {
+	padding-left: 0.1em;
+}
+
+.description > p {
+  padding-top: vr(0.5);
+  @media (min-width: 481px) {
+    @include first(1) {padding-top: vr(0.75);}
+  }
 }
 
 .title {
@@ -55,10 +59,6 @@ ol, .u-list {
       padding-top: vr(0.5);
     }
   }
-}
-
-.publish-date--mini {
-	padding-left: 0.1em;
 }
 
 kbd {
