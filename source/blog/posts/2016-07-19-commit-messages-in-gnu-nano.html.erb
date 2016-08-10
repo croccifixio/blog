@@ -35,6 +35,10 @@
 </article>
 <article>
 	<h2 class="subtitle">Writing commit messages with Nano</h2>
+	<p>To verify that GNU Nano is the default editor in our terminal, use the command below and if necessary, set Nano as the default.</p>
+<pre class="code-block"><code><span class="code-comment"># This command lists the available editors, and allows
+# us to select one as the default</span>
+<span class="prompt">$ </span>sudo update-alternatives --config editor</code></pre>
 	<p>Assuming that in our local repository, there are some changes that have been staged for commit, we can run this command:</p>
 <pre class="code-block"><code><span class="prompt">$ </span>git commit</code></pre>
 	<p>This will open up the <code>COMMIT_EDITMSG</code> file using GNU Nano. Git uses this file to store the commit message that corresponds to a particular commit.</p>
