@@ -12,15 +12,15 @@
 	<p>To solve this problem, we first add dummies of the sensitive files to the development repo. These dummy files can be empty files, as long as they have the same names as the actual sensitive files we will eventually add.</p>
 	<p>We will commit the dummy files, then replace them with the actual sensitive files. Now we tell git to assume that the files we have just added have not changed.</p>
 	<p>This initial setup can be accomplished by running the following commands in the console:</p>
-<pre class="code-block"><code><span class="code-comment"># create and commit the dummy file(s)</span>
+<pre class="code-block"><code><span class="code-comment"># Create and commit the dummy file(s)</span>
 <span class="prompt">$ </span>touch /path/to/sensitive_file
 <span class="prompt">$ </span>git commit -am "Add dummy file"
 
-<span class="code-comment"># replace the dummy file(s) with the real one(s)</span>
+<span class="code-comment"># Replace the dummy file(s) with the real one(s)</span>
 <span class="prompt">$ </span>rm -rf /path/to/sensitive_file
 <span class="prompt">$ </span>mv /path/to/actual/sensitive_file /path/to/sensitive_file
 
-<span class="code-comment"># tell git to act like nothing happened</span>
+<span class="code-comment"># Tell git to act like nothing happened</span>
 <span class="prompt">$ </span>git update-index --assume-unchanged /path/to/sensitive_file</code></pre>
 	<p><strong>NOTE:</strong> <code>/path/to/actual/sensitive_file</code> must be in the .gitignore or outside of the git project. Otherwise, it beats the point of this whole process.</p>
 	<p>From now on, git should skip over the sensitive files whenever it is checking for diffs. Thus, we can push normally to the <strong>public</strong> repo where the dummy files reside, while the actual sensitive files remain in our <strong>development</strong> repo.</p>
@@ -38,30 +38,30 @@
 		<li>We want the font files to reside on the same server as our web app/site rather than on a dedicated font server.</li>
 		<li>Our production sever is hosted on <strong>Heroku</strong>.</li>
 	</ul>
-<pre class="code-block"><code><span class="code-comment">#array with paths to font files</span>
+<pre class="code-block"><code><span class="code-comment"># Array with paths to font files</span>
 FONT_LIST="assets/fonts/title-font.woff
 assets/fonts/title-font.woff2
 assets/fonts/body-font.woff
 assets/fonts/body-font.woff2"
 
-<span class="code-comment">#STEP 1</span>
+<span class="code-comment"># STEP 1</span>
 for FONT in FONT_LIST
 do
 	git update-index --no-assume-unchanged $FONT
 done
 
-<span class="code-comment">#STEP 2</span>
+<span class="code-comment"># STEP 2</span>
 git commit -am "Push font files to server"
 git push -f heroku master
 
-<span class="code-comment">#STEP 3</span>
+<span class="code-comment"># STEP 3</span>
 git reset HEAD~1
 
-<span class="code-comment">#STEP 3 & 4</span>
+<span class="code-comment"># STEP 3 & 4</span>
 for FONT in FONT_LIST
 do
-	git reset HEAD $FONT <span class="code-comment">#STEP 3 continued</span>
-	git update-index --assume-unchanged $FONT <span class="code-comment">#STEP 4</span>
+	git reset HEAD $FONT <span class="code-comment"># STEP 3 continued</span>
+	git update-index --assume-unchanged $FONT <span class="code-comment"># STEP 4</span>
 done</code></pre>
 	<p>The are some minor downsides to using this method:</p>
 	<ul class="u-list">
@@ -75,7 +75,7 @@ done</code></pre>
 <span class="prompt">$ </span>git push heroku master
 
 <span class="code-comment"># NEW command to push to production
-# assuming we save the script to the root of our project
+# Assuming we save the script to the root of our project
 # and name it "heroku"</span>
 <span class="prompt">$ </span>sh heroku</code></pre>
 	<p>The above method is used on this very site to keep the web font files out of the <a href="https://github.com/Croccifixio/blog/tree/master/source/assets/fonts">public GitHub repository.</a></p>
