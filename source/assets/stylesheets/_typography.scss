@@ -13,9 +13,9 @@ $breakpoints: (
 );
 
 $typi: (
-	null: (23px, 1.36),
-	small: 23px,
-	large: 23px
+	null: (18px, 1.36),
+	small: 19px,
+	large: 20px
 );
 
 $title-font-map: (
@@ -171,7 +171,7 @@ code {
 footer {
 	text-align: center;
 	color: #efefef;
-	font: 0.9em/180% $body-font;
+	font: 0.85em/180% $body-font;
 	word-spacing: 0.07rem;
 	a {
 		color: $colour-yellow;
