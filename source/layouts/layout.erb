@@ -6,8 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
 
-    <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= current_page.data.title || "Odongo" %></title>
+    <!-- Use title from frontmatter: 'seo_title' key -->
+    <title><%=
+			current_page.data.seo_title || "Emmanuel Odongo"
+		%></title>
+
+		<!-- Use description from frontmatter: first paragraph of the 'abstract' key -->
+		<meta name="description" content=<%=
+			if current_page.data.abstract
+				my_hash = JSON.parse(current_page.data.to_json)
+				my_hash["abstract"][0]
+			else
+				"Emmanuel Odongo is an aspiring web developer who writes about web design and front-end develpoment."
+			end
+		%>>
 
 		<!-- Website favicon -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
