@@ -17,8 +17,14 @@ per_page: 10
   	</h1>
 	  <span class="publish-date--mini"><%= article.date.strftime('%e %b, %Y') %></span>
 		<div class="description">
-		<% article.data.abstract.each do |para|  %>
-			<p><%= para %></p>
+		<!-- if 'abstract' is an array: multiple paragraphs -->
+		<% if article.data.abstract.kind_of?(Array) %>
+			<% article.data.abstract.each do |para|  %>
+				<p><%= para %></p>
+			<% end %>
+		<!-- else 'abstract' is not an array: single paragraph -->
+		<% else %>
+			<p><%= article.data.abstract %></p>
 		<% end %>
 		</div>
 	</div>
