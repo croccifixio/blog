@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# UNIX-only shell script
+# To run type the following command into the terminal
+# ``` sh heroku ```
+
 # font files
 FONT_LIST="source/assets/fonts/realtimerounded-semibold-webfont.woff
 source/assets/fonts/realtimerounded-semibold-webfont.woff2
