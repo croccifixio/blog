@@ -7,7 +7,6 @@ source 'https://rubygems.org'
 
 # Windows does not come with time zone data
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-require 'tzinfo'
 
 # Middleman Gems
 gem 'middleman', '>= 4.1'
