@@ -15,9 +15,9 @@
 		<meta name="description" content=<%=
 			if current_page.data.abstract
 				my_hash = JSON.parse(current_page.data.to_json)
-				my_hash["abstract"][0]
+				"\"" + my_hash["abstract"][0] + "\""
 			else
-				"Emmanuel Odongo is an aspiring web developer who writes about web design and front-end develpoment."
+				"\"Emmanuel Odongo is an aspiring web developer who writes about web design and front-end develpoment.\""
 			end
 		%>>
 
