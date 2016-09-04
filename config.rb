@@ -72,3 +72,6 @@ configure :build do
   # Minify Javascript on build
   activate :minify_javascript
 end
+
+# Activate browser caching
+activate :asset_hash
