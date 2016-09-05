@@ -1,6 +1,27 @@
-;;;
-"title": "<%= @title %>",
-"seo_title": "<%= @title %>",
+;;;<%
+  # Title Case Parser
+
+  # list of words that are not to be capitalised 
+  no_cap = ['of','to','for','but','and','or','with','the','a','an','as','is','it','be','in']
+
+  # split title into array of words
+  words = @title.scan(/\w+/)
+
+  # capitalise all words except those in the 'no_cap' array
+  words.each { |w| w.capitalize! unless no_cap.include? w }
+
+  # capitalise the first word in case it was skipped over due to being in the 'no_cap' array
+  words[0].capitalize! if no_cap.include? words[0]
+
+  title = words.join(' ')
+
+  # add non-breaking space between the last 2 words if their combined length is below or equal 10 characters
+  if words[words.length-1].length + words[words.length-2].length <= 10
+    title_no_break = title.reverse.sub(' ', ';psbn&').reverse
+  end
+%>
+"title": "<%= title_no_break || title %>",
+"seo_title": "<%= title %>",
 "date": "<%= @date %>",
 "abstract": [
   "",
