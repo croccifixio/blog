@@ -2,7 +2,7 @@
 
 # UNIX-only shell script
 # To run type the following command into the terminal
-# ``` sh heroku ```
+# ``` sh deploy ```
 
 # font files
 FONT_LIST="source/assets/fonts/realtimerounded-semibold-webfont.woff

@@ -1,6 +1,8 @@
 REM Windows-only bash script
 REM To run type the followinf line into the cmd terminal
-REM ``` heroku.bat ``` 
+REM ``` deploy.bat ```
+REM or
+REM ``` deploy ```
 
 REM Due to spotty array support, the decision to opt away from a named array containing the list of fonts has been made
 REM Paths to the font files will need to be manually added into the blocks in _both_ for loops
