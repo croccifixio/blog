@@ -76,3 +76,6 @@ end
 
 # Activate browser caching
 activate :asset_hash
+
+# Use CSS auto-prefixer
+activate :autoprefixer
