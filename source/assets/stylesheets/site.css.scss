@@ -35,15 +35,12 @@ header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 120px;
 		max-width: 1140px;
+		height: 75px;
 		margin: 0 auto;
 	}
 	.logo {
-		padding-left: 4.5vw;		
-		margin: 0;
-		height: 100px;
-		width: 200px;
+		padding-left: 5vw;
 	}
 	.nav-bar {
 		padding-right: 5vw;
@@ -52,6 +49,7 @@ header {
 
 .nav-list {
 	display: flex;
+	margin: 0;
 	@media (min-width: 481px) {justify-content: center;}
 	@media (max-width: 480px) {flex-direction: column;}
 	> .nav-item {
