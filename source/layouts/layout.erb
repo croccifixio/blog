@@ -25,9 +25,9 @@
 		%>>
 
 		<!-- Website favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="/assets/images/favicon/favicon-16x16.png" sizes="16x16">
+		<link rel="apple-touch-icon" href="<%= image_path('favicon/apple-touch-icon.png') %>" sizes="180x180">
+		<link rel="icon" type="image/png" href="<%= image_path('favicon/favicon-32x32.png') %>" sizes="32x32">
+		<link rel="icon" type="image/png" href="<%= image_path('favicon/favicon-16x16.png') %>" sizes="16x16">
 		<link rel="manifest" href="/assets/images/favicon/manifest.json">
 		<meta name="theme-color" content="#ffffff">
 
@@ -39,8 +39,8 @@
     <header>
   		<div>
 				<a href="/"><picture>
-					<source srcset="/assets/images/logo-1,5x.png 1.5x, /assets/images/logo-2x.png 2x">
-					<img class="logo" alt="odongo" src="/assets/images/logo-1x.png">
+					<source srcset="<%= image_path('logo-1,5x.png') %> 1.5x, <%= image_path('logo-2x.png') %> 2x">
+					<img class="logo" alt="odongo" src="<%= image_path('logo-1x.png') %>">
 				</picture></a>
   			<nav class="nav-bar">
   				<ul class="nav-list">
