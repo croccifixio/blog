@@ -8,10 +8,11 @@ font_list.each do |font|
 end
 
 # Push to production
-system "git commit -am 'Push font files to server'"
+system "git commit -am \"Push font files to server\""
 system "git push -f heroku master"
 
 # Revert changes locally
+system "git rebase HEAD~1"
 font_list.each do |font|
 	system "git reset HEAD #{font}"
 	system "git update-index --assume-unchanged #{font}"
