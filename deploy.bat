@@ -1,5 +1,5 @@
 REM Windows-only bash script
-REM To run type the followinf line into the cmd terminal
+REM To run type the following line into the cmd terminal
 REM ``` deploy.bat ```
 REM or
 REM ``` deploy ```
@@ -14,7 +14,7 @@ REM Where "font_list" was an array containing paths to the font files
 REM However this for loop also targeted DOSKEY aliases, e.g.
 REM ``` DOSKEY middle = middleman server < nul ```
 REM This would try to execute the following command:
-REM ``` git update-index --assume-unchanged middleman server <nul ```
+REM ``` git update-index --assume-unchanged middleman server < nul ```
 REM For the most part, this should result in a harmless error message and the batch file carries on executing
 REM But for the sake of avoiding possible bugs down the road, this method has been shelved pending further research
 
