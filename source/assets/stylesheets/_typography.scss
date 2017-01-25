@@ -173,10 +173,4 @@ footer {
 	color: #efefef;
 	font: 0.85em/180% $body-font;
 	word-spacing: 0.07rem;
-	a {
-		color: $colour-yellow;
-		&:hover {
-			text-decoration: underline;
-		}
-	}
 }
