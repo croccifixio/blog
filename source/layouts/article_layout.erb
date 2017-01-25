@@ -42,7 +42,7 @@
 
 <% wrap_layout :layout do %>
   <h1 class="title u-clear-top-margin"><%= current_article.title %></h1>
-  <span class="publish-date"><%= current_article.date.strftime('%e %b, %Y') %></span>
+  <span class="publish-date"><%= current_article.date.strftime('%e %b %Y') %></span>
   <hr>
   <%= yield %>
 <% end %>
