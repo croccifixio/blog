@@ -12,6 +12,7 @@
   // page is scrolled to the top, the title on the actual blog page does not
   // appear to jump
   @include first(1) {padding-top: 0.325em;}
+	padding-bottom: vr(0.25);
 }
 
 .publish-date--mini {
@@ -21,12 +22,12 @@
 .description > p {
   padding-top: vr(0.5);
   @media (min-width: 481px) {
-    @include first(1) {padding-top: vr(0.75);}
+    @include first(1) {padding-top: vr(0.25);}
   }
 }
 
 .title {
-	margin-bottom: vr(1.5);
+	margin-bottom: vr(1);
 	padding: 0.25em 0 0.1em;
 	border: 0.075em solid $colour-black;
 	border-radius: 0.15em;
