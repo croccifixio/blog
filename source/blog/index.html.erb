@@ -15,7 +15,7 @@ per_page: 10
 	  <h1 class="title--mini<%= ' u-clear-top-margin' if i == 0 %>">
 	  	<%= link_to article.title, article %>
   	</h1>
-	  <span class="publish-date--mini"><%= article.date.strftime('%e %b, %Y') %></span>
+	  <span class="publish-date"><%= article.date.strftime('%e %b, %Y') %></span>
 		<div class="description">
 		<!-- if 'abstract' is an array: multiple paragraphs -->
 		<% if article.data.abstract.kind_of?(Array) %>
