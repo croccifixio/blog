@@ -1,3 +1,6 @@
+# Push to origin first to prevent mix-ups
+system "git push -f origin master"
+
 # Get array of font files (.woff and .woff2)
 Dir.chdir "source/assets/fonts"
 font_list = Dir.glob("*.{woff,woff2}")
