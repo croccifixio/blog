@@ -1,7 +1,24 @@
+class Deploy
+	@count = 0
+
+	class << self
+		attr_reader :count
+	end
+
+	def initialize
+		Deploy.instance_eval { @count += 1 }
+	end
+
+	def deploy_msg(msg)
+		print "\n" if Deploy.count > 1 
+		puts msg
+		msg.length.times { print "=" }
+		print "\n"
+	end
+end
+
 # Push to public repo
-puts "DEPLOY SCRIPT > Pushing to public repo\n"
-80.times { print "=" }
-print "\n"
+Deploy.new.deploy_msg("DEPLOY SCRIPT > Pushing to public repo")
 system "git push origin master"
 
 # Get array of font files (.woff and .woff2)
@@ -14,9 +31,7 @@ font_list.each do |font|
 end
 
 # Push to production
-puts "\n\nDEPLOY SCRIPT > Pushing to production"
-80.times { print "=" }
-print "\n"
+Deploy.new.deploy_msg("DEPLOY SCRIPT > Pushing to production")
 system "git commit -am \"Push font files to production\""
 system "git push -f gitlab master"
 
