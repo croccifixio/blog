@@ -28,7 +28,7 @@
 
 .title {
 	margin-bottom: vr(1);
-	padding: 0.25em 0 0.1em;
+	padding: 0.25em 0 0.25em;
 	border: 0.075em solid $colour-black;
 	border-radius: 0.15em;
 }
@@ -81,8 +81,4 @@ code, kbd {
 	> code {
 		padding: 0 0 0.15em;
 	}
-}
-
-.homepage-hotfix {
-	padding-bottom: 0.25em;
 }
