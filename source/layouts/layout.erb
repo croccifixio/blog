@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="<%=
 			rb_nonce = SecureRandom.base64
 			"default-src 'self' https://cdn.odongo.xyz; script-src 'self' 'nonce-" + rb_nonce + "'"
 		%>">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Use title from frontmatter: 'seo_title' key -->
     <title><%=
