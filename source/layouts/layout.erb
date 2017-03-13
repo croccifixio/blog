@@ -4,10 +4,10 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content=<%=
+    <meta http-equiv="Content-Security-Policy" content="<%=
 			rb_nonce = SecureRandom.base64
-			"\"default-src 'self'; script-src 'self' 'nonce-" + rb_nonce + "'\""
-		%>>
+			"default-src 'self'; script-src 'self' 'nonce-" + rb_nonce + "'"
+		%>">
 
     <!-- Use title from frontmatter: 'seo_title' key -->
     <title><%=
@@ -15,14 +15,14 @@
 		%></title>
 
 		<!-- Use description from frontmatter: first paragraph of the 'abstract' key -->
-		<meta name="description" content=<%=
+		<meta name="description" content="<%=
 			if current_page.data.abstract
 				my_hash = JSON.parse(current_page.data.to_json)
-				"\"" + my_hash["abstract"][0] + "\""
+				my_hash["abstract"][0]
 			else
-				"\"Emmanuel Odongo is an aspiring web developer who writes about web design and front-end develpoment.\""
+				"Emmanuel Odongo is an aspiring web developer who writes about web design and front-end develpoment."
 			end
-		%>>
+		%>">
 
 		<!-- Website favicon -->
 		<link rel="apple-touch-icon" href="<%= image_path('favicon/apple-touch-icon.png') %>" sizes="180x180">
