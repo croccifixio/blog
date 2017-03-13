@@ -1,5 +1,5 @@
-/*
-Content-Security-Policy: default-src 'self' https://cdn.example.com; script-src 'self'
+/
+Content-Security-Policy: default-src 'self'; script-src 'self'; font-src https://cdn.example.com
 
 /assets/*
 	Cache-Control: public, max-age=10368000
