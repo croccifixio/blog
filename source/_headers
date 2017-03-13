@@ -1,2 +1,5 @@
+/*
+Content-Security-Policy: default-src 'self' https://cdn.example.com; script-src 'self'
+
 /assets/*
 	Cache-Control: public, max-age=10368000
