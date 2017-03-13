@@ -1,3 +1,0 @@
-<filesMatch ".(css|js|gif|jpg|svg|ico|woff|woff2)$">
-Header set Cache-Control "max-age=10368000, public"
-</filesMatch>

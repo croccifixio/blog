@@ -79,3 +79,13 @@ activate :asset_hash
 
 # Use CSS auto-prefixer
 activate :autoprefixer
+
+# Add the _headers file to the build folder
+# This file is specific to the Netlify webhost
+# Middleman assumes files that begin with an underscore to be partials, thus they are ignored by default
+after_build do |builder|
+  src = File.join(config[:source],"_headers")
+  dst = File.join(config[:build_dir],"_headers")
+  base = File.expand_path(File.dirname(__FILE__))
+  FileUtils.copy_file([base,src].join("/"),[base,dst].join("/"))
+end
