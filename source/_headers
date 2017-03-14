@@ -1,5 +1,5 @@
 /
-Content-Security-Policy: default-src 'self'; script-src 'self'; font-src https://cdn.example.com
+Content-Security-Policy: default-src 'self'; script-src 'self'; font-src https://cdn.odongo.xyz
 
 /assets/*
 	Cache-Control: public, max-age=10368000
