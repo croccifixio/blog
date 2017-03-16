@@ -82,3 +82,7 @@ code, kbd {
 		padding: 0 0 0.15em;
 	}
 }
+
+.ui-flow {
+	@extend kbd;
+}

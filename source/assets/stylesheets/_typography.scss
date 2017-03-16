@@ -139,7 +139,7 @@ ol > li {
   list-style-type: lower-roman;  
 }
 
-kbd {
+kbd, .ui-flow {
 	@include typi($kbd-font-map);
 	font-family: $code-font;
 }
