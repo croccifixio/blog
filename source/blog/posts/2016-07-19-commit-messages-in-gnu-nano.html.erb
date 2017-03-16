@@ -13,7 +13,7 @@
 	<p>In this article, we will develop a workflow that utilises the GNU Nano editor &ndash; a terminal-based text editor that ships with several Linux distros &ndash; to format commit messages, so that they comply with the Tim Pope's <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">50/72 principle</a>. For insight on why we should bother abiding to this principle, see Chris Beam's article on <a href="http://chris.beams.io/posts/git-commit/">how to write git commit messages</a>.</p>
 </div>
 <article>
-	<h2 class="subtitle">Modifying the nanorc file</h2>
+	<h2 class="subtitle subtitle--border">Modifying the nanorc file</h2>
 	<p>We will start off by configuring GNU Nano to wrap lines of text after 72 characters.</p>
 	<p>First, we will navigate to the <code>/etc</code> directory.</p>
 <pre class="code-block"><code><span class="prompt">$ </span>cd /etc</code></pre>
@@ -35,7 +35,7 @@
 	<p>To save the changes we have made, press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>O</kbd> and to overwrite the file press <kbd>Enter</kbd>. The file will remain open in the editor, so to close the GNU Nano editor press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>X</kbd>.</p>
 </article>
 <article>
-	<h2 class="subtitle">Writing commit messages with Nano</h2>
+	<h2 class="subtitle subtitle--border">Writing commit messages with Nano</h2>
 	<p>To verify that GNU Nano is the default editor in our terminal, use the command below and if necessary, set Nano as the default.</p>
 <pre class="code-block"><code><span class="code-comment"># This command lists the available editors, and allows
 # us to select one as the default</span>
@@ -49,7 +49,7 @@
 </article>
 <article>
 	<a name="gnu-nano-shortcuts"></a>
-	<h2 class="subtitle">GNU Nano shortcuts</h2>
+	<h2 class="subtitle subtitle--border">GNU Nano shortcuts</h2>
 	<p>The bottom tab of the GNU Nano editor displays several shortcuts such as <code>^X&nbsp;Exit</code>. This means that to close the editor we should press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>X</kbd>. However, there can be scenarios where the same keybinding for a particlar shortcut in GNU Nano is the same one used for a shortcut in another program that may also be running &ndash; for instance, if we are using a code editor with an integrated terminal, some shortcuts may affect both.</p>
 	<p>A prime example of this would be while using the <a href="https://c9.io/">Cloud9 IDE</a> to develop in our web browser. The <code>^W&nbsp;Where Is</code> shortcut will present a few problems. Typically, pressing <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>W</kbd> within a web browser will cause the current tab to close. Even if we disable this particular web browser shortcut or re-map it to a different keybinding, Cloud9 defaults to using <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>W</kbd> to close a pane &ndash; a small window within the Cloud9 IDE interface that contains tabs, of which our terminal would be one.</p>
 	<p>To ciricumvent this issue, we can press the <kbd>Esc</kbd> key twice and then the key that appears after the <code>^</code>. For instance, to make use of the <code>^W&nbsp;Where Is</code> shortcut, we would use the following key sequence, pressing the keys one after the other:<br /><kbd>Esc</kbd> &rarr; <kbd>Esc</kbd> &rarr; <kbd>W</kbd></p>
