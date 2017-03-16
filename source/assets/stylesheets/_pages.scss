@@ -1,9 +1,9 @@
 .content-box {
 	margin: 0 auto;
 	max-width: 36em;
-	width: 93vw;
-	padding: 0 3.5vw;
-	@media (min-width: 481px) {width: 85vw; padding: 0 7.5vw;}
+	width: 85vw;
+	padding: 0 7.5vw;
+	@media (min-width: 481px) {width: 82.5vw; padding: 0 8.75vw;}
 	@media (min-width: 769px) {width: 80vw; padding: 0 10vw;}
 }
 
@@ -35,11 +35,10 @@
 
 .subtitle {
 	margin: vr(1.5) 0 vr(0.5);
-	display: inline-block;
 }
 
 .subtitle--border {
-	display: inline-block;
+	display: inline;
 	padding: 0 0.25em 0.25em 0.05em;
 	border-top: 0.12em solid $colour-black;
 	border-right: 0.12em solid $colour-black;
