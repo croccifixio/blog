@@ -81,6 +81,17 @@ html {
 	line-height: 1em;
 }
 
+.content-box a {
+	text-decoration: none;
+	text-shadow: -1px -1px 0 $colour-white, 1px -1px 0 $colour-white, -1px 1px 0 $colour-white, 1px 1px 0 $colour-white;
+	background-repeat: repeat-x;
+	background-size: 1px 1px;
+	background-position: 0 95%;
+	background-image: -webkit-linear-gradient(top, $colour-dark-gray 75%, $colour-white);
+	background-image: linear-gradient(to bottom, $colour-dark-gray 75%, $colour-white);
+	color: $colour-black;
+}
+
 .title--mini {
 	@include typi($title-font-map);
 	margin-bottom: 0;
@@ -122,16 +133,6 @@ html {
 p {
 	font-family: $body-font;
 	word-spacing: 0.075em;
-	> a {
-    text-decoration: none;
-  	text-shadow: -1px -1px 0 $colour-white, 1px -1px 0 $colour-white, -1px 1px 0 $colour-white, 1px 1px 0 $colour-white;
-  	background-repeat: repeat-x;
-  	background-size: 1px 1px;
-  	background-position: 0 95%;
-  	background-image: -webkit-linear-gradient(top, $colour-dark-gray 75%, $colour-white);
-  	background-image: linear-gradient(to bottom, $colour-dark-gray 75%, $colour-white);
-  	color: $colour-black;
-	}
 }
 
 ol > li {
