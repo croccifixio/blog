@@ -35,12 +35,9 @@
 
 .subtitle {
 	margin: vr(1.5) 0 vr(0.5);
-}
-
-.subtitle--border {
-	display: inline;
+	display: inline-block;
 	padding: 0 0.25em 0.25em 0.05em;
-	border-top: 0.12em solid $colour-black;
+	border-top: 0.12em solid $colour-black;	
 	border-right: 0.12em solid $colour-black;
 	border-bottom: 0.12em solid $colour-black;
 }
