@@ -162,11 +162,8 @@ code {
 }
 
 .code-comment {
-  -webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-  color: darken($colour-blue, 5%);
+	@extend .prompt;
+	font-style: italic;
 }
 
 .code-emphasis {
