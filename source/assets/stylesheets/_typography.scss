@@ -169,6 +169,10 @@ code {
   color: darken($colour-blue, 5%);
 }
 
+.code-emphasis {
+	color: $colour-pink;
+}
+
 footer {
 	text-align: center;
 	color: #efefef;
