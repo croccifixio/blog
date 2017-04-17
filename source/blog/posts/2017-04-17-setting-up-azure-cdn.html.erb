@@ -93,11 +93,11 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
   <h2 class="subtitle">Footnotes:</h2>
   <ol>
     <li>
-      <h3>Content Security Policy</h3>
+      <h3 class="subsubtitle">Content Security Policy</h3>
       <p>If you make use of CSP and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add a policy similar to the following: <code>img-src: https://cdn.yoursite.com</code></p>
     </li>
     <li>
-      <h3>Cross Origin Resource Sharing</h3>
+      <h3 class="subsubtitle">Cross Origin Resource Sharing</h3>
       <p>CORS can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP request within the browser. On a Chromium-based browser, create a shortcut and append the following to the <b>Target</b>: <code>--args --disable-web-security --user-data-dir</code>. Using the shortcut will open an instance of the browser that is <strong>inherently insecure.</strong> Do not use it to browse.</p>
       <picture>
         <img src="https://cdn.odongo.xyz/images/vivaldi_cors.png" alt="Disabling CORS check">
@@ -106,7 +106,7 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
   </ol>
 
   <h2 class="subtitle">Sources:</h2>
-  <ul class="u-list">
+  <ul class="u-list references">
     <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-create-new-endpoint">Getting started with Azure CDN</a></li>
     <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain">Map Azure CDN content to a custom domain</a></li>
     <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-manage-expiration-of-blob-content">Manage expiration of Azure Storage blobs in Azure CDN</a></li>
