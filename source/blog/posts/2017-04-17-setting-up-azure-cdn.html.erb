@@ -1,0 +1,115 @@
+;;;
+"title": "Setting Up Azure&nbsp;CDN",
+"seo_title": "Setting Up Azure CDN",
+"date": "2017-04-17 03:22:30 UTC",
+"abstract": [
+  "This guide goes through the process of setting up Azure CDN on a custom domain.",
+  "A function is triggered when content is uploaded to Azure storage, and sets the time-to-live of the uploads based on what container they are uploaded to."
+]
+;;;
+
+<article>
+  <p>There is no lack of CDN providers available for ensuring that the static content of your website is delivered. A good number of them offer very competitive prices per GB of traffic. However, this low pricing is typically paired with a relatively high minimum payment, which must be met monthly or annually depending on the provider.</p>
+  <p>The case described above is ideal if your needs exceed the bandwidth that is covered by the minimum payment (in general the price/GB decreases the more bandwith you consume).</p>
+  <p>If we are expecting relatively low traffic but would still like to make use of a CDN, the more cost effective approach would be to find a provider that offers pay-as-you-go billing. Two major candidates that meet this need are Amazon CloudFront and Microsoft Azure. Since I already had an Azure account from some previous tinkering with web apps, I opted to go the Microsoft route. The steps are documented below:</p>
+
+  <h2 class="subtitle u-left-indent-2">1.Create a CDN profile</h2>
+  <p>Assuming you have created an Azure account, sign in to your Azure portal (<a href="https://portal.azure.com">portal.azure.com</a>).</p>
+  <p>On the navigation pane on the left of the portal, click through the following options: <span class="ui-flow">New</span> &rarr; <span class="ui-flow">Web&nbsp;+&nbsp;Mobile</span> &rarr; <span class="ui-flow">CDN</span>. This will open up a pane for setting up your CDN profile.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/navigation_pane.png" alt="Navigation pane">
+  </picture>
+  <p>Give your CDN profile a <b>Name</b>. Create a new <b>Resource Group</b> and provide a name for it. The tooltip next to the <b>Resource group location</b> explains that the region you select has no impact on the availablity of your resources on the network so pick whichever you prefer.</p>
+  <p>The <b>Pricing tier</b> will depend on what your requirements are (see the <a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-overview">features comparison table</a>). Pick one of the Verizon pricing tiers if you want support for custom domains with HTTPS.</p>
+  <p>Check the <b>Pin to dashboard</b> checkbox to make it easy to find our CDN profile later. Click on <span class="ui-flow">Create</span> to create the CDN profile.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/create_cdn_profile.png" alt="Creating a CDN profile">
+  </picture>
+
+  <h2 class="subtitle u-left-indent-2">2.Implement Azure Storage</h2>
+  <p>Create a function app by navigating to the setup pane from the navigation pane: <span class="ui-flow">New</span> &rarr; <span class="ui-flow">Compute</span> &rarr; <span class="ui-flow">Function&nbsp;App</span>.</p>
+  <p>You may use an existing resource group. You also have the choice to rename the storage account by clicking on <span class="ui-flow">Storage&nbsp;account</span> &rarr; <span class="ui-flow">Create&nbsp;New</span>.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/create_function_app.png" alt="Creating a storage account">
+  </picture>
+  <p>To keep your resources organised, it is a good idea to create folders for different resources, e.g., a 'fonts' folder for web fonts or an 'images' folder for images. Click on <span class="ui-flow">All&nbsp;resources</span> on the navigation pane and open up the storage account that you just created. Click on <span class="ui-flow">Blobs</span> &rarr; <span class="ui-flow">+ Container</span> and after naming the container, set the <b>Access type</b> to 'Blob'.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/create_container1.png" alt="Creating a container">
+  </picture>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/create_container2.png" alt="Creating a container">
+  </picture>
+  <p>To upload a file to a container, click on the container name and then on <span class="ui-flow">Upload</span>. From there you can select files from local storage and upload them (see <a href="http://storageexplorer.com/">Microsoft Azure Storage Explorer</a> for managing Azure storage outside of the portal). But before you start uploading files...</p>
+
+  <h2 class="subtitle u-left-indent-2">3.Write cache header functions</h2>
+  <p>Open up the function app that was created in the previous step (under the <span class="ui-flow">All&nbsp;resources</span> tab it has the type <b>App Service</b>).</p>
+  <p>Click on the <span class="ui-flow">+</span> sign next to <span class="ui-flow">Functions</span> and then on <span class="ui-flow">Custom&nbsp;function</span> &rarr; <span class="ui-flow">BlobTrigger-CSharp</span>.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/create_function.png" alt="Creating a function">
+  </picture>
+  <p>Name your function. For the <b>Path</b>, enter the container name followed by '/{name}' (if you have a container called 'images' in your storage account, then the path should be 'images/{name}').</p>
+  <p>Under <b>Storage account connection</b>, click on <span class="ui-flow">new</span> and choose the storage account.</p>
+  <p>After clicking <span class="ui-flow">Create</span>, the <b>run.csx</b> file is opened. Replace the default code with the snippet below:</p>
+<pre class="code-block"><code>#r "Microsoft.WindowsAzure.Storage"
+using Microsoft.WindowsAzure.Storage.Blob;
+
+public static void Run(ICloudBlob myBlob, TraceWriter log)
+{
+    if (myBlob.Properties.CacheControl == null)
+    {
+        myBlob.Properties.CacheControl = "public, max-age=<span class="code-emphasis">8640000</span>;
+        myBlob.SetProperties();
+        log.Info("Attempting to set Cache Control header...");
+    }
+    else
+    {
+        log.Info("CONFIRMATION: Cache Control header for '" + myBlob.Name + "' has been set to '" + myBlob.Properties.CacheControl + "'");
+    }
+}</code></pre>
+  <p>Having max-age equal to <code>8640000</code> seconds will set the TTL to 100 days. You can change this to any value above <code>300</code>. Hit <span class="ui-flow">Save</span></p>
+  <p>From now on, whenever you upload a file to the container that the function monitors, its cache header will be set. The function logs output when running and this can be viewed by clicking on <span class="ui-flow">Logs</span> or the <span class="ui-flow">^</span> next to it.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/function.png" alt="Function in the function app">
+  </picture>
+
+  <h2 class="subtitle u-left-indent-2">4.Set up a CDN endpoint</h2>
+  <p>Open up your CDN profile and click on <span class="ui-flow">+&nbsp;Endpoint</span> to add a CDN endpoint.</p>
+  <p>Choose a <b>Name</b> for your endpoint. Set the <b>Origin type</b> to 'Storage' and select the storage account you created as the <b>Origin hostname</b>. After doing this, the <b>Origin host header</b> will fill in automatically.</p>
+  <p>The <b>Protocols</b> that you decide to permit will depend on your requirements. You may also leave them as they are and change them later.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/create_endpoint.png" alt="Creating an endpoint">
+  </picture>
+  <p>It may take up to 90 minutes for the endpoint to start functioning as intended. Once it is ready, files in your storage account will be accessible at <code>https://<span class="code-emphasis">endpoint_name</span>.azureedge.net/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></code></p>
+
+  <h2 class="subtitle u-left-indent-2">5.Configure your custom domain</h2>
+  <p>Open the endpoint and click on <span class="ui-flow">+&nbsp;Custom&nbsp;domain</span>.</p>
+  <p>Create a CNAME record for <code>cdn.yoursite.com</code> that points to the value indicated in the <b>Endpoint hostname</b> field. Once the DNS record propagates (this can be checked using <a href="https://dnschecker.org/">DNS Checker</a>), enter <code>cdn.yoursite.com</code> into the <b>Custom hostname</b> field and click <span class="ui-flow">Add</span>.</p>
+  <picture>
+    <img src="https://cdn.odongo.xyz/images/custom_domain.png" alt="Adding a custom domain">
+  </picture>
+  <p>By default, custom HTTPS is disabled. If you would like to enable it click on the custom domain and set <b>Custom domain HTTPS</b> to 'On'. After hitting <span class="ui-flow">Apply</span>, an email will be sent to the email address associated with your domain. Verify your ownership of the domain by clicking the link in the email and completing the application.</p>
+  <p>After setting up your custom domain, your files should be available at <code>cdn.yoursite.com/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></code>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured.</p>
+
+  <h2 class="subtitle">Footnotes:</h2>
+  <ol>
+    <li>
+      <h3>Content Security Policy</h3>
+      <p>If you make use of CSP and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add policy similar to the following: <code>img-src: https://cdn.yoursite.com</code></p>
+    </li>
+    <li>
+      <h3>Cross Origin Resource Sharing</h3>
+      <p>CORS can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP request within the browser. On a Chromium-based browser, create a shortcut and append the following to the <b>Target</b>: <code>--args --disable-web-security --user-data-dir</code>. Using the shortcut will open an instance of the browser that is <strong>inherently insecure.</strong> Do not use it to browse.</p>
+      <picture>
+        <img src="https://cdn.odongo.xyz/images/vivaldi_cors.png" alt="Disabling CORS check">
+      </picture>
+    </li>
+  </ol>
+
+  <h2 class="subtitle">Sources:</h2>
+  <ul class="u-list">
+    <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-create-new-endpoint">Getting started with Azure CDN</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain">Map Azure CDN content to a custom domain</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-manage-expiration-of-blob-content">Manage expiration of Azure Storage blobs in Azure CDN</a></li>
+    <li><a href="https://azure.microsoft.com/en-us/blog/best-practices-for-the-windows-azure-content-delivery-network/">Best Practices for the Windows Azure CDN</a></li>
+  </ul>
+</article>
