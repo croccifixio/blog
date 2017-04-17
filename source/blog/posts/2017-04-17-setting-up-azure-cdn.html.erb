@@ -66,7 +66,7 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
         log.Info("CONFIRMATION: Cache Control header for '" + myBlob.Name + "' has been set to '" + myBlob.Properties.CacheControl + "'");
     }
 }</code></pre>
-  <p>Having max-age equal to <code>8640000</code> seconds will set the TTL to 100 days. You can change this to any value above <code>300</code>. Hit <span class="ui-flow">Save</span></p>
+  <p>Having the max-age equal to <code>8640000</code> seconds will set the TTL to 100 days. You can change this to any value above <code>300</code>. Hit <span class="ui-flow">Save</span></p>
   <p>From now on, whenever you upload a file to the container that the function monitors, its cache header will be set. The function logs output when running and this can be viewed by clicking on <span class="ui-flow">Logs</span> or the <span class="ui-flow">^</span> next to it.</p>
   <picture>
     <img src="https://cdn.odongo.xyz/images/function.png" alt="Function in the function app">
@@ -94,7 +94,7 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
   <ol>
     <li>
       <h3>Content Security Policy</h3>
-      <p>If you make use of CSP and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add policy similar to the following: <code>img-src: https://cdn.yoursite.com</code></p>
+      <p>If you make use of CSP and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add a policy similar to the following: <code>img-src: https://cdn.yoursite.com</code></p>
     </li>
     <li>
       <h3>Cross Origin Resource Sharing</h3>
