@@ -144,7 +144,7 @@ kbd, .ui-flow {
 	font-family: $code-font;
 }
 
-code {
+code, .input {
 	@include typi($code-font-map);
 	font-family: $code-font;
 }

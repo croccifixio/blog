@@ -32,7 +32,7 @@
   <picture>
     <img src="https://cdn.odongo.xyz/images/create_function_app.png" alt="Creating a storage account">
   </picture>
-  <p>To keep your resources organised, it is a good idea to create folders for different resources, e.g., a 'fonts' folder for web fonts or an 'images' folder for images. Click on <span class="ui-flow">All&nbsp;resources</span> on the navigation pane and open up the storage account that you just created. Click on <span class="ui-flow">Blobs</span> &rarr; <span class="ui-flow">+ Container</span> and after naming the container, set the <b>Access type</b> to 'Blob'.</p>
+  <p>To keep your resources organised, it is a good idea to create folders for different resources, e.g., a <span class="input">fonts</span> folder for web fonts or an <span class="input">images</span> folder for images. Click on <span class="ui-flow">All&nbsp;resources</span> on the navigation pane and open up the storage account that you just created. Click on <span class="ui-flow">Blobs</span> &rarr; <span class="ui-flow">+ Container</span> and after naming the container, set the <b>Access type</b> to <span class="input">Blob</span>.</p>
   <picture>
     <img src="https://cdn.odongo.xyz/images/create_container1.png" alt="Creating a container">
   </picture>
@@ -47,7 +47,7 @@
   <picture>
     <img src="https://cdn.odongo.xyz/images/create_function.png" alt="Creating a function">
   </picture>
-  <p>Name your function. For the <b>Path</b>, enter the container name followed by '/{name}' (if you have a container called 'images' in your storage account, then the path should be 'images/{name}').</p>
+  <p>Name your function. For the <b>Path</b>, enter the container name followed by <span class="input">/{name}</span> (if you have a container called <span class="input">images</span> in your storage account, then the path should be <span class="input">images/{name}</span>).</p>
   <p>Under <b>Storage account connection</b>, click on <span class="ui-flow">new</span> and choose the storage account.</p>
   <p>After clicking <span class="ui-flow">Create</span>, the <b>run.csx</b> file is opened. Replace the default code with the snippet below:</p>
 <pre class="code-block"><code>#r "Microsoft.WindowsAzure.Storage"
@@ -66,7 +66,7 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
         log.Info("CONFIRMATION: Cache Control header for '" + myBlob.Name + "' has been set to '" + myBlob.Properties.CacheControl + "'");
     }
 }</code></pre>
-  <p>Having the max-age equal to <code>8640000</code> seconds will set the TTL to 100 days. You can change this to any value above <code>300</code>. Hit <span class="ui-flow">Save</span>.</p>
+  <p>Having the max-age equal to <span class="input">8640000</span> seconds will set the TTL to 100 days. You can change this to any value above <span class="input">300</span>. Hit <span class="ui-flow">Save</span>.</p>
   <p>From now on, whenever you upload a file to the container that the function monitors, the function will trigger, setting the time-to-live of the uploadeed file. The function logs can be viewed by clicking on <span class="ui-flow">Logs</span> or the <span class="ui-flow">^</span> next to it.</p>
   <picture>
     <img src="https://cdn.odongo.xyz/images/function.png" alt="Function in the function app">
@@ -74,31 +74,31 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
 
   <h2 class="subtitle u-left-indent-2">4.Set up a CDN endpoint</h2>
   <p>Open up your CDN profile and click on <span class="ui-flow">+&nbsp;Endpoint</span> to add a CDN endpoint.</p>
-  <p>Choose a <b>Name</b> for your endpoint. Set the <b>Origin type</b> to 'Storage' and select the storage account you created as the <b>Origin hostname</b>. After doing this, the <b>Origin host header</b> will fill in automatically.</p>
+  <p>Choose a <b>Name</b> for your endpoint. Set the <b>Origin type</b> to <span class="input">Storage</span> and select the storage account you created as the <b>Origin hostname</b>. After doing this, the <b>Origin host header</b> will fill in automatically.</p>
   <p>The <b>Protocols</b> that you decide to permit will depend on your requirements. You may also leave them as they are and change them later.</p>
   <picture>
     <img src="https://cdn.odongo.xyz/images/create_endpoint.png" alt="Creating an endpoint">
   </picture>
-  <p>It may take up to 90 minutes for the endpoint to start functioning as intended. Once it is ready, files in your storage account will be accessible at <code>https://<span class="code-emphasis">endpoint_name</span>.azureedge.net/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></code>.</p>
+  <p>It may take up to 90 minutes for the endpoint to start functioning as intended. Once it is ready, files in your storage account will be accessible at <span class="input">https://<span class="code-emphasis">endpoint_name</span>.azureedge.net/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></span>.</p>
 
   <h2 class="subtitle u-left-indent-2">5.Configure your custom domain</h2>
   <p>Open the endpoint and click on <span class="ui-flow">+&nbsp;Custom&nbsp;domain</span>.</p>
-  <p>Create a CNAME record for <code>cdn.yoursite.com</code> that points to the value indicated in the <b>Endpoint hostname</b> field. Once the DNS record propagates (this can be checked using <a href="https://dnschecker.org/">DNS Checker</a>), enter <code>cdn.yoursite.com</code> into the <b>Custom hostname</b> field and click <span class="ui-flow">Add</span>.</p>
+  <p>Create a CNAME record for <span class="input">cdn.yoursite.com</span> that points to the value indicated in the <b>Endpoint hostname</b> field. Once the DNS record propagates (this can be checked using <a href="https://dnschecker.org/">DNS Checker</a>), enter <span class="input">cdn.yoursite.com</span> into the <b>Custom hostname</b> field and click <span class="ui-flow">Add</span>.</p>
   <picture>
     <img src="https://cdn.odongo.xyz/images/custom_domain.png" alt="Adding a custom domain">
   </picture>
-  <p>By default, custom HTTPS is disabled. If you would like to enable it click on the custom domain and set <b>Custom domain HTTPS</b> to 'On'. After hitting <span class="ui-flow">Apply</span>, an email will be sent to the email address associated with your domain. Verify your ownership of the domain by clicking the link in the email and completing the application.</p>
-  <p>After setting up your custom domain, your files should be available at <code>cdn.yoursite.com/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></code>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured.</p>
+  <p>By default, custom HTTPS is disabled. If you would like to enable it click on the custom domain and set <b>Custom domain HTTPS</b> to <span class="input">On</span>. After hitting <span class="ui-flow">Apply</span>, an email will be sent to the email address associated with your domain. Verify your ownership of the domain by clicking the link in the email and completing the application.</p>
+  <p>After setting up your custom domain, your files should be available at <span class="input">cdn.yoursite.com/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></span>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured.</p>
 
   <h2 class="subtitle">Footnotes:</h2>
   <ol>
     <li>
       <h3 class="subsubtitle">Content Security Policy</h3>
-      <p>If you make use of CSP and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add a policy similar to the following: <code>img-src: https://cdn.yoursite.com</code>.</p>
+      <p>If you make use of CSP and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add a policy similar to the following: <span class="input">img-src: https://cdn.yoursite.com</span>.</p>
     </li>
     <li>
       <h3 class="subsubtitle">Viewing CDN content in a local dev environment</h3>
-      <p>CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. For a Chromium-based browser, create a shortcut and append the following to the <b>Target</b>: <code>--args --disable-web-security --user-data-dir</code>. Using the shortcut will open an instance of the browser that is <strong>inherently insecure</strong>. Do not use it to browse the web.</p>
+      <p>CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. For a Chromium-based browser, create a shortcut and append the following to the <b>Target</b>: <span class="input">--args --disable-web-security --user-data-dir</span>. Using the shortcut will open an instance of the browser that is <strong>inherently insecure</strong>. Do not use it to browse the web.</p>
       <picture>
         <img src="https://cdn.odongo.xyz/images/vivaldi_cors.png" alt="Disabling CORS check">
       </picture>

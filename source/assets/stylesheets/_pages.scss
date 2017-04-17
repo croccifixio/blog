@@ -83,7 +83,7 @@ kbd {
   border: 2px solid lighten($colour-dark-gray, 12%);
 }
 
-code, kbd {
+code, kbd, .input {
 	background-color: $colour-light-gray;
 	border-radius: 0.2em;
 	padding: 0 0.3em 0.2em;
