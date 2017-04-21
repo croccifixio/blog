@@ -81,12 +81,20 @@ ol + p, .u-list + p {
 
 kbd {
   border: 2px solid lighten($colour-dark-gray, 12%);
+	padding: 0 0.3em 0.2em;
+}
+
+code, .input {
+	display: inline-block;
+	vertical-align: sub;
+	max-width: 100%;
+	overflow: auto;
+	padding: 0 0.3em 0;
 }
 
 code, kbd, .input {
 	background-color: $colour-light-gray;
 	border-radius: 0.2em;
-	padding: 0 0.3em 0.2em;
 }
 
 .code-block {
