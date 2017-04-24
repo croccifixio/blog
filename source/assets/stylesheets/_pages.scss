@@ -116,3 +116,90 @@ img:not(.logo) {
 	display: block;
 	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
 }
+
+// TODO: - move the below code to a partial that is specific to the about page or contact form
+//    	 - perhaps reorganise the code from _typography and _pages
+
+$left-pad: 0.8rem; // used to pad input fields
+
+form {
+	max-width: 800px;
+}
+
+.input-group {
+	margin: 1em 0;
+}
+
+input, textarea {
+	display: block;
+	padding: 1em $left-pad 0.3em;
+	width: 95%;
+	border: 1px dashed $colour-dark-gray;
+	background-color: $colour-white;
+	
+	&:focus {
+		border-color: $colour-orange;
+		border-style: solid;
+		background-color: $colour-white;
+		outline: none;
+	}
+}
+
+button {
+  background-color: $colour-orange;
+  color: $colour-white;
+  border: 0;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+	outline-color: $colour-blue;
+	outline-width: 2px;
+}
+
+/////////////////////////////////////////////////////
+//////////// Label-Placeholder Wizardry /////////////
+// Based on: http://codepen.io/tonystar/pen/JRLaKw //
+/////////////////////////////////////////////////////
+
+.float-label {
+	display: block;
+  position: relative;
+
+	
+  label {
+    position: absolute;
+    left: $left-pad;
+    cursor: text;
+		font-family: $code-font;
+    transition: all ease 0.2s;
+		background-color: $colour-white;
+
+		// Style for the label when:
+		// (1) focused
+		top: 0.25em;
+    font-size: 60%;
+		line-height: calc(100% + 0.25em); // this combined with the background-color above, prevent text entered in the text area from overlapping the label
+		color: $colour-orange;
+  }
+
+
+	// Style for the label when:
+	// (1) not focused AND
+  input, textarea {
+		// (2) not empty
+		&:not(:focus) {
+			outline: none;
+			+ label {
+				color: $colour-dark-gray;
+			}
+		}
+
+		// (2) empty
+		// :placeholder-shown is, as far as I know, the only way to check if an input field is empty using CSS
+		// It requires that the input field has a placeholder though :/
+    &:placeholder-shown:not(:focus) + * {
+      font-size: 100%;
+			color: $colour-dark-gray;
+			top: 0.55em;
+		}
+  }
+}
