@@ -1,10 +1,37 @@
 ---
-title: Odongo
+pageable: true
+per_page: 10
 ---
+<% if paginate && num_pages > 1 %>
+  <p>Page <%= page_number %> of <%= num_pages %></p>
 
-<h1 class="title u-clear-top-margin">(^-^)</h1>
-<div class="u-text-center">
-	<p>Hi. I'm Emmanuel Odongo &ndash; a junior web developer based in Łódź, Poland.</p>
-	<p><%= link_to 'Visit my blog', '/blog' %> to follow my progress on web design and front-end development.</p>
-	<p>And if you're feeling adventurous, delve into the <a href="https://github.com/Croccifixio/blog">source code</a> for this site on GitHub.</p>
-</div>
+  <% if prev_page %>
+    <p><%= link_to 'Previous page', prev_page %></p>
+  <% end %>
+<% end %>
+
+<% page_articles.each_with_index do |article, i| %>
+	<div class="article--mini">
+	  <h1 class="title--mini<%= ' u-clear-top-margin' if i == 0 %>">
+	  	<%= link_to article.title, article %>
+  	</h1>
+	  <span class="publish-date"><%= article.date.strftime('%e %b %Y') %></span>
+		<div class="description">
+		<!-- if 'abstract' is an array: multiple paragraphs -->
+		<% if article.data.abstract.kind_of?(Array) %>
+			<% article.data.abstract.each do |para|  %>
+				<p><%= para %></p>
+			<% end %>
+		<!-- else 'abstract' is not an array: single paragraph -->
+		<% else %>
+			<p><%= article.data.abstract %></p>
+		<% end %>
+		</div>
+	</div>
+<% end %>
+
+<% if paginate %>
+  <% if next_page %>
+    <p><%= link_to 'Next page', next_page %></p>
+  <% end %>
+<% end %>
