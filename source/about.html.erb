@@ -9,15 +9,15 @@ title: About
 <form name="contact" action="thank-you" netlify netlify-honeypot="bot-field">
    <p style="display:none;"><label>Bot field: <input name="bot-field"></label></p>
   <div class="input-group float-label">
-    <input type="text" id="name" placeholder=" ">
+    <input type="text" id="name" name="name" placeholder=" ">
     <label for="name">Your Name</label>
   </div>
   <div class="input-group float-label">
-    <input type="email" id="email" placeholder=" ">
+    <input type="email" id="email" name="email" placeholder=" ">
     <label for="email">Your Email</label>
   </div>
   <div class="input-group float-label">
-    <textarea id="message" rows="8" placeholder=" "></textarea>
+    <textarea id="message" name="message" rows="8" placeholder=" "></textarea>
     <label for="message">Message</label>
   </div>
   <p>
