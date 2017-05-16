@@ -1,10 +1,10 @@
-#Odongo.xyz
+# Odongo.xyz
 
-This is the source code for [odongo.xyz][1] which was built using [Middleman][2].
+This is the source code for [odongo.xyz][1] which is built on [Middleman][2].
 
 Feel free to send a [pull request][3] or open an [issue][4] if you notice any typos, wonky rendering issues, etc.
 
-#License
+## License
 
 Copyright &copy; 2016-2017 Emmanuel Odongo. See [LICENSE][5] for details.
 
