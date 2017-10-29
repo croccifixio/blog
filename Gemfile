@@ -13,6 +13,7 @@ gem 'middleman', '4.2.1'
 gem 'middleman-livereload'
 gem 'middleman-blog'
 gem 'middleman-autoprefixer'
+gem 'middleman-search_engine_sitemap'
 gem 'redcarpet', '~> 3.3', '>= 3.3.3'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 

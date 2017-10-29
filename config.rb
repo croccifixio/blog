@@ -53,6 +53,11 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", layout: false
+
+# Sitemap
+set :url_root, 'https://odongo.xyz/'
+activate :search_engine_sitemap
+
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload

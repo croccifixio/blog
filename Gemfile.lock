@@ -87,6 +87,9 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (>= 3.3)
       rack-livereload (~> 0.3.15)
+    middleman-search_engine_sitemap (1.4.0)
+      builder
+      middleman-core (~> 4.0)
     minitest (5.10.3)
     padrino-helpers (0.13.3.4)
       i18n (~> 0.6, >= 0.6.7)
@@ -123,7 +126,7 @@ DEPENDENCIES
   middleman-autoprefixer
   middleman-blog
   middleman-livereload
-  rack (= 2.0.3)
+  middleman-search_engine_sitemap
   redcarpet (~> 3.3, >= 3.3.3)
   tzinfo-data
 
