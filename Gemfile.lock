@@ -119,7 +119,7 @@ PLATFORMS
 
 DEPENDENCIES
   builder (~> 3.0)
-  middleman
+  middleman (= 4.2.1)
   middleman-autoprefixer
   middleman-blog
   middleman-livereload
