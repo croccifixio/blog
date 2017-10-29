@@ -9,7 +9,7 @@ source 'https://rubygems.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Middleman Gems
-gem 'middleman', '>= 4.1'
+gem 'middleman'
 gem 'middleman-livereload'
 gem 'middleman-blog'
 gem 'middleman-autoprefixer'
