@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Use title from frontmatter: 'seo_title' key -->
@@ -10,13 +9,13 @@
 			current_page.data.seo_title || "Emmanuel Odongo"
 		%></title>
 
-		<!-- Use description from frontmatter: first paragraph of the 'abstract' key -->
+    <meta name="Author" content="Emmanuel Odongo">
 		<meta name="description" content="<%=
 			if current_page.data.abstract
 				my_hash = JSON.parse(current_page.data.to_json)
 				my_hash["abstract"][0]
 			else
-				"Emmanuel Odongo is an aspiring web developer who writes about web design and front-end develpoment."
+				"Emmanuel Odongo is a web developer who writes about web design and front-end develpoment."
 			end
 		%>">
 
