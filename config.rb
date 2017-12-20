@@ -37,14 +37,14 @@ activate :blog do |blog|
   blog.layout = "article_layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
-  blog.year_link = "{year}.html"
-  blog.month_link = "{year}/{month}.html"
-  blog.day_link = "{year}/{month}/{day}.html"
+  # blog.year_link = "{year}.html"
+  # blog.month_link = "{year}/{month}.html"
+  # blog.day_link = "{year}/{month}/{day}.html"
   blog.default_extension = ".erb"
 
   blog.new_article_template = File.expand_path("../source/blog/template.erb", __FILE__)
   blog.tag_template = "blog/tag.html"
-  blog.calendar_template = "blog/calendar.html"
+  # blog.calendar_template = "blog/calendar.html"
 
   # Enable pagination
   # blog.paginate = true
