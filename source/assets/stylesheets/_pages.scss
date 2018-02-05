@@ -121,16 +121,12 @@ kbd,
 
 picture {
 	display: block;
-}
-
-picture>img:not(.logo) {
-  max-width: 100%;
-
-}
-
-img:not(.logo) {
-	display: block;
-	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+  &>img:not(.logo) {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+  }
 }
 
 // TODO: - move the below code to a partial that is specific to the about page or contact form
