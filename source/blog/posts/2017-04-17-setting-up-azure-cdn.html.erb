@@ -13,7 +13,6 @@
   <p>There is no lack of CDN providers available for ensuring that the static content of your website is delivered. A good number of them offer very competitive prices per GB of traffic. However, this low pricing is typically paired with a relatively high minimum payment, which must be met monthly or annually depending on the provider.</p>
   <p>The case described above is ideal if your needs exceed the bandwidth that is covered by the minimum payment (in general the price/GB decreases the more bandwith you consume).</p>
   <p>If we are expecting relatively low traffic but would still like to make use of a CDN, the more cost effective approach would be to find a provider that offers pay-as-you-go billing. Two major candidates that meet this criterion are Amazon CloudFront and Microsoft Azure. Since I already had an Azure account from some previous tinkering with web apps, I opted to go the Microsoft route. The steps are documented below:</p>
-
   <h2 class="subtitle u-left-indent-2">1.Create a CDN profile</h2>
   <p>Assuming you have created an Azure account, sign in to your Azure portal (<a href="https://portal.azure.com">portal.azure.com</a>).</p>
   <p>On the navigation pane on the left of the portal, click through the following options: <span class="ui-flow">New</span> &rarr; <span class="ui-flow">Web&nbsp;+&nbsp;Mobile</span> &rarr; <span class="ui-flow">CDN</span>. This will open up a pane for setting up your CDN profile.</p>
@@ -51,6 +50,7 @@
   <p>Name your function. For the <b>Path</b>, enter the container name followed by <span class="input">/{name}</span> (if you have a container called <span class="input">images</span> in your storage account, then the path should be <span class="input">images/{name}</span>).</p>
   <p>Under <b>Storage account connection</b>, click on <span class="ui-flow">new</span> and choose the storage account.</p>
   <p>After clicking <span class="ui-flow">Create</span>, the <b>run.csx</b> file is opened. Replace the default code with the snippet below:</p>
+
 <pre class="code-block"><code>#r "Microsoft.WindowsAzure.Storage"
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -67,6 +67,7 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
         log.Info("CONFIRMATION: Cache Control header for '" + myBlob.Name + "' has been set to '" + myBlob.Properties.CacheControl + "'");
     }
 }</code></pre>
+
   <p>Having the max-age equal to <span class="input">8640000</span> seconds will set the TTL to 100 days. You can change this to any value above <span class="input">300</span>. Hit <span class="ui-flow">Save</span>.</p>
   <p>From now on, whenever you upload a file to the container that the function monitors, the function will trigger, setting the time-to-live of the uploadeed file. The function logs can be viewed by clicking on <span class="ui-flow">Logs</span> or the <span class="ui-flow">^</span> next to it.</p>
   <picture>

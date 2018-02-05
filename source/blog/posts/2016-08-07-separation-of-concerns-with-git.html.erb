@@ -14,7 +14,8 @@
 	<p>This method presumes that there are three repos: <strong>production</strong>, <strong>public</strong> and <strong>local/development</strong>. We will be attempting to prevent some sensitive files from being pushed to the public repo, while allowing them to be sent off to produciton.</p>
 	<p>To solve this problem, we first add dummies of the sensitive files to the development repo. These dummy files can be empty files, as long as they have the same names as the actual sensitive files we will eventually add.</p>
 	<p>We will commit the dummy files, then replace them with the actual sensitive files. Now we tell git to assume that the files we have just added have not changed.</p>
-	<p>This initial setup can be accomplished by running the following commands in the console:</p>
+  <p>This initial setup can be accomplished by running the following commands in the console:</p>
+
 <pre class="code-block"><code><span class="code-comment"># Create and commit the dummy file(s)</span>
 <span class="prompt">$ </span>touch /path/to/sensitive_file
 <span class="prompt">$ </span>git commit -am "Add dummy file"
@@ -25,6 +26,7 @@
 
 <span class="code-comment"># Tell git to act like nothing happened</span>
 <span class="prompt">$ </span>git update-index --assume-unchanged /path/to/sensitive_file</code></pre>
+
 	<p><strong>NOTE:</strong> <code>/path/to/actual/sensitive_file</code> must be in the .gitignore or outside of the git project. Otherwise, it beats the point of this whole process.</p>
 	<p>From now on, git should skip over the sensitive files whenever it is checking for diffs. Thus, we can push normally to the <strong>public</strong> repo where the dummy files reside, while the actual sensitive files remain in our <strong>development</strong> repo.</p>
 	<p>To push the sensitive files to the <strong>production</strong> repo, we will take the following steps:</p>
@@ -40,7 +42,8 @@
 		<li>We have some licensed web fonts that we shouldn't distribute on our public repo.</li>
 		<li>We want the font files to reside on the same server as our web app/site rather than on a dedicated font server.</li>
 		<li>Our production sever is hosted on <strong>Heroku</strong>.</li>
-	</ul>
+  </ul>
+
 <pre class="code-block"><code><span class="code-comment"># Array with paths to font files</span>
 FONT_LIST="assets/fonts/title-font.woff
 assets/fonts/title-font.woff2
@@ -66,6 +69,7 @@ do
 	git reset HEAD $FONT <span class="code-comment"># STEP 3 continued</span>
 	git update-index --assume-unchanged $FONT <span class="code-comment"># STEP 4</span>
 done</code></pre>
+
 	<p>The are some minor downsides to using this method:</p>
 	<ul class="u-list">
 		<li>The git logs on our production server will always show the "Push font files to server" as the most recent commit. In other words, production will be one commit ahead of the development.</li>
@@ -73,7 +77,8 @@ done</code></pre>
 		<li>The script will include unstaged changes in the commit that it generates. It is advisable to make sure that there are no pending changes in the master branch before running the script.</li>
 	</ul>
 	<p>However, I would argue that these are inconsequential inconveniences.</p>
-	<p>To reiterate, we will now use a different command to push to production.</p>
+  <p>To reiterate, we will now use a different command to push to production.</p>
+
 <pre class="code-block"><code><span class="code-comment"># OLD command to push to production</span>
 <span class="prompt">$ </span>git push heroku master
 
@@ -81,5 +86,6 @@ done</code></pre>
 # Assuming we save the script to the root of our project
 # and name it "deploy"</span>
 <span class="prompt">$ </span>sh deploy</code></pre>
+
 	<p>The method described in this post was used on this very site to keep the web font files out of the <a href="https://github.com/Croccifixio/blog">public GitHub repository.</a> As of 14<sup>th</sup> March 2017, the font files are now hosted on a CDN. This blog post describes <a href="https://odongo.xyz/blog/2017/setting-up-azure-cdn.html">how to set up Azure CDN</a>.</p>
 </article>

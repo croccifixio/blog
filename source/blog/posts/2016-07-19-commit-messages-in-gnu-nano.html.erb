@@ -4,22 +4,25 @@
 "date": "2016-07-19 07:48 UTC",
 "priority": 0.2,
 "abstract": [
-	"When commiting any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project.",
-	"In this guide, I will discuss how to go about formatting git commit messages."
+"When commiting any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project.",
+"In this guide, I will discuss how to go about formatting git commit messages."
 ]
 ;;;
 
-<div>
-	<p>When commiting any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project. A decently crafted commit message can help speed up code comprehension, hopefully allowing others to quickly grasp what problem a commit is addressing and how it is going about solving it.</p>
-	<p>In this article, we will develop a workflow that utilises the GNU Nano editor &ndash; a terminal-based text editor that ships with several Linux distros &ndash; to format commit messages, so that they comply with the Tim Pope's <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">50/72 principle</a>. For insight on why we should bother abiding to this principle, see Chris Beam's article on <a href="http://chris.beams.io/posts/git-commit/">how to write git commit messages</a>.</p>
-</div>
 <article>
+  <p>When commiting any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project. A decently crafted commit message can help speed up code comprehension, hopefully allowing others to quickly grasp what problem a commit is addressing and how it is going about solving it.</p>
+  <p>In this article, we will develop a workflow that utilises the GNU Nano editor &ndash; a terminal-based text editor that ships with several Linux distros &ndash; to format commit messages, so that they comply with the Tim Pope's <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">50/72 principle</a>. For insight on why we should bother abiding to this principle, see Chris Beam's article on <a href="http://chris.beams.io/posts/git-commit/">how to write git commit messages</a>.</p>
+
 	<h2 class="subtitle">Modifying the nanorc file</h2>
 	<p>We will start off by configuring GNU Nano to wrap lines of text after 72 characters.</p>
-	<p>First, we will navigate to the <code>/etc</code> directory.</p>
+  <p>First, we will navigate to the <code>/etc</code> directory.</p>
+
 <pre class="code-block"><code><span class="prompt">$ </span>cd /etc</code></pre>
-	<p>Now that we are in the directory containing the <code>nanorc</code> configuration file, we will open this file using the GNU Nano editor. Run the following command:</p>
+
+  <p>Now that we are in the directory containing the <code>nanorc</code> configuration file, we will open this file using the GNU Nano editor. Run the following command:</p>
+
 <pre class="code-block"><code><span class="prompt">$ </span>sudo nano nanorc</code></pre>
+
 	<p>The above command will open the <code>nanorc</code> file in the terminal. We can move the cursor up and down using the arrow keys on the keyboard. We can also make use of some <a href="#gnu-nano-shortcuts">GNU Nano shortcuts</a> to easily and comfortably edit the file.</p>
 	<p>There are 2 changes we need to make to the <code>nanorc</code> file. The first change enables line wrapping. The second one ensures that wrapping occurs at or before the 72<sup>nd</sup> character of a line.</p>
 	<ol>
@@ -31,25 +34,28 @@
 			<p><code>set&nbsp;fill&nbsp;-8</code> &rarr; <code>set&nbsp;fill&nbsp;72</code></p>
 			<p>For the curious, the default value of <code>-8</code> means that lines will wrap at 8 characters less than the width of the terminal. So if the terminal were to be sized at 100 characters/columns wide, then lines would wrap at the 92 character mark.</p>
 		</li>
-	</ol>
+  </ol>
+
 	<a name="save-file"></a>
-	<p>To save the changes we have made, press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>O</kbd> and to overwrite the file press <kbd>Enter</kbd>. The file will remain open in the editor, so to close the GNU Nano editor press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>X</kbd>.</p>
-</article>
-<article>
+  <p>To save the changes we have made, press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>O</kbd> and to overwrite the file press <kbd>Enter</kbd>. The file will remain open in the editor, so to close the GNU Nano editor press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>X</kbd>.</p>
+
 	<h2 class="subtitle">Writing commit messages with Nano</h2>
-	<p>To verify that GNU Nano is the default editor in our terminal, use the command below and if necessary, set Nano as the default.</p>
+  <p>To verify that GNU Nano is the default editor in our terminal, use the command below and if necessary, set Nano as the default.</p>
+
 <pre class="code-block"><code><span class="code-comment"># This command lists the available editors, and allows
 # us to select one as the default</span>
 <span class="prompt">$ </span>sudo update-alternatives --config editor</code></pre>
-	<p>Assuming that in our local repository, there are some changes that have been staged for commit, we can run this command:</p>
+
+  <p>Assuming that in our local repository, there are some changes that have been staged for commit, we can run this command:</p>
+
 <pre class="code-block"><code><span class="prompt">$ </span>git commit</code></pre>
+
 	<p>This will open up the <code>COMMIT_EDITMSG</code> file using GNU Nano. Git uses this file to store the commit message that corresponds to a particular commit.</p>
 	<p>Following the 50/72 principle, we will begin by typing out a subject line &ndash; ideally one that is at most 50 characters long. If the change we have made is small and does not need to be described further, we can save the file in the same way we <a href="#save-file">saved our changes</a> to the <code>nanorc</code> file.</p>
 	<p>However, if we want to provide more details about the changes introduced in our commit, we should type out a more detailed description in the body of our commit message. Remember to include a blank line between the subject and body.</p>
-	<p>Due to the changes we made to the <code>nanorc</code> file, the GNU Nano editor will automatically wrap text at 72 characters.</p>
-</article>
-<article>
-	<a name="gnu-nano-shortcuts"></a>
+  <p>Due to the changes we made to the <code>nanorc</code> file, the GNU Nano editor will automatically wrap text at 72 characters.</p>
+
+  <a name="gnu-nano-shortcuts"></a>
 	<h2 class="subtitle">GNU Nano shortcuts</h2>
 	<p>The bottom tab of the GNU Nano editor displays several shortcuts such as <code>^X&nbsp;Exit</code>. This means that to close the editor we should press <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>X</kbd>. However, there can be scenarios where the same keybinding for a particlar shortcut in GNU Nano is the same one used for a shortcut in another program that may also be running &ndash; for instance, if we are using a code editor with an integrated terminal, some shortcuts may affect both.</p>
 	<p>A prime example of this would be while using the <a href="https://c9.io/">Cloud9 IDE</a> to develop in our web browser. The <code>^W&nbsp;Where Is</code> shortcut will present a few problems. Typically, pressing <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>W</kbd> within a web browser will cause the current tab to close. Even if we disable this particular web browser shortcut or re-map it to a different keybinding, Cloud9 defaults to using <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>W</kbd> to close a pane &ndash; a small window within the Cloud9 IDE interface that contains tabs, of which our terminal would be one.</p>
