@@ -37,7 +37,7 @@
 	margin: vr(1.5) 0 vr(0.5);
 	display: inline-block;
 	padding: 0 0.25em 0.25em 0.05em;
-	border-top: 0.12em solid $colour-black;	
+	border-top: 0.12em solid $colour-black;
 	border-right: 0.12em solid $colour-black;
 	border-bottom: 0.12em solid $colour-black;
 }
@@ -51,7 +51,10 @@ p {
 	margin: 0;
 }
 
-p + p, p + picture, picture + p, picture + picture {
+p + p,
+p + picture,
+picture + p,
+picture + picture {
 	padding-top: vr(1);
 	padding-bottom: 0;
 }
@@ -68,7 +71,8 @@ ol, .u-list {
   }
 }
 
-ol + p, .u-list + p {
+ol + p,
+.u-list + p {
 	margin-top: vr(1.5);
 }
 
@@ -84,7 +88,8 @@ kbd {
 	padding: 0 0.3em 0.2em;
 }
 
-code, .input {
+code,
+.input {
 	display: inline-block;
 	vertical-align: sub;
 	max-width: 100%;
@@ -92,7 +97,9 @@ code, .input {
 	padding: 0 0.3em 0;
 }
 
-code, kbd, .input {
+code,
+kbd,
+.input {
 	background-color: $colour-light-gray;
 	border-radius: 0.2em;
 }
@@ -117,7 +124,8 @@ picture {
 }
 
 picture>img:not(.logo) {
-	max-width: 100%;
+  max-width: 100%;
+
 }
 
 img:not(.logo) {
@@ -138,13 +146,13 @@ form {
 	margin: 1em 0;
 }
 
-input, textarea {
+input,
+textarea {
 	display: block;
 	padding: 1em $left-pad 0.3em;
 	width: 95%;
 	border: 1px dashed $colour-dark-gray;
 	background-color: $colour-white;
-	
 	&:focus {
 		border-color: $colour-orange;
 		border-style: solid;
@@ -172,7 +180,7 @@ button {
 	display: block;
   position: relative;
 
-	
+
   label {
     position: absolute;
     left: $left-pad;
