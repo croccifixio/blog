@@ -22,7 +22,7 @@
 <pre class="code-block"><code><span class="prompt">$ </span>iwconfig | grep SSID | awk '{print $1}'</code></pre>
   <p>This should print out a list of network interfaces with a note beside the ones that do not have an active connection. Running the above command on my laptop gave me the following output:</p>
 <pre class="code-block"><code>enp9s0    no wireless extensions.
-    
+
 lo        no wireless extensions.
 
 wlp8s0</code></pre>
@@ -30,9 +30,9 @@ wlp8s0</code></pre>
 
   <h2 class="subtitle u-left-indent-2">3.Launching the hotspot</h2>
   <p>The hotspot can then be launched by running the following command, filling in the relevant fields:</p>
-<pre class="code-block"><span class="prompt">$ </span><code>sudo create_ap <span class="code-emphasis">&lt;wireless_interface&gt;</span> <span class="code-emphasis">&lt;wireless_interface&gt;</span> <span class="code-emphasis">&lt;hotspot_name&gt;</span> <span class="code-emphasis">&lt;hotspot_password&gt;</span></code></pre>
+<pre class="code-block"><code><span class="prompt">$ </span>sudo create_ap <span class="code-emphasis">&lt;wireless_interface&gt;</span> <span class="code-emphasis">&lt;wireless_interface&gt;</span> <span class="code-emphasis">&lt;hotspot_name&gt;</span> <span class="code-emphasis">&lt;hotspot_password&gt;</span></code></pre>
   <p>In my case, the filled in command looks something like this:</p>
-<pre class="code-block"><span class="prompt">$ </span><code>sudo create_ap wlp8s0 wlp8s0 MyHotspot MyPassword</code></pre>
+<pre class="code-block"><code><span class="prompt">$ </span>sudo create_ap wlp8s0 wlp8s0 MyHotspot MyPassword</code></pre>
 
   <h2 class="subtitle">Footnotes:</h2>
   <p>Since the script runs a process in the console, once the terminal is closed the hotspot will be closed as well. To circumvent this consider using a terminal multiplexer such as <a href="https://github.com/tmux/tmux/wiki">tmux</a> or <a href="https://www.gnu.org/software/screen/">screen</a>, which allows you to close a terminal and still have it running in the background.</p>
@@ -47,7 +47,7 @@ wlp8s0</code></pre>
   <p>At this point you may close the terminal window. Alternatively, detach from the terminal by pressing <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>B</kbd> followed by <kbd>D</kbd>.</p>
   <p>If you wish to stop the hotspot manually, run the following command in any terminal to kill the tmux session named <strong>hotspot</strong>:</p>
 <pre class="code-block"><code><span class="prompt">$ </span>tmux kill-session -t hotspot</code></pre>
-    
+
 
   <h2 class="subtitle">Sources:</h2>
   <ul class="u-list references">
