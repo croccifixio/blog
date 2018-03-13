@@ -100,10 +100,7 @@ public static void Run(ICloudBlob myBlob, TraceWriter log)
     </li>
     <li>
       <h3 class="subsubtitle">Viewing CDN content in a local dev environment</h3>
-      <p>CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. For a Chromium-based browser, create a shortcut and append the following to the <b>Target</b>: <span class="input">--args --disable-web-security --user-data-dir</span>. Using the shortcut will open an instance of the browser that is <strong>inherently insecure</strong>. Do not use it to browse the web.</p>
-      <picture>
-        <img src="https://cdn.odongo.xyz/images/vivaldi_cors.png" alt="Disabling CORS check">
-      </picture>
+      <p>CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. This can be done with the help of a browser extension such as <a href="https://chrome.google.com/webstore/detail/cors-toggle/jioikioepegflmdnbocfhgmpmopmjkim?utm_source=chrome-app-launcher-info-dialog">CORS Toggle</a> (Chrome Web Store) or <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/">CORS Everywhere</a> (Firefox Add-ons). Both of these extensions add a button to the browser that can be used to toggle CORS.
     </li>
   </ol>
 
