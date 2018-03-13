@@ -111,8 +111,6 @@ kbd,
 	border-radius: 0.2em;
 	> code {
     padding: vr(1);
-    width: calc(100% + vr(2));
-		// padding: 0 0 0.15em;
   }
   + .subtitle {
     margin-top: vr(.5);
@@ -125,7 +123,7 @@ kbd,
 
 picture {
 	display: block;
-  &>img:not(.logo) {
+  > img:not(.logo) {
     max-width: 100%;
     margin: 0 auto;
     display: block;
@@ -193,7 +191,7 @@ button {
 		// (1) focused
 		top: 0.25em;
     font-size: 60%;
-		line-height: calc(100% + 0.25em); // this combined with the background-color above, prevent text entered in the text area from overlapping the label
+		line-height: calc(100% + 0.25em); // this combined with the background-color above, prevents text entered in the text area from overlapping the label
 		color: $colour-orange;
   }
 
