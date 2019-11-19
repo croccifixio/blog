@@ -1,0 +1,103 @@
+// Font stacks
+body-font = "CCartograph Sans CF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+title-font = "CCartograph Sans CF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+code-font = 'CCartograph Mono CF', monospace
+
+html
+body
+  font-family body-font
+  line-height 1.7
+
+b
+strong
+  font-style italic
+
+a
+  background-image linear-gradient(to right, $color-white 50%, $color-black 51%)
+  background-position 0% 95%
+  background-repeat repeat-x
+  background-size 6px 1px
+  color inherit
+  padding-bottom .25em
+  position relative
+  text-decoration none
+  text-shadow -1px -1px 0 $color-black, 1px -1px 0 $color-black, -1px 1px 0 $color-black, 1px 1px 0 $color-black
+  transition background .1s ease
+  &:hover
+    background-image linear-gradient(to right, $color-yellow 50%, $color-black 51%)
+    color $color-yellow
+
+
+code
+kbd
+pre
+pre[class*="language-"]
+samp
+  font-family code-font
+  font-size 1.12rem
+
+kbd:not(.key)
+  font-family body-font
+
+p
+li
+  font-size 1.15rem
+  letter-spacing 1px
+  line-height 1.95
+
+p code
+.key
+  border-radius 4px
+  font-size 1.1rem
+  padding .1em .3em .15em
+
+.key
+  border .1em solid $color-dark-gray
+  padding .05em .3em .1em
+
+p code
+pre
+pre[class*="language-"]
+  box-shadow inset 0px 0px 1px rgba(0,0,0,.2)
+  text-shadow none
+
+p
+.pre
+  margin-top 2rem
+  margin-bottom 2rem
+
+.pre
+  border 2px dashed $color-white
+  border-radius 10px
+  padding 0 1rem
+
+pre
+pre[class*="language-"]
+  scrollbar-width none
+  &::-webkit-scrollbar
+    display none
+
+h1
+h2
+h3
+h4
+h5
+h6
+  font-family title-font
+  font-style italic
+  font-weight bold
+
+ol
+ul
+  padding-left 2ch
+
+.input
+  background-color $color-white
+  border-radius 4px
+  color $color-black
+  padding 2px 4px
+
+.ui-flow
+  border 2px solid $color-white
+  border-radius 4px
+  padding 1px 4px
