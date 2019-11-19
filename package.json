@@ -2,11 +2,12 @@
   "name": "gridsome-blog-fix",
   "private": true,
   "scripts": {
+    "prebuild": "npm run build:markdown",
     "build": "gridsome build",
-    "clear": "pm2 delete all",
+    "build:markdown": "tafsiri -d blog",
+    "prestart": "npm run build:markdown",
     "start": "gridsome develop",
-    "watch": "pm2 start node_modules/@croccifixio/tafsiri/dist/cli.js --name md-parser -- -d blog",
-    "postwatch": "pm2 log md-parser"
+    "watch": "tafsiri -d blog -w"
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -19,10 +20,9 @@
     "gridsome-plugin-pug": "0.0.3"
   },
   "devDependencies": {
-    "@croccifixio/tafsiri": "file:../gridsome-blog-parser",
+    "@croccifixio/tafsiri": "^1.1.6",
     "marked": "^0.7.0",
     "node-sass": "^4.12.0",
-    "pm2": "^3.5.0",
     "pug": "^2.0.4",
     "sass-loader": "^8.0.0",
     "stylus": "^0.54.7",
