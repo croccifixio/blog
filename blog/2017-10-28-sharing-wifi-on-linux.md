@@ -4,6 +4,7 @@ description: This guide covers how to set up a WiFi hotspot on Linux using a sin
 seo_title: Sharing WiFi on Linux
 slug: sharing-wifi-on-linux
 title: Sharing WiFi on&nbsp;Linux
+tags: linux
 ---
 
 1. ## Installing create_ap

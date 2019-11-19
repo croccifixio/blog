@@ -4,6 +4,7 @@ description: At times, we may need to keep certain files off a particlar repo. U
 seo_title: Separation of Concerns with&nbsp;Git
 slug: separation-of-concerns-with-git
 title: Separation of Concerns with&nbsp;Git
+tags: git
 ---
 
 When developing a web app or site that has a public-facing repo, there may be a need to have some rudimentary separation of concerns where git is concerned. Certain files that we may want on the production server might seem out of place on the public repo due to licensing, privacy or security concerns.

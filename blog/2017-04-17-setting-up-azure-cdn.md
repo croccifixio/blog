@@ -4,6 +4,7 @@ description: This guide goes through the process of setting up Azure CDN on a cu
 seo_title: Setting Up Azure CDN
 slug: setting-up-azure-cdn
 title: Setting Up Azure&nbsp;CDN
+tags: azure
 ---
 
 There is no lack of CDN providers available for ensuring that the static content of your website is delivered. A good number of them offer very competitive prices per GB of traffic. However, this low pricing is typically paired with a relatively high minimum payment, which must be met monthly or annually depending on the provider.
