@@ -35,7 +35,7 @@ tags: powershell, git
 
   One issue with such a prompt that eventually turns up, is when the current working directory is deeply nested and/or contains long folder names. This can make the prompt stretch to cover the fullwidth of the window or screen. Having to input a command in the shell and have it overflow onto the next line almost immediately is fairly triggering to watch.
 
-  TODO: insert gif
+  ![Powershell instance](https://cdn.odongo.xyz/images/ps-prompt.gif)
 
   There are a few ways we could go about dealing with long working directories. We could truncate part of the path or remove the current working directory from the prompt altogether. These solutions might be more compelling for those who find themselves working with deeply nested directories very often.
 
