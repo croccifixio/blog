@@ -1,0 +1,23 @@
+default-min-widths = {
+  px: 360,
+  rem: 22.5
+}
+
+default-max-widths = {
+  px: 1368,
+  rem: 85.5
+}
+
+css-lock($properties, $unit, $min-size, $max-size, $min-width = false, $max-width = false)
+  unless $min-width
+    $min-width = default-min-widths[$unit]
+  unless $max-width
+    $max-width = default-max-widths[$unit]
+  for $property, $i in $properties
+    {$property} "calc(%s%s + (%s - %s) * ((100vw - %s%s) / (%s - %s)))" % (match-value($min-size, $i)  $unit match-value($max-size, $i) match-value($min-size, $i) $min-width $unit $max-width $min-width)
+  @media (max-width "%s%s" % ($min-width $unit))
+    for $property, $i in $properties
+      {$property} "%s%s" % (match-value($min-size, $i) $unit)
+  @media (min-width "%s%s" % ($max-width $unit))
+    for $property, $i in $properties
+      {$property} "%s%s" % (match-value($max-size, $i) $unit)

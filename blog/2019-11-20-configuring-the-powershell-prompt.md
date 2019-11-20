@@ -3,11 +3,11 @@ date: 2019-11-20
 description: The prompt is, depending on how heavily one's workflow involves using CLIs, a potentially frequent occurence in a developer's workflow. It is worth knowing how the prompt can be customised to behave in a way that is more conducive and relevant to a given context.
 seo_title: Configuring the Powershell Prompt
 slug: configuring-the-powershell-prompt
-title: Configuring the Powershell&nbsp;Prompt
+title: Configuring the Powershell Prompt
 tags: powershell, git
 ---
 
-1. ## Creating a Powerhell Profile
+1. ## Creating a Powershell Profile
 
   The first step in customising the Powershell profile is setting up a profile. This is a file that will be loaded every time you open a new Powershell. For those familiar with bash, the concept is similar to a `.bashrc` file.
 

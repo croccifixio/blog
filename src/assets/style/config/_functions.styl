@@ -1,0 +1,6 @@
+// match a value based on the index if that value is iterable
+match-value($value, $i)
+  length($value) > 1 ? $value[$i] : $value
+
+strip-brackets(str)
+  replace('\)', '', replace('\(', '', str))

@@ -1,7 +1,9 @@
-@import '_vendor/normalize'
-@import '_vendor/prism'
-@import '/_colors'
-@import '/_fonts'
+@import 'vendor/normalize'
+@import 'vendor/prism'
+@import 'config/_colors'
+@import 'config/_functions'
+@import 'config/_mixins'
+@import 'config/_fonts'
 @import '/_prism'
 @import '/_typography'
 @import '/_blog-list'
@@ -18,17 +20,11 @@ body
   margin 0
   min-height 100%
 
-header
-  border-bottom 8px solid #32ccbc
-  font-size 2rem
-  font-weight bold
-  text-align center
-
 main
   margin 0 auto
   max-width 80ch
   padding 1rem
 
 footer
-  padding 2rem 1rem
+  padding 2rem 1rem 4rem
   text-align center
