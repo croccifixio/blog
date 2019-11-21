@@ -23,7 +23,7 @@ tags: powershell, git
   New-Item -ItemType File -Path $PROFILE -Force
   ```
 
-  This will create a profile and save it to the follwing location: `C:\Users\<user>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`. This path will also be saved to the `$PROFILE` environment variable.
+  This will create a profile and save it to the follwing location: <span class="break-word">`C:\Users\<user>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`</span>. This path will also be saved to the `$PROFILE` environment variable.
 
 2. ## Editting the PowerShell Prompt
 
