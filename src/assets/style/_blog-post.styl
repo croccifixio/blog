@@ -27,6 +27,15 @@
     &::after
       content ''
       position absolute
+    &::before
+      background-color $color-black
+      height calc(100% + 10px)
+      min-height 1em
+      right calc(100% + 1px)
+      top 50%
+      transform translateY(-50%)
+      width 20px
+      z-index 2
     &::after
       border-image-slice 1
       border-image-source linear-gradient(30deg, #FDC64D, #F8E359)
@@ -60,11 +69,9 @@
           content counter(sections) '. '
           font-family title-font
           font-size .9em
-          min-height 1em
-          right calc(100% + 1px)
+          height auto
           top 2px
-          width 20px
-          z-index 2
+          transform none
         span
           background-color $color-black
           height calc(100% + 20px)
