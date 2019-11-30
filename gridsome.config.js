@@ -13,12 +13,12 @@ module.exports = {
       options: {
         path: 'blog/.temp/*.md',
         typeName: 'BlogPost',
-        route: '/:slug'
-      }
+        route: '/:slug',
+      },
     },
     {
-      use: 'gridsome-plugin-pug'
-    }
+      use: 'gridsome-plugin-pug',
+    },
   ],
   transformers: {
     //Add markdown support to all file-system sources
@@ -27,9 +27,6 @@ module.exports = {
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       anchorClassName: 'icon icon-link',
       squeezeParagraphs: true,
-      plugins: [
-        // '@crocc/gridsome-remark-hljs'
-      ]
-    }
-  }
+    },
+  },
 }
