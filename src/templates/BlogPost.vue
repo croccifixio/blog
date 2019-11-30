@@ -7,12 +7,19 @@
 </template>
 
 <script>
+import ScrollTo from '~/assets/scripts/scroll-to'
+
 export default {
   metaInfo () {
     return {
       title: this.$page.blogPost.title
     }
-  }
+  },
+  mounted() {
+    const $$scrollToTriggers = ScrollTo.getTriggers()
+
+    $$scrollToTriggers.forEach(ScrollTo.addTriggerListener)
+  },
 }
 </script>
 
