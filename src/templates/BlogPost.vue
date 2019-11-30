@@ -12,7 +12,7 @@ import ScrollTo from '~/assets/scripts/scroll-to'
 export default {
   metaInfo () {
     return {
-      title: this.$page.blogPost.title
+      title: this.$page.blogPost.seo_title
     }
   },
   mounted() {
@@ -26,6 +26,7 @@ export default {
 <page-query>
   query BlogPost ($path: String!) {
     blogPost (path: $path) {
+      seo_title
       title
       prettyDate: date(format: "D MMMM, YYYY")
       date (format: "YYYY-MM-DD")
