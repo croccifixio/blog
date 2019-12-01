@@ -12,14 +12,6 @@
             p(v-for="p in node.description" v-html="p")
 </template>
 
-<script>
-export default {
-  mounted() {
-    console.log(`this.$page.allBlogPost.edges[0].node.description =>`, this.$page.allBlogPost.edges[0].node.description)
-  }
-}
-</script>
-
 <page-query>
   query Home ($page: Int) {
     allBlogPost (page: $page) {
