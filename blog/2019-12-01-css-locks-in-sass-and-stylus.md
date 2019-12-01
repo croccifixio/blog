@@ -2,7 +2,7 @@
 date: 2019-12-01
 description:
   - Media queries are a vital tool in making websites responsive. This typically involves increasing/decreasing various properties' values in a step-like manner (e.g. bumping the font-size up by a few pixels at particular breakpoints).
-  - Using a preprocessor allows us to cut down on the amount boilerplate. We could pass breakpoint-value pairs to a mixin that generates media queries with the property set to its corresponding value. In this instance, we will limit the number of breakpoint-value pairs to two, and smoothly scale the value between the two breakpoints.
+  - Using a preprocessor allows us to cut down on the amount of boilerplate. We could pass breakpoint-value pairs to a mixin that generates media queries with the property set to its corresponding value. In this instance, we will limit the number of breakpoint-value pairs to two, and smoothly scale the value between the two breakpoints.
 seo_title: CSS Locks In Sass And Stylus
 slug: css-locks-in-sass-and-stylus
 title: CSS Locks In Sass And&nbsp;Stylus
