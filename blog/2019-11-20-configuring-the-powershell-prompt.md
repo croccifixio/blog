@@ -174,9 +174,9 @@ With all that done, we should now have a prompt that conveys more relevant infor
 
 ## Footnotes:
 
-The `Write-Host` cmdlet has a few flags that we made use of. The first one is the `-n` or `-NoNewLine` flag, which as the name suggests, instructs the cmdlet not to print a new line character at the end of its output.
+The `Write-Host` cmdlet has a few flags that we made use of. The first one is the `-n` or <span class="no-wrap">`-NoNewLine`</span> flag, which as the name suggests, instructs the cmdlet not to print a new line character at the end of its output.
 
-The other flag that we utilised was the `-f` or `-ForegroundColor` flag. This flag expects a valid PowerShell color to be passed to it. It will apply this color to the text that it outputs.
+The other flag that we utilised was the `-f` or <span class="no-wrap">`-ForegroundColor`</span> flag. This flag expects a valid PowerShell color to be passed to it. It will apply this color to the text that it outputs.
 
 To see a full list of available colours, run the following [command from Microsoft's TechNet](https://blogs.technet.microsoft.com/gary/2013/11/20/sample-all-powershell-console-colors/):
 
