@@ -1,34 +1,39 @@
 @font-face {
-	font-family: 'CCartograph Sans CF';
+	font-family: 'Cartograph CF';
   font-style: normal;
   font-weight: normal;
-	src: url("../fonts/CartographSansCF-Regular.woff2") format("woff2");
+	src: url("../fonts/CartographCF-Light.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: 'CCartograph Sans CF';
-  font-style: normal;
-  font-weight: bold;
-	src: url("../fonts/CartographSansCF-Bold.woff2") format("woff2");
-}
-
-@font-face {
-	font-family: 'CCartograph Sans CF';
-  font-style: italic;
-  font-weight: bold;
-	src: url("../fonts/CartographSansCF-BoldItalic.woff2") format("woff2");
-}
-
-@font-face {
-	font-family: 'CCartograph Mono CF';
-	font-style: normal;
-  font-weight: normal;
-	src: url("../fonts/CartographMonoCF-Medium.woff2") format("woff2");
-}
-
-@font-face {
-	font-family: 'CCartograph Mono CF';
+	font-family: 'Cartograph CF';
 	font-style: italic;
   font-weight: bold;
-	src: url("../fonts/CartographMonoCF-BoldItalic.woff2") format("woff2");
+	src: url("../fonts/CartographCF-BoldItalic.woff2") format("woff2");
+}
+
+sans-serif-fallback = -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+body-font() {
+  font-feature-settings 'ss05'
+}
+body-font-bold-italic() {
+  font-feature-settings 'ss01', 'ss05'
+  font-style italic
+  font-weight bold
+}
+body-font-bold-italic-fancy() {
+  font-feature-settings 'ss05'
+  font-style italic
+  font-weight bold
+}
+code-font() {
+  font-feature-settings 'ss03'
+  font-variant-ligatures common-ligatures
+}
+code-font-bold-italic() {
+  font-feature-settings 'ss01'
+  font-style italic
+  font-variant-ligatures common-ligatures
+  font-weight bold
 }

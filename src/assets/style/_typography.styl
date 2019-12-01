@@ -1,16 +1,12 @@
-// Font stacks
-body-font = "CCartograph Sans CF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
-title-font = "CCartograph Sans CF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
-code-font = 'CCartograph Mono CF', monospace
-
 html
 body
-  font-family body-font
+  body-font()
+  font-family "Cartograph CF", sans-serif-fallback
   line-height 1.7
 
 b
 strong
-  font-style italic
+  body-font-bold-italic()
 
 a
   background-image linear-gradient(to right, $color-white 50%, $color-black 51%)
@@ -33,10 +29,11 @@ pre
 pre[class*="language-"]
 samp
   css-lock font-size rem 1.02 1.12
-  font-family code-font
+  code-font()
+  font-family 'Cartograph CF', monospace
 
 kbd:not(.key)
-  font-family body-font
+  body-font()
 
 p
 li
@@ -50,7 +47,7 @@ p code
   padding .1em .3em .15em
 
 p code
-  font-style italic
+  code-font-bold-italic()
 
 .key
   border .1em solid $color-dark-gray
@@ -84,9 +81,7 @@ h3
 h4
 h5
 h6
-  font-family title-font
-  font-style italic
-  font-weight bold
+  body-font-bold-italic-fancy()
 
 ol
 ul
