@@ -13,7 +13,7 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
 1. ## Responsive values
 
-  __Suppose__ we wanted to change the font size of given heading on a web page at given breakpoints in the viewport width. We may end up with the following styles:
+  Suppose we wanted to change the font size of given heading on a web page at given breakpoints in the viewport width. We may end up with the following styles:
 
   ```scss
   h2 {
