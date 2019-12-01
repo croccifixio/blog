@@ -1,6 +1,7 @@
 ---
 date: 2017-10-28
-description: This guide covers how to set up a WiFi hotspot on Linux using a single adapter. The scenario it aims to solve is one where only one device (for instance a laptop) is connected to a WiFi network that has a whitelist of permitted MAC addresses. The connected device can then be used to create a hotspot that other devices can connect to for internet access.
+description:
+  - This guide covers how to set up a WiFi hotspot on Linux using a single adapter. The scenario it aims to solve is one where only one device (for instance a laptop) is connected to a WiFi network that has a whitelist of permitted MAC addresses. The connected device can then be used to create a hotspot that other devices can connect to for internet access.
 seo_title: Sharing WiFi on Linux
 slug: sharing-wifi-on-linux
 title: Sharing WiFi on&nbsp;Linux

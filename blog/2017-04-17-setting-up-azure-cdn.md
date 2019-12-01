@@ -1,6 +1,7 @@
 ---
 date: 2017-04-17
-description: This guide goes through the process of setting up Azure CDN on a custom domain. A function is triggered when content is uploaded to Azure storage, and sets the time-to-live of the uploads based on what container they are uploaded to.
+description:
+  - This guide goes through the process of setting up Azure CDN on a custom domain. A function is triggered when content is uploaded to Azure storage, and sets the time-to-live of the uploads based on what container they are uploaded to.
 seo_title: Setting Up Azure CDN
 slug: setting-up-azure-cdn
 title: Setting Up Azure&nbsp;CDN

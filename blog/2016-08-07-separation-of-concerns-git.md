@@ -1,6 +1,7 @@
 ---
 date: 2016-08-07
-description: At times, we may need to keep certain files off a particlar repo. Usually a .gitignore file would suffice. But what if we want those files to be present in another repo? How do we go about setting that up? I will present a short method that tackles this problem.
+description:
+  - At times, we may need to keep certain files off a particlar repo. Usually a .gitignore file would suffice. But what if we want those files to be present in another repo? How do we go about setting that up? I will present a short method that tackles this problem.
 seo_title: Separation of Concerns with&nbsp;Git
 slug: separation-of-concerns-with-git
 title: Separation of Concerns with&nbsp;Git

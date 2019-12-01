@@ -1,6 +1,7 @@
 ---
 date: 2019-11-20
-description: The prompt is, depending on how heavily one's workflow involves using CLIs, a potentially frequent occurence in a developer's workflow. It is worth knowing how the prompt can be customised to behave in a way that is more conducive and relevant to a given context.
+description:
+  - The prompt is, depending on how heavily one's workflow involves using CLIs, a potentially frequent occurence in a developer's workflow. It is worth knowing how the prompt can be customised to behave in a way that is more conducive and relevant to a given context.
 seo_title: Configuring the PowerShell Prompt
 slug: configuring-the-powershell-prompt
 title: Configuring the PowerShell Prompt

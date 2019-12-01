@@ -1,6 +1,7 @@
 ---
 date: 2016-07-09
-description: Git and Heroku are vital tools in any web developers repertoire. Git for the simplicity it introduces to version control, and Heroku for the ease with which it allows app deployment. The following is quick-start guide to get you up and running.
+description:
+  - Git and Heroku are vital tools in any web developers repertoire. Git for the simplicity it introduces to version control, and Heroku for the ease with which it allows app deployment. The following is quick-start guide to get you up and running.
 seo_title: Git & Heroku
 slug: git-and-heroku
 title: Git & Heroku
