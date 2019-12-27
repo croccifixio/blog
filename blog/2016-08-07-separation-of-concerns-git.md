@@ -60,7 +60,7 @@ assets/fonts/body-font.woff2"
 # STEP 1
 for FONT in FONT_LIST
 do
-	git update-index --no-assume-unchanged $FONT
+  git update-index --no-assume-unchanged $FONT
 done
 
 # STEP 2
@@ -73,8 +73,8 @@ git reset HEAD~1
 # STEP 3 & 4
 for FONT in FONT_LIST
 do
-	git reset HEAD $FONT # STEP 3 continued
-	git update-index --assume-unchanged $FONT # STEP 4
+  git reset HEAD $FONT # STEP 3 continued
+  git update-index --assume-unchanged $FONT # STEP 4
 done
 ```
 

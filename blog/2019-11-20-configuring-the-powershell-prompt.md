@@ -46,8 +46,8 @@ tags: powershell, git
 
   ```powershell
   function Prompt {
-    Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
-    return "> "
+     Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
+     return "> "
   }
   ```
 
@@ -70,9 +70,9 @@ tags: powershell, git
 
   ```powershell
   function Prompt {
-    Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
-    Write-Host "$env:username>" -n -f DarkGreen
-    return " "
+     Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
+     Write-Host "$env:username>" -n -f DarkGreen
+     return " "
   }
   ```
 
@@ -80,10 +80,10 @@ tags: powershell, git
 
   ```powershell
   function Prompt {
-    Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
-    Write-Host "$env:username" -n -f DarkGreen
-    Write-Host " $([char]0x2192)" -n -f DarkGreen
-    return " "
+     Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
+     Write-Host "$env:username" -n -f DarkGreen
+     Write-Host " $([char]0x2192)" -n -f DarkGreen
+     return " "
   }
   ```
 
@@ -91,22 +91,22 @@ tags: powershell, git
 
   ```powershell
   function Write-Directory {
-    Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
+     Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
   }
 
   function Write-UserName {
-    Write-Host "$env:username" -n -f DarkGreen
+     Write-Host "$env:username" -n -f DarkGreen
   }
 
   function Write-Arrow {
-    Write-Host " $([char]0x2192)" -n -f DarkGreen
+     Write-Host " $([char]0x2192)" -n -f DarkGreen
   }
 
   function Prompt {
-    Write-Directory
-    Write-UserName
-    Write-Arrow
-    return " "
+     Write-Directory
+     Write-UserName
+     Write-Arrow
+     return " "
   }
   ```
 
@@ -127,46 +127,46 @@ tags: powershell, git
 
   ```powershell
   function Write-GitBranchName {
-    try {
-      $branch = git rev-parse --abbrev-ref HEAD
+     try {
+       $branch = git rev-parse --abbrev-ref HEAD
 
-      if ($branch -eq "HEAD") {
-        $sha = git rev-parse --short HEAD
-        Write-Host "($sha)" -n -f Red
-      }
-      elseif ($branch -eq "master") {
-        Write-Host "($branch)" -n -f Yellow
-      }
-      else {
-        Write-Host "($branch)" -n -f DarkGreen
-      }
-    } catch {
-      Write-Host "(no branches yet)" -n -f DarkGreen
-    }
+       if ($branch -eq "HEAD") {
+         $sha = git rev-parse --short HEAD
+         Write-Host "($sha)" -n -f Red
+       }
+       elseif ($branch -eq "master") {
+         Write-Host "($branch)" -n -f Yellow
+       }
+       else {
+         Write-Host "($branch)" -n -f DarkGreen
+       }
+     } catch {
+       Write-Host "(no branches yet)" -n -f DarkGreen
+     }
   }
 
   function Write-Directory {
-    Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
+     Write-Host "[$($ExecutionContext.SessionState.Path.CurrentLocation)]" -f DarkCyan
   }
 
   function Write-UserName {
-    Write-Host "$env:username" -n -f DarkGreen
+     Write-Host "$env:username" -n -f DarkGreen
   }
 
   function Write-Arrow {
-    Write-Host " $([char]0x2192)" -n -f DarkGreen
+     Write-Host " $([char]0x2192)" -n -f DarkGreen
   }
 
   function Prompt {
-    Write-Directory
-    if (Test-Path .git) {
-      Write-GitBranchName
-    }
-    else {
-      Write-UserName
-    }
-    Write-Arrow
-    return " "
+     Write-Directory
+     if (Test-Path .git) {
+       Write-GitBranchName
+     }
+     else {
+       Write-UserName
+     }
+     Write-Arrow
+     return " "
   }
   ```
 

@@ -62,19 +62,18 @@ If we are expecting relatively low traffic but would still like to make use of a
   ```csharp
   #r "Microsoft.WindowsAzure.Storage"
   using Microsoft.WindowsAzure.Storage.Blob;
-
   public static void Run(ICloudBlob myBlob, TraceWriter log)
   {
-    if (myBlob.Properties.CacheControl == null)
-    {
-        myBlob.Properties.CacheControl = "public, max-age=__8640000__;
-        myBlob.SetProperties();
-        log.Info("Attempting to set Cache Control header...");
-    }
-    else
-    {
-        log.Info("CONFIRMATION: Cache Control header for '" + myBlob.Name + "' has been set to '" + myBlob.Properties.CacheControl + "'");
-    }
+     if (myBlob.Properties.CacheControl == null)
+     {
+       myBlob.Properties.CacheControl = "public, max-age=__8640000__;
+       myBlob.SetProperties();
+       log.Info("Attempting to set Cache Control header...");
+     }
+     else
+     {
+       log.Info("CONFIRMATION: Cache Control header for '" + myBlob.Name + "' has been set to '" +  myBlob.Properties.CacheControl + "'");
+     }
   }
   ```
 

@@ -17,15 +17,15 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   h2 {
-    font-size: 2rem;
+     font-size: 2rem;
 
-    @media (min-width: 400px) {
-      font-size: 3rem;
-    }
+     @media (min-width: 400px) {
+       font-size: 3rem;
+     }
 
-    @media (min-width: 1000px) {
-      font-size: 4.5rem;
-    }
+     @media (min-width: 1000px) {
+       font-size: 4.5rem;
+     }
   }
   ```
 
@@ -43,15 +43,15 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   h2 {
-      font-size: 2rem;
+     font-size: 2rem;
 
-    @media (min-width: 400px) {
-      font-size: calc(/* some formula */);
-    }
+     @media (min-width: 400px) {
+       font-size: calc(/* some formula */);
+     }
 
-    @media (min-width: 1000px) {
-      font-size: 4.5rem;
-    }
+     @media (min-width: 1000px) {
+       font-size: 4.5rem;
+     }
   }
   ```
 
@@ -61,15 +61,15 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   h2 {
-    font-size: 2rem;
+     font-size: 2rem;
 
-    @media (min-width: 400px) {
-      font-size: calc(2rem + (4.5 - 2) * ((100vw - 400px) / (1000 - 400)));
-    }
+     @media (min-width: 400px) {
+       font-size: calc(2rem + (4.5 - 2) * ((100vw - 400px) / (1000 - 400)));
+     }
 
-    @media (min-width: 1000px) {
-      font-size: 4.5rem;
-    }
+     @media (min-width: 1000px) {
+       font-size: 4.5rem;
+     }
   }
   ```
 
@@ -87,15 +87,15 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   h2 {
-    font-size: 2rem;
+     font-size: 2rem;
 
-    @media (min-width: 400px) {
-      font-size: calc(32px + (72 - 32) * ((100vw - 400px) / (1000 - 400)));
-    }
+     @media (min-width: 400px) {
+       font-size: calc(32px + (72 - 32) * ((100vw - 400px) / (1000 - 400)));
+     }
 
-    @media (min-width: 1000px) {
-      font-size: 4.5rem;
-    }
+     @media (min-width: 1000px) {
+       font-size: 4.5rem;
+     }
   }
   ```
 
@@ -105,15 +105,15 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   h2 {
-    font-size: 2rem;
+     font-size: 2rem;
 
-    @media (min-width: 400px) {
-      font-size: calc(2rem + (4.5 - 2) * ((100vw - 25rem) / (62.5 - 25)));
-    }
+     @media (min-width: 400px) {
+       font-size: calc(2rem + (4.5 - 2) * ((100vw - 25rem) / (62.5 - 25)));
+     }
 
-    @media (min-width: 1000px) {
-      font-size: 4.5rem;
-    }
+     @media (min-width: 1000px) {
+       font-size: 4.5rem;
+     }
   }
   ```
 
@@ -124,19 +124,19 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   @mixin css-lock($prop, $unit, $min-size, $max-size, $min-width, $max-width) {
-    #{$prop}: #{$min-size}#{$unit};
+     #{$prop}: #{$min-size}#{$unit};
 
-    @media (min-width: #{$min-width}#{$unit}) {
-      #{$prop}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
-    }
+     @media (min-width: #{$min-width}#{$unit}) {
+       #{$prop}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (# {$max-width} - #{$min-width})));
+     }
 
-    @media (min-width: #{$max-width}#{$unit}) {
-      #{$prop}: #{$max-size}#{$unit};
-    }
+     @media (min-width: #{$max-width}#{$unit}) {
+       #{$prop}: #{$max-size}#{$unit};
+     }
   }
 
   h2 {
-    @include css-lock('font-size', 'rem', 2, 4.5, 25, 62.5);
+     @include css-lock('font-size', 'rem', 2, 4.5, 25, 62.5);
   }
   ```
 
@@ -146,31 +146,31 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```scss
   @function convert-from-px($unit, $value) {
-    @if ($unit == 'rem') {
-      @return $value / 16;
-    } @elseif ($unit == 'px') {
-      @return  $value;
-    }
+     @if ($unit == 'rem') {
+       @return $value / 16;
+     } @elseif ($unit == 'px') {
+       @return  $value;
+     }
   }
 
   @mixin css-lock($prop, $unit, $min-size, $max-size, $min-width, $max-width) {
-    $min-width: convert-from-px($unit, $min-width);
-    $max-width: convert-from-px($unit, $max-width);
+     $min-width: convert-from-px($unit, $min-width);
+     $max-width: convert-from-px($unit, $max-width);
 
-    #{$prop}: #{$min-size}#{$unit};
+     #{$prop}: #{$min-size}#{$unit};
 
-    @media (min-width: #{$min-width}#{$unit}) {
-      #{$prop}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
-    }
+     @media (min-width: #{$min-width}#{$unit}) {
+       #{$prop}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (# {$max-width} - #{$min-width})));
+     }
 
-    @media (min-width: #{$max-width}#{$unit}) {
-      #{$prop}: #{$max-size}#{$unit};
-    }
+     @media (min-width: #{$max-width}#{$unit}) {
+       #{$prop}: #{$max-size}#{$unit};
+     }
   }
 
   h2 {
-    @include css-lock('font-size', 'rem', 2, 4.5, 400, 1000);
-    @include css-lock('margin-bottom', 'px', 30, 45, 400, 1000);
+     @include css-lock('font-size', 'rem', 2, 4.5, 400, 1000);
+     @include css-lock('margin-bottom', 'px', 30, 45, 400, 1000);
   }
   ```
 
@@ -180,26 +180,26 @@ A CSS lock is an interpolating function used to transition a numerical value in 
 
   ```stylus
   convert-from-px($unit, $value)
-    if $unit == rem
-      $value / 16
-    else if $unit == px
-      $value
+     if $unit == rem
+       $value / 16
+     else if $unit == px
+       $value
 
   css-lock($property, $unit, $min-size, $max-size, $min-width, $max-width)
-    $min-width = convert-from-px($unit, $min-width)
-    $max-width = convert-from-px($unit, $max-width)
+     $min-width = convert-from-px($unit, $min-width)
+     $max-width = convert-from-px($unit, $max-width)
 
-    {$property} "%s%s" % ($min-size $unit)
+     {$property} "%s%s" % ($min-size $unit)
 
-    @media (min-width "%s%s" % ($min-width $unit))
-      {$property} "calc(%s%s + (%s - %s) * ((100vw - %s%s) / (%s - %s)))" % ($min-size $unit $max-size $min-size $min-width $unit $max-width $min-width)
+     @media (min-width "%s%s" % ($min-width $unit))
+       {$property} "calc(%s%s + (%s - %s) * ((100vw - %s%s) / (%s - %s)))" % ($min-size $unit $max-size $min-size  $min-width $unit $max-width $min-width)
 
-    @media (min-width "%s%s" % ($max-width $unit))
-      {$property} "%s%s" % ($max-size $unit)
+     @media (min-width "%s%s" % ($max-width $unit))
+       {$property} "%s%s" % ($max-size $unit)
 
   h2
-    css-lock(font-size, rem, 2, 4.5, 400, 1000)
-    css-lock(margin-bottom, px, 30, 45, 400, 1000)
+     css-lock(font-size, rem, 2, 4.5, 400, 1000)
+     css-lock(margin-bottom, px, 30, 45, 400, 1000)
 ```
 
 [1]: https://fvsch.com/css-locks/
