@@ -5,8 +5,10 @@
     "prebuild": "npm run build:markdown",
     "build": "gridsome build",
     "build:markdown": "tafsiri -d blog",
+    "build:staging": "run-s build noindex",
     "dev": "gridsome develop",
     "new": "hygen post new",
+    "noindex": "echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
     "prestart": "npm run build:markdown",
     "start": "run-p watch:markdown dev",
     "watch:markdown": "tafsiri -d blog -w"
