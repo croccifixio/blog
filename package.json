@@ -17,14 +17,14 @@
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-pipeline-operator": "^7.10.5",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.6.2",
-    "gridsome": "^0.7.20",
+    "@gridsome/transformer-remark": "^0.6.3",
+    "gridsome": "^0.7.21",
     "gridsome-plugin-pug": "0.0.3"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
-    "@croccifixio/tafsiri": "^1.1.10",
+    "@croccifixio/tafsiri": "^1.1.11",
     "hygen": "^5.0.3",
     "marked": "^0.7.0",
     "node-sass": "^4.14.1",
