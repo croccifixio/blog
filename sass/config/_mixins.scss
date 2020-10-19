@@ -1,0 +1,14 @@
+@mixin css-lock($prop, $unit, $min-size, $max-size, $min-width: 22.5, $max-width: 88.5) {
+  // $min-width: convert-from-px($unit, $min-width);
+  // $max-width: convert-from-px($unit, $max-width);
+
+  #{$prop}: #{$min-size}#{$unit};
+
+  @media (min-width: #{$min-width}#{$unit}) {
+    #{$prop}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+  }
+
+  @media (min-width: #{$max-width}#{$unit}) {
+    #{$prop}: #{$max-size}#{$unit};
+  }
+}

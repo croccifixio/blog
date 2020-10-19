@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul class="blog-list">
+      {% for page in section.pages %}
+        <li>
+          <article>
+            <div class="header">
+              <h2>
+                <a href="{{ page.permalink | safe }}"><span class="title">{{ page.title | safe }}</span></a>
+              </h2>
+              <time datetime="{{ page.date }}">{{ page.date | date(format="%e %B, %Y") }}</time>
+            </div>
+            <div class="description">
+              {% for paragraph in page.extra.description %}
+                <p>{{ paragraph }}</p>
+              {% endfor %}
+            </div>
+          </article>
+        </li>
+          {% endfor %}
+</ul>
+{% endblock content %}
