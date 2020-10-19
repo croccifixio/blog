@@ -1,29 +1,29 @@
-# Gridsome Blog Starter
+# Odongo.xyz
 
-> A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.
+This is the source code for [odongo.xyz][1] which is built on [Gridsome][2].
 
-## Features
-- Beautiful and simple design.
-- Markdown for content.
-- Tags support.
-- Dark / Light toggle.
-- CSS variables, SCSS & BEM for styling.
-- 100, 100, 100, 100 score on Google Lighthouse.
-- Uses same front-matter fields as Dev.to.
+Feel free to send a [pull request][3] or open an [issue][4] if you notice any typos, wonky rendering issues, etc.
 
-## Demo URL
+## Running the Project
 
-https://gridsome-starter-blog.netlify.com
+To spin up a local development server, run the following command:
 
-## Install
+```
+npm run start
+```
 
-### 1. Install Gridsome CLI tool if you don't have
+To build a production artifact, run the following command:
 
-`npm install --global @gridsome/cli`
+```
+npm run build
+```
 
-### 2. Install this starter
+## License
 
-1. `gridsome create my-gridsome-site https://github.com/gridsome/gridsome-starter-blog.git`
-2. `cd my-gridsome-site` to open folder
-3. `gridsome develop` to start local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+Copyright &copy; 2016-2020 Emmanuel Odongo. See [LICENSE][5] for details.
+
+[1]: https://odongo.xyz
+[2]: https://gridsome.org/
+[3]: https://github.com/Croccifixio/blog/pull/new/main
+[4]: https://github.com/Croccifixio/blog/issues/new
+[5]: https://github.com/Croccifixio/blog/blob/main/LICENSE
