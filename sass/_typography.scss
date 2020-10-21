@@ -117,15 +117,27 @@ ul {
   white-space: nowrap;
 }
 
-.input {
-  background-color: $color-white;
-  border-radius: 4px;
-  color: $color-black;
-  padding: 2px 4px;
-}
-
 .ui-flow {
   border: 2px solid $color-white;
   border-radius: 4px;
   padding: 0 4px 4px;
+}
+
+.input,
+.code-emphasis {
+  background: linear-gradient(30deg, #FDC64D, #F8E359);
+  border-radius: 4px;
+  color: $color-black;
+  display: inline;
+  margin: .075em;
+  padding: .05em .25em .1em;
+  top: .05em;
+}
+
+.input {
+  background-color: $color-white;
+}
+
+.code-emphasis {
+  background: linear-gradient(30deg, $color-gold, $color-yellow);
 }

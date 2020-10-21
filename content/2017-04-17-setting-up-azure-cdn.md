@@ -69,7 +69,7 @@ If we are expecting relatively low traffic but would still like to make use of a
   {
      if (myBlob.Properties.CacheControl == null)
      {
-       myBlob.Properties.CacheControl = "public, max-age=__8640000__;
+       myBlob.Properties.CacheControl = "public, max-age=_^8640000$_;
        myBlob.SetProperties();
        log.Info("Attempting to set Cache Control header...");
      }
@@ -96,7 +96,7 @@ If we are expecting relatively low traffic but would still like to make use of a
 
   ![Creating an endpoint in Azure](https://cdn.odongo.xyz/images/create_endpoint.png)
 
-  It may take up to 90 minutes for the endpoint to start functioning as intended. Once it is ready, files in your storage account will be accessible at <span class="input break-word">https://<span class="code-emphasis">endpoint_name</span>.azureedge.net/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></span>.
+  It may take up to 90 minutes for the endpoint to start functioning as intended. Once it is ready, files in your storage account will be accessible at <span class="input break-word pr-0">https://\_^endpoint_name$\_.azureedge.net/\_^container_name$\_/\_^file_name$\_</span>.
 
 5. ## Configure your custom domain
 
@@ -107,7 +107,7 @@ If we are expecting relatively low traffic but would still like to make use of a
 
   By default, custom HTTPS is disabled. If you would like to enable it click on the custom domain and set __Custom domain HTTPS__ to <span class="input">On</span>. After hitting {{ flow(steps=["Apply"]) }}, an email will be sent to the email address associated with your domain. Verify your ownership of the domain by clicking the link in the email and completing the application.
 
-  After setting up your custom domain, your files should be available at <span class="input break-word">cdn.yoursite.com/<span class="code-emphasis">container_name</span>/<span class="code-emphasis">file_name</span></span>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured.
+  After setting up your custom domain, your files should be available at <span class="input break-word pr-0">cdn.yoursite.com/\_^container\_name$\_/\_^file_name$_</span>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured.
 
 <h2 class="subtitle">Footnotes:</h2>
 

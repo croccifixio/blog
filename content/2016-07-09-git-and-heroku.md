@@ -20,8 +20,8 @@ The following guide shows how to set up both for the very first time on a UNIX-b
 Enter the following commands in the console:
 
 ```
-$$$ git config --global user.name "__Your_Name__"
-$$$ git config --global user.email "__your@email.com__"
+$$$ git config --global user.name "_^Your_Name$_"
+$$$ git config --global user.email "_^your@email.com$_"
 $$$ git config --global push.default matching
 $$$ git init
 ```
@@ -46,7 +46,7 @@ $$$ cat ~/.ssh/id_rsa.pub
 Next, we will push to GitHub:
 
 ```
-$$$ git remote add origin git@github.com:__Your_Name__/__Repository_Name__.git
+$$$ git remote add origin git@github.com:_^Your_Name$_/_^Repository_Name$_.git
 $$$ git push -u origin master
 ```
 

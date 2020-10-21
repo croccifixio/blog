@@ -47,7 +47,7 @@ seo_title = "Sharing WiFi on Linux"
   The hotspot can then be launched by running the following command, filling in the relevant fields:
 
   ```
-  $$$ sudo create_ap __wireless_interface__ __wireless_interface__ __hotspot_name__ __hotspot_password__
+  $$$ sudo create_ap _^wireless_interface$_ _^wireless_interface$_ _^hotspot_name$_ _^hotspot_password$_
   ```
 
   In my case, the filled in command looks something like this:
@@ -67,7 +67,7 @@ A simplified workflow using tmux is presented below:
 
 - Run the hotspot (consider aliasing the command below).
   ```
-  $$$ sudo create_ap __wireless_interface__ __wireless_interface__ __hotspot_name__ __hotspot_password__
+  $$$ sudo create_ap _^wireless_interface$_ _^wireless_interface$_ _^hotspot_name$_ _^hotspot_password$_
   ```
 
 - Enter your user password when prompted.
