@@ -2,8 +2,8 @@
 
   h1,
   h2 {
-    background: linear-gradient(30deg, #FDC64D, #F8E359);
-    background-color: #FDC64D;
+    background: linear-gradient(30deg, $color-gold, $color-yellow);
+    background-color: $color-gold;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -44,7 +44,7 @@
 
     &::after {
       border-image-slice: 1;
-      border-image-source: linear-gradient(30deg, #FDC64D, #F8E359);
+      border-image-source: linear-gradient(30deg, $color-gold, $color-yellow);
       border-style: solid;
       border-width: .14em;
       bottom: -.2em;
@@ -77,7 +77,7 @@
 
         &::before {
           -webkit-background-clip: text;
-          background-color: #FDC64D;
+          background-color: $color-gold;
           content: counter(sections) '. ';
           font-size: .9em;
           height: auto;
