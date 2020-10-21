@@ -57,6 +57,10 @@ p code {
   @include code-font-bold-italic();
 }
 
+p img {
+  max-width: 100%;
+}
+
 .key {
   border: .1em solid $color-dark-gray;
   padding: .05em .3em .1em;
