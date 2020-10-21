@@ -71,19 +71,17 @@ pre[class*="language-"] {
 }
 
 p,
-.pre {
+pre {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
-.pre {
+pre {
   border: 2px dashed $color-white;
   border-radius: 10px;
-  padding-right: 1rem;
-
-  pre {
-    padding-right: 0;
-  }
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto
 }
 
 pre,
