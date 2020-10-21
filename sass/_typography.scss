@@ -31,7 +31,6 @@ a {
 code,
 kbd,
 pre,
-pre[class*="language-"],
 samp {
   @include css-lock("font-size", "rem", 1.02, 1.12);
   @include code-font();
@@ -64,8 +63,7 @@ p code {
 }
 
 p code,
-pre,
-pre[class*="language-"] {
+pre {
   box-shadow: inset 0px 0px 1px rgba(0, 0, 0, .2);
   text-shadow: none;
 }
@@ -84,8 +82,7 @@ pre {
   overflow: auto
 }
 
-pre,
-pre[class*="language-"] {
+pre {
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
