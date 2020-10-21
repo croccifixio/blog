@@ -11,50 +11,51 @@ description = [
 seo_title = "Sharing WiFi on Linux"
 +++
 
-1. ## Installing create_ap
+{{ step(text="Installing create_ap") }}
 
-  To create a WiFi hotspot, we will make use of a handy script available on GitHub. It can be installed on Ubuntu by running the following commands:
+To create a WiFi hotspot, we will make use of a handy script available on GitHub. It can be installed on Ubuntu by running the following commands:
 
-  ```
-  $$$ git clone https://github.com/oblique/create_ap
-  $$$ cd create_ap
-  $$$ make install
-  ```
+```
+$$$ git clone https://github.com/oblique/create_ap
+$$$ cd create_ap
+$$$ make install
+```
 
-  For other linux distros, take a look at the [installation guide](https://github.com/oblique/create_ap#installation).
+For other linux distros, take a look at the [installation guide](https://github.com/oblique/create_ap#installation).
 
-2. ## Finding your wireless interface name
+{{ step(text="Finding your wireless interface name") }}
 
-  The next step (assuming your device is already connected to WiFi) is to find the name of your wireless interface. Run the following command in a console:
+The next step (assuming your device is already connected to WiFi) is to find the name of your wireless interface. Run the following command in a console:
 
-  ```
-  $$$ iwconfig | grep SSID | awk '{print $1}'
-  ```
+```
+$$$ iwconfig | grep SSID | awk '{print $1}'
+```
 
-  This should print out a list of network interfaces with a note beside the ones that do not have an active connection. Running the above command on my laptop gave me the following output:
+This should print out a list of network interfaces with a note beside the ones that do not have an active connection. Running the above command on my laptop gave me the following output:
 
-  ```samp
-  enp9s0    no wireless extensions.
+```samp
+enp9s0    no wireless extensions.
 
-  lo        no wireless extensions.
+lo        no wireless extensions.
 
-  wlp8s0
-  ```
+wlp8s0
+```
 
-  Since I was connected to WiFi at the time, I was able to conclude that `wlp8s0` is the name of my wireless interface.
+Since I was connected to WiFi at the time, I was able to conclude that `wlp8s0` is the name of my wireless interface.
 
-3. ## Launching the hotspot
-  The hotspot can then be launched by running the following command, filling in the relevant fields:
+{{ step(text="Launching the hotspot") }}
 
-  ```
-  $$$ sudo create_ap _^wireless_interface$_ _^wireless_interface$_ _^hotspot_name$_ _^hotspot_password$_
-  ```
+The hotspot can then be launched by running the following command, filling in the relevant fields:
 
-  In my case, the filled in command looks something like this:
+```
+$$$ sudo create_ap _^wireless_interface$_ _^wireless_interface$_ _^hotspot_name$_ _^hotspot_password$_
+```
 
-  ```
-  $$$ sudo create_ap wlp8s0 wlp8s0 MyHotspot MyPassword
-  ```
+In my case, the filled in command looks something like this:
+
+```
+$$$ sudo create_ap wlp8s0 wlp8s0 MyHotspot MyPassword
+```
 
 ## Footnotes:
 Since the script runs a process in the console, once the terminal is closed the hotspot will be closed as well. To circumvent this consider using a terminal multiplexer such as [tmux](https://github.com/tmux/tmux/wiki) or [screen](https://www.gnu.org/software/screen/), which allows you to close a terminal and still have it running in the background.
