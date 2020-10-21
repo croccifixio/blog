@@ -107,7 +107,7 @@ ul {
   padding-left: 0;
 }
 
-.break-word .break-word>* {
+.break-word, .break-word>* {
   word-break: break-word;
 }
 
