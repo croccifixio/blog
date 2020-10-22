@@ -22,19 +22,19 @@
     display: block;
     flex-shrink: 0;
     margin-bottom: 1.5rem;
+  }
 
-    .description {
-      letter-spacing: 1px;
-      line-height: 1.95;
+  .description {
+    letter-spacing: 1px;
+    line-height: 1.95;
 
-      p {
-        &:first-of-type {
-          margin-top: 0;
-        }
+    p {
+      &:first-of-type {
+        margin-top: 0;
+      }
 
-        &:last-of-type {
-          margin-bottom: 0;
-        }
+      &:last-of-type {
+        margin-bottom: 0;
       }
     }
   }
