@@ -20,6 +20,13 @@ a {
   position: relative;
   text-decoration: none;
   transition: background .1s ease;
+  &:focus {
+    background-image: none;
+    color: $color-green;
+    outline-offset: 1px;
+    outline: 2px solid $color-green;
+    padding-bottom: .1em
+  }
 }
 
 code,
@@ -80,6 +87,9 @@ pre {
   max-height: 90vh;
   overflow: auto;
   padding: 1em;
+  &:focus {
+    border: 2px solid $color-green;
+  }
 }
 
 h1,

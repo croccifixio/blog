@@ -15,6 +15,24 @@
     a {
       background-image: none;
       color: $color-white;
+      display: block;
+      padding-bottom: .1em;
+      position: relative;
+      &::before {
+        border: 3px solid $color-green;
+        height: 100%;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: calc(100% + 14px);
+      }
+      &:focus {
+        color: $color-green;
+        outline: none;
+        &::before {
+          content: '';
+        }
+      }
       &:hover {
         color: $color-gold;
       }
