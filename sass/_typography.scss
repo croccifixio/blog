@@ -11,21 +11,15 @@ strong {
 }
 
 a {
-  background-image: linear-gradient(to right, $color-white 50%, $color-black 51%);
-  background-position: 0% 95%;
+  background-image: linear-gradient(to right, $color-blue 50%, $color-blue 51%);
+  background-position: 0% 100%;
   background-repeat: repeat-x;
-  background-size: 6px 1px;
-  color: inherit;
+  background-size: 6px 2px;
+  color: $color-blue;
   padding-bottom: .25em;
   position: relative;
   text-decoration: none;
-  text-shadow: -1px -1px 0 $color-black, 1px -1px 0 $color-black, -1px 1px 0 $color-black, 1px 1px 0 $color-black;
   transition: background .1s ease;
-
-  &:hover {
-    background-image: linear-gradient(to right, $color-yellow 50%, $color-black 51%);
-    color: $color-yellow;
-  }
 }
 
 code,
@@ -55,6 +49,7 @@ p code .key {
 
 p code {
   @include code-font-bold-italic();
+  background-color: $color-perano;
 }
 
 p img {
@@ -115,14 +110,14 @@ ul {
   padding: 0 4px 4px;
 }
 
+p code,
 .input,
 .code-emphasis {
-  background: linear-gradient(30deg, $color-gold, $color-yellow);
   border-radius: 4px;
   color: $color-black;
   display: inline;
   margin: .075em;
-  padding: .05em .25em .1em;
+  padding: 0 .25em .25em;
   top: .05em;
 }
 
