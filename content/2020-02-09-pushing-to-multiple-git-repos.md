@@ -22,8 +22,8 @@ $$$ git remote add gitlab git@gitlab.com/username/my-repo.git
 Pushing to both repos would then be achieved as follows:
 
 ```
-$$$ git push origin master
-$$$ git push gitlab master
+$$$ git push origin main
+$$$ git push gitlab main
 ```
 
 Having to do this each time you wanted to push your changes could certainly become overwhelming and would likely be hard to remember to do every time. Luckily this needn't be the case.
@@ -57,14 +57,14 @@ $$$ git remote set-url --add --push origin git@github.com:username/my-repo.git
 $$$ git remote set-url --add --push origin git@gitlab.com:username/my-repo.git
 ```
 
-We then set the upstream branch of our choosing (`master` in this case).
+We then set the upstream branch of our choosing (`main` in this case).
 
 ```
-$$$ git fetch origin master
-$$$ git branch --set-upstream-to origin/master
+$$$ git fetch origin main
+$$$ git branch --set-upstream-to origin/main
 ```
 
-From now on, whenever we run `git push origin master`, git will push our changes to both remote repositories (github and gitlab). Fetching or pulling changes from origin will always refer to just the one repo (github).
+From now on, whenever we run `git push origin main`, git will push our changes to both remote repositories (github and gitlab). Fetching or pulling changes from origin will always refer to just the one repo (github).
 
 ## Bonus points
 

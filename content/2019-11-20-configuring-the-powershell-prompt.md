@@ -124,7 +124,7 @@ CurrentUser →
 
 The final adjustment we will make is adding the current git branch to the prompt. We will need a function that gets the current git branch and displays it in the prompt if the current working directory is part of a git repository.
 
-The solution to this comes [courtesy of StackOverflow](https://stackoverflow.com/a/44411205/6454553). It uses different colours to represent different branches (i.e. red for detached, yellow for master, dark green for everything else).
+The solution to this comes [courtesy of StackOverflow](https://stackoverflow.com/a/44411205/6454553). It uses different colours to represent different branches (i.e. red for detached, yellow for main, dark green for everything else).
 
 We can make the following modification to our profile:
 
@@ -137,7 +137,7 @@ function Write-GitBranchName {
         $sha = git rev-parse --short HEAD
         Write-Host "($sha)" -n -f Red
       }
-      elseif ($branch -eq "master") {
+      elseif ($branch -eq "main") {
         Write-Host "($branch)" -n -f Yellow
       }
       else {

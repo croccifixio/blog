@@ -72,7 +72,7 @@ done
 
 # STEP 2
 git commit -am "Push font files to server"
-git push -f heroku master
+git push -f heroku main
 
 # STEP 3
 git reset HEAD~1
@@ -89,14 +89,14 @@ The are some minor downsides to using this method:
 
 - The git logs on our production server will always show the "Push font files to server" as the most recent commit. In other words, production will be one commit ahead of the development.
 - As a result, we must run this script anytime we want to push changes to production.
-- The script will include unstaged changes in the commit that it generates. It is advisable to make sure that there are no pending changes in the master branch before running the script.
+- The script will include unstaged changes in the commit that it generates. It is advisable to make sure that there are no pending changes in the main branch before running the script.
 
 However, I would argue that these are inconsequential inconveniences.
 
 To reiterate, we will now use a different command to push to production. Here's the old command for reference:
 
 ```
-$$$ git push heroku master
+$$$ git push heroku main
 ```
 
 And here's the new one (assuming we save the script to the root of our project and name it "deploy"):

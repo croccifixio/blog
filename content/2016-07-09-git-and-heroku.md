@@ -47,7 +47,7 @@ Next, we will push to GitHub:
 
 ```
 $$$ git remote add origin git@github.com:_^Your_Name$_/_^Repository_Name$_.git
-$$$ git push -u origin master
+$$$ git push -u origin main
 ```
 
 ## Setting up Heroku
@@ -75,7 +75,7 @@ $$$ heroku create
 Finally, push the code to the Heroku server.
 
 ```
-$$$ git push heroku master
+$$$ git push heroku main
 ```
 
 Just as a side note, if you ever need to check the address of your Heroku server, type the following:
