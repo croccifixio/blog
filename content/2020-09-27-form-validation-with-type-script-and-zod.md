@@ -59,7 +59,7 @@ const formSchema = z.object({
 })
 ```
 
-This looks reasonably nice. `formSchema` resembles `TForm` pretty closely. `zod` even provides a convenient `email()` method that saves us the trouble of searching for an email regex to use. In our submit handler, we can check to see if `formState.values` matches the schema we defined using zod.
+This looks reasonably nice. `formSchema` resembles `TForm` pretty closely. `zod` even provides a convenient `email()` method that saves us the trouble of searching for an email regex to use. In our submit handler, we can check to see if `formState.values` matches the schema we defined using `zod`.
 
 ```tsx
 const handleSubmit: React.FormEventHandler = (event) => {
@@ -107,7 +107,7 @@ const formSchema = z.object({
 type TForm = z.infer<formSchema>
 ```
 
-We now have a single source of truth that defines what our form should look like. The zod schema is useful for validating the form data, and we still get to keep all the benefits of having defined the form's type in TypeScript.
+We now have a single source of truth that defines what our form should look like. The `zod` schema is useful for validating the form data, and we still get to keep all the benefits of having defined the form's type in TypeScript.
 
 We end up with a form component that looks as follows:
 
@@ -240,7 +240,7 @@ useEffect(() => {
 }, [formState, formState.values.favouriteNumber])
 ```
 
-Next we have a `handleErrors` function that controls which errors are displayed on the screen. The error messages shown are the defaults that are shipped with zod. Although we don't make use of it here, [zod provides a way to use custom error messages](https://github.com/vriad/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap) should we wish to go that route. This function is called in our submit handler, and conveniently allows us to clear all the errors by passing an empty object as its argument.
+Next we have a `handleErrors` function that controls which errors are displayed on the screen. The error messages shown are the defaults that are shipped with `zod`. Although we don't make use of it here, `zod` [provides a way to use custom error messages](https://github.com/vriad/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap) should we wish to go that route. This function is called in our submit handler, and conveniently allows us to clear all the errors by passing an empty object as its argument.
 
 ```tsx
 const handleErrors = (errors: { [k: string]: string[] }): void => {
@@ -257,7 +257,7 @@ const handleErrors = (errors: { [k: string]: string[] }): void => {
 }
 ```
 
-The `formState` object returned by the `useFormState` hook has its own built-in error messages. These error messages are inferred from the TypeScript type that we provide when we call `useFormState<TForm>`. This is not ideal for 2 reasons. Firstly, the wording will be different from zod's error messages. Secondly, zod has stricter checks (remember the email regex?), so for example, `formState.errors.email` will be empty even for an invalid email. To get around this issue we create a `validateField` function that makes the form state use zod's validation checks as well as its error messages. We also use two new methods provided by zod: `pick` and `safeParse`. `pick` allows us to select only the fields we are interested in based on an existing schema. `safeParse` like `parse`, compares the values passed to it against the schema. The difference being that `safeParse` does not throw when validation errors occur.
+The `formState` object returned by the `useFormState` hook has its own built-in error messages. These error messages are inferred from the TypeScript type that we provide when we call `useFormState<TForm>`. This is not ideal for 2 reasons. Firstly, the wording will be different from `zod`'s error messages. Secondly, `zod` has stricter checks (remember the email regex?), so for example, `formState.errors.email` will be empty even for an invalid email. To get around this issue we create a `validateField` function that makes the form state use `zod`'s validation checks as well as its error messages. We also use two new methods provided by `zod`: `pick` and `safeParse`. `pick` allows us to select only the fields we are interested in based on an existing schema. `safeParse` like `parse`, compares the values passed to it against the schema. The difference being that `safeParse` does not throw when validation errors occur.
 
 ```tsx
 const validateField = (field: keyof TForm) =>
@@ -271,7 +271,7 @@ const validateField = (field: keyof TForm) =>
   }
 ```
 
-`useFormState` also returns some input functions that apply the HTML `type` and `name` attributes. These input functions also accept a validate function, which overrides the default validations performed by inferring the types from TypeScript and returns the error message if any. This is where we'll plug in our `validateField` function to ensure that we are only using the validation rules and error messages provided by zod.
+`useFormState` also returns some input functions that apply the HTML `type` and `name` attributes. These input functions also accept a validate function, which overrides the default validations performed by inferring the types from TypeScript and returns the error message if any. This is where we'll plug in our `validateField` function to ensure that we are only using the validation rules and error messages provided by `zod`.
 
 ```tsx
 <input
