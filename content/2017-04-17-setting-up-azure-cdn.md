@@ -46,11 +46,11 @@ To keep your resources organised, it is a good idea to create folders for differ
 ![Creating a container in Azure](https://cdn.odongo.xyz/images/create_container1.png)
 ![Creating a container in Azure](https://cdn.odongo.xyz/images/create_container2.png)
 
-To upload a file to a container, click on the container name and then on {{ flow(steps=["Upload</span>. This allows you to select local files for upload (see [Microsoft Azure Storage Explorer][3] for managing Azure storage outside of the web portal). But before you start uploading files...
+To upload a file to a container, click on the container name and then on {{ flow(steps=["Upload"]) }}. This allows you to select local files for upload (see [Microsoft Azure Storage Explorer][3] for managing Azure storage outside of the web portal). But before you start uploading files...
 
 {{ step(text="Write cache header functions") }}
 
-Open up the function app that was created in the previous step (under the {{ flow(steps=["All&nbsp;resources</span> tab in the navigation pane it has the type __App Service__).
+Open up the function app that was created in the previous step (under the {{ flow(steps=["All&nbsp;resources"]) }} tab in the navigation pane it has the type __App Service__).
 
 Click on the {{ flow(steps=["+"]) }} sign next to {{ flow(steps=["Functions"]) }} and then on {{ flow(steps=["Custom&nbsp;function"]) }} &rarr; {{ flow(steps=["BlobTrigger-CSharp"]) }}.
 
