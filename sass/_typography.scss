@@ -25,7 +25,11 @@ a {
     color: $color-green;
     outline-offset: 1px;
     outline: 2px solid $color-green;
-    padding-bottom: .1em
+    padding-bottom: .1em;
+  }
+  &:hover {
+    background-image: none;
+    color: $color-gold;
   }
 }
 
