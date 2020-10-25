@@ -112,7 +112,7 @@ We now have a single source of truth that defines what our form should look like
 We end up with a form component that looks as follows:
 
 ```tsx
-import React, { FC, FormEventHandler, useEffect } from "react"
+import React, { FC, FormEventHandler } from "react"
 import { useFormState } from "react-use-form-state"
 import * as z from "zod"
 
@@ -126,12 +126,6 @@ type TForm = z.infer<typeof formSchema>
 
 const Form: FC = () => {
   const [formState, { number, text }] = useFormState<TForm>()
-
-  useEffect(() => {
-    const favouriteNumber = parseInt(formState.values.favouriteNumber)
-    if (!z.number().check(favouriteNumber)) return
-    formState.setField("favouriteNumber", favouriteNumber)
-  }, [formState, formState.values.favouriteNumber])
 
   const handleErrors = (errors: { [k: string]: string[] }): void => {
     const invalidFields = Object.keys(errors) as Array<keyof TForm>
@@ -149,7 +143,10 @@ const Form: FC = () => {
   const handleSubmit: FormEventHandler = event => {
     event.preventDefault()
     try {
-      formSchema.parse(formState.values)
+      formSchema.parse({
+        ...formState.values,
+        favouriteNumber: parseInt(formState.values.favouriteNumber),
+      })
       handleErrors({})
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -202,7 +199,9 @@ const Form: FC = () => {
           <input
             {...number({
               name: "favouriteNumber",
-              validate: validateField("favouriteNumber"),
+              validate: value => {
+                return validateField("favouriteNumber")(parseInt(value))
+              },
             })}
           />
         </label>
@@ -230,17 +229,7 @@ const Form: FC = () => {
 export default Form
 ```
 
-A few noteworthy amendments that were not previously discussed have been added to the form. The first is a `useEffect` hook that converts the value of the `favouriteNumber` field from a string into a number any time that value changes. This is unavoidable since even though the field has an attribute of `type="number"`, which is implied by calling `{...number({ // ... })}`, the browser will always return a string value. A string would automatically fail to meet the criteria defined in our schema, which forces us to first parse that string as a number (in this case we've made the choice to parse it as an integer).
-
-```tsx
-useEffect(() => {
-  const favouriteNumber = parseInt(formState.values.favouriteNumber)
-  if (!z.number().check(favouriteNumber)) return
-  formState.setField("favouriteNumber", favouriteNumber)
-}, [formState, formState.values.favouriteNumber])
-```
-
-Next we have a `handleErrors` function that controls which errors are displayed on the screen. The error messages shown are the defaults that are shipped with `zod`. Although we don't make use of it here, `zod` [provides a way to use custom error messages](https://github.com/vriad/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap) should we wish to go that route. This function is called in our submit handler, and conveniently allows us to clear all the errors by passing an empty object as its argument.
+A few noteworthy amendments have been added to the form that were not previously discussed. The first is that we now have a `handleErrors` function that controls which errors are displayed on the screen. The error messages shown are the defaults that are shipped with `zod`. Although we use the defaults here, `zod` [provides a way to specify custom error messages](https://github.com/vriad/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap) should we wish to go that route. The `handleErrors` function is called in our submit handler, and conveniently allows us to clear all the errors by passing an empty object as its argument.
 
 ```tsx
 const handleErrors = (errors: { [k: string]: string[] }): void => {
@@ -257,7 +246,7 @@ const handleErrors = (errors: { [k: string]: string[] }): void => {
 }
 ```
 
-The `formState` object returned by the `useFormState` hook has its own built-in error messages. These error messages are inferred from the TypeScript type that we provide when we call `useFormState<TForm>`. This is not ideal for 2 reasons. Firstly, the wording will be different from `zod`'s error messages. Secondly, `zod` has stricter checks (remember the email regex?), so for example, `formState.errors.email` will be empty even for an invalid email. To get around this issue we create a `validateField` function that makes the form state use `zod`'s validation checks as well as its error messages. We also use two new methods provided by `zod`: `pick` and `safeParse`. `pick` allows us to select only the fields we are interested in based on an existing schema. `safeParse` like `parse`, compares the values passed to it against the schema. The difference being that `safeParse` does not throw when validation errors occur.
+The `formState` object returned by the `useFormState` hook has its own built-in error messages. These error messages are inferred from the TypeScript type that we provide when we call `useFormState<TForm>`. This is not ideal for 2 reasons. Firstly, the wording will be different from `zod`'s error messages. Secondly, `zod` has stricter checks (remember the email regex?). As an example, `formState.errors.email` will be empty even for an invalid email. To get around this issue we create a `validateField` function that makes the form state use `zod`'s validation checks as well as its error messages. We also use two new methods provided by `zod`: `pick` and `safeParse`. `pick` allows us to select only the fields we are interested in based on an existing schema. `safeParse` like `parse`, compares the values passed to it against the schema. The difference being that `safeParse` does not throw when validation errors occur.
 
 ```tsx
 const validateField = (field: keyof TForm) =>
@@ -271,7 +260,7 @@ const validateField = (field: keyof TForm) =>
   }
 ```
 
-`useFormState` also returns some input functions that apply the HTML `type` and `name` attributes. These input functions also accept a validate function, which overrides the default validations performed by inferring the types from TypeScript and returns the error message if any. This is where we'll plug in our `validateField` function to ensure that we are only using the validation rules and error messages provided by `zod`.
+In addition to the `formState` object, `useFormState` also returns some input functions that apply the HTML `type` and `name` attributes. These input functions accept a validate function that returns the error message if any. This is where we'll plug in our `validateField` function to ensure that we are using the validation rules and error messages provided by `zod` instead of those provided by `react-use-form-state`.
 
 ```tsx
 <input
@@ -297,7 +286,7 @@ The above snippet is roughly equivalent to the following:
 />
 ```
 
-Last but not least, we modify the JSX so that error messages are displayed next to their corresponding field.
+Once the custom validation rules are in place, we need a way of displaying the error messages. We can lightly modify the JSX so that error messages are displayed next to their corresponding field.
 
 ```tsx
 <label>
@@ -310,6 +299,35 @@ Last but not least, we modify the JSX so that error messages are displayed next 
   />
 </label>
 <p>{formState.errors.email}</p>
+```
+
+Finally, we make sure to call `parseInt` whenever we want to check if the value of `favouriteNumber` matches the schema. This is unavoidable since even though the field has an attribute of `type="number"`, which is implied by calling `{...number({ // ... })}`, the browser will always return a string value. A string would automatically fail to meet the criteria defined in our schema: `z.number()`.
+
+```tsx
+const handleSubmit: FormEventHandler = event => {
+  /* ... */
+  formSchema.parse({
+    ...formState.values,
+    favouriteNumber: parseInt(formState.values.favouriteNumber),
+  })
+  /* ... */
+}
+
+return (
+  {/* ... */}
+  <label>
+    Favourite number
+    <input
+      {...number({
+        name: "favouriteNumber",
+        validate: value => {
+          return validateField("favouriteNumber")(parseInt(value))
+        },
+      })}
+    />
+  </label>
+  {/* ... */}
+)
 ```
 
 Here is a [running example of the form](https://zod.odongo.xyz) described in this post.
