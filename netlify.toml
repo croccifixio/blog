@@ -1,4 +1,0 @@
-[build]
-  publish = "public/"
-  command = "zola --config config.production.toml build"
-  environment = { ZOLA_VERSION = "0.12.2" }

@@ -1,0 +1,29 @@
+{
+  "author": "Emmanuel Odongo",
+  "bugs": {
+    "url": "https://github.com/Croccifixio/blog/issues"
+  },
+  "description": "This is the source code for odongo.xyz which is built on Zola.",
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "netlify-cli": "^2.67.0"
+  },
+  "homepage": "https://github.com/Croccifixio/blog#readme",
+  "husky": {
+    "hooks": {
+      "pre-push": "pnpm run build && pnpm run deploy"
+    }
+  },
+  "license": "Unlicense",
+  "name": "odongo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Croccifixio/blog.git"
+  },
+  "scripts": {
+    "build": "./bin/zola --config config.production.toml build",
+    "deploy": "netlify deploy --dir public --prod",
+    "start": "./bin/zola serve"
+  },
+  "version": "1.0.0"
+}
