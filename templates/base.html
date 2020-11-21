@@ -4,8 +4,6 @@
   <head>
     <title>{% if title -%}{{ title | trim }}{% else -%}{{ "Emmanuel Odongo" | trim }}{% endif -%}</title>
 
-    <link rel="stylesheet" href="/index.css">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if config.extra.mode == "production" %}
@@ -21,6 +19,7 @@
     {% block rss %}
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/atom.xml">
     {% endblock %}
+    <link rel="stylesheet" href="/index.css">
   </head>
 
   <body>
