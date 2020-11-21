@@ -17,6 +17,10 @@
 
     <meta name="theme-color" content="#f25c00">
     <meta name="generator" content="Zola">
+
+    {% block rss %}
+    <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/atom.xml">
+    {% endblock %}
   </head>
 
   <body>
