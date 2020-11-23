@@ -16,7 +16,7 @@ a {
   background-repeat: repeat-x;
   background-size: 6px 2px;
   color: $color-blue;
-  padding-bottom: .25em;
+  padding-bottom: .45em;
   position: relative;
   text-decoration: none;
   transition: background .1s ease;
@@ -25,7 +25,8 @@ a {
     color: $color-green;
     outline-offset: 1px;
     outline: 2px solid $color-green;
-    padding-bottom: .1em;
+    padding-bottom: .25em;
+    padding-top: .05em;
   }
   &:hover {
     background-image: none;
@@ -50,7 +51,7 @@ p,
 li {
   @include css-lock("font-size", "rem", 1.05, 1.15);
   letter-spacing: 1px;
-  line-height: 1.95;
+  line-height: 2;
 }
 
 p code .key {

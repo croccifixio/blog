@@ -229,7 +229,7 @@ const Form: FC = () => {
 export default Form
 ```
 
-A few noteworthy amendments have been added to the form that were not previously discussed. The first is that we now have a `handleErrors` function that controls which errors are displayed on the screen. The error messages shown are the defaults that are shipped with `zod`. Although we use the defaults here, `zod` [provides a way to specify custom error messages](https://github.com/vriad/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap) should we wish to go that route. The `handleErrors` function is called in our submit handler, and conveniently allows us to clear all the errors by passing an empty object as its argument.
+A few noteworthy amendments have been added to the form that were not previously discussed. The first is that we now have a `handleErrors` function that controls which errors are displayed on the screen. The error messages shown are the defaults that are shipped with `zod`. Although we use the defaults here, [`zod` provides a way to specify custom error messages](https://github.com/vriad/zod/blob/master/ERROR_HANDLING.md#customizing-errors-with-zoderrormap) should we wish to go that route. The `handleErrors` function is called in our submit handler, and conveniently allows us to clear all the errors by passing an empty object as its argument.
 
 ```tsx
 const handleErrors = (errors: { [k: string]: string[] }): void => {
