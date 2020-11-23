@@ -95,6 +95,14 @@ pre {
   &:focus {
     border: 2px solid $color-green;
   }
+  [style*="text-decoration:underline"] {
+    background-image: linear-gradient(to right, currentColor 50%, currentColor 51%);
+    background-position: 0% 100%;
+    background-repeat: repeat-x;
+    background-size: 6px 2px;
+    padding-bottom: 0.25em;
+    text-decoration: none !important;
+  }
 }
 
 h1,
