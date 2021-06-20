@@ -104,7 +104,7 @@ const formSchema = z.object({
   favouriteNumber: z.number(),
   favouriteColour: z.enum(["blue", "not blue"]),
 })
-type TForm = z.infer<formSchema>
+type TForm = z.infer<typeof formSchema>
 ```
 
 We now have a single source of truth that defines what our form should look like. The `zod` schema is useful for validating the form data, and we still get to keep all the benefits of having defined the form's type in TypeScript.
