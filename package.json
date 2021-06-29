@@ -5,15 +5,10 @@
   },
   "description": "This is the source code for odongo.xyz which is built on Zola.",
   "devDependencies": {
-    "husky": "^4.3.6",
-    "netlify-cli": "^2.69.11"
+    "husky": "^6.0.0",
+    "netlify-cli": "^3.39.4"
   },
   "homepage": "https://github.com/Croccifixio/blog#readme",
-  "husky": {
-    "hooks": {
-      "pre-push": "pnpm run build && pnpm run deploy"
-    }
-  },
   "license": "Unlicense",
   "name": "odongo",
   "repository": {
@@ -23,7 +18,8 @@
   "scripts": {
     "build": "./bin/zola --config config.production.toml build",
     "deploy": "netlify deploy --dir public --prod",
-    "start": "./bin/zola serve"
+    "start": "./bin/zola serve",
+    "prepare": "husky install"
   },
   "version": "1.0.0"
 }
