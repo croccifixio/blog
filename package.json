@@ -6,7 +6,9 @@
   "description": "This is the source code for odongo.xyz which is built on Zola.",
   "devDependencies": {
     "husky": "^6.0.0",
-    "netlify-cli": "^3.39.4"
+    "netlify-cli": "^3.39.4",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.0.0-beta.3.1"
   },
   "homepage": "https://github.com/Croccifixio/blog#readme",
   "license": "Unlicense",
@@ -16,9 +18,13 @@
     "url": "git+https://github.com/Croccifixio/blog.git"
   },
   "scripts": {
-    "build": "./bin/zola --config config.production.toml build",
+    "build": "run-s build:parcel build:zola",
+    "build:parcel": "npx parcel build js/index.js --dist-dir static",
+    "build:zola": "./bin/zola --config config.production.toml build",
     "deploy": "netlify deploy --dir public --prod",
-    "start": "./bin/zola serve",
+    "start": "run-p start:*",
+    "start:parcel": "npx parcel watch js/index.js --dist-dir static",
+    "start:zola": "./bin/zola serve",
     "prepare": "husky install"
   },
   "version": "1.0.0"
