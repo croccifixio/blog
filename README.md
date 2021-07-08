@@ -14,7 +14,7 @@ npm install --global pnpm
 
 ---
 
-It also uses a custom build of `zola` at version `0.12.2`. The only customisation that has been made is the addition of a custom theme ([Blackboard Pro](https://github.com/Croccifixio/blackboard-pro)) for syntax highlighting. The executable can be found in the `bin` directory.
+It also uses a custom build of `zola` at version `0.14.0`. The only customisation that has been made is the addition of a custom theme ([Blackboard Pro](https://github.com/Croccifixio/blackboard-pro)) for syntax highlighting. The executable can be found in the `bin` directory.
 
 ## Running the Project
 
