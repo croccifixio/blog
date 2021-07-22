@@ -23,7 +23,7 @@ Assuming you have created an Azure account, sign in to your [Azure portal][1].
 
 On the navigation pane on the left of the portal, click through the following options: {{ flow(steps=["New", "Web&nbsp;+&nbsp;Mobile", "CDN"]) }}. This will open up a pane for setting up your CDN profile.
 
-![Azure Navigation pane](https://cdn.odongo.xyz/images/navigation_pane.png)
+{{ image(alt="Azure Navigation pane", path="./navigation_pane.jpg") }}
 
 Give your CDN profile a __Name__. Create a new __Resource Group__ and provide a name for it. The tooltip next to the __Resource group location__ explains that the region you select has no impact on the availability of your resources on the network, so pick whichever you prefer.
 
@@ -31,7 +31,7 @@ The __Pricing tier__ will depend on what your requirements are (see the [feature
 
 Check the __Pin to dashboard__ checkbox to make it easy to find our CDN profile later. Click on {{ flow(steps=["Create"]) }} to create the CDN profile.
 
-![Creating a CDN profile in Azure](https://cdn.odongo.xyz/images/create_cdn_profile.png)
+{{ image(alt="Creating a CDN profile in Azure", path="./create_cdn_profile.jpg") }}
 
 {{ step(text="Implement Azure Storage") }}
 
@@ -39,12 +39,12 @@ Create a function app by navigating to the setup pane from the navigation pane: 
 
 You may use an existing resource group. You also have the choice to rename the storage account by clicking on {{ flow(steps=["Storage&nbsp;account", "Create&nbsp;New"]) }}.
 
-![Creating a storage account in Azure](https://cdn.odongo.xyz/images/create_function_app.png)
+{{ image(alt="Creating a storage account in Azure", path="./create_function_app.jpg") }}
 
 To keep your resources organised, it is a good idea to create folders for different resources, e.g., a <span class="input">fonts</span> folder for web fonts or an <span class="input">images</span> folder for images. Click on {{ flow(steps=["All&nbsp;resources"]) }} on the navigation pane and open up the storage account that you just created. Click on {{ flow(steps=["Blobs", "+&nbsp;Container"]) }} and after naming the container, set the __Access type__ to <span class="input">Blob</span>.
 
-![Creating a container in Azure](https://cdn.odongo.xyz/images/create_container1.png)
-![Creating a container in Azure](https://cdn.odongo.xyz/images/create_container2.png)
+{{ image(alt="Creating a container in Azure", path="./create_container1.jpg") }}
+{{ image(alt="Creating a container in Azure", path="./create_container2.jpg") }}
 
 To upload a file to a container, click on the container name and then on {{ flow(steps=["Upload"]) }}. This allows you to select local files for upload (see [Microsoft Azure Storage Explorer][3] for managing Azure storage outside of the web portal). But before you start uploading files...
 
@@ -54,7 +54,7 @@ Open up the function app that was created in the previous step (under the {{ flo
 
 Click on the {{ flow(steps=["+"]) }} sign next to {{ flow(steps=["Functions"]) }} and then on {{ flow(steps=["Custom&nbsp;function"]) }} &rarr; {{ flow(steps=["BlobTrigger-CSharp"]) }}.
 
-![Creating a function in Azure](https://cdn.odongo.xyz/images/create_function.png)
+{{ image(alt="Creating a function in Azure", path="./create_function.jpg") }}
 
 Name your function. For the __Path__, enter the container name followed by <span class="input">/{name}</span> (if you have a container called <span class="input">images</span> in your storage account, then the path should be <span class="input">images/{name}</span>).
 
@@ -84,7 +84,7 @@ Having the max-age equal to <span class="input">8640000</span> seconds will set 
 
 From now on, whenever you upload a file to the container that the function monitors, the function will trigger, setting the time-to-live of the uploaded file. The function logs can be viewed by clicking on {{ flow(steps=["Logs"]) }} or the {{ flow(steps=["^"]) }} next to it.
 
-![A function in the Azure function app](https://cdn.odongo.xyz/images/function.png)
+{{ image(alt="A function in the Azure function app", path="./function.jpg") }}
 
 {{ step(text="Set up a CDN endpoint") }}
 
@@ -94,7 +94,7 @@ Choose a __Name__ for your endpoint. Set the __Origin type__ to <span class="inp
 
 The __Protocols__ that you decide to permit will depend on your requirements. You may also leave them as they are and change them later.
 
-![Creating an endpoint in Azure](https://cdn.odongo.xyz/images/create_endpoint.png)
+{{ image(alt="Creating an endpoint in Azure", path="./create_endpoint.jpg") }}
 
 It may take up to 90 minutes for the endpoint to start functioning as intended. Once it is ready, files in your storage account will be accessible at <span class="input break-word pr-0">https://\_^endpoint_name$\_.azureedge.net/\_^container_name$\_/\_^file_name$\_</span>.
 
@@ -103,7 +103,8 @@ It may take up to 90 minutes for the endpoint to start functioning as intended. 
 Open the endpoint and click on {{ flow(steps=["+&nbsp;Custom&nbsp;domain"]) }}.
 
 Create a CNAME record for <span class="input">cdn.yoursite.com</span> that points to the value indicated in the __Endpoint hostname__ field. Once the DNS record propagates (this can be checked using [DNS Checker][4]), enter <span class="input">cdn.yoursite.com</span> into the __Custom hostname__ field and click {{ flow(steps=["Add"]) }}.
-![Adding a custom domain in Azure](https://cdn.odongo.xyz/images/custom_domain.png)
+
+{{ image(alt="Adding a custom domain in Azure", path="./custom_domain.jpg") }}
 
 By default, custom HTTPS is disabled. If you would like to enable it click on the custom domain and set __Custom domain HTTPS__ to <span class="input">On</span>. After hitting {{ flow(steps=["Apply"]) }}, an email will be sent to the email address associated with your domain. Verify your ownership of the domain by clicking the link in the email and completing the application.
 

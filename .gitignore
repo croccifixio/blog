@@ -2,4 +2,5 @@
 .parcel-cache
 node_modules
 public
-static
+static/*
+!static/images

@@ -82,7 +82,7 @@ Conversely, for a viewport width just below 100px, we expect a font size that is
 
 <div id="disjointed-css-lock">
 
-![Disjointed CSS lock](https://cdn.odongo.xyz/images/lock-error.gif)
+![Disjointed CSS lock](./lock-error.gif)
 
 </div>
 
@@ -102,7 +102,7 @@ h2 {
 }
 ```
 
-![CSS lock](https://cdn.odongo.xyz/images/lock-fixed.gif)
+![CSS lock](./lock-fixed.gif)
 
 Alternatively we could replace the `px` based values with their equivalent `rem` based values.
 

@@ -73,3 +73,19 @@ The shortcodes used in this project are listed below:
   ```html
   <kbd><kbd class='key'>Esc</kbd>&nbsp;&rarr;&nbsp<kbd class='key'>W</kbd>&nbsp;&rarr;&nbsp<kbd class='key'>Q</kbd>&nbsp;&rarr;&nbsp<kbd class='key'>Enter</kbd></kbd>
   ```
+
+- __`image`__
+
+  Generates responsive image markup. For the best results, pass in a .jpg or .png that is scaled to 2x.
+
+  The image path can be absolute (`static/images/potato.png`):
+
+  ```
+  {{ image(alt="A potato", path="images/potato.png") }}
+  ```
+
+  The image path can be relative (`content/post-1/tomato.png`):
+
+  ```
+  {{ image(alt="A tomato", path="./tomato.png") }}
+  ```
