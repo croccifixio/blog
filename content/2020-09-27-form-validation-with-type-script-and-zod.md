@@ -330,4 +330,4 @@ return (
 )
 ```
 
-Here is a [running example of the form](https://zod.odongo.xyz) described in this post.
+Here is a [running example of the form](https://zod.croccifix.io) described in this post.

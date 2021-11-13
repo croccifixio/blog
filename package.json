@@ -3,7 +3,7 @@
   "bugs": {
     "url": "https://github.com/Croccifixio/blog/issues"
   },
-  "description": "This is the source code for odongo.xyz which is built on Zola.",
+  "description": "This is the source code for croccifix.io which is built on Zola.",
   "devDependencies": {
     "husky": "^6.0.0",
     "netlify-cli": "^3.39.4",

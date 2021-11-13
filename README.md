@@ -1,6 +1,6 @@
-# Odongo.xyz
+# croccifix.io
 
-This is the source code for [odongo.xyz][1] which is built on [Zola][2].
+This is the source code for [croccifix.io][1] which is built on [Zola][2].
 
 Feel free to send a [pull request][3] or open an [issue][4] if you notice any typos, wonky rendering issues, etc.
 
@@ -78,7 +78,7 @@ pnpm run deploy
 
 Copyright &copy; 2016-2020 Emmanuel Odongo. See [LICENSE][5] for details.
 
-[1]: https://odongo.xyz
+[1]: https://croccifix.io
 [2]: https://www.getzola.org/
 [3]: https://github.com/Croccifixio/blog/pull/new/main
 [4]: https://github.com/Croccifixio/blog/issues/new

@@ -108,4 +108,4 @@ $$$ sh deploy
 The method described in this post was used on this very site to keep the web font files out of the [public GitHub repository][1]. As of 14<sup>th</sup> March 2017, the font files are now hosted on a CDN. This blog post describes [how to set up Azure CDN][2].
 
 [1]: https://github.com/Croccifixio/blog
-[2]: https://odongo.xyz/blog/2017/setting-up-azure-cdn.html
+[2]: /blog/2017/setting-up-azure-cdn.html

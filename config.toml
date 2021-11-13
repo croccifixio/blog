@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://odongo.xyz"
+base_url = "https://croccifix.io"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
