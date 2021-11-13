@@ -6,10 +6,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% if config.extra.mode == "production" %}
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; font-src https://cdn.odongo.xyz; img-src 'self' https://cdn.odongo.xyz; style-src 'self' 'unsafe-inline'; style-src-elem 'self'">
-    {% endif %}
-
     <meta name="author" content="Emmanuel Odongo">
     <meta name="description" content="{% if page.extra.description %}{{ page.extra.description[0] }}{% else %}Emmanuel Odongo is a web developer who writes about web design and front-end development.{% endif %}">
 
