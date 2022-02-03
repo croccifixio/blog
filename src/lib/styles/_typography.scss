@@ -1,0 +1,161 @@
+html,
+body {
+	@include body-font();
+	font-family: 'Cartograph CF', $sans-serif-fallback;
+	line-height: 1.7;
+}
+
+b,
+strong {
+	@include body-font-bold-italic();
+}
+
+a {
+	background-image: linear-gradient(to right, $color-blue 50%, $color-blue 51%);
+	background-position: 0% 100%;
+	background-repeat: repeat-x;
+	background-size: 6px 2px;
+	color: $color-blue;
+	padding-bottom: 0.45em;
+	position: relative;
+	text-decoration: none;
+	transition: background 0.1s ease;
+	&:focus {
+		background-image: none;
+		color: $color-green;
+		outline-offset: 1px;
+		outline: 2px solid $color-green;
+		padding-bottom: 0.25em;
+		padding-top: 0.05em;
+	}
+	&:hover {
+		background-image: none;
+		color: $color-gold;
+	}
+}
+
+code,
+kbd,
+pre,
+samp {
+	@include css-lock('font-size', 'rem', 1.02, 1.12);
+	@include code-font();
+	font-family: 'Cartograph CF', monospace;
+}
+
+kbd:not(.key) {
+	@include body-font();
+}
+
+p,
+li {
+	@include css-lock('font-size', 'rem', 1.05, 1.15);
+	letter-spacing: 1px;
+	line-height: 2;
+}
+
+p code .key {
+	border-radius: 4px;
+	padding: 0.1em 0.3em 0.15em;
+}
+
+p code {
+	@include code-font-bold-italic();
+	background-color: $color-perano;
+}
+
+p img {
+	max-width: 100%;
+}
+
+.key {
+	border: 0.1em solid $color-dark-gray;
+	padding: 0.05em 0.3em 0.1em;
+}
+
+p code,
+pre {
+	box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2);
+	text-shadow: none;
+}
+
+p {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+pre,
+.card {
+	border-radius: 10px;
+	border: 2px dashed $color-white;
+	margin: 0.5em 0;
+	max-height: 90vh;
+	overflow: auto;
+	padding: 1em;
+}
+
+pre {
+	&:focus {
+		border: 2px solid $color-green;
+	}
+	[style*='text-decoration:underline'] {
+		background-image: linear-gradient(to right, currentColor 50%, currentColor 51%);
+		background-position: 0% 100%;
+		background-repeat: repeat-x;
+		background-size: 6px 2px;
+		padding-bottom: 0.25em;
+		text-decoration: none !important;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include body-font-bold-italic-fancy();
+}
+
+ol,
+ul {
+	padding-left: 0;
+}
+
+.break-word,
+.break-word > * {
+	word-break: break-word;
+}
+
+.code-prompt {
+	user-select: none;
+}
+
+.no-wrap .no-wrap > * {
+	white-space: nowrap;
+}
+
+.ui-flow {
+	border: 2px solid $color-white;
+	border-radius: 4px;
+	padding: 0 4px 4px;
+}
+
+p code,
+.input,
+.code-emphasis {
+	border-radius: 4px;
+	color: $color-black;
+	display: inline;
+	margin: 0.075em;
+	padding: 0 0.25em 0.25em;
+	top: 0.05em;
+}
+
+.input {
+	background-color: $color-perano;
+}
+
+.code-emphasis {
+	background: linear-gradient(30deg, $color-gold, $color-yellow);
+}
