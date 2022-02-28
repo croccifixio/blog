@@ -5,15 +5,17 @@ import {
 	last,
 	map,
 	pipe,
+	pluck,
 	reverse,
 	sortBy,
 	split,
+	peek,
 	take,
 	toArray,
 	toAsync,
 } from '@fxts/core';
 
-export const getPosts = () =>
+const getPosts = () =>
 	pipe(
 		import.meta.globEager(`/src/content/blog/**/*.svx`),
 		entries,
@@ -28,8 +30,18 @@ export const getPosts = () =>
 		toArray,
 	);
 
-export const getPost = async (slug) =>
+const getPost = async (slug) =>
 	pipe(
 		getPosts(),
 		find((post) => slug === post.slug),
 	);
+
+const getLatestUpdate = () =>
+	pipe(
+		getPosts(),
+		sortBy((post) => post.updatedAt ?? post.publishedAt),
+		last,
+		(post) => post.updatedAt ?? post.publishedAt,
+	);
+
+export { getLatestUpdate, getPost, getPosts };

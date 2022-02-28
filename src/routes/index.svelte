@@ -6,16 +6,14 @@
 
 <script>
 	import BlogRoll from '$lib/components/BlogRoll.svelte';
+	import { SITE_DESCRIPTION, SITE_NAME } from '$lib/info';
 
 	export let posts = [];
 </script>
 
 <svelte:head>
-	<title>Croccifixio</title>
-	<meta
-		name="description"
-		content="Emmanuel Odongo is a web developer who writes about web design and development."
-	/>
+	<title>{SITE_NAME}</title>
+	<meta name="description" content={SITE_DESCRIPTION} />
 </svelte:head>
 
 <BlogRoll {posts} />
