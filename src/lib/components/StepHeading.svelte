@@ -8,5 +8,5 @@
 
 <h2 class="numbered-heading" id={slugify(text ?? '')}>
 	<span />
-	{text}
+	<span>{text}</span>
 </h2>

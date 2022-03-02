@@ -18,6 +18,7 @@
 			display: block;
 			padding-bottom: 0.1em;
 			position: relative;
+
 			&::before {
 				border: 3px solid $color-green;
 				height: 100%;
@@ -26,13 +27,16 @@
 				transform: translateX(-50%);
 				width: calc(100% + 14px);
 			}
+
 			&:focus {
 				color: $color-green;
 				outline: none;
+
 				&::before {
 					content: '';
 				}
 			}
+
 			&:hover {
 				color: $color-gold;
 			}

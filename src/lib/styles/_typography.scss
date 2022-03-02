@@ -20,6 +20,7 @@ a {
 	position: relative;
 	text-decoration: none;
 	transition: background 0.1s ease;
+
 	&:focus {
 		background-image: none;
 		color: $color-green;
@@ -28,6 +29,7 @@ a {
 		padding-bottom: 0.25em;
 		padding-top: 0.05em;
 	}
+
 	&:hover {
 		background-image: none;
 		color: $color-gold;
@@ -79,16 +81,15 @@ pre {
 	text-shadow: none;
 }
 
-p {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+p,
+pre {
+	margin-block: 2rem;
 }
 
 pre,
 .card {
 	border-radius: 10px;
 	border: 2px dashed $color-white;
-	margin: 0.5em 0;
 	max-height: 90vh;
 	overflow: auto;
 	padding: 1em;
@@ -98,6 +99,7 @@ pre {
 	&:focus {
 		border: 2px solid $color-green;
 	}
+
 	[style*='text-decoration:underline'] {
 		background-image: linear-gradient(to right, currentColor 50%, currentColor 51%);
 		background-position: 0% 100%;
