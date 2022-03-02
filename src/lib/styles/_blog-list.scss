@@ -1,86 +1,86 @@
 .blog-list {
-	list-style-type: none;
+  list-style-type: none;
 
-	li {
-		+ li {
-			margin-top: 4.5rem;
-		}
-	}
+  li {
+    +li {
+      margin-top: 4.5rem;
+    }
+  }
 
-	h2 {
-		@include css-lock('font-size', 'rem', 1.8, 2);
-		line-height: 1.4;
-		margin-bottom: 1.55rem;
+  h2 {
+    @include css-lock('font-size', 'rem', 1.8, 2);
+    line-height: 1.4;
+    margin-bottom: 1.55rem;
 
-		a {
-			background-image: none;
-			color: $color-white;
-			display: block;
-			padding-bottom: 0.1em;
-			position: relative;
+    a {
+      background-image: none;
+      color: var(--c-text);
+      display: block;
+      padding-bottom: 0.1em;
+      position: relative;
 
-			&::before {
-				border: 3px solid $color-green;
-				height: 100%;
-				left: 50%;
-				position: absolute;
-				transform: translateX(-50%);
-				width: calc(100% + 14px);
-			}
+      &::before {
+        border: 3px solid var(--c-active);
+        height: 100%;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: calc(100% + 14px);
+      }
 
-			&:focus {
-				color: $color-green;
-				outline: none;
+      &:focus-visible {
+        color: var(--c-active);
+        outline: none;
 
-				&::before {
-					content: '';
-				}
-			}
+        &::before {
+          content: '';
+        }
+      }
 
-			&:hover {
-				color: $color-gold;
-			}
-		}
-	}
+      &:hover {
+        color: var(--c-link);
+      }
+    }
+  }
 
-	time {
-		@include css-lock('font-size', 'rem', 1, 1.1);
-		display: block;
-		flex-shrink: 0;
-		margin-bottom: 1.5rem;
-	}
+  time {
+    @include css-lock('font-size', 'rem', 1, 1.1);
+    display: block;
+    flex-shrink: 0;
+    margin-bottom: 1.5rem;
+  }
 
-	.description {
-		letter-spacing: 1px;
-		line-height: 1.95;
+  .description {
+    letter-spacing: 1px;
+    line-height: 1.95;
 
-		p {
-			&:first-of-type {
-				margin-top: 0;
-			}
+    p {
+      &:first-of-type {
+        margin-top: 0;
+      }
 
-			&:last-of-type {
-				margin-bottom: 0;
-			}
-		}
-	}
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
 
-	@media (min-width: 600px) {
-		.header {
-			align-items: flex-start;
-			display: flex;
-			justify-content: space-between;
-		}
+  @media (min-width: 600px) {
+    .header {
+      align-items: flex-start;
+      display: flex;
+      justify-content: space-between;
+    }
 
-		h2 {
-			margin-bottom: 1.2rem;
-			margin-top: 0;
-		}
+    h2 {
+      margin-bottom: 1.2rem;
+      margin-top: 0;
+    }
 
-		time {
-			margin-left: 3rem;
-			margin-top: 0.6rem;
-			text-align: right;
-		}
-	}
+    time {
+      margin-left: 3rem;
+      margin-top: 0.6rem;
+      text-align: right;
+    }
+  }
 }

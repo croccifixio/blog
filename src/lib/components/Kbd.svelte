@@ -8,10 +8,7 @@
 {:else}
 	<kbd>
 		{#each keys as key, index}
-			{key}
-			{#if index + 1 < keys.length}
-				&nbsp;{separator}&nbsp;
-			{/if}
+			<kbd class="key">{key}</kbd>{#if index + 1 < keys.length}&nbsp;{separator}&nbsp;{/if}
 		{/each}
 	</kbd>
 {/if}
