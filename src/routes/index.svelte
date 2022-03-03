@@ -5,7 +5,7 @@
 </script>
 
 <script>
-	import BlogRoll from '$lib/components/BlogRoll.svelte';
+	import BlogList from '$lib/components/BlogList.svelte';
 	import { SITE_DESCRIPTION, SITE_NAME } from '$lib/info';
 
 	export let posts = [];
@@ -16,4 +16,4 @@
 	<meta name="description" content={SITE_DESCRIPTION} />
 </svelte:head>
 
-<BlogRoll {posts} />
+<BlogList {posts} />
