@@ -92,20 +92,9 @@ pre {
   max-height: 90vh;
   overflow: auto;
   padding: 1em;
-}
 
-pre {
   &:focus-visible {
     border: 2px solid var(--c-active);
-  }
-
-  [style*='text-decoration:underline'] {
-    background-image: linear-gradient(to right, currentColor 50%, currentColor 51%);
-    background-position: 0% 100%;
-    background-repeat: repeat-x;
-    background-size: 6px 2px;
-    padding-bottom: 0.25em;
-    text-decoration: none !important;
   }
 }
 
