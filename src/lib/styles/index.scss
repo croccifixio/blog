@@ -8,27 +8,26 @@
 @import 'config/_fonts';
 @import '_utils';
 @import '_typography';
-@import '_blog-list';
 @import '_blog-post';
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-	margin: 0;
-	min-height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  min-height: 100%;
 }
 
 main {
-	margin: 0 auto;
-	max-width: 80ch;
-	padding: 1rem;
+  margin: 0 auto;
+  max-width: 80ch;
+  padding: 1.25rem;
 }
 
 footer {
-	padding: 2rem 1rem 4rem;
-	text-align: center;
+  padding: 2rem 1rem 4rem;
+  text-align: center;
 }

@@ -2,7 +2,7 @@
 	export let deps: Record<string, string>;
 </script>
 
-<ul class="card">
+<ul>
 	{#each Object.entries(deps) as [name, version]}
 		<li>{name}@{version}</li>
 	{/each}
