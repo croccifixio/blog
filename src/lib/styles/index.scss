@@ -1,5 +1,3 @@
-/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
-
 @import 'vendor/normalize';
 @import 'vendor/blackboard-pro.css';
 @import 'config/_colors';
@@ -8,7 +6,6 @@
 @import 'config/_fonts';
 @import '_utils';
 @import '_typography';
-@import '_blog-post';
 
 html {
   height: 100%;

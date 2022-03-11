@@ -15,7 +15,11 @@ const config = {
 		}),
 		preprocess({
 			scss: {
-				prependData: `@import './src/lib/styles/config/_fonts.scss';`,
+				prependData: `
+          @import './src/lib/styles/config/_colors';
+          @import './src/lib/styles/config/_fonts';
+          @import './src/lib/styles/config/mixins';
+        `,
 			},
 		}),
 	],
