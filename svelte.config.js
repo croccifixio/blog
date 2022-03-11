@@ -13,7 +13,11 @@ const config = {
 			highlight: { highlighter },
 			smartypants: false,
 		}),
-		preprocess(),
+		preprocess({
+			scss: {
+				prependData: `@import './src/lib/styles/config/_fonts.scss';`,
+			},
+		}),
 	],
 	kit: {
 		adapter: adapter({ assets: 'static', precompress: true }),
