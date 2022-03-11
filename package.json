@@ -39,5 +39,8 @@
 		"preview": "svelte-kit preview"
 	},
 	"type": "module",
-	"version": "0.0.1"
+	"version": "0.0.1",
+	"dependencies": {
+		"the-new-css-reset": "^1.5.1"
+	}
 }

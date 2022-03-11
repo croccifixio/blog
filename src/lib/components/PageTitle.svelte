@@ -10,7 +10,7 @@
 		font-size: 2.4rem;
 		hyphens: auto;
 		line-height: 1;
-		margin-top: 0;
+		margin-block-end: 1.5rem;
 		text-transform: uppercase;
 	}
 </style>

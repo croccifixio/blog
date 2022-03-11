@@ -18,7 +18,7 @@
 		font-size: 1.25rem;
 		line-height: 1.4;
 		margin-block-start: 0;
-		margin-top: 0;
+		margin-block-end: 0.75rem;
 	}
 
 	a {
@@ -26,8 +26,7 @@
 		border-radius: 10px;
 		color: currentColor;
 		display: block;
-		margin-inline: -0.25rem 0.25rem;
-		padding-block: 11px 5px;
+		padding-block: 11px;
 		padding-inline: 12px;
 		position: relative;
 		&::before {

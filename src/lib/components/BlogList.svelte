@@ -26,7 +26,7 @@
 	ul {
 		display: flex;
 		flex-direction: column;
-		gap: 2em;
+		gap: 1.5em;
 		list-style: none;
 	}
 </style>
