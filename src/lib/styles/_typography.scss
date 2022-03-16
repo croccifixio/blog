@@ -92,6 +92,7 @@ pre {
   max-height: 90vh;
   overflow: auto;
   padding: 1em;
+  white-space: pre;
 
   &:focus-visible {
     border: 2px solid var(--c-active);
@@ -147,4 +148,8 @@ p code,
 
 .code-emphasis {
   background: linear-gradient(30deg, $color-gold, $color-yellow);
+}
+
+.grvsc-source {
+  padding-inline: 0 !important;
 }
