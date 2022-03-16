@@ -122,10 +122,6 @@ ul {
   user-select: none;
 }
 
-.no-wrap .no-wrap>* {
-  white-space: nowrap;
-}
-
 .ui-flow {
   border: 2px solid var(--c-text);
   border-radius: 4px;
@@ -133,8 +129,7 @@ ul {
 }
 
 p code,
-.input,
-.code-emphasis {
+.input {
   border-radius: 4px;
   display: inline;
   margin: 0.075em;
@@ -144,10 +139,6 @@ p code,
 
 .input {
   background-color: var(--c-button-bg);
-}
-
-.code-emphasis {
-  background: linear-gradient(30deg, $color-gold, $color-yellow);
 }
 
 .grvsc-source {
