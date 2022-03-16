@@ -119,6 +119,12 @@ ul {
   word-break: break-word;
 }
 
+.code-emphasis {
+  @include body-font-bold-italic-fancy();
+  background-color: var((--c-highlight-bg));
+  color: var(--c-highlight);
+}
+
 .code-prompt {
   user-select: none;
 }

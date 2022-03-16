@@ -24,7 +24,11 @@ const escape = (str) =>
 		.replace(/[{}`]/g, (c) => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
 		.replace(/\\([trn])/g, '&#92;$1');
 
-const applyCodePrompt = (str) => str.replace(/\$\$\$ /g, '<span class="code-prompt">$ </span>');
+const emphasiseCode = (str) =>
+	str.replace(/(_\^)(.+?)(\$_)/g, '<span class="code-emphasis">&lt;$2&gt;</span>');
+
+const applyCodePrompt = (str) =>
+	str.replace(/\${2}(\S{1,}\s)/g, '<span class="code-prompt">$1</span>');
 
 const highlight = async (code, language) => {
 	const vfile = await processor.process(`
@@ -37,7 +41,7 @@ ${code}
 		groups: { formattedCode, styles },
 	} = vfile.value.match(/(?<styles><style.+<\/style>)(?<formattedCode>.+)/s, '');
 
-	return `{@html \`${styles}${pipe(formattedCode, escape, applyCodePrompt)}\`}`;
+	return `{@html \`${styles}${pipe(formattedCode, escape, applyCodePrompt, emphasiseCode)}\`}`;
 };
 
 export { highlight };

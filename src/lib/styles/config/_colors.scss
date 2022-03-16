@@ -5,6 +5,8 @@
   --c-link: hsl(41, 98%, 65%);
   --c-active: hsl(105, 63%, 56%);
   --c-button-bg: hsl(233, 82%, 83%);
+  --c-highlight: hsl(0, 0%, 40%);
+  --c-highlight-bg: hsl(233, 82%, 83%);
 }
 
 @media (prefers-color-scheme: light) {
@@ -14,6 +16,8 @@
     --c-link: hsl(221, 98%, 65%);
     --c-active: hsl(255, 63%, 56%);
     --c-button-bg: hsl(233, 82%, 83%);
+    --c-highlight: hsl(0, 0%, 40%);
+    --c-highlight-bg: hsl(233, 82%, 83%);
   }
 }
 
@@ -36,6 +40,9 @@
     --c-link: LinkText;
     --c-active: ActiveText;
     --c-button-bg: Highlight;
+    --c-highlight: HighlightText;
+    --c-highlight-bg: Highlight;
+
   }
 }
 
