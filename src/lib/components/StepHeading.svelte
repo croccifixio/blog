@@ -6,7 +6,21 @@
 	}
 </script>
 
-<h2 class="numbered-heading" id={slugify(text ?? '')}>
-	<span />
-	<span>{text}</span>
+<h2 id={slugify(text ?? '')}>
+	{text}
 </h2>
+
+<style lang="scss">
+	h2 {
+		counter-increment: sections;
+		position: relative;
+
+		&::before {
+			content: counter(sections) '. ';
+			font-size: 0.9em;
+			padding-top: 0.1em;
+			position: absolute;
+			right: 100%;
+		}
+	}
+</style>

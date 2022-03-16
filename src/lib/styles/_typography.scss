@@ -81,8 +81,9 @@ pre {
   text-shadow: none;
 }
 
-p,
-pre {
+p+p,
+p~pre,
+pre+p {
   margin-block: 2rem;
 }
 
