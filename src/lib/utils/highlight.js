@@ -1,4 +1,5 @@
 import { unified } from 'unified';
+import { pipe } from '@fxts/core';
 import remarkParse from 'remark-parse';
 import remarkVscode from 'gatsby-remark-vscode';
 import remarkToRehype from 'remark-rehype';
@@ -23,6 +24,8 @@ const escape = (str) =>
 		.replace(/[{}`]/g, (c) => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
 		.replace(/\\([trn])/g, '&#92;$1');
 
+const applyCodePrompt = (str) => str.replace(/\$\$\$ /g, '<span class="code-prompt">$ </span>');
+
 const highlight = async (code, language) => {
 	const vfile = await processor.process(`
 \`\`\`${language ?? ''}
@@ -34,7 +37,7 @@ ${code}
 		groups: { formattedCode, styles },
 	} = vfile.value.match(/(?<styles><style.+<\/style>)(?<formattedCode>.+)/s, '');
 
-	return `{@html \`${styles}${escape(formattedCode)}\`}`;
+	return `{@html \`${styles}${pipe(formattedCode, escape, applyCodePrompt)}\`}`;
 };
 
 export { highlight };
