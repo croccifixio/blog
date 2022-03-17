@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/components/Card.svelte';
 
-	export let posts;
+	export let posts: Post[];
 </script>
 
 <ul>

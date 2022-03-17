@@ -4,11 +4,11 @@
 	export const router = dev;
 </script>
 
-<script>
+<script lang="ts">
 	import BlogList from '$lib/components/BlogList.svelte';
 	import { SITE_DESCRIPTION, SITE_NAME } from '$lib/info';
 
-	export let posts = [];
+	export let posts: Post[] = [];
 </script>
 
 <svelte:head>

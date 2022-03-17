@@ -2,7 +2,7 @@
 	import Tag from '$lib/components/Tag.svelte';
 	import { formatDate } from '$lib/utils/date';
 
-	export let post;
+	export let post: Post;
 
 	const updatedSameMonth = formatDate(post.updatedAt, 'MY') === formatDate(post.publishedAt, 'MY');
 	const dateFormat = updatedSameMonth ? 'DMY' : 'MY';
