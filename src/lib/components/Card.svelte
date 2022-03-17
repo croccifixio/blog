@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Tag from './Tag.svelte';
+
 	export let slug: string;
 	export let title: string;
 	export let tags: string[];
@@ -8,7 +10,7 @@
 	<h2>{@html title}</h2>
 	<ul>
 		{#each tags as tag}
-			<li>{tag}</li>
+			<li><Tag text={tag} /></li>
 		{/each}
 	</ul>
 </a>
@@ -58,16 +60,5 @@
 		flex-wrap: wrap;
 		gap: 10px 12px;
 		justify-content: end;
-		list-style: none;
-		margin-block: 0;
-	}
-
-	li {
-		background-color: var(--c-text);
-		border-radius: 5px;
-		color: var(--c-bg);
-		line-height: 1;
-		padding-block: 0.2em 0.4em;
-		padding-inline: 0.5em;
 	}
 </style>

@@ -1,5 +1,6 @@
 ---
 publishedAt: "2020-09-27"
+updatedAt: "2022-03-17"
 title: "Form Validation with TypeScript and&nbsp;Zod"
 tags: ["react", "typescript", "zod"]
 description: [

@@ -29,10 +29,18 @@ const destructureDate = (
 	};
 };
 
-const formatDate = (date: string): string => {
-	const { day, ordinal, month, year } = destructureDate(Temporal.PlainDate.from(date));
+const formatDate = (date: string, format = 'DMY'): string | null => {
+	if (!date) {
+		return null;
+	}
 
-	return `${day}${ordinal} ${month} ${year}`;
+	const { day, ordinal, month, year } = destructureDate(Temporal.PlainDate.from(date));
+	const nthDay = `${day}${ordinal}`;
+	const showDate = format.match('D');
+	const showMonth = format.match('M');
+	const showYear = format.match('Y');
+
+	return [showDate ? nthDay : '', showMonth ? month : '', showYear ? year : ''].join(' ');
 };
 
 export { formatDate };
