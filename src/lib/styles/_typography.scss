@@ -1,107 +1,107 @@
 html,
 body {
-  @include body-font();
-  font-family: 'Cartograph CF', $sans-serif-fallback;
-  line-height: 1.7;
+	@include body-font();
+	font-family: 'Cartograph CF', $sans-serif-fallback;
+	line-height: 1.7;
 }
 
 b,
 strong {
-  @include body-font-bold-italic();
+	@include body-font-bold-italic();
 }
 
 a {
-  background-image: linear-gradient(to right, var(--c-link) 50%, var(--c-link) 51%);
-  background-position: 0% 100%;
-  background-repeat: repeat-x;
-  background-size: 6px 2px;
-  color: var(--c-link);
-  padding-bottom: 0.45em;
-  position: relative;
-  text-decoration: none;
-  transition: background 0.1s ease;
+	background-image: linear-gradient(to right, var(--c-link) 50%, var(--c-link) 51%);
+	background-position: 0% 100%;
+	background-repeat: repeat-x;
+	background-size: 6px 2px;
+	color: var(--c-link);
+	padding-bottom: 0.45em;
+	position: relative;
+	text-decoration: none;
+	transition: background 0.1s ease;
 
-  &:focus-visible {
-    background-image: none;
-    color: var(--c-active);
-    outline-offset: 1px;
-    outline: 2px solid var(--c-active);
-    padding-bottom: 0.25em;
-    padding-top: 0.05em;
-  }
+	&:focus-visible {
+		background-image: none;
+		color: var(--c-active);
+		outline-offset: 1px;
+		outline: 2px solid var(--c-active);
+		padding-bottom: 0.25em;
+		padding-top: 0.05em;
+	}
 
-  &:hover {
-    background-image: none;
-    color: $color-gold;
-  }
+	&:hover {
+		background-image: none;
+		color: $color-gold;
+	}
 }
 
 code,
 kbd,
 pre,
 samp {
-  @include css-lock('font-size', 'rem', 1.02, 1.12);
-  @include code-font();
-  font-family: 'Cartograph CF', monospace;
+	@include css-lock('font-size', 'rem', 1.02, 1.12);
+	@include code-font();
+	font-family: 'Cartograph CF', monospace;
 }
 
 code .mtki {
-  font-feature-settings: "ss01";
+	font-feature-settings: 'ss01';
 }
 
 kbd:not(.key) {
-  @include body-font();
+	@include body-font();
 }
 
 p,
 li {
-  @include css-lock('font-size', 'rem', 1.05, 1.15);
-  letter-spacing: 1px;
-  line-height: 2;
+	@include css-lock('font-size', 'rem', 1.05, 1.15);
+	letter-spacing: 1px;
+	line-height: 2;
 }
 
 p code .key {
-  border-radius: 4px;
-  padding: 0.1em 0.3em 0.15em;
+	border-radius: 4px;
+	padding: 0.1em 0.3em 0.15em;
 }
 
 p code {
-  @include code-font-bold-italic();
-  background-color: var(--c-button-bg);
+	@include code-font-bold-italic();
+	background-color: var(--c-button-bg);
 }
 
 p img {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 .key {
-  border: 0.1em solid var(--c-link);
-  padding: 0.05em 0.3em 0.1em;
+	border: 0.1em solid var(--c-link);
+	padding: 0.05em 0.3em 0.1em;
 }
 
 p code,
 pre {
-  box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2);
-  text-shadow: none;
+	box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2);
+	text-shadow: none;
 }
 
-p+p,
-p~pre,
-pre+p {
-  margin-block: 2rem;
+p + p,
+p ~ pre,
+pre + p {
+	margin-block: 2rem;
 }
 
 pre {
-  border-radius: 10px;
-  border: 2px dashed var(--c-text);
-  max-height: 90vh;
-  overflow: auto;
-  padding: 1em;
-  white-space: pre;
+	border-radius: 10px;
+	border: 2px dashed var(--c-text);
+	max-height: 90vh;
+	overflow: auto;
+	padding: 1em;
+	white-space: pre;
 
-  &:focus-visible {
-    border: 2px solid var(--c-active);
-  }
+	&:focus-visible {
+		border: 2px solid var(--c-active);
+	}
 }
 
 h1,
@@ -110,42 +110,42 @@ h3,
 h4,
 h5,
 h6 {
-  @include body-font-bold-italic-fancy();
+	@include body-font-bold-italic-fancy();
 }
 
 ol,
 ul {
-  padding-left: 0;
+	padding-left: 0;
 }
 
 .break-word,
-.break-word>* {
-  word-break: break-word;
+.break-word > * {
+	word-break: break-word;
 }
 
 .code-emphasis {
-  @include body-font-bold-italic-fancy();
-  background-color: var((--c-highlight-bg));
-  color: var(--c-highlight);
+	@include body-font-bold-italic-fancy();
+	background-color: var((--c-highlight-bg));
+	color: var(--c-highlight);
 }
 
 .code-prompt {
-  user-select: none;
+	user-select: none;
 }
 
 p code,
 .input {
-  border-radius: 4px;
-  display: inline;
-  margin: 0.075em;
-  padding: 0 0.25em 0.25em;
-  top: 0.05em;
+	border-radius: 4px;
+	display: inline;
+	margin: 0.075em;
+	padding: 0 0.25em 0.25em;
+	top: 0.05em;
 }
 
 .input {
-  background-color: var(--c-button-bg);
+	background-color: var(--c-button-bg);
 }
 
 .grvsc-source {
-  padding-inline: 0 !important;
+	padding-inline: 0 !important;
 }

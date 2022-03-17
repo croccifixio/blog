@@ -1,57 +1,56 @@
 :root {
-  color-scheme: light dark;
-  --c-bg: hsl(0, 0%, 40%);
-  --c-text: hsl(0, 0%, 88%);
-  --c-link: hsl(41, 98%, 65%);
-  --c-active: hsl(105, 63%, 56%);
-  --c-button-bg: hsl(233, 82%, 83%);
-  --c-highlight: hsl(0, 0%, 40%);
-  --c-highlight-bg: hsl(233, 82%, 83%);
+	color-scheme: light dark;
+	--c-bg: hsl(0, 0%, 40%);
+	--c-text: hsl(0, 0%, 88%);
+	--c-link: hsl(41, 98%, 65%);
+	--c-active: hsl(105, 63%, 56%);
+	--c-button-bg: hsl(233, 82%, 83%);
+	--c-highlight: hsl(0, 0%, 40%);
+	--c-highlight-bg: hsl(233, 82%, 83%);
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    --c-bg: hsl(0, 0%, 88%);
-    --c-text: hsl(0, 0%, 40%);
-    --c-link: hsl(221, 98%, 65%);
-    --c-active: hsl(255, 63%, 56%);
-    --c-button-bg: hsl(233, 82%, 83%);
-    --c-highlight: hsl(0, 0%, 40%);
-    --c-highlight-bg: hsl(233, 82%, 83%);
-  }
+	:root {
+		--c-bg: hsl(0, 0%, 88%);
+		--c-text: hsl(0, 0%, 40%);
+		--c-link: hsl(221, 98%, 65%);
+		--c-active: hsl(255, 63%, 56%);
+		--c-button-bg: hsl(233, 82%, 83%);
+		--c-highlight: hsl(0, 0%, 40%);
+		--c-highlight-bg: hsl(233, 82%, 83%);
+	}
 }
 
 /* For browsers that don't support `color-scheme` and therefore
    don't handle system dark mode for you automatically
    (Firefox), handle it for them. */
 @supports not (color-scheme: light dark) {
-  html {
-    background: var(--c-bg);
-    color: var(--c-text);
-  }
+	html {
+		background: var(--c-bg);
+		color: var(--c-text);
+	}
 }
 
 /* For browsers that support automatic dark/light mode
    As well as system colors, set those */
 @supports (color-scheme: light dark) and (background-color: Canvas) and (color: CanvasText) {
-  :root {
-    --c-bg: Canvas;
-    --c-text: CanvasText;
-    --c-link: LinkText;
-    --c-active: ActiveText;
-    --c-button-bg: Highlight;
-    --c-highlight: HighlightText;
-    --c-highlight-bg: Highlight;
-
-  }
+	:root {
+		--c-bg: Canvas;
+		--c-text: CanvasText;
+		--c-link: LinkText;
+		--c-active: ActiveText;
+		--c-button-bg: Highlight;
+		--c-highlight: HighlightText;
+		--c-highlight-bg: Highlight;
+	}
 }
 
 /* For Safari on iOS. Hacky, but it works. */
 @supports (background-color: -apple-system-control-background) and (color: text) {
-  :root {
-    --c-bg: -apple-system-control-background;
-    --c-text: text;
-  }
+	:root {
+		--c-bg: -apple-system-control-background;
+		--c-text: text;
+	}
 }
 
 $color-gold: #fdc64d;
