@@ -1,7 +1,7 @@
 import { compile } from 'mdsvex';
 import { join, map, pipe, toAsync } from '@fxts/core';
 import { getLatestUpdate, getPosts } from '$lib/utils/blog';
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '$lib/info.ts';
+import { SITE_NAME, SITE_URL } from '$lib/info.ts';
 
 export async function get() {
 	return {
