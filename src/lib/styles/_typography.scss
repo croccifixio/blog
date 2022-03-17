@@ -45,6 +45,10 @@ samp {
   font-family: 'Cartograph CF', monospace;
 }
 
+code .mtki {
+  font-feature-settings: "ss01";
+}
+
 kbd:not(.key) {
   @include body-font();
 }
