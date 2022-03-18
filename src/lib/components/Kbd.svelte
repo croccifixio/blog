@@ -12,3 +12,10 @@
 		{/each}
 	</kbd>
 {/if}
+
+<style lang="scss">
+	.key {
+		border: 2px solid var(--c-link);
+		padding: 0.05em 0.3em 0.1em;
+	}
+</style>

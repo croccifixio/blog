@@ -29,7 +29,7 @@
 	}
 
 	tbody {
-		border: 3px solid currentColor;
+		border: var(--border-width) solid currentColor;
 		tr:first-child td {
 			padding-block-start: 0.3em;
 		}
@@ -39,13 +39,13 @@
 	}
 
 	td {
-		border-right: 3px solid currentColor;
+		border-right: var(--border-width) solid currentColor;
 		min-width: 66%;
 		padding: 0.1em 0.6em;
 	}
 
 	th {
-		border: 3px solid currentColor;
+		border: var(--border-width) solid currentColor;
 		font-weight: bold;
 		padding: 0.1em 0.6em;
 	}

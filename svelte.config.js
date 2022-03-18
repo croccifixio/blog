@@ -18,6 +18,7 @@ const config = {
 				prependData: `
           @import './src/lib/styles/config/_colors';
           @import './src/lib/styles/config/_fonts';
+          @import './src/lib/styles/config/_variables';
           @import './src/lib/styles/config/mixins';
         `,
 			},

@@ -34,8 +34,8 @@
 		&::before {
 			background-color: var(--c-bg);
 			border-radius: 10px;
-			border: 3px solid var(--c-text);
-			box-shadow: 3px 3px 0px 0px var(--c-text);
+			border: var(--border-width) solid var(--c-text);
+			box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-text);
 			content: '';
 			height: 100%;
 			left: 0;
@@ -46,8 +46,8 @@
 		}
 		&:focus-visible {
 			&::before {
-				border: 3px solid var(--c-active);
-				box-shadow: 3px 3px 0px 0px var(--c-active);
+				border: var(--border-width) solid var(--c-active);
+				box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-active);
 			}
 			h2 {
 				color: var(--c-active);

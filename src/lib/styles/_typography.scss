@@ -60,11 +60,6 @@ li {
 	line-height: 2;
 }
 
-p code .key {
-	border-radius: 4px;
-	padding: 0.1em 0.3em 0.15em;
-}
-
 p code {
 	@include code-font-bold-italic();
 	background-color: var(--c-button-bg);
@@ -74,33 +69,28 @@ p img {
 	max-width: 100%;
 }
 
-.key {
-	border: 0.1em solid var(--c-link);
-	padding: 0.05em 0.3em 0.1em;
-}
-
 p code,
 pre {
 	box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2);
 	text-shadow: none;
 }
 
-p + p,
-p ~ pre,
-pre + p {
+p+p,
+p~pre,
+pre+p {
 	margin-block: 2rem;
 }
 
 pre {
 	border-radius: 10px;
-	border: 2px dashed var(--c-text);
+	border: var(--border-width) dashed var(--c-text);
 	max-height: 90vh;
 	overflow: auto;
 	padding: 1em;
 	white-space: pre;
 
 	&:focus-visible {
-		border: 2px solid var(--c-active);
+		border: var(--border-width) solid var(--c-active);
 	}
 }
 
@@ -119,7 +109,7 @@ ul {
 }
 
 .break-word,
-.break-word > * {
+.break-word>* {
 	word-break: break-word;
 }
 
