@@ -35,5 +35,7 @@
 	<meta name="description" content={post?.description?.[0]} />
 </svelte:head>
 
-<BlogPost {post} />
+{#if post}
+	<BlogPost {post} />
+{/if}
 <svelte:component this={page} />
