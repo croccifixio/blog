@@ -1,25 +1,23 @@
 <script lang="ts">
-	export let dependencies: Post['dependencies'];
+	export let dependencies: NonNullable<Post['dependencies']>;
 </script>
 
-{#if dependencies}
-	<table>
-		<thead>
+<table>
+	<thead>
+		<tr>
+			<th>Dependency</th>
+			<th>Version</th>
+		</tr>
+	</thead>
+	<tbody>
+		{#each Object.entries(dependencies) as [dependency, version]}
 			<tr>
-				<th>Dependency</th>
-				<th>Version</th>
+				<td>{dependency}</td>
+				<td>{version}</td>
 			</tr>
-		</thead>
-		<tbody>
-			{#each Object.entries(dependencies) as [dependency, version]}
-				<tr>
-					<td>{dependency}</td>
-					<td>{version}</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-{/if}
+		{/each}
+	</tbody>
+</table>
 
 <style lang="scss">
 	table {

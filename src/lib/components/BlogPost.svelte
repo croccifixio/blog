@@ -38,10 +38,14 @@
 		</div>
 	{/if}
 </dl>
-<div style="margin-block-start: 1.5rem;">
-	<DependencyTable dependencies={post.dependencies} />
-</div>
-<Hr spacing="2.25rem" />
+{#if post.dependencies}
+	<div style="margin-block-start: 1.5rem;">
+		<DependencyTable dependencies={post.dependencies} />
+	</div>
+	<Hr spacing="2.25rem" />
+{:else}
+	<Hr spacing="1.5rem 2.25rem" />
+{/if}
 
 <style lang="scss">
 	dl {
