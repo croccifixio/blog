@@ -13,7 +13,7 @@
 	.name {
 		border: 2px solid var(--c-text);
 		border-radius: 4px;
-		padding: 0 4px 4px;
+		padding: 0.05em 0.3em 0.1em;
 	}
 	.flow {
 		display: inline;
