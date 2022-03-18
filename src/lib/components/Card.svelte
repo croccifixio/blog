@@ -35,7 +35,6 @@
 			background-color: var(--c-bg);
 			border-radius: 10px;
 			border: var(--border-width) solid var(--c-text);
-			box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-text);
 			content: '';
 			height: 100%;
 			left: 0;
@@ -43,11 +42,16 @@
 			top: 0;
 			width: 100%;
 			z-index: -1;
+			@media (prefers-color-scheme: light) {
+				box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-text);
+			}
 		}
 		&:focus-visible {
 			&::before {
 				border: var(--border-width) solid var(--c-active);
-				box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-active);
+				@media (prefers-color-scheme: light) {
+					box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-active);
+				}
 			}
 			h2 {
 				color: var(--c-active);
