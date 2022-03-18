@@ -1,9 +1,9 @@
 :root {
-  --border-width: 2px;
+	--border-width: 2px;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    --border-width: 3px;
-  }
+	:root {
+		--border-width: 3px;
+	}
 }

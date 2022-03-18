@@ -75,9 +75,9 @@ pre {
 	text-shadow: none;
 }
 
-p+p,
-p~pre,
-pre+p {
+p + p,
+p ~ pre,
+pre + p {
 	margin-block: 2rem;
 }
 
@@ -109,7 +109,7 @@ ul {
 }
 
 .break-word,
-.break-word>* {
+.break-word > * {
 	word-break: break-word;
 }
 

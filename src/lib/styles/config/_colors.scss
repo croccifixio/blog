@@ -21,14 +21,9 @@
 	}
 }
 
-/* For browsers that don't support `color-scheme` and therefore
-   don't handle system dark mode for you automatically
-   (Firefox), handle it for them. */
-@supports not (color-scheme: light dark) {
-	html {
-		background: var(--c-bg);
-		color: var(--c-text);
-	}
+html {
+	background: var(--c-bg);
+	color: var(--c-text);
 }
 
 /* For browsers that support automatic dark/light mode
