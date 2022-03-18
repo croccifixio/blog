@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Tag from '$lib/components/Tag.svelte';
 	import { formatDate } from '$lib/utils/date';
+	import DependencyTable from './DependencyTable.svelte';
 
 	export let post: Post;
 
@@ -35,6 +36,9 @@
 		</div>
 	{/if}
 </dl>
+<div style="margin-block-start: 1.5rem;">
+	<DependencyTable dependencies={post.dependencies} />
+</div>
 
 <style lang="scss">
 	dl {

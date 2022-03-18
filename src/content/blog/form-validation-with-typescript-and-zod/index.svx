@@ -7,18 +7,12 @@ description: [
   "TypeScript offers the ability to pepper one's code with type annotations, allowing the compiler to perform type checks and the language server to provide code completion. These all add up to an improved developer experience, but much of the benefits are thrown out the window once the code is shipped and running out in the wild. While TypeScript may encourage writing safer code that handles edge cases better, there are times when the need to perform runtime validations of values with non-trivial structures arises. This is typically the case when handling input from external sources, be that receiving a response from an API or from a user filling in a form."
 ]
 seoTitle: "Form Validation with TypeScript and Zod"
+dependencies: {
+  react: "16.3.1",
+  typescript: "3.7.2",
+  zod: "1.11.9"
+}
 ---
-
-<script>
-  import Deps from "$lib/components/Deps.svelte"
-</script>
-
-<Deps deps={{
-    "react": "16.3.1",
-    "typescript": "3.7.2",
-    "zod": "1.11.9"
-  }}
-/>
 
 TypeScript offers the ability to pepper one's code with type annotations, allowing the compiler to perform type checks and the language server to provide code completion. These all add up to an improved developer experience, but much of the benefits are thrown out the window once the code is shipped and running out in the wild. While TypeScript may encourage writing safer code that handles edge cases better, there are times when the need to perform runtime validations of values with non-trivial structures arises. This is typically the case when handling input from external sources, be that receiving a response from an API or from a user filling in a form.
 

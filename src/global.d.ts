@@ -1,7 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 
 interface Post {
-	dependencies?: string[];
+	dependencies?: Record<string, string>;
 	description: string[];
 	publishedAt: string;
 	seoTitle?: string;
