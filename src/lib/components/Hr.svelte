@@ -1,22 +1,27 @@
 <script lang="ts">
 	export let spacing: string = '0';
 
-	let width;
+	let clientWidth;
+	const width = 22;
+	const height = 8;
 </script>
 
-<div bind:clientWidth={width} style:margin-block={spacing}>
-	<svg {width} height="8" xmlns="http://www.w3.org/2000/svg">
+<div bind:clientWidth style:margin-block={spacing}>
+	<svg {height} width={clientWidth} xmlns="http://www.w3.org/2000/svg">
 		<defs>
-			<pattern fill="transparent" height="1" id="pattern" width={22 / width} x="0" y="0">
+			<pattern fill="transparent" {height} id="pattern" width={width / clientWidth} x="0" y="0">
 				<path
-					d="M0 3.80435C4.45284 0.471019 7.78617 0.471019 11.1195 3.80435C14.4528 7.13769 17.7862 7.13769 22 3.80435"
+					d={`
+					M0 ${height * 0.475}
+					C${width * 0.2} ${height * 0.1} ${width * 0.33} ${height * 0.1} ${width * 0.5} ${height * 0.475}
+					C${width * 0.66} ${height * 0.9} ${width * 0.8} ${height * 0.9} ${width} ${height * 0.475}
+					`}
 					stroke="currentColor"
 					stroke-linecap="square"
 					stroke-width="var(--border-width)"
 				/>
 			</pattern>
 		</defs>
-
-		<rect {width} fill="url(#pattern)" height="8" />
+		<rect fill="url(#pattern)" {height} width={clientWidth} />
 	</svg>
 </div>
