@@ -2,6 +2,7 @@
 	import Tag from '$lib/components/Tag.svelte';
 	import { formatDate } from '$lib/utils/date';
 	import DependencyTable from './DependencyTable.svelte';
+	import Hr from './Hr.svelte';
 
 	export let post: Post;
 
@@ -10,6 +11,7 @@
 </script>
 
 <h1>{@html post.title}</h1>
+<Hr spacing="2.25rem 1.5rem" />
 <dl>
 	<div>
 		<dt>Tags</dt>
@@ -39,6 +41,7 @@
 <div style="margin-block-start: 1.5rem;">
 	<DependencyTable dependencies={post.dependencies} />
 </div>
+<Hr spacing="2.25rem" />
 
 <style lang="scss">
 	dl {
