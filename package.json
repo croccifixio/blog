@@ -1,45 +1,45 @@
 {
-	"dependencies": {
-		"the-new-css-reset": "^1.5.1"
-	},
-	"devDependencies": {
-		"@fxts/core": "^0.5.0",
-		"@js-temporal/polyfill": "^0.3.0",
-		"@sveltejs/adapter-auto": "^1.0.0-next.18",
-		"@sveltejs/kit": "1.0.0-next.267",
-		"@typescript-eslint/eslint-plugin": "^5.10.2",
-		"@typescript-eslint/parser": "^5.10.2",
-		"blackboard-pro": "github:croccifixio/blackboard-pro",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-svelte3": "^3.4.0",
-		"gatsby-remark-vscode": "^3.3.1",
-		"mdsvex": "^0.10.5",
-		"prettier": "^2.5.1",
-		"prettier-plugin-svelte": "^2.6.0",
-		"rehype-raw": "^6.1.1",
-		"rehype-stringify": "^9.0.3",
-		"remark-parse": "^10.0.1",
-		"remark-rehype": "^10.1.0",
-		"sass": "^1.46.0",
-		"svelte": "^3.46.4",
-		"svelte-check": "^2.4.2",
-		"svelte-preprocess": "^4.10.3",
-		"tslib": "^2.3.1",
-		"typescript": "^4.5.5",
-		"unified": "^10.1.1"
-	},
-	"private": "true",
-	"scripts": {
-		"build": "svelte-kit build",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"copy:images": "node bin/copy-images.js",
-		"dev": "svelte-kit dev",
-		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
-		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"package": "svelte-kit package",
-		"preview": "svelte-kit preview"
-	},
-	"type": "module"
+  "dependencies": {
+    "the-new-css-reset": "^1.5.1"
+  },
+  "devDependencies": {
+    "@fxts/core": "^0.5.0",
+    "@js-temporal/polyfill": "^0.4.0",
+    "@sveltejs/adapter-auto": "^1.0.0-next.33",
+    "@sveltejs/kit": "1.0.0-next.301",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "blackboard-pro": "github:croccifixio/blackboard-pro",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^3.4.1",
+    "gatsby-remark-vscode": "^3.3.1",
+    "mdsvex": "^0.10.5",
+    "prettier": "^2.6.0",
+    "prettier-plugin-svelte": "^2.6.0",
+    "rehype-raw": "^6.1.1",
+    "rehype-stringify": "^9.0.3",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "sass": "^1.49.9",
+    "svelte": "^3.46.4",
+    "svelte-check": "^2.4.6",
+    "svelte-preprocess": "^4.10.4",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2",
+    "unified": "^10.1.2"
+  },
+  "private": "true",
+  "scripts": {
+    "build": "svelte-kit build",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "copy:images": "node bin/copy-images.js",
+    "dev": "svelte-kit dev",
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview"
+  },
+  "type": "module"
 }
