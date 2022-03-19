@@ -1,6 +1,5 @@
 <script context="module">
 	import { dev } from '$app/env';
-	export const hydrate = dev;
 	export const router = dev;
 	/**
 	 * @type {import('@sveltejs/kit').Load}
