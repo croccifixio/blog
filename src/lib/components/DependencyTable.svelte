@@ -40,6 +40,9 @@
 		border-right: var(--border-width) solid currentColor;
 		min-width: 66%;
 		padding: 0.1em 0.6em;
+		&:last-child {
+			@include code-font();
+		}
 	}
 
 	th {
