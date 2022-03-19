@@ -1,5 +1,6 @@
 .DS_Store
 .env
+.netlify
 .pnpm-debug.log
 .svelte-kit
 /build
