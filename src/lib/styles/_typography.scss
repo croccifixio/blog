@@ -131,6 +131,10 @@ p code,
 	background-color: var(--c-button-bg);
 }
 
+.input .code-emphasis {
+	padding-block-end: 0.25em;
+}
+
 .grvsc-source {
 	padding-inline: 0 !important;
 }
