@@ -75,10 +75,10 @@ pre {
 	text-shadow: none;
 }
 
-p + p,
-p ~ pre,
-pre + p {
-	margin-block: 2rem;
+p+p,
+p~pre,
+pre+p {
+	margin-block-start: 2rem;
 }
 
 pre {
@@ -109,7 +109,7 @@ ul {
 }
 
 .break-word,
-.break-word > * {
+.break-word>* {
 	word-break: break-word;
 }
 

@@ -28,13 +28,13 @@
 			max-width: 100%;
 		}
 
-		ol {
-			list-style: none;
-		}
-
 		ol,
 		ul {
-			margin-block: 2rem;
+			margin-block: 1rem 2rem;
+		}
+
+		ul li {
+			list-style: disc;
 		}
 
 		> li:first-child {
