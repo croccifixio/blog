@@ -26,6 +26,7 @@
 
 <script>
 	import BlogPostMeta from '$lib/components/BlogPostMeta.svelte';
+	import BlogPostSources from '$lib/components/BlogPostSources.svelte';
 	import BlogPostTitle from '$lib/components/BlogPostTitle.svelte';
 	import DependencyTable from '$lib/components/DependencyTable.svelte';
 	import Hr from '$lib/components/Hr.svelte';
@@ -50,6 +51,11 @@
 	{:else}
 		<Hr spacing="1.25rem 2.25rem" />
 	{/if}
-{/if}
 
-<svelte:component this={page} />
+	<svelte:component this={page} />
+
+	{#if post.sources}
+		<Hr spacing="2.25rem 1.5rem" />
+		<BlogPostSources sources={post.sources} />
+	{/if}
+{/if}

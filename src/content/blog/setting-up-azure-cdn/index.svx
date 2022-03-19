@@ -6,6 +6,24 @@ description: [
   "This guide goes through the process of setting up Azure CDN on a custom domain. A function is triggered when content is uploaded to Azure storage, and sets the time-to-live of the uploads based on what container they are uploaded to."
 ]
 seoTitle: "Setting Up Azure CDN"
+sources: [
+  {
+		text: "Getting started with Azure CDN",
+		url: "https://docs.microsoft.com/en-us/azure/cdn/cdn-create-new-endpoint"
+	},
+  {
+		text: "Map Azure CDN content to a custom domain",
+		url: "https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain"
+	},
+  {
+		text: "Manage expiration of Azure Storage blobs in Azure CDN",
+		url: "https://docs.microsoft.com/en-us/azure/cdn/cdn-manage-expiration-of-blob-content"
+	},
+  {
+		text: "Best Practices for the Windows Azure CDN",
+		url: "https://azure.microsoft.com/en-us/blogbest-practices-for-the-windows-azure-content-delivery-network/"
+	}
+]
 ---
 
 <script>
@@ -122,15 +140,6 @@ After setting up your custom domain, your files should be available at <span cla
 2. ### Viewing CDN content in a local dev environment
 
   CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. This can be done with the help of a browser extension such as <a href="https://chrome.google.com/webstore/detail/cors-toggle/jioikioepegflmdnbocfhgmpmopmjkim">CORS Toggle</a> (Chrome Web Store) or <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/">CORS Everywhere</a> (Firefox Add-ons). Both of these extensions add a button to the browser that can be used to toggle CORS.
-
-## Sources:
-
-<ul>
-  <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-create-new-endpoint">Getting started with Azure CDN</a></li>
-  <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain">Map Azure CDN content to a custom domain</a></li>
-  <li><a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-manage-expiration-of-blob-content">Manage expiration of Azure Storage blobs in Azure CDN</a></li>
-  <li><a href="https://azure.microsoft.com/en-us/blog/best-practices-for-the-windows-azure-content-delivery-network/">Best Practices for the Windows Azure CDN</a></li>
-</ul>
 
 [1]: https://portal.azure.com
 [2]: https://docs.microsoft.com/en-us/azure/cdn/cdn-overview

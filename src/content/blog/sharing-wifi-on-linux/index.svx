@@ -6,6 +6,16 @@ description: [
   "This guide covers how to set up a WiFi hotspot on Linux using a single adapter. The scenario it aims to solve is one where only one device (for instance a laptop) is connected to a WiFi network that has a whitelist of permitted MAC addresses. The connected device can then be used to create a hotspot that other devices can connect to for internet access."
 ]
 seoTitle: "Sharing WiFi on Linux"
+sources: [
+	{
+		text: "[AskUbuntu] How do I create a WiFi hotspot sharing wireless internet connection (single adapter)?",
+		url: "https://askubuntu.com/a/324785/672916"
+	},
+	{
+		text: "[Github] oblique/create_ap - A script that creates a NATed or Bridged WiFi Access Point",
+		url: "https://github.com/oblique/create_ap#internet-sharing-from-the-same-wifi-interface"
+	}
+]
 ---
 
 <script>
@@ -81,7 +91,3 @@ If you wish to stop the hotspot manually, run the following command in any termi
 ```
 $$$ tmux kill-session -t hotspot
 ```
-
-## Sources:
-- [[AskUbuntu] How do I create a WiFi hotspot sharing wireless internet connection (single adapter)?](https://askubuntu.com/a/324785/672916)
-- [[Github] __oblique/create_ap__ - A script that creates a NATed or Bridged WiFi Access Point](https://github.com/oblique/create_ap#internet-sharing-from-the-same-wifi-interface)

@@ -6,6 +6,7 @@ interface Post {
 	publishedAt: string;
 	seoTitle?: string;
 	slug: string;
+	sources?: { text: string; url: string }[];
 	tags: string[];
 	title: string;
 	updatedAt?: string;
