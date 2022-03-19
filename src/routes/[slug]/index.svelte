@@ -25,7 +25,10 @@
 </script>
 
 <script>
-	import BlogPost from '$lib/components/BlogPost.svelte';
+	import BlogPostMeta from '$lib/components/BlogPostMeta.svelte';
+	import BlogPostTitle from '$lib/components/BlogPostTitle.svelte';
+	import DependencyTable from '$lib/components/DependencyTable.svelte';
+	import Hr from '$lib/components/Hr.svelte';
 
 	export let page, post;
 </script>
@@ -36,6 +39,17 @@
 </svelte:head>
 
 {#if post}
-	<BlogPost {post} />
+	<BlogPostTitle text={post.title} />
+	<Hr spacing="2.25rem 1.5rem" />
+	<BlogPostMeta publishedAt={post.publishedAt} tags={post.tags} updatedAt={post.updatedAt} />
+	{#if post.dependencies}
+		<div style="margin-block-start: 1.5rem;">
+			<DependencyTable dependencies={post.dependencies} />
+		</div>
+		<Hr spacing="2.25rem" />
+	{:else}
+		<Hr spacing="1.25rem 2.25rem" />
+	{/if}
 {/if}
+
 <svelte:component this={page} />
