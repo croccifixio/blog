@@ -9,7 +9,10 @@ import rehypeStringify from 'rehype-stringify';
 const processor = unified()
 	.use(remarkParse)
 	.use(remarkVscode.remarkPlugin, {
-		theme: `Blackboard Pro`,
+		theme: {
+			dark: `Blackboard Pro`,
+			default: 'Light+ (default light)',
+		},
 		extensions: ['blackboard-pro'],
 	})
 	.use(remarkToRehype, { allowDangerousHtml: true })
