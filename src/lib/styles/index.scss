@@ -1,11 +1,12 @@
-@import 'vendor/normalize';
-@import 'vendor/blackboard-pro.css';
-@import 'config/_colors';
-@import 'config/_functions';
-@import 'config/_mixins';
-@import 'config/_fonts';
-@import '_utils';
-@import '_typography';
+@import "vendor/normalize";
+@import "vendor/blackboard-pro.css";
+@import "config/_colors";
+@import "config/_functions";
+@import "config/_mixins";
+@import "config/_fonts";
+@import "blog-post";
+@import "utils";
+@import "typography";
 
 html {
 	height: 100%;
