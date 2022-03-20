@@ -27,6 +27,7 @@ const config = {
 	kit: {
 		adapter: adapter({ precompress: true }),
 		files: { assets: 'static' },
+		prerender: { default: true },
 	},
 };
 
