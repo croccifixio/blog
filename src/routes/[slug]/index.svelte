@@ -1,5 +1,6 @@
 <script context="module">
 	import { dev } from '$app/env';
+	export const hydrate = dev;
 	export const router = dev;
 	/**
 	 * @type {import('@sveltejs/kit').Load}
@@ -28,7 +29,7 @@
 	import BlogPostSources from '$lib/components/BlogPostSources.svelte';
 	import BlogPostTitle from '$lib/components/BlogPostTitle.svelte';
 	import DependencyTable from '$lib/components/DependencyTable.svelte';
-	import Hr from '$lib/components/Hr.svelte';
+	import Hr from '$lib/components/Hr/Hr.svelte';
 
 	export let page, post;
 </script>

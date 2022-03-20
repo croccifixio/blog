@@ -1,6 +1,5 @@
 {
 	"dependencies": {
-		"svelte-media": "^0.1.5",
 		"the-new-css-reset": "^1.5.1"
 	},
 	"devDependencies": {
