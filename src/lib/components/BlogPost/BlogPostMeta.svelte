@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Tag from '$lib/components/Tag.svelte';
+	import { Tag } from '$lib/components';
 	import { formatDate } from '$lib/utils/date';
 
 	export let publishedAt: Post['publishedAt'];

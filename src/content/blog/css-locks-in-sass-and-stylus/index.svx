@@ -10,8 +10,7 @@ seoTitle: "CSS Locks in Sass and Stylus"
 ---
 
 <script>
-  import Image from "$lib/components/Image.svelte"
-  import StepHeading from "$lib/components/StepHeading.svelte"
+  import { Image, StepHeading } from "$lib/components"
 </script>
 
 A CSS lock is an interpolating function used to transition a numerical value in CSS between two breakpoints. This is typically done to make web pages responsive, although, it could also be used in more creative ways, such as, in art direction.

@@ -25,11 +25,13 @@
 </script>
 
 <script>
-	import BlogPostMeta from '$lib/components/BlogPostMeta.svelte';
-	import BlogPostSources from '$lib/components/BlogPostSources.svelte';
-	import BlogPostTitle from '$lib/components/BlogPostTitle.svelte';
-	import DependencyTable from '$lib/components/DependencyTable.svelte';
-	import Hr from '$lib/components/Hr/Hr.svelte';
+	import {
+		BlogPostMeta,
+		BlogPostSources,
+		BlogPostTitle,
+		DependencyTable,
+		Hr,
+	} from '$lib/components';
 
 	export let page, post;
 </script>

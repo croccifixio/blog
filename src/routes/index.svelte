@@ -5,7 +5,7 @@
 </script>
 
 <script lang="ts">
-	import BlogList from '$lib/components/BlogList.svelte';
+	import { BlogList } from '$lib/components';
 	import { SITE_DESCRIPTION, SITE_NAME } from '$lib/info';
 
 	export let posts: Post[] = [];

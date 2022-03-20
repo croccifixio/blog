@@ -9,7 +9,7 @@ seoTitle: "Commit Messages in GNU Nano"
 ---
 
 <script>
-  import Kbd from "$lib/components/Kbd.svelte"
+  import { Kbd } from "$lib/components"
 </script>
 
 When committing any changes using Git, it is important to include relevant and well constructed commit messages for other developers &ndash; as well as your future self &ndash; who may be involved in the project. A decently crafted commit message can help speed up code comprehension, hopefully allowing others to quickly grasp what problem a commit is addressing and how it is going about solving it.

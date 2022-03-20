@@ -1,5 +1,5 @@
 <script>
-	import PageTitle from '$lib/components/PageTitle.svelte';
+	import { PageTitle } from '$lib/components';
 	import '$lib/styles/index.scss';
 </script>
 

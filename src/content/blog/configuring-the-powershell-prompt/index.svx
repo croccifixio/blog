@@ -9,8 +9,7 @@ seoTitle: "Configuring the PowerShell Prompt"
 ---
 
 <script>
-  import Image from "$lib/components/Image.svelte"
-  import StepHeading from "$lib/components/StepHeading.svelte"
+  import { Image, StepHeading } from "$lib/components"
 </script>
 
 <StepHeading text="Creating a PowerShell Profile" />
