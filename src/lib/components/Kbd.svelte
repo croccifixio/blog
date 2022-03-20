@@ -15,7 +15,7 @@
 
 <style lang="scss">
 	.key {
-		border: 2px solid var(--c-link);
+		border: 2px solid var(--c-gray);
 		padding: 0.05em 0.3em 0.1em;
 	}
 </style>

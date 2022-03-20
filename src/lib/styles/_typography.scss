@@ -58,6 +58,7 @@ li {
 p code {
 	@include code-font-bold-italic();
 	background-color: var(--c-button-bg);
+	color: var(--c-button);
 }
 
 p img {
@@ -110,8 +111,6 @@ ul {
 
 .code-emphasis {
 	@include body-font-bold-italic-fancy();
-	background-color: var((--c-highlight-bg));
-	color: var(--c-highlight);
 }
 
 .code-prompt {
@@ -129,6 +128,7 @@ p code,
 
 .input {
 	background-color: var(--c-button-bg);
+	color: var(--c-button);
 }
 
 .input .code-emphasis {
