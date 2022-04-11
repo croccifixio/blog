@@ -1,12 +1,19 @@
 <script lang="ts">
 	import Tag from './Tag.svelte';
 
+	export let index: number;
 	export let slug: string;
 	export let title: string;
 	export let tags: string[];
 </script>
 
-<a sveltekit:prefetch href={`/${slug}/`}>
+<a
+	data-index={index}
+	data-mod-2={index % 2}
+	data-mod-3={index % 3}
+	sveltekit:prefetch
+	href={`/${slug}/`}
+>
 	<h2>{@html title}</h2>
 	<ul>
 		{#each tags as tag}
@@ -64,5 +71,41 @@
 		flex-wrap: wrap;
 		gap: 10px 12px;
 		justify-content: end;
+	}
+
+	@media (min-width: 600px) {
+		a {
+			&::before {
+				border-radius: 0;
+				border-width: 0;
+				border-bottom-width: var(--border-width);
+			}
+			&[data-index='1']::before,
+			&[data-index='2']::before {
+				border-top-width: var(--border-width);
+			}
+		}
+	}
+
+	@media (min-width: 600px) and (max-width: 999px) {
+		a {
+			&[data-mod-2='1']::before {
+				border-right-width: var(--border-width);
+			}
+		}
+	}
+
+	@media (min-width: 1000px) {
+		a {
+			&[data-index='3']::before {
+				border-top-width: var(--border-width);
+			}
+			&[data-mod-3='0']::before {
+				border-left-width: var(--border-width);
+			}
+			&[data-mod-3='1']::before {
+				border-right-width: var(--border-width);
+			}
+		}
 	}
 </style>

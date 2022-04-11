@@ -1,6 +1,6 @@
 export { default as BlogList } from './BlogList.svelte';
 export * from './BlogPost';
-export { default as Card } from './Card.svelte';
+export { default as BlogPostSummary } from './BlogPostSummary.svelte';
 export { default as DependencyTable } from './DependencyTable.svelte';
 export { default as ExternalLink } from './ExternalLink.svelte';
 export { default as Flow } from './Flow.svelte';

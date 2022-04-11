@@ -7,3 +7,9 @@
 	<PageTitle title="Blog" />
 	<slot />
 </main>
+
+<style>
+	main {
+		max-width: 100ch;
+	}
+</style>
