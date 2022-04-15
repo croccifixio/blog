@@ -2,6 +2,7 @@
 	import Tag from './Tag.svelte';
 
 	export let index: number;
+	export let size: number;
 	export let slug: string;
 	export let title: string;
 	export let tags: string[];
@@ -9,6 +10,7 @@
 
 <a
 	data-index={index}
+	data-reverse-index={size - index + 1}
 	data-mod-2={index % 2}
 	data-mod-3={index % 3}
 	sveltekit:prefetch
@@ -39,15 +41,11 @@
 		padding-inline: 12px;
 		position: relative;
 		&::before {
-			background-color: var(--c-bg);
 			border-radius: 10px;
 			border: var(--border-width) solid var(--c-text);
 			content: '';
-			height: 100%;
-			left: 0;
+			inset: calc(var(--border-width) * -0.5);
 			position: absolute;
-			top: 0;
-			width: 100%;
 			z-index: -1;
 			@media (prefers-color-scheme: light) {
 				box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-text);
@@ -75,36 +73,124 @@
 
 	@media (min-width: 600px) {
 		a {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding-block-end: 16px;
+			&:focus-visible {
+				> * {
+					position: relative;
+					z-index: 1;
+				}
+				&::before {
+					border: var(--border-width) solid var(--c-active);
+					user-select: none;
+					z-index: 1;
+					@media (prefers-color-scheme: light) {
+						box-shadow: none;
+					}
+				}
+				@media (prefers-color-scheme: light) {
+					&::after {
+						color: var(--c-active);
+						user-select: none;
+						z-index: 0;
+					}
+				}
+			}
 			&::before {
 				border-radius: 0;
 				border-width: 0;
 				border-bottom-width: var(--border-width);
+				@media (prefers-color-scheme: light) {
+					background-color: var(--c-bg);
+					border-width: var(--border-width);
+					box-shadow: none;
+				}
 			}
-			&[data-index='1']::before,
-			&[data-index='2']::before {
-				border-top-width: var(--border-width);
+			@media (prefers-color-scheme: light) {
+				&::after {
+					background-color: currentColor;
+					bottom: 0;
+					content: '';
+					inset: calc(var(--border-width) * -0.5);
+					position: absolute;
+					z-index: -2;
+				}
 			}
 		}
 	}
 
 	@media (min-width: 600px) and (max-width: 999px) {
 		a {
+			// first 2
+			&[data-index='1']::before,
+			&[data-index='2']::before {
+				border-top-width: var(--border-width);
+			}
+			// every 1st
 			&[data-mod-2='1']::before {
 				border-right-width: var(--border-width);
+			}
+			@media (prefers-color-scheme: light) {
+				// every 1st
+				&[data-mod-2='1']::after {
+					left: var(--border-width);
+				}
+				// 2nd
+				&[data-index='2']::after {
+					top: calc(var(--border-width) * 1);
+				}
+				// last + every 2nd
+				&[data-reverse-index='1']::after,
+				&[data-mod-2='0']::after {
+					right: calc(var(--border-width) * -2);
+				}
+				// last 2
+				&[data-reverse-index='1']::after,
+				&[data-reverse-index='2']::after {
+					bottom: calc(var(--border-width) * -2);
+				}
 			}
 		}
 	}
 
 	@media (min-width: 1000px) {
 		a {
+			// first 3
+			&[data-index='1']::before,
+			&[data-index='2']::before,
 			&[data-index='3']::before {
 				border-top-width: var(--border-width);
 			}
+			// every 1st
+			&[data-mod-3='1']::before {
+				border-right-width: var(--border-width);
+			}
+			// every 3rd
 			&[data-mod-3='0']::before {
 				border-left-width: var(--border-width);
 			}
-			&[data-mod-3='1']::before {
-				border-right-width: var(--border-width);
+			@media (prefers-color-scheme: light) {
+				// every 1st
+				&[data-mod-3='1']::after {
+					left: var(--border-width);
+				}
+				// 3rd
+				&[data-index='3']::after {
+					top: calc(var(--border-width) * 1);
+				}
+				// last + every 3rd
+				&[data-reverse-index='1']::after,
+				&[data-mod-3='0']::after {
+					right: calc(var(--border-width) * -2);
+				}
+				// last 3
+				&[data-reverse-index='1']::after,
+				&[data-reverse-index='2']::after,
+				&[data-reverse-index='3']::after {
+					bottom: calc(var(--border-width) * -2);
+				}
 			}
 		}
 	}

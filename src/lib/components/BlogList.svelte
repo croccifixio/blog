@@ -1,28 +1,34 @@
 <script lang="ts">
 	import { BlogPostSummary } from '$lib/components';
 	import { formatDate } from '$lib/utils/date';
+	import { countBy } from '@fxts/core';
 
 	export let posts: Post[];
 
+	const yearCounts = countBy((post) => formatDate(post.publishedAt, 'Y').trim(), posts);
 	const { postsGrid } = posts.reduce(
 		(acc, post) => {
 			const year = formatDate(post.publishedAt, 'Y').trim();
 			const index = acc.years.filter((y) => y === year).length + 1;
+			const size = yearCounts?.[year] ?? 0;
 
 			acc.years.push(year);
-			acc.postsGrid.push({ index, post, year });
+			acc.postsGrid.push({ index, post, size, year });
 
 			return acc;
 		},
 		{ postsGrid: [], years: [] },
-	) as { postsGrid: Array<{ index: number; post: Post; year: string }>; years: string[] };
+	) as {
+		postsGrid: Array<{ index: number; post: Post; size: number; year: string }>;
+		years: string[];
+	};
 </script>
 
 <ul>
-	{#each postsGrid as { index, post, year }}
+	{#each postsGrid as { index, post, size, year }}
 		<li data-index={index} data-year={year}>
 			<article>
-				<BlogPostSummary {index} slug={post.slug} tags={post.tags} title={post.title} />
+				<BlogPostSummary {index} {size} slug={post.slug} tags={post.tags} title={post.title} />
 			</article>
 		</li>
 	{:else}
