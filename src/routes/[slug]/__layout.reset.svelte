@@ -2,6 +2,6 @@
 	import '$lib/styles/index.scss';
 </script>
 
-<main class="blog-post">
+<main>
 	<slot />
 </main>

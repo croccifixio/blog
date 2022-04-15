@@ -63,7 +63,7 @@
 				position: relative;
 				&::before {
 					content: attr(data-year);
-					font-size: 2em;
+					font-size: 1.75em;
 					position: absolute;
 					top: -5rem;
 				}

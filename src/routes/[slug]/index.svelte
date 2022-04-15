@@ -54,7 +54,9 @@
 		<Hr spacing="1.25rem 2.25rem" />
 	{/if}
 
-	<svelte:component this={page} />
+	<div class="blog-post-content">
+		<svelte:component this={page} />
+	</div>
 
 	{#if post.sources}
 		<Hr spacing="2.25rem 1.5rem" />
