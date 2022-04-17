@@ -73,6 +73,7 @@
 		ul {
 			gap: 0;
 			grid-template-columns: repeat(2, 1fr);
+			margin-block-start: -2rem;
 		}
 	}
 
