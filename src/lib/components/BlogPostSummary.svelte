@@ -101,8 +101,6 @@
 			}
 			&::before {
 				border-radius: 0;
-				border-width: 0;
-				border-bottom-width: var(--border-width);
 				@media (prefers-color-scheme: light) {
 					background-color: var(--c-bg);
 					border-width: var(--border-width);
@@ -124,15 +122,6 @@
 
 	@media (min-width: 600px) and (max-width: 999px) {
 		a {
-			// first 2
-			&[data-index='1']::before,
-			&[data-index='2']::before {
-				border-top-width: var(--border-width);
-			}
-			// every 1st
-			&[data-mod-2='1']::before {
-				border-right-width: var(--border-width);
-			}
 			@media (prefers-color-scheme: light) {
 				// every 1st
 				&[data-mod-2='1']::after {
@@ -158,20 +147,6 @@
 
 	@media (min-width: 1000px) {
 		a {
-			// first 3
-			&[data-index='1']::before,
-			&[data-index='2']::before,
-			&[data-index='3']::before {
-				border-top-width: var(--border-width);
-			}
-			// every 1st
-			&[data-mod-3='1']::before {
-				border-right-width: var(--border-width);
-			}
-			// every 3rd
-			&[data-mod-3='0']::before {
-				border-left-width: var(--border-width);
-			}
 			@media (prefers-color-scheme: light) {
 				// every 1st
 				&[data-mod-3='1']::after {
