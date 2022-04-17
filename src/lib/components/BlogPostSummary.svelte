@@ -26,6 +26,7 @@
 
 <style lang="scss">
 	h2 {
+		cursor: pointer;
 		font-size: 1.25rem;
 		line-height: 1.4;
 		margin-block-start: 0;
