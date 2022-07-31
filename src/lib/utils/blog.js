@@ -1,6 +1,7 @@
 import { compile } from 'mdsvex';
 import {
 	entries,
+	filter,
 	find,
 	last,
 	map,
@@ -17,6 +18,7 @@ const getPosts = () =>
 	pipe(
 		import.meta.globEager(`/src/content/blog/**/*.svx`),
 		entries,
+		filter(([, post]) => post.metadata.publishedAt),
 		sortBy(([, post]) => post.metadata.publishedAt),
 		reverse,
 		toAsync,
