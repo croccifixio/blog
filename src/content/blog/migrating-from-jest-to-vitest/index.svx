@@ -1,0 +1,187 @@
+---
+title: "Migrating From Jest To&nbsp;Vitest"
+tags: ["tests"]
+description: [
+  ""
+]
+seoTitle: "Migrating From Jest To Vitest"
+dependencies: {
+  jest: "28.1.0",
+  vitest: "0.17.0"
+}
+---
+
+<script>
+import StepHeading from "$lib/components/StepHeading.svelte"
+</script>
+
+<StepHeading text="Obvious changes" />
+
+In `vitest`, functions to do with timers, mocking, stubbing and spying are grouped under the `vi` namespace.
+
+- jest.fn() -> vi.fn()
+- jest.mock() -> vi.mock()
+- jest.spyOn() -> vi.spyOn()
+- let findUser: jest.Mock -> let findUser: Mock
+
+<StepHeading text="Mocking default export" />
+
+Can't mock default export. Change this:
+
+```typescript
+import * as shadowBanUser from "./shadowBanUser";
+
+const spyExecute = jest
+  .spyOn(shadowBanUser, "default")
+  .mockResolvedValueOnce({ status: "BANNED" });
+```
+
+to this
+
+```typescript
+import * as shadowBanUser from "./shadowBanUser";
+
+const spyExecute = vi
+  .spyOn(shadowBanUser, "shadowBanUser")
+  .mockResolvedValueOnce({ status: "BANNED" });
+```
+
+The imported function needs to be changed from a default to a named export.
+
+<StepHeading text="Type inference" />
+
+`vi.fn()` has a stricter type than `jest.fn()`. Change this
+
+```typescript
+const findUser: () => IUser = jest.fn();
+```
+
+to this
+
+```typescript
+const findUser = (vi.fn() as unknown) as () => IUser;
+```
+<StepHeading text="Imports" />
+
+(Investigate why some libraries need to be imported in a specific way 🤔)
+
+Change this
+
+```typescript
+import R from "ramda";
+```
+
+to this
+
+```typescript
+import * as R from "ramda";
+```
+
+<StepHeading text="Mock style1???" />
+
+```typescript
+jest.mock("axios");
+
+...
+
+(axios.post as jest.Mock).mockResolvedValue({
+  data: {
+    firstName: "Rick",
+    surname: "Sanchez"
+  }
+});
+```
+
+```typescript
+vi.mock("axios");
+
+...
+
+axios.post = vi.fn().mockResolvedValue({
+  data: {
+    firstName: "Rick",
+    surname: "Sanchez"
+  }
+});
+```
+
+<StepHeading text="Mock style1???" />
+
+```typescript
+jest.mock("./utils/tz");
+
+...
+
+(tz.getTimeZone as jest.Mock).mockReturnValue("Europe/Warsaw");
+```
+
+```typescript
+vi.mock("./utils/tz", () => ({
+  getTimeZone: () => "Europe/Warsaw",
+}));
+```
+
+<StepHeading text="Mock style2???" />
+
+```typescript
+jest.mock("axios");
+
+...
+
+(axios.post as jest.Mock).mockResolvedValue({
+  data: {
+    firstName: "Rick",
+    surname: "Sanchez"
+  }
+});
+```
+
+```typescript
+vi.mock("axios");
+
+...
+
+axios.post = vi.fn().mockResolvedValue({
+  data: {
+    firstName: "Rick",
+    surname: "Sanchez"
+  }
+});
+```
+
+<StepHeading text="Mock default???" />
+
+```typescript
+jest.mock("./utils/sum", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+```
+
+```typescript
+vi.mock("./utils/sum", () => ({
+  default: vi.fn(),
+}));
+```
+
+<StepHeading text="Mock default2???" />
+
+```typescript
+import * as axios from "axios";
+
+jest.mock("axios");
+
+axios.default.post = jest
+  .fn()
+  .mockReturnValue({ data: { status: "PENDING" } });
+```
+
+```typescript
+import axios from "axios";
+
+vi.mock("axios");
+
+axios.post = vi
+  .fn()
+  .mockReturnValue({ data: { status: "PENDING" } });
+```
