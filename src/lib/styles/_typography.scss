@@ -55,7 +55,7 @@ li {
 	line-height: 2;
 }
 
-p code {
+:is(li, p) code {
 	@include code-font-bold-italic();
 	background-color: var(--c-button-bg);
 	color: var(--c-button);
@@ -65,7 +65,7 @@ p img {
 	max-width: 100%;
 }
 
-p code,
+:is(li, p) code,
 pre {
 	box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.2);
 	text-shadow: none;
@@ -117,7 +117,7 @@ ul {
 	user-select: none;
 }
 
-p code,
+:is(li, p) code,
 .input {
 	border-radius: 4px;
 	display: inline;
