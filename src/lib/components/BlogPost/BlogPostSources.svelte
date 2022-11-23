@@ -13,11 +13,14 @@
 	</dd>
 </dl>
 
-<style>
+<style lang="scss">
 	dl {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem 0;
+	}
+	dt {
+		@include css-lock('font-size', 'rem', 1.05, 1.15);
 	}
 	dt::after {
 		content: ': ';
