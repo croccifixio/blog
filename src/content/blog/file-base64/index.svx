@@ -1,0 +1,56 @@
+---
+publishedAt: "2022-11-23"
+title: "Base64 Encoding & Decoding of Files in the&nbsp;Browser"
+tags: ["javascript"]
+description: [
+  "Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. The base64 string can be decoded, even after a page refresh, to recover the file contents."
+]
+seoTitle: "Base64 Encoding & Decoding of Files in the Browser"
+sources: [
+	{
+		text: "How to convert file to base64 in JavaScript?",
+		url: "https://stackoverflow.com/a/57272491/6454553"
+	},
+	{
+		text: "Creating a BLOB from a Base64 string in JavaScript",
+		url: "https://stackoverflow.com/a/36183085"
+	}
+]
+---
+
+<script>
+  import { Kbd } from "$lib/components"
+</script>
+
+Encoding a file to base64 can be done using the `FileReader` API as shown:
+
+```ts
+const encodeBase64 = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+```
+
+Decoding the base64 string can be done by fetching the base64 string &mdash; it's a data URL &mdash; and converting it to a blob, then to a `File`.
+
+```ts
+const decodeBase64 = ({
+  base64,
+  name,
+  type,
+}: {
+  base64: string;
+  name: string;
+  type: string;
+}): Promise<File> => {
+  const res = await fetch(base64);
+  const blob = await res.blob();
+  const file = new File([blob], name, { type });
+
+  return file;
+};
+```
+Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. The base64 string can be decoded, even after a page refresh, to recover the file contents.
