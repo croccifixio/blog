@@ -1,9 +1,10 @@
 ---
 publishedAt: "2022-11-23"
+updatedAt: "2022-12-21"
 title: "Base64 Encoding & Decoding of Files in the&nbsp;Browser"
 tags: ["javascript"]
 description: [
-  "Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. The base64 string can be decoded, even after a page refresh, to recover the file contents."
+  "Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh."
 ]
 seoTitle: "Base64 Encoding & Decoding of Files in the Browser"
 sources: [
@@ -18,11 +19,7 @@ sources: [
 ]
 ---
 
-<script>
-  import { Kbd } from "$lib/components"
-</script>
-
-Encoding a file to base64 can be done using the `FileReader` API as shown:
+Encoding a file to base64 can be done using the `FileReader` API as shown below:
 
 ```ts
 const encodeBase64 = (file: File): Promise<string> =>
@@ -34,7 +31,11 @@ const encodeBase64 = (file: File): Promise<string> =>
   });
 ```
 
-Decoding the base64 string can be done by fetching the base64 string &mdash; it's a data URL &mdash; and converting it to a blob, then to a `File`.
+After encoding the file, the returned base64 string can be saved locally through local storage or any storage APIs available at runtime. Note that it is possible to skip the base64 encoding and instead [store blobs via IndexedDB](https://hacks.mozilla.org/2012/02/storing-images-and-files-in-indexeddb/).
+
+If you do opt to use base64 encoding, it may be useful to save the mimetype of the file and, if it's relevant, the file name too. We'll see why once we need to decode the base64 string.
+
+Decoding can be done by fetching the base64 string &mdash; it's a data URL &mdash; and converting it to a blob, then to a `File`. In the code snippet below, the `name` is the name of the file and the `type` is its mimetype.
 
 ```ts
 const decodeBase64 = ({
@@ -50,4 +51,5 @@ const decodeBase64 = ({
     .then((response) => response.blob())
     .then((blob) => new File([blob], name, { type }));
 ```
-Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. The base64 string can be decoded, even after a page refresh, to recover the file contents.
+
+Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh.
