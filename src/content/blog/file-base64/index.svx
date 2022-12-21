@@ -45,12 +45,9 @@ const decodeBase64 = ({
   base64: string;
   name: string;
   type: string;
-}): Promise<File> => {
-  const res = await fetch(base64);
-  const blob = await res.blob();
-  const file = new File([blob], name, { type });
-
-  return file;
-};
+}): Promise<File> =>
+  fetch(base64)
+    .then((response) => response.blob())
+    .then((blob) => new File([blob], name, { type }));
 ```
 Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. The base64 string can be decoded, even after a page refresh, to recover the file contents.
