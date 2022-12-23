@@ -8,6 +8,7 @@ export * from './Hr';
 export { default as Image } from './Image.svelte';
 export { default as Kbd } from './Kbd.svelte';
 export { default as Link } from './Link.svelte';
+export { default as Nav } from './Nav.svelte';
 export { default as PageTitle } from './PageTitle.svelte';
 export { default as StepHeading } from './StepHeading.svelte';
 export { default as Tag } from './Tag.svelte';

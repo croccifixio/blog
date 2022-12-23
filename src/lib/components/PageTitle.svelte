@@ -1,5 +1,11 @@
 <script lang="ts">
-	export let title: string;
+	import { page } from '$app/stores';
+	import { navItems } from '$lib/consts';
+
+	let title = '';
+	page.subscribe((page) => {
+		title = navItems.find(([, path]) => path === page.url.pathname)?.[0];
+	});
 </script>
 
 <h1>{title}</h1>

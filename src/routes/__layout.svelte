@@ -1,10 +1,13 @@
 <script>
-	import { PageTitle } from '$lib/components';
+	import { Nav, PageTitle } from '$lib/components';
 	import '$lib/styles/index.scss';
 </script>
 
 <main>
-	<PageTitle title="Blog" />
+	<header>
+		<PageTitle />
+		<Nav />
+	</header>
 	<slot />
 </main>
 
