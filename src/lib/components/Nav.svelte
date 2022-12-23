@@ -35,8 +35,8 @@
 	a {
 		background-image: none;
 		color: inherit;
+		text-decoration: none;
 		text-transform: lowercase;
-		text-underline-offset: 0.35em;
 		&:hover {
 			text-decoration: underline;
 		}

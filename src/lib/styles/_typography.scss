@@ -11,14 +11,10 @@ strong {
 }
 
 a {
-	background-image: linear-gradient(to right, var(--c-link) 50%, var(--c-link) 51%);
-	background-position: 0% 100%;
-	background-repeat: repeat-x;
-	background-size: 6px 2px;
 	color: var(--c-link);
-	padding-bottom: 0.45em;
 	position: relative;
-	text-decoration: none;
+	text-decoration: underline;
+	text-underline-offset: 0.35em;
 	transition: background 0.1s ease;
 
 	&:focus-visible {
@@ -28,6 +24,7 @@ a {
 		outline: 2px solid var(--c-active);
 		padding-bottom: 0.25em;
 		padding-top: 0.05em;
+		text-decoration: none;
 	}
 }
 
