@@ -28,6 +28,14 @@ a {
 	}
 }
 
+summary {
+	line-height: 1.2;
+
+	&:focus-visible {
+		outline: 2px solid var(--c-active);
+	}
+}
+
 code,
 kbd,
 pre,

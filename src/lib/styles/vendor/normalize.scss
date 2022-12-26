@@ -1,1 +1,6 @@
 @import 'the-new-css-reset/css/reset.css';
+
+summary,
+details {
+   all: revert;
+}
