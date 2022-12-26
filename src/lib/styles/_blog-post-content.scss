@@ -7,7 +7,7 @@
 
 	h2 {
 		@include css-lock("font-size", "rem", 1.35, 1.8);
-		line-height: 1.1;
+		line-height: 1.4;
 		margin-block: 2rem 0.75rem;
 		text-transform: uppercase;
 	}

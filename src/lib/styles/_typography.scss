@@ -48,8 +48,8 @@ kbd:not(.key) {
 p,
 li {
 	@include css-lock("font-size", "rem", 1.05, 1.15);
+	@include css-lock("line-height", "rem", 1.785, 2.3);
 	letter-spacing: 1px;
-	line-height: 2;
 }
 
 :is(li, p) code {
