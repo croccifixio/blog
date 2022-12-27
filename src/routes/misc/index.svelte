@@ -1,4 +1,4 @@
-<details>
+<details class="dropdown-list">
 	<summary><h2>Books</h2></summary>
 	<ul>
 		<li>
@@ -17,7 +17,7 @@
 	</ul>
 </details>
 
-<details>
+<details class="dropdown-list">
 	<summary><h2>Podcasts</h2></summary>
 	<ul>
 		<li>
@@ -47,7 +47,7 @@
 	</ul>
 </details>
 
-<details>
+<details class="dropdown-list">
 	<summary><h2>Uses</h2></summary>
 	<ul>
 		<li>
@@ -61,33 +61,3 @@
 		<li><a href="https://github.com/TailorDev/Watson">Watson</a> &ndash; CLI for time tracking.</li>
 	</ul>
 </details>
-
-<style lang="scss">
-	details {
-		&:first-of-type {
-			margin-block-start: 0.75em;
-		}
-		& + details {
-			@include css-lock('margin-block-start', 'rem', 1.5, 1);
-		}
-		&[open] + details {
-			@include css-lock('margin-block-start', 'rem', 2, 1.5);
-		}
-	}
-	h2 {
-		display: inline;
-		font-size: 1.5em;
-		font-style: normal;
-		margin-inline-start: 0.2em;
-	}
-	li a:first-of-type {
-		font-style: italic;
-		font-weight: bold;
-	}
-	li + li {
-		@include css-lock('margin-block-start', 'rem', 1.5, 0.75);
-	}
-	summary {
-		@include css-lock('margin-block-end', 'rem', 1.25, 0.75);
-	}
-</style>
