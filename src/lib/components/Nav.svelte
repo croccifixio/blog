@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { navItems } from '$lib/consts';
-
-	let nav = [];
-	page.subscribe((page) => {
-		nav = navItems.filter(([, path]) => path !== page.url.pathname);
-	});
 </script>
 
 <nav>
 	<ul>
-		{#each nav as [name, path]}
-			<li><a href={path}>{name}</a></li>
+		{#each navItems as [name, path]}
+			<li class:sr-only={path === $page.url.pathname}><a href={path}>{name}</a></li>
 		{/each}
 	</ul>
 </nav>
@@ -27,9 +22,15 @@
 	}
 	li {
 		display: inline-block;
-		&:not(:first-child)::before {
+		&::before {
 			content: ' | ';
 			white-space: pre;
+		}
+		&:first-child::before {
+			content: none;
+		}
+		&:first-child.sr-only + li::before {
+			content: none;
 		}
 	}
 	a {
