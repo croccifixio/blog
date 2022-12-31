@@ -1,1 +1,43 @@
-v1.croccifx.io | v2.croccifx.io | v3.croccifx.io | projects | thesis
+<details class="dropdown-list">
+	<summary><h2>Projects</h2></summary>
+	<ul>
+		<li>
+			<a href="https://marketplace.visualstudio.com/items?itemName=Croccifixio.blackboard-pro"
+				>Blackboard Pro</a
+			> &ndash; Dark theme for VSCode.
+		</li>
+	</ul>
+</details>
+
+<details class="dropdown-list">
+	<summary><h2>Site</h2></summary>
+	<ul>
+		<li>
+			<a href="https://v1.croccifix.io/">v1.croccifx.io</a> &ndash; Built with
+			<a href="https://middlemanapp.com/">Middleman</a>, a Ruby-based static site generator.
+		</li>
+		<li>
+			<a href="https://v2.croccifix.io/">v2.croccifx.io</a> &ndash; Built with
+			<a href="https://gridsome.org/">Gridsome</a>, a Vue-based static site generator.
+		</li>
+		<li>
+			<a href="https://v3.croccifix.io/">v3.croccifx.io</a> &ndash; Built with
+			<a href="https://www.getzola.org/">Zola</a>, a Rust-based static site generator.
+		</li>
+		<li>
+			<a href="https://croccifix.io/">croccifx.io</a> &ndash; Built with
+			<a href="https://kit.svelte.dev/">Sveltekit</a>, a Svelte-based web app framework.
+		</li>
+	</ul>
+</details>
+
+<details class="dropdown-list">
+	<summary><h2>Thesis</h2></summary>
+	<ul>
+		<li>
+			<a href="https://thesis.croccifix.io/thesis.pdf">Thesis (PDF, 5.8MB)</a> &ndash; Undefended
+			thesis on the Design and Simulation of Periodic Ring Resonator Structures. Includes a
+			<a href="https://thesis.croccifix.io/">web app for editing the structures</a>.
+		</li>
+	</ul>
+</details>

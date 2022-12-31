@@ -1,6 +1,6 @@
 const navItems = [
 	['Blog', '/'],
-	// ['Meta', '/meta'],
+	['Meta', '/meta'],
 	['Misc', '/misc'],
 ];
 
