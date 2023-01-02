@@ -1,5 +1,6 @@
 ---
 publishedAt: "2020-02-09"
+updatedAt: "2023-01-03"
 title: "Pushing to Multiple Git&nbsp;Repos"
 tags: ["git"]
 description: [
@@ -50,7 +51,6 @@ Next, we will add the `origin` remote again, setting its single pull url and mak
 
 ```
 $$$ git remote add origin git@github.com:username/my-repo.git
-$$$ git remote set-url --add --push origin git@github.com:username/my-repo.git
 $$$ git remote set-url --add --push origin git@gitlab.com:username/my-repo.git
 ```
 
