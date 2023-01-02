@@ -1,4 +1,14 @@
 <details class="dropdown-list">
+	<summary><h2>Links</h2></summary>
+	<ul>
+		<li><a href="mailto:hello@croccifix.io">hello@croccifix.io</a> &ndash; Email.</li>
+		<li>
+			<a href="https://sr.ht/~croccifixio/">sr.ht/~croccifixio</a> &ndash; Source code repository host.
+		</li>
+	</ul>
+</details>
+
+<details class="dropdown-list">
 	<summary><h2>Projects</h2></summary>
 	<ul>
 		<li>
