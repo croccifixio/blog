@@ -1,3 +1,18 @@
+<details class="dropdown-list" open>
+	<summary><h2>Uses</h2></summary>
+	<ul>
+		<li>
+			<a href="https://github.com/foostan/crkbd">Corne</a> &ndash; Split ortho-linear mechanical
+			keyboard. I use the the 5-column variant (3&times;5) with the
+			<a href="http://colemakmods.github.io/mod-dh/">Colemak DHm layout</a>.
+		</li>
+		<li>
+			<a href="https://github.com/lra/mackup">Mackup</a> &ndash; CLI for backing up application settings.
+		</li>
+		<li><a href="https://github.com/TailorDev/Watson">Watson</a> &ndash; CLI for time tracking.</li>
+	</ul>
+</details>
+
 <details class="dropdown-list">
 	<summary><h2>Books</h2></summary>
 	<ul>
@@ -44,20 +59,5 @@
 				>The Man Behind Windows PowerShell</a
 			>.
 		</li>
-	</ul>
-</details>
-
-<details class="dropdown-list">
-	<summary><h2>Uses</h2></summary>
-	<ul>
-		<li>
-			<a href="https://github.com/foostan/crkbd">Corne</a> &ndash; Split ortho-linear mechanical
-			keyboard. I use the the 5-column variant (3&times;5) with the
-			<a href="http://colemakmods.github.io/mod-dh/">Colemak DHm layout</a>.
-		</li>
-		<li>
-			<a href="https://github.com/lra/mackup">Mackup</a> &ndash; CLI for backing up application settings.
-		</li>
-		<li><a href="https://github.com/TailorDev/Watson">Watson</a> &ndash; CLI for time tracking.</li>
 	</ul>
 </details>

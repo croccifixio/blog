@@ -1,4 +1,4 @@
-<details class="dropdown-list">
+<details class="dropdown-list" open>
 	<summary><h2>Links</h2></summary>
 	<ul>
 		<li><a href="mailto:hello@croccifix.io">hello@croccifix.io</a> &ndash; Email.</li>
