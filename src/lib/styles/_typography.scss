@@ -45,10 +45,6 @@ samp {
 	font-family: "Cartograph CF", monospace;
 }
 
-code .mtki {
-	font-feature-settings: "ss01";
-}
-
 kbd:not(.key) {
 	@include body-font();
 }
@@ -86,9 +82,28 @@ pre {
 	border-radius: 10px;
 	border: var(--border-width) dashed var(--c-text);
 	max-height: 90vh;
-	overflow: auto;
-	padding: 1em;
+	overflow: hidden !important;
+	padding: 0 !important;
 	white-space: pre;
+
+	code {
+		display: grid !important;
+		overflow: auto;
+		padding: 1em;
+
+		.grvsc-source {
+			padding-inline: 0 !important;
+		}
+
+		.grvsc-line-highlighted::before {
+			box-shadow: none !important;
+			inset: auto -1em;
+			width: auto !important;
+			@media (prefers-color-scheme: dark) {
+				background-color: rgba(255, 255, 255, 0.2) !important;
+			}
+		}
+	}
 
 	&:focus-visible {
 		border: var(--border-width) solid var(--c-active);
@@ -138,8 +153,4 @@ ul {
 
 .input .code-emphasis {
 	padding-block-end: 0.25em;
-}
-
-.grvsc-source {
-	padding-inline: 0 !important;
 }

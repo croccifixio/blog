@@ -62,7 +62,7 @@ The async generator &ndash; `async function* ()` &ndash; is what allows us to li
 
 It's a good idea to use an abort controller to clean up when the connection drops. Here's what the code now looks like:
 
-```ts
+```ts{10,12,16}
 import fastify from "fastify";
 import { FastifySSEPlugin } from "fastify-sse-v2";
 import { EventEmitter, on } from "events";
@@ -214,7 +214,7 @@ console.log("bottom");
 
 Great care needs to be taken, not to be caught unawares by this behaviour. The following test passes even though the assertions are clearly wrong:
 
-```ts
+```ts{19-24}
 import { EventEmitter } from "events";
 import { describe, expect, test } from "vitest";
 
