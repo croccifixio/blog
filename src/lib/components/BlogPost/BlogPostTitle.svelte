@@ -6,7 +6,7 @@
 
 <style lang="scss">
 	h1 {
-		@include css-lock('font-size', 'rem', 1.5, 3);
+		@include css-lock('font-size', 'rem', 2.2, 3);
 		line-height: 1.3;
 		margin-bottom: 2.5rem;
 	}
