@@ -15,74 +15,90 @@ dependencies: {
 import StepHeading from "$lib/components/StepHeading.svelte"
 </script>
 
-<StepHeading text="Obvious changes" />
+Vitest is a JavaScript testing framework with a mostly Jest-compatible API. I ran into a number of minor road bumps while migrating existing Jest test suites to Vitest (which are enumerated below), but the end result was definitely worth it: a 2-3 times drop in the time it takes to run the tests in CI.
 
-In `vitest`, functions to do with timers, mocking, stubbing and spying are grouped under the `vi` namespace.
+<StepHeading text="Global imports" />
 
-- jest.fn() -> vi.fn()
-- jest.mock() -> vi.mock()
-- jest.spyOn() -> vi.spyOn()
-- let findUser: jest.Mock -> let findUser: Mock
+Both testing frameworks support global imports which allow you to write your tests without explicitly importing test utility functions. In Vitest, functions to do with timers, mocking, stubbing and spying are grouped under the `vi` namespace. The following are roughly equivalent:
 
-<StepHeading text="Mocking default export" />
+- `jest.fn()` -> `vi.fn()`
+- `jest.mock()` -> `vi.mock()`
+- `jest.spyOn()` -> `vi.spyOn()`
 
-Can't mock default export. Change this:
+A key difference is that types in Vitest must be explicitly imported. This one-liner in Jest:
 
 ```typescript
-import * as shadowBanUser from "./shadowBanUser";
+let findUser: jest.Mock;
+```
+
+now becomes:
+
+```typescript
+import { Mock } from "vitest";
+// `import type { Mock } from "vitest";` also works
+
+let findUser: Mock;
+```
+
+<StepHeading text="Spying on default exports" />
+
+In Jest, it is possible to spy on a module's default export by importing it as a namespace, i.e. `import * as namespaces from "./filePath"`:
+
+```typescript
+import * as setUserStatusNamespace from "./setUserStatus";
 
 const spyExecute = jest
-  .spyOn(shadowBanUser, "default")
-  .mockResolvedValueOnce({ status: "BANNED" });
+  .spyOn(setUserStatusNamespace, "default")
+  .mockResolvedValueOnce({ id: "123", status: "BANNED" });
 ```
 
-to this
+In Vitest, this is not possible. The module we intend to spy on needs to be updated to use named exports.
 
 ```typescript
-import * as shadowBanUser from "./shadowBanUser";
+import * as setUserStatusNamespace from "./setUserStatus";
 
 const spyExecute = vi
-  .spyOn(shadowBanUser, "shadowBanUser")
-  .mockResolvedValueOnce({ status: "BANNED" });
+  .spyOn(setUserStatusNamespace, "setUserStatus")
+  .mockResolvedValueOnce({ id: "123", status: "BANNED" });
 ```
-
-The imported function needs to be changed from a default to a named export.
 
 <StepHeading text="Type inference" />
 
-`vi.fn()` has a stricter type than `jest.fn()`. Change this
+`vi.fn()` has a stricter type than `jest.fn()`. Change this:
 
 ```typescript
 const findUser: () => IUser = jest.fn();
 ```
 
-to this
+to this:
 
 ```typescript
 const findUser = (vi.fn() as unknown) as () => IUser;
 ```
-<StepHeading text="Imports" />
+<StepHeading text="ES modules" />
 
-(Investigate why some libraries need to be imported in a specific way 🤔)
+Default importing from a module that does not have a default export, such as Ramda, will no longer work.
 
-Change this
+Change this:
 
 ```typescript
 import R from "ramda";
 ```
 
-to this
+to this:
 
 ```typescript
 import * as R from "ramda";
 ```
 
-<StepHeading text="Mock style1???" />
+<StepHeading text="Mocking without callbacks" />
+
+In Jest, after calling `mock` on a module, it is possible to mock t
 
 ```typescript
-jest.mock("axios");
+import axios form "axios";
 
-...
+jest.mock("axios");
 
 (axios.post as jest.Mock).mockResolvedValue({
   data: {
@@ -93,9 +109,9 @@ jest.mock("axios");
 ```
 
 ```typescript
-vi.mock("axios");
+import axios form "axios";
 
-...
+vi.mock("axios");
 
 axios.post = vi.fn().mockResolvedValue({
   data: {
@@ -103,85 +119,4 @@ axios.post = vi.fn().mockResolvedValue({
     surname: "Sanchez"
   }
 });
-```
-
-<StepHeading text="Mock style1???" />
-
-```typescript
-jest.mock("./utils/tz");
-
-...
-
-(tz.getTimeZone as jest.Mock).mockReturnValue("Europe/Warsaw");
-```
-
-```typescript
-vi.mock("./utils/tz", () => ({
-  getTimeZone: () => "Europe/Warsaw",
-}));
-```
-
-<StepHeading text="Mock style2???" />
-
-```typescript
-jest.mock("axios");
-
-...
-
-(axios.post as jest.Mock).mockResolvedValue({
-  data: {
-    firstName: "Rick",
-    surname: "Sanchez"
-  }
-});
-```
-
-```typescript
-vi.mock("axios");
-
-...
-
-axios.post = vi.fn().mockResolvedValue({
-  data: {
-    firstName: "Rick",
-    surname: "Sanchez"
-  }
-});
-```
-
-<StepHeading text="Mock default???" />
-
-```typescript
-jest.mock("./utils/sum", () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
-```
-
-```typescript
-vi.mock("./utils/sum", () => ({
-  default: vi.fn(),
-}));
-```
-
-<StepHeading text="Mock default2???" />
-
-```typescript
-import * as axios from "axios";
-
-jest.mock("axios");
-
-axios.default.post = jest
-  .fn()
-  .mockReturnValue({ data: { status: "PENDING" } });
-```
-
-```typescript
-import axios from "axios";
-
-vi.mock("axios");
-
-axios.post = vi
-  .fn()
-  .mockReturnValue({ data: { status: "PENDING" } });
 ```
