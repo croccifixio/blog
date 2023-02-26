@@ -36,6 +36,11 @@
 		text-align: center;
 	}
 
+	ol li {
+		list-style: decimal;
+		margin-inline-start: 2rem;
+	}
+
 	ul li {
 		list-style: disc;
 	}
