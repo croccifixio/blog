@@ -6,6 +6,10 @@ description: [
   "Async generators can be difficult to grok for those unaccustomed to working with them. Testing them can also be an exercise in mental gymnastics."
 ]
 seoTitle: "Testing Async Generators"
+dependencies: {
+  typescript: "4.9.5",
+	vitest: "0.29.2"
+}
 ---
 
 <script>
