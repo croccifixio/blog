@@ -85,7 +85,6 @@ li > p ~ pre {
 pre {
 	border-radius: 10px;
 	border: var(--border-width) dashed var(--c-text);
-	max-height: 90vh;
 	overflow: hidden !important;
 	padding: 0 !important;
 	white-space: pre;
