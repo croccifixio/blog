@@ -6,7 +6,7 @@ tags: ["javascript"]
 description: [
   "Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh."
 ]
-seoTitle: "Base64 Encoding & Decoding of Files in the Browser"
+seoTitle: "Base64 Encoding and Decoding of Files in the Browser"
 sources: [
 	{
 		text: "How to convert file to base64 in JavaScript?",
