@@ -3,7 +3,7 @@ publishedAt: "2023-03-25"
 title: "Using Key Pairs with JWTs"
 tags: ["javascript", "jwt"]
 description: [
-  "JWTs are a format for representing claims between two parties. JWTs can be signed to increase confidence in their security. This signing, and subsequent verification, can be done using a secret or an key pair"
+  "JWTs are a format for representing claims between two parties. JWTs can be signed to increase confidence in their security. This signing, and subsequent verification, can be done using a secret or a key pair"
 ]
 seoTitle: "Using Key Pairs with JWTs"
 dependencies: {
@@ -101,7 +101,7 @@ verify(token, PUBLIC_KEY);
 
 ## Generating Key Pairs
 
-An key pair can be generated from the terminal using `openssl`.
+A key pair can be generated from the terminal using `openssl`.
 
 Before we start generating a key pair, we need to know which curve `openssl` should use. The `ES512` algorithm used in the previous code snippet corresponds to the `secp512r1` curve. More on how to figure out which curve to use in the [footnotes](#footnotes).
 
