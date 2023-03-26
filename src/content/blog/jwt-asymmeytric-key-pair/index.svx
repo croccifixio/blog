@@ -13,6 +13,8 @@ dependencies: {
 
 One common way of handling authentication and authorisation in web-based systems is to have a client send their login credentials to the backend, which generates and returns a signed JWT linked to an identity. The client can then access or modify protected resources by attaching the JWT to the request. Before handling the request, the backend verifies the JWT's authenticity.
 
+## Signing and Verifying JWTs
+
 JWTs can be signed and verified using a secret. In this case, the same secret is used for signing and verifying. This is a reasonable approach in a monolithic architecture, since only one program has access to the secret.
 
 ```js{5,20,22,33,35}
