@@ -1,10 +1,10 @@
 ---
 publishedAt: "2020-02-09"
-updatedAt: "2023-01-03"
+updatedAt: "2023-03-30"
 title: "Pushing to Multiple Git&nbsp;Repos"
 tags: ["git"]
 description: [
-  "Pushing a change to multiple git repos, while probably not something you would want to do in most cases, does not have to be a multi-step process. A fairly simple adjustment to the git config can enable pushing to multiple remote repositories with a single command."
+  "A fairly simple adjustment to the git config can enable pushing to multiple remote repositories with a single command."
 ]
 seoTitle: "Pushing to Multiple Git Repos"
 ---
@@ -24,7 +24,11 @@ $$$ git push origin main
 $$$ git push gitlab main
 ```
 
-Having to do this each time you wanted to push your changes could certainly become overwhelming and would likely be hard to remember to do every time. Luckily this needn't be the case.
+Remembering to run both these commands every time you wanted to push your changes seems like a tall ask. The good new is that you can get the desired behaviour with just a single command that's likely already part of your muscle-memory:
+
+```
+$$$ git push origin main
+```
 
 ## The solution
 
@@ -41,20 +45,20 @@ origin  git@github.com:username/my-repo.git (fetch)
 origin  git@github.com:username/my-repo.git (push)
 ```
 
-We will then clear the `origin` remote just to be sure that there's nothing in our config that could cause some unexpected issues later on.
+For the superstitious amongst us, you can optionally clear and re-add the `origin` remote.
 
 ```
 $$$ git remote remove origin
-```
-
-Next, we will add the `origin` remote again, setting its single pull url and making sure to set 2 push urls.
-
-```
 $$$ git remote add origin git@github.com:username/my-repo.git
+```
+
+We now have one push and one pull URL. The solution to our problem lies in setting a second push URL as shown:
+
+```
 $$$ git remote set-url --add --push origin git@gitlab.com:username/my-repo.git
 ```
 
-We then set the upstream branch of our choosing (`main` in this case).
+To wrap up, we then set the upstream branch of our choosing (`main` in this case).
 
 ```
 $$$ git fetch origin main
@@ -65,7 +69,7 @@ From now on, whenever we run `git push origin main`, git will push our changes t
 
 ## Bonus points
 
-As a final touch, we can give both of our remotes a unique name in case we ever need to explicitly push or fetch from a particular one.
+As a final touch, we can give both of our repo hosts a unique name in case we ever need to explicitly push or fetch from a particular one.
 
 ```
 $$$ git remote add github git@github.com:username/my-repo.git
