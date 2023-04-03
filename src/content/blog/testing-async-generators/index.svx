@@ -1,6 +1,6 @@
 ---
 publishedAt: "2023-02-26"
-updatedAt: "2023-03-02"
+updatedAt: "2023-04-03"
 title: "Testing Async Generators"
 tags: ["typescript", "vitest"]
 description: [
@@ -191,7 +191,7 @@ describe("makeEventListenerGenerator", () => {
 });
 ```
 
-With that, our unit test is complete and we can give ourselves a pat on the back. But before I close off, there is one final key point to that I feel needs to be covered.
+With that, our unit test is complete and we can give ourselves a pat on the back. But before I close off, there is one final key point that I feel needs to be covered.
 
 Typically, unit tests take the form: <Flow steps={["arrange", "act", "assert"]} />. If we read the test we just wrote from top to bottom, it seems like we are doing <Flow steps={["arrange", "act", "assert", "act"]} />. What gives?
 
