@@ -5,7 +5,7 @@
 	export let alt: string = '';
 
 	const context = getContext('__svelte__');
-	let fullPath = '';
+	let fullPath = src;
 
 	if (context) {
 		(context as any).page.subscribe((page) => {
