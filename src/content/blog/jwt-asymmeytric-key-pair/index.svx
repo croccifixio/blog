@@ -1,5 +1,6 @@
 ---
 publishedAt: "2023-03-25"
+updatedAt: "2023-05-26"
 title: "Using Key Pairs with JWTs"
 tags: ["javascript", "jwt"]
 description: [
@@ -105,7 +106,7 @@ verify(token, PUBLIC_KEY);
 
 A key pair can be generated from the terminal using `openssl`.
 
-Before we start generating a key pair, we need to know which curve `openssl` should use. The `ES512` algorithm used in the previous code snippet corresponds to the `secp512r1` curve. More on how to figure out which curve to use in the [footnotes](#footnotes).
+Before we start generating a key pair, we need to know which curve `openssl` should use. The `ES512` algorithm used in the previous code snippet corresponds to the `secp512r1` curve<sup>[[1](#footnote-1)]</sup>.
 
 We can generate the private key by running the following command:
 
@@ -113,7 +114,7 @@ We can generate the private key by running the following command:
 openssl ecparam -name secp521r1 -genkey -out privateKey.pem
 ```
 
-The private key is then used to generate the public key using the command below:
+The private key is then used to generate the public key<sup>[[2](#footnote-2)]</sup> using the command below:
 
 ```
 openssl ec -in privateKey.pem -pubout -out publicKey.pem
@@ -123,7 +124,7 @@ openssl ec -in privateKey.pem -pubout -out publicKey.pem
 
 ## Footnotes
 
-If you wanted to use a different algorithm, say `ES256`, but provided the key generated above, `jsonwebtoken` would throw a helpful error message specifying which curve it expects.
+<p><a name="footnote-1">[1]</a>: If you wanted to use a different algorithm, say `ES256`, but provided the key generated above, `jsonwebtoken` would throw a helpful error message specifying which curve it expects.</p>
 
 ```js{22,25}
 import { randomUUID } from "crypto";
@@ -154,3 +155,18 @@ const token = sign(
 ```
 
 Generating a new key pair with the expected curve (`prime256v1` instead of `secp521r1`) should resolve the error.
+
+<p><a name="footnote-2">[2]</a>: The node `crypto` module can generate a public key based off of the private key. So if the service issuing tokens needed to verify them too, we would only need to configure the private key:</p>
+
+```js
+import { randomUUID } from "crypto";
+import { readFileSync } from "fs";
+import { verify } from "jsonwebtoken";
+
+const PRIVATE_KEY = readFileSync("./privateKey.pem");
+
+const PUBLIC_KEY = createPublicKey(PRIVATE_KEY)
+  .export({ format: "pem", type: "spki" });
+
+verify(token, PUBLIC_KEY);
+```
