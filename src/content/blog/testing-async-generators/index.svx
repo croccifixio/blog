@@ -51,7 +51,7 @@ const eventEmitter = new EventEmitter();
 const server = fastify();
 server.register(FastifySSEPlugin);
 
-server.get("/rates", function (_request, reply) {
+server.get("/rates", (_request, reply) => {
   reply.sse(
     (async function* () {
       for await (const [payload] of on(eventEmitter, "ratesUpdated")) {
@@ -78,7 +78,7 @@ const eventEmitter = new EventEmitter();
 const server = fastify();
 server.register(FastifySSEPlugin);
 
-server.get("/rates", function (request, reply) {
+server.get("/rates", (request, reply) => {
   const abortController = new AbortController();
 
   request.socket.on("close", () => {
