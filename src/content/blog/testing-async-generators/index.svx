@@ -146,7 +146,7 @@ reply.sse(
 
 Before we can test our `makeEventListenerGenerator` function, it's important to understand that it returns an async generator function. Calling this function returns an async iterator: an object that can generate a sequence of values asynchronously.
 
-The `on` function, which we imported from the node's `events` module, is roughly equivalent to the browser's `addEventListener` method. We can subscribe to events that are fired by the event emitter using the `on` function.
+The `on` function, which we imported from node's `events` module, is roughly equivalent to the browser's `addEventListener` method. We can subscribe to events that are fired by the event emitter using the `on` function.
 
 Firing events is done using the event emitter's `emit` method.
 
