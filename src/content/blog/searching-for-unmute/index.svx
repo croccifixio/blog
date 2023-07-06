@@ -61,6 +61,8 @@ However, I experienced one slightly jarring issue whenever I toggled the microph
 
 This was enough to push me to look into writing my own app<sup>[[4](#footnote-4)]</sup> to toggle the microphone without causing the menubar to flash. It also doubled as a nice first project to learn Swift. [The source code is available](https://git.sr.ht/~croccifixio/mic-toggle) in all its warts and glory.
 
+<Image alt="Custom microphone toggle app" src="mic-toggle.gif" />
+
 I plan to add more features to make the app more usable, such as:
 - Ability to start the app on login
 - Ability to customise the keyboard shortcut
