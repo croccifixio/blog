@@ -17,7 +17,7 @@ With the onset of the COVID-19 pandemic, I shifted to a hybrid/remote work setup
 
 I longed for a life free of fumbling through multiple desktops, windows and tabs in an effort to unmute myself when a question was directed to me during a meeting &mdash; a situation I often find myself in since I prefer working on a single display.
 
-If you're primary meeting platform is Slack, you have access to a handy shortcut for toggling your microphone: `Cmd` + `Shift` + `Space`. This works even if the Slack app is not in focus. But it does require the Slack app to be installed. If you're using Slack via a browser, then that tab must be in focus for the shortcut to work.
+If your primary meeting platform is Slack, you have access to a handy shortcut for toggling your microphone: `Cmd` + `Shift` + `Space`. This works even if the Slack app is not in focus. But it does require the Slack app to be installed. If you're using Slack via a browser, then that tab must be in focus for the shortcut to work.
 
 In my case I moved away from installing dedicated apps for each instant messaging platform I use, and instead migrated them to permanent tabs in my browser<sup>[[1](#footnote-1)]</sup>. A significant portion of my meetings also took place over Microsoft Teams, so having a shortcut work for Slack but not Teams &mdash; or any other app &mdash; was far from ideal.
 
