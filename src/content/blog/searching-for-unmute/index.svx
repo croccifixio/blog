@@ -1,6 +1,6 @@
 ---
 publishedAt: "2023-06-05"
-updatedAt: "2023-06-05"
+updatedAt: "2023-06-07"
 title: "Searching for Unmute"
 tags: ["applescript"]
 description: [
