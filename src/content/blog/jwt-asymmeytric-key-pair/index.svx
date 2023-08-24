@@ -1,6 +1,6 @@
 ---
 publishedAt: "2023-03-25"
-updatedAt: "2023-05-26"
+updatedAt: "2023-08-24"
 title: "Using Key Pairs with JWTs"
 tags: ["javascript", "jwt"]
 description: [
@@ -159,7 +159,7 @@ Generating a new key pair with the expected curve (`prime256v1` instead of `secp
 <p><a name="footnote-2">[2]</a>: The node <code>crypto</code> module can generate a public key based off of the private key. So if the service issuing tokens needed to verify them too, we would only need to configure the private key:</p>
 
 ```js
-import { randomUUID } from "crypto";
+import { createPublicKey } from "crypto";
 import { readFileSync } from "fs";
 import { verify } from "jsonwebtoken";
 
