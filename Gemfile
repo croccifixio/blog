@@ -9,11 +9,12 @@ source 'https://rubygems.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Middleman Gems
-gem 'middleman', '4.2.1'
+gem 'middleman'
 gem 'middleman-livereload'
 gem 'middleman-blog'
 gem 'middleman-autoprefixer'
 gem 'middleman-search_engine_sitemap'
+gem 'sass-embedded'
 gem 'redcarpet', '~> 3.3', '>= 3.3.3'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
