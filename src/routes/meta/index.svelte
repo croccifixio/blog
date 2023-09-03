@@ -23,19 +23,19 @@
 	<summary><h2>Site</h2></summary>
 	<ul>
 		<li>
-			<a href="https://v1.croccifix.io/">v1.croccifx.io</a> &ndash; Built with
+			<a href="https://v1.croccifix.io/">v1.croccifix.io</a> &ndash; Built with
 			<a href="https://middlemanapp.com/">Middleman</a>, a Ruby-based static site generator.
 		</li>
 		<li>
-			<a href="https://v2.croccifix.io/">v2.croccifx.io</a> &ndash; Built with
+			<a href="https://v2.croccifix.io/">v2.croccifix.io</a> &ndash; Built with
 			<a href="https://gridsome.org/">Gridsome</a>, a Vue-based static site generator.
 		</li>
 		<li>
-			<a href="https://v3.croccifix.io/">v3.croccifx.io</a> &ndash; Built with
+			<a href="https://v3.croccifix.io/">v3.croccifix.io</a> &ndash; Built with
 			<a href="https://www.getzola.org/">Zola</a>, a Rust-based static site generator.
 		</li>
 		<li>
-			<a href="https://croccifix.io/">croccifx.io</a> &ndash; Built with
+			<a href="https://croccifix.io/">croccifix.io</a> &ndash; Built with
 			<a href="https://kit.svelte.dev/">Sveltekit</a>, a Svelte-based web app framework.
 		</li>
 	</ul>
