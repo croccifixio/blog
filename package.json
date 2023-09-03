@@ -6,7 +6,7 @@
 		"@fxts/core": "^0.10.1",
 		"@js-temporal/polyfill": "^0.4.3",
 		"@sveltejs/adapter-static": "1.0.0-next.29",
-		"@sveltejs/kit": "1.0.0-next.301",
+		"@sveltejs/kit": "1.15.2",
 		"@typescript-eslint/eslint-plugin": "^5.40.1",
 		"@typescript-eslint/parser": "^5.40.1",
 		"blackboard-pro": "github:croccifixio/blackboard-pro",
