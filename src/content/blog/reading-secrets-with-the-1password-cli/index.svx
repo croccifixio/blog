@@ -1,11 +1,26 @@
 ---
 publishedAt: "2023-09-04"
+updatedAt: "2023-09-06"
 title: "Reading Secrets With the 1Password CLI"
 tags: ["secrets"]
 description: [
   "1Password is a password manager that offers a CLI, allowing for programmatic retrieval of secrets."
 ]
 seoTitle: "Reading Secrets With the 1Password CLI"
+sources: [
+  {
+		text: "1Password CLI reference",
+		url: "https://developer.1password.com/docs/cli/reference"
+	},
+	{
+		text: "aerc wiki",
+		url: "https://man.sr.ht/~rjarry/aerc/integrations/password-manager.md"
+	},
+	{
+		text: "npm-publish docs",
+		url: "https://docs.npmjs.com/cli/v8/commands/npm-publish#otp"
+	}
+]
 ---
 
 <script>
