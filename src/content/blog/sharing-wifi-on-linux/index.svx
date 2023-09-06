@@ -69,7 +69,7 @@ In my case, the filled in command looks something like this:
 $$$ sudo create_ap wlp8s0 wlp8s0 MyHotspot MyPassword
 ```
 
-## Footnotes:
+## Footnotes
 Since the script runs a process in the console, once the terminal is closed the hotspot will be closed as well. To circumvent this consider using a terminal multiplexer such as [tmux](https://github.com/tmux/tmux/wiki) or [screen](https://www.gnu.org/software/screen/), which allows you to close a terminal and still have it running in the background.
 A simplified workflow using tmux is presented below:
 

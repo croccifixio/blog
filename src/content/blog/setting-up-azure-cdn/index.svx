@@ -20,7 +20,7 @@ sources: [
 		url: "https://docs.microsoft.com/en-us/azure/cdn/cdn-manage-expiration-of-blob-content"
 	},
   {
-		text: "Best Practices for the Windows Azure CDN",
+		text: "Best practices for the Windows Azure CDN",
 		url: "https://azure.microsoft.com/en-us/blogbest-practices-for-the-windows-azure-content-delivery-network/"
 	}
 ]
@@ -129,7 +129,7 @@ By default, custom HTTPS is disabled. If you would like to enable it click on th
 
 After setting up your custom domain, your files should be available at <span class="input break-word pr-0">cdn.yoursite.com/<span class="code-emphasis">container\_name</span>/<span class="code-emphasis">file_name</span></span>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured.
 
-## Footnotes:
+## Footnotes
 
 1. ### Content Security Policy
 

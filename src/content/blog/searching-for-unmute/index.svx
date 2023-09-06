@@ -10,7 +10,7 @@ seoTitle: "Searching for Unmute"
 ---
 
 <script>
-  import { Image, StepHeading } from "$lib/components"
+  import { FootnoteList, FootnoteListItem, FootnoteTrigger, Image, StepHeading } from "$lib/components"
 </script>
 
 With the onset of the COVID-19 pandemic, I shifted to a hybrid/remote work setup. With it came more frequent online meetings, and the need to toggle my microphone at a moment's notice.
@@ -19,9 +19,9 @@ I longed for a life free of fumbling through multiple desktops, windows and tabs
 
 If your primary meeting platform is Slack, you have access to a handy shortcut for toggling your microphone: `Cmd` + `Shift` + `Space`. This works even if the Slack app is not in focus. But it does require the Slack app to be installed. If you're using Slack via a browser, then that tab must be in focus for the shortcut to work.
 
-In my case I moved away from installing dedicated apps for each instant messaging platform I use, and instead migrated them to permanent tabs in my browser<sup>[[1](#footnote-1)]</sup>. A significant portion of my meetings also took place over Microsoft Teams, so having a shortcut work for Slack but not Teams &mdash; or any other app &mdash; was far from ideal.
+In my case I moved away from installing dedicated apps for each instant messaging platform I use, and instead migrated them to permanent tabs in my browser<FootnoteTrigger index={1} />. A significant portion of my meetings also took place over Microsoft Teams, so having a shortcut work for Slack but not Teams &mdash; or any other app &mdash; was far from ideal.
 
-After some searching around, I came across this article describing [how to mute the microphone on macOS](https://medium.com/macoclock/how-in-the-bleep-do-i-mute-my-mic-anywhere-on-macos-d2fa1185b13). I set up the applescript<sup>[[2](#footnote-2)]</sup> as described and hooked it up so that it triggers when I press a keyboard shortcut.
+After some searching around, I came across this article describing [how to mute the microphone on macOS](https://medium.com/macoclock/how-in-the-bleep-do-i-mute-my-mic-anywhere-on-macos-d2fa1185b13). I set up the applescript<FootnoteTrigger index={2} /> as described and hooked it up so that it triggers when I press a keyboard shortcut.
 
 The one thing missing though, was visual feedback to indicate what state the microphone is in. Applescript can trigger macOS notifications, so I modified the script to do just that each time it runs:
 
@@ -51,7 +51,7 @@ The downside, however, is a clogged up notification center. It's not very worthw
 
 <Image alt="microphone toggle notifications" src="notifications.gif" />
 
-After clearing my notifications hundreds of times over several months, I'd finally had enough. I set out to find a less mildly annoying solution. My initial research uncovered this [Raycast plugin](https://www.raycast.com/Quentin23Soleil/mute-microphone)<sup>[[3](#footnote-3)]</sup>. It met the 2 hard requirements that I wanted in a solution:
+After clearing my notifications hundreds of times over several months, I'd finally had enough. I set out to find a less mildly annoying solution. My initial research uncovered this [Raycast plugin](https://www.raycast.com/Quentin23Soleil/mute-microphone)<FootnoteTrigger index={3} />. It met the 2 hard requirements that I wanted in a solution:
 1. a keyboard shortcut to toggle the mic
 2. a visual indication of whether the microphone is muted (in the form of a menubar icon)
 
@@ -59,7 +59,7 @@ However, I experienced one slightly jarring issue whenever I toggled the microph
 
 <Image alt="Flashing menu bar" src="flashing-menubar.gif" />
 
-This was enough to push me to look into writing my own app<sup>[[4](#footnote-4)]</sup> to toggle the microphone without causing the menubar to flash. It also doubled as a nice first project to learn Swift. [The source code is available](https://git.sr.ht/~croccifixio/mic-toggle) in all its warts and glory.
+This was enough to push me to look into writing my own app<FootnoteTrigger index={4} /> to toggle the microphone without causing the menubar to flash. It also doubled as a nice first project to learn Swift. [The source code is available](https://git.sr.ht/~croccifixio/mic-toggle) in all its warts and glory.
 
 <Image alt="Custom microphone toggle app" src="mic-toggle.gif" />
 
@@ -70,7 +70,17 @@ I plan to add more features to make the app more usable, such as:
 
 ## Footnotes
 
-<p><a name="footnote-1">[1]</a>: It's <a href="https://arc.net" rel="nofollow">Arc</a>, thanks for asking.</p>
-<p><a name="footnote-2">[2]</a>: There is a <a href="https://github.com/raycast/script-commands/blob/master/commands/system/audio/toggle-mic.applescript" rel="nofollow">Raycast script command containing a near identical script</a>.</p>
-<p><a name="footnote-3">[3]</a>: Given I'm an avid Raycast user, I was absolutely thrilled to discover this plugin just a day after it was published.</p>
-<p><a name="footnote-4">[4]</a>: As is the way with life, while doing some research for this article, I came across a number of free menu bar apps that cover the exact same functionality (and more) such as <a href="https://www.widgetworx.com/v2/#projects" rel="nofollow">Mic Müter</a> and <a href="https://apps.apple.com/us/app/mutekey/id1509590766" rel="nofollow">Mute Key</a> 🙃</p>
+<FootnoteList>
+  <FootnoteListItem index={1}>
+		It's <a href="https://arc.net" rel="nofollow">Arc</a>, thanks for asking.
+  </FootnoteListItem>
+  <FootnoteListItem index={2}>
+		There is a <a href="https://github.com/raycast/script-commands/blob/master/commands/system/audio/toggle-mic.applescript" rel="nofollow">Raycast script command containing a near identical script</a>.
+  </FootnoteListItem>
+  <FootnoteListItem index={3}>
+		Given I'm an avid Raycast user, I was absolutely thrilled to discover this plugin just a day after it was published.
+  </FootnoteListItem>
+  <FootnoteListItem index={4}>
+		As is the way with life, while doing some research for this article, I came across a number of free menu bar apps that cover the exact same functionality (and more) such as <a href="https://www.widgetworx.com/v2/#projects" rel="nofollow">Mic Müter</a> and <a href="https://apps.apple.com/us/app/mutekey/id1509590766" rel="nofollow">Mute Key</a> 🙃
+	</FootnoteListItem>
+</FootnoteList>

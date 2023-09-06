@@ -163,3 +163,22 @@ sup {
 .input .code-emphasis {
 	padding-block-end: 0.25em;
 }
+
+[role="doc-endnotes"] {
+	li + li {
+		margin-block-start: 1rem;
+	}
+
+	pre {
+		margin-block-end: 1rem;
+
+		+ p {
+			margin-block-start: 1rem;
+		}
+
+		+ [role="doc-backlink"] {
+			display: block;
+			margin-block-start: -0.75rem;
+		}
+	}
+}
