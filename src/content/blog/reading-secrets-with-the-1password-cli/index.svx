@@ -42,7 +42,7 @@ The command we want executed is `op read`, and we pass it the URL<sup>[[3](#foot
 
 As a publisher of npm packages, it's a good idea to enable 2FA on your npm account. This makes a leaked token with write-access less of a risk since no writes (such as publishing a new version of a package) can be performed without a valid OTP.
 
-When publishing an npm package using `npm publish`, a prompt is show in the terminal asking the user to type in the OTP. However, there is also an `--otp` flag we can make use of to integrate with the 1Password CLI:
+When publishing an npm package using `npm publish`, a prompt is shown in the terminal asking the user to type in the OTP. However, there is also an `--otp` flag we can make use of to provide the OTP upfront:
 
 ```
 npm publish --otp $(op item get NPM --otp)
