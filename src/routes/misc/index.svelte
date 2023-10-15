@@ -3,8 +3,8 @@
 	<ul>
 		<li>
 			<a href="https://github.com/foostan/crkbd">Corne</a> &ndash; Split ortho-linear mechanical
-			keyboard. I use the the 5-column variant (3&times;5) with the
-			<a href="http://colemakmods.github.io/mod-dh/">Colemak DHm layout</a>.
+			keyboard. I use the the <a href="/misc/corne.jpg">5-column variant (JPG, 4.8MB)</a> with the
+			<a href="http://colemakmods.github.io/mod-dh/">Colemak Mod-DH layout</a>.
 		</li>
 		<li>
 			<a href="https://github.com/lra/mackup">Mackup</a> &ndash; CLI for backing up application settings.
