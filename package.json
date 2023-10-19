@@ -36,7 +36,7 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"copy:images": "node bin/copy-images.js",
-		"deploy": "wrangler pages deploy build --project-name croccifixio",
+		"deploy": "wrangler pages deploy build --project-name blog",
 		"dev": "svelte-kit dev",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
