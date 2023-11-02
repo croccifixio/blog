@@ -1,0 +1,55 @@
+---
+publishedAt: "2022-11-23"
+updatedAt: "2022-12-21"
+title: "Base64 Encoding & Decoding of Files in the&nbsp;Browser"
+tags: ["javascript"]
+description: [
+  "Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh."
+]
+seoTitle: "Base64 Encoding & Decoding of Files in the Browser"
+sources: [
+	{
+		text: "How to convert file to base64 in JavaScript?",
+		url: "https://stackoverflow.com/a/57272491/6454553"
+	},
+	{
+		text: "Creating a BLOB from a Base64 string in JavaScript",
+		url: "https://stackoverflow.com/a/36183085"
+	}
+]
+---
+
+Encoding a file to base64 can be done using the `FileReader` API as shown below:
+
+```ts
+const encodeBase64 = (file: File): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+```
+
+After encoding the file, the returned base64 string can be saved locally through local storage or any storage APIs available at runtime. Note that it is possible to skip the base64 encoding and instead [store blobs via IndexedDB](https://hacks.mozilla.org/2012/02/storing-images-and-files-in-indexeddb/).
+
+If you do opt to use base64 encoding, it may be useful to save the mimetype of the file and, if it's relevant, the file name too. We'll see why once we need to decode the base64 string.
+
+Decoding can be done by fetching the base64 string &mdash; it's a data URL &mdash; and converting it to a blob, then to a `File`. In the code snippet below, the `name` is the name of the file and the `type` is its mimetype.
+
+```ts
+const decodeBase64 = ({
+  base64,
+  name,
+  type,
+}: {
+  base64: string;
+  name: string;
+  type: string;
+}): Promise<File> =>
+  fetch(base64)
+    .then((response) => response.blob())
+    .then((blob) => new File([blob], name, { type }));
+```
+
+Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh.
