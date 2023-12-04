@@ -39,6 +39,20 @@
 	ol li {
 		list-style: decimal;
 		margin-inline-start: 2rem;
+		ol {
+			counter-reset: list;
+			margin-bottom: 0;
+		}
+		ol li {
+			counter-increment: list;
+			list-style: none;
+			position: relative;
+			&::before {
+				content: counter(list, lower-alpha) ") ";
+				inset-inline-start: -2rem;
+				position: absolute;
+			}
+		}
 	}
 
 	ul li {
