@@ -12,6 +12,8 @@ export async function get() {
 	};
 }
 
+const escapeSpecialCharacters = (str) => str.replace(/ & /g, ' &amp; ');
+
 const selfCloseBrs = (str) => str.replace(/<br>/g, '<br />');
 
 const selfCloseImgs = (str) => str.replace(/<img (.+?)>/g, '<img $1 />');
@@ -34,16 +36,16 @@ const xml = async (posts) => `
   <link href="${SITE_URL}/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="${SITE_URL}"/>
   <generator uri="https://kit.svelte.dev">SvelteKit</generator>
-  <updated>${await getLatestUpdate()}</updated>
+  <updated>${new Date(await getLatestUpdate()).toISOString()}</updated>
   <id>${SITE_URL}/atom.xml</id>
   ${await pipe(posts, toAsync, map(xmlPost), join(''))}
 </feed>`;
 
 const xmlPost = (post) => `
 <entry xml:lang="en">
-  <title>${post.seoTitle}</title>
-  <published>${new Date(post.publishedAt)}</published>
-  <updated>${new Date(post.updatedAt ?? post.publishedAt)}</updated>
+  <title>${escapeSpecialCharacters(post.seoTitle)}</title>
+  <published>${new Date(post.publishedAt).toISOString()}</published>
+  <updated>${new Date(post.updatedAt ?? post.publishedAt).toISOString()}</updated>
   <link href="${SITE_URL}/${post.slug}" type="text/html"/>
   <id>${SITE_URL}/${post.slug}</id>
   <content type="html">${pipe(

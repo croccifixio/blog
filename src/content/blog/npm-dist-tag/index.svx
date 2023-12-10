@@ -58,7 +58,7 @@ Doing so applies the `beta` tag to version `1.1.0-beta.0` of our package. It als
 		</ol>
 	</FootnoteListItem>
 	<FootnoteListItem index={2} type="blocks">
-		<p>While modifying the version number manually in the <code>package.json</code> is totally fine, the npm CLI also provides a way to do so. Bumping the version from <code>1.0.0</code> to <code>1.1.0-beta.0</code> can be done by running the following command:</p>
+		<p>While modifying the version number manually in the <code>package.json</code> is totally fine, the npm CLI also provides a way to do just this. Bumping the version from <code>1.0.0</code> to <code>1.1.0-beta.0</code> can be done by running the following command:</p>
 		<pre><code>npm version preminor --preid=beta</code></pre>
 		<p>The following command can then be used to bump the prerelease version form <code>1.1.0-beta.0</code> to <code>1.1.0-beta.1:</p>
 		<pre><code>npm version prerelease</code></pre>

@@ -1,7 +1,7 @@
 ---
 publishedAt: "2022-11-23"
 updatedAt: "2022-12-21"
-title: "Base64 Encoding & Decoding of Files in the&nbsp;Browser"
+title: "Base64 Encoding &amp; Decoding of Files in the&nbsp;Browser"
 tags: ["javascript"]
 description: [
   "Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh."
