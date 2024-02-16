@@ -74,7 +74,7 @@
 					font-size: 1.75em;
 					position: absolute;
 					padding-top: calc(var(--gap) - 4rem);
-					top: calc(var(--gap) * -1 + var(--border-width) * -0.5);
+					top: calc(var(--gap) * -1 + 0.3rem);
 				}
 			}
 		}
