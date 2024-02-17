@@ -152,7 +152,9 @@
 				&[data-mod-3='1']::after {
 					left: var(--border-width);
 				}
-				// 3rd
+				// last in top row
+				&[data-index='1'][data-reverse-index='1']::after,
+				&[data-index='2'][data-reverse-index='1']::after,
 				&[data-index='3']::after {
 					top: calc(var(--border-width) * 1);
 				}
