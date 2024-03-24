@@ -1,0 +1,56 @@
+---
+publishedAt: "2024-03-24"
+title: "A is for Alternate Universe"
+tags: ["javascript"]
+description: [
+  "Demystifying `atob` and `btoa` by not using a made-up etymology."
+]
+seoTitle: "A is for Alternate Universe"
+sources: [
+	{
+		text: "atob() global function",
+		url: "https://developer.mozilla.org/en-US/docs/Web/API/atob"
+	},
+	{
+		text: "btoa() global function",
+		url: "https://developer.mozilla.org/en-US/docs/Web/API/btoa"
+	}
+]
+---
+
+<script>
+  import { FootnoteList, FootnoteListItem, FootnoteTrigger, Image } from "$lib/components/"
+</script>
+
+## Encoding and Encryption
+
+I occasionally come across the need to encode/decode a string to/from base64. Given that I primarily program using JavaScript, the `atob` and `btoa` functions have been my go-to.
+
+For a long time I thought the names of these functions were strange. They seem like they are trying to be words &mdash; and that's what they were to me (each a single odd-sounding word) the first few times I used them<FootnoteTrigger index={1} /> &mdash; but I soon came to see them for what they were at face value: functions for converting from **A** to **B** and vice versa, but lowercased for reasons&trade;.
+
+Having learned how to say the names of these functions out loud without embarrassing myself, the only thing left to close off the matter was to figure out what **A** and **B** were. Luckily for me, I already had the answer; introducing [Alice and Bob](https://en.wikipedia.org/wiki/Alice_and_Bob).
+
+Briefly, Alice and Bob are a recurring pair of characters, often used in examples where messages are being sent over a network using some form of encryption. To my young programmer mind, encoding to base64 was not too distant a concept from encryption for me to jump to the conclusion that &mdash; where `atob` and `btoa` are concerned &mdash; **A** is for **Alice** and **B** is for **Bob**.
+
+Over time, I developed the characters of Alice and Bob to match what the functions do. One of them was security-concious, encoding all the messages they sent. The other was care-free, sending plain text messages left and right. I could never remember which was which.
+
+## Goodbye Alice and Bob
+
+I've been trying for years to switch from using Postman to an alternative. Most attempts at switching have involved reading a few pages of documentation and scouring open issues on GitHub before culminating in an "I don't have time for this" rage quit<FootnoteTrigger index={2} />.
+
+While embarking on my most recent attempt at switching off of Postman, I was reading through the Bruno docs and came across this [section regarding libraries that are built-in](https://docs.usebruno.com/scripting/inbuilt-libraries.html#inbuilt-libraries) and available for use when scripting:
+
+<Image alt="atob - Turn base64-encoded ascii data back to binary. btoa - Turn binary data to base64-encoded ascii." src="bruno-libraries.png" />
+
+The denial lasted a few seconds, but I've now successfully crossed over from an alternate universe into the one you and I currently live in, where **A** is for base64-encoded **ascii** and **B** is for **binary** string.
+
+## Footnotes
+
+<FootnoteList>
+	<FootnoteListItem index={1}>
+		Copying and pasting off of stack-overflow, as was tradition in the pre-AI times.
+	</FootnoteListItem>
+	<FootnoteListItem index={2}>
+		I always reserve a healthy portion of that rage for Postman itself.
+	</FootnoteListItem>
+</FootnoteList>
