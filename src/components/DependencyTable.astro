@@ -1,0 +1,63 @@
+---
+import type { Post } from '../content/types';
+
+interface Props {
+	dependencies: NonNullable<Post['data']['dependencies']>;
+}
+
+const { dependencies } = Astro.props;
+---
+
+<table>
+	<thead>
+		<tr>
+			<th>Dependency</th>
+			<th>Version</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			Object.entries(dependencies).map(([dependency, version]) => (
+				<tr>
+					<td>{dependency}</td>
+					<td>{version}</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>
+
+<style>
+	table {
+		@media (max-width: 400px) {
+			width: 100%;
+		}
+	}
+
+	tbody {
+		border: var(--border-width) solid currentColor;
+		tr:first-child td {
+			padding-block-start: 0.3em;
+		}
+		tr:last-child td {
+			padding-block-end: 0.3em;
+		}
+	}
+
+	td {
+		border-right: var(--border-width) solid currentColor;
+		min-width: 66%;
+		padding: 0.1em 0.6em;
+	}
+
+	td:last-child {
+		font-feature-settings: 'ss03';
+		font-variant-ligatures: common-ligatures;
+	}
+
+	th {
+		border: var(--border-width) solid currentColor;
+		font-weight: bold;
+		padding: 0.1em 0.6em;
+	}
+</style>

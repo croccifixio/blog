@@ -1,0 +1,26 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import type { Post } from '../content/types';
+
+type Props = Post['data'];
+
+const { description, seoTitle } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={seoTitle} description={description[0]} />
+	</head>
+
+	<body>
+		<main>
+			<article>
+				<slot />
+			</article>
+		</main>
+		<footer>
+			<Nav />
+		</footer>
+	</body>
+</html>

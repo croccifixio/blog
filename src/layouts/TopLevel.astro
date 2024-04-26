@@ -1,0 +1,33 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import TopLevelTitle from '../components/TopLevelTitle.astro';
+import { navItems } from '../consts/nav';
+
+const { name = '', description = '' } =
+	navItems.find(({ path }) => path === Astro.url.pathname) ?? {};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={name} description={description} />
+		<style>
+			body {
+				padding-block-end: 1px;
+			}
+			main {
+				max-width: 100ch;
+			}
+		</style>
+	</head>
+
+	<body>
+		<main>
+			<header>
+				<TopLevelTitle title={name} />
+				<Nav />
+			</header>
+			<slot />
+		</main>
+	</body>
+</html>

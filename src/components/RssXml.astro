@@ -1,0 +1,60 @@
+---
+import path from 'path';
+
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
+import type { Post } from '../content/types';
+
+interface Props {
+	posts: Post[];
+}
+
+const { posts } = Astro.props;
+const renders = await Promise.all(posts.map((post) => post.render()));
+const postsWithConent = posts.map((post, index) => ({
+	...post,
+	Content: renders[index].Content,
+}));
+
+const rssHeaderXml = `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/rss/styles.xsl" type="text/xsl"?>
+<rss version="2.0">
+  <channel>
+    <title>${SITE_TITLE}</title>
+    <description><![CDATA[ ${SITE_DESCRIPTION} ]]></description>
+    <link>${SITE_URL}</link>`;
+
+const rssFooterXml = `  </channel>
+</rss>`;
+---
+
+<Fragment set:html={rssHeaderXml} />
+{
+	postsWithConent.map((post) => {
+		return (
+			<>
+				<Fragment
+					set:html={`
+    <item>
+      <title>${post.data.title}</title>
+      <link>${new URL(
+				path.join('/', path.basename(post.id, path.extname(post.id))),
+				SITE_URL,
+			)}</link>
+      <guid>${new URL(
+				path.join('/', path.basename(post.id, path.extname(post.id))),
+				SITE_URL,
+			)}</guid>
+      <description><![CDATA[ ${post.data.description}]]></description>
+      <pubDate>${post.data.publishedAt.toISOString()}</pubDate>
+      <content:encoded><![CDATA[`}
+				/>
+				<post.Content />
+				<Fragment
+					set:html={`]]></content:encoded>
+    </item>`}
+				/>
+			</>
+		);
+	})
+}
+<Fragment set:html={rssFooterXml} />

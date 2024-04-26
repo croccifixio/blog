@@ -1,0 +1,19 @@
+---
+import type { Post } from '../../content/types';
+
+interface Props {
+	text: Post['data']['title'];
+}
+
+const { text } = Astro.props;
+---
+
+<h1 set:html={text} />
+
+<style>
+	h1 {
+		font-size: clamp(2.2rem, 1.9273rem + 1.2121vw, 3rem);
+		line-height: 1.3;
+		margin-bottom: 2.5rem;
+	}
+</style>

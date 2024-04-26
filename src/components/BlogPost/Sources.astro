@@ -1,0 +1,44 @@
+---
+import type { Post } from '../../content/types';
+
+interface Props {
+	sources: NonNullable<Post['data']['sources']>;
+}
+
+const { sources } = Astro.props;
+---
+
+<dl>
+	<dt>Sources</dt>
+	<dd>
+		<ul>
+			{
+				sources.map(({ text, url }) => (
+					<li>
+						<a href={url}>{text}</a>
+					</li>
+				))
+			}
+		</ul>
+	</dd>
+</dl>
+
+<style>
+	dl {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem 0;
+	}
+	dt {
+		font-size: clamp(1.05rem, 1.0159rem + 0.1515vw, 1.15rem);
+	}
+	dt::after {
+		content: ': ';
+	}
+	li + li {
+		margin-block-start: 0.75rem;
+	}
+	ul {
+		margin: 0;
+	}
+</style>

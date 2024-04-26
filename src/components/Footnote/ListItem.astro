@@ -1,0 +1,28 @@
+---
+interface Props {
+	index: number;
+	type: 'blocks' | 'text';
+}
+
+const { index, type = 'text' } = Astro.props;
+---
+
+<li id={`footnote-${index}`}>
+	{
+		type === 'text' ? (
+			<p>
+				<slot />
+				<a href={`#ref-${index}`} role={'doc-backlink' as any}>
+					↩︎
+				</a>
+			</p>
+		) : (
+			<>
+				<slot />
+				<a href={`#ref-${index}`} role={'doc-backlink' as any}>
+					↩︎
+				</a>
+			</>
+		)
+	}
+</li>

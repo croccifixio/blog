@@ -1,0 +1,195 @@
+---
+import { getCollection } from 'astro:content';
+import { countBy } from '@fxts/core';
+
+import type { Post } from '../content/types';
+import Layout from '../layouts/TopLevel.astro';
+import { formatDate } from '../utils/date';
+import BlogPostSummary from '../components/BlogPost/Summary.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+
+const yearCounts = countBy((post) => formatDate(post.data.publishedAt, 'Y')!.trim(), posts);
+const { postsGrid } = posts.reduce(
+	(acc, post) => {
+		const year = formatDate(post.data.publishedAt, 'Y')!.trim();
+		const index = acc.years.filter((y) => y === year).length + 1;
+		const size = yearCounts?.[year] ?? 0;
+
+		acc.years.push(year);
+		acc.postsGrid.push({ index, post, size, year });
+
+		return acc;
+	},
+	{ postsGrid: [], years: [] } as {
+		postsGrid: Array<{ index: number; post: Post; size: number; year: string }>;
+		years: string[];
+	},
+);
+---
+
+<Layout>
+	<ul>
+		{
+			postsGrid.map(({ index, post, size, year }) => (
+				<li
+					data-index={index}
+					data-reverse-index={size - index + 1}
+					data-mod-2={index % 2}
+					data-mod-3={index % 3}
+					data-year={year}
+				>
+					<article>
+						<BlogPostSummary
+							{index}
+							{size}
+							slug={post.slug}
+							tags={post.data.tags}
+							title={post.data.title}
+						/>
+					</article>
+				</li>
+			))
+		}
+	</ul>
+</Layout>
+
+<style>
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+		list-style: none;
+	}
+
+	@media (min-width: 600px) {
+		article,
+		li,
+		ul {
+			align-items: stretch;
+			display: grid;
+			position: relative;
+		}
+
+		li {
+			--gap: 6rem;
+
+			&[data-index='1'],
+			&[data-index='2'] {
+				margin-block-start: var(--gap);
+			}
+
+			&[data-index='1'] {
+				grid-column-start: 1;
+				&::before {
+					content: attr(data-year);
+					font-size: 1.75em;
+					position: absolute;
+					padding-top: calc(var(--gap) - 4rem);
+					top: calc(var(--gap) * -1 + 0.3rem);
+				}
+			}
+		}
+
+		ul {
+			gap: 0;
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (prefers-color-scheme: light) {
+			ul {
+				margin-block-start: -2rem;
+			}
+		}
+
+		@media (prefers-color-scheme: dark) {
+			ul {
+				margin-block-start: -1.5rem;
+				padding-left: 2.5rem;
+			}
+			li {
+				--gap: 2.5rem;
+				min-height: 7.8rem;
+				&::before {
+					bottom: 0;
+				}
+				&[data-index='1']::before {
+					font-size: 1.5rem;
+					line-height: 1;
+					padding: 0.75rem;
+					top: calc((var(--border-width) * -0.5));
+					word-break: break-all;
+					width: calc(1ch + 1.5rem);
+				}
+			}
+		}
+	}
+
+	@media (min-width: 600px) and (max-width: 1000px) and (prefers-color-scheme: dark) {
+		li {
+			&[data-mod-2='1']::before {
+				border: 0 solid var(--c-text);
+				border-left-width: var(--border-width);
+				left: -2.5rem;
+				right: 100%;
+			}
+			&[data-mod-2='1']:not([data-index='1'])::before {
+				content: '';
+				position: absolute;
+				top: -1rem;
+				bottom: calc((var(--border-width) * -0.5));
+				padding: 0.75rem;
+			}
+			&[data-index='1'][data-reverse-index='2']::before,
+			&[data-reverse-index='1']::before {
+				border-bottom-width: var(--border-width);
+				bottom: calc((var(--border-width) * -0.5));
+			}
+			&[data-index='1']::before {
+				border-top-width: var(--border-width);
+			}
+		}
+	}
+
+	@media (min-width: 1000px) {
+		li {
+			&[data-index='3'] {
+				margin-block-start: var(--gap);
+			}
+		}
+
+		ul {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (min-width: 1000px) and (prefers-color-scheme: dark) {
+		li {
+			&[data-mod-3='1']::before {
+				border: 0 solid var(--c-text);
+				border-left-width: var(--border-width);
+				left: -2.5rem;
+				right: 100%;
+			}
+			&[data-mod-3='1']:not([data-index='1'])::before {
+				content: '';
+				position: absolute;
+				top: -1rem;
+				bottom: calc((var(--border-width) * -0.5));
+				padding: 0.75rem;
+			}
+			&[data-index='1'][data-reverse-index='1']::before,
+			&[data-index='1'][data-reverse-index='2']::before,
+			&[data-mod-3='1'][data-reverse-index='2']::before,
+			&[data-mod-3='1'][data-reverse-index='3']::before {
+				border-bottom-width: var(--border-width);
+				bottom: calc((var(--border-width) * -0.5));
+			}
+			&[data-index='1']::before {
+				border-top-width: var(--border-width);
+			}
+		}
+	}
+</style>

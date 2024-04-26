@@ -1,0 +1,33 @@
+.dropdown-list {
+	&:first-of-type {
+		margin-block-start: 0.75em;
+	}
+
+	& + .dropdown-list {
+		margin-block-start: clamp(1.5rem, 1.6705rem + -0.7576vw, 1rem);
+	}
+
+	&[open] + details {
+		margin-block-start: clamp(2rem, 2.1705rem + -0.7576vw, 1.5rem);
+	}
+
+	h2 {
+		display: inline;
+		font-size: 1.5em;
+		font-style: normal;
+		margin-inline-start: 0.2em;
+	}
+
+	li a:first-of-type {
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	li + li {
+    margin-block-start: clamp(1.5rem, 1.7557rem + -1.1364vw, 0.75rem);
+	}
+
+	summary {
+    margin-block-end: clamp(1.25rem, 1.4205rem + -0.7576vw, 0.75rem);
+	}
+}

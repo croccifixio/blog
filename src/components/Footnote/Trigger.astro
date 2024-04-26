@@ -1,0 +1,10 @@
+---
+interface Props {
+	index: number;
+}
+
+const { index } = Astro.props;
+---
+
+<sup><a href={`#footnote-${index}`} role={'doc-noteref' as any} id={`ref-${index}`}>{index}</a></sup
+>

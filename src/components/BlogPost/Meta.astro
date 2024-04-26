@@ -1,0 +1,78 @@
+---
+import type { Post } from '../../content/types';
+import { formatDate } from '../../utils/date';
+import Tag from '../Tag.astro';
+
+interface Props {
+	publishedAt: Post['data']['publishedAt'];
+	tags: Post['data']['tags'];
+	updatedAt: Post['data']['updatedAt'];
+}
+
+const { publishedAt, tags, updatedAt } = Astro.props;
+const updatedSameMonth = updatedAt && formatDate(updatedAt, 'MY') === formatDate(publishedAt, 'MY');
+const dateFormat = updatedSameMonth ? 'DMY' : 'MY';
+---
+
+<dl>
+	<div>
+		<dt>Tags</dt>
+		<dd>
+			<ul>
+				{
+					tags.map((tag) => (
+						<li>
+							<Tag text={tag} />
+						</li>
+					))
+				}
+			</ul>
+		</dd>
+	</div>
+	<div>
+		<dt>Published</dt>
+		<dd>
+			<time datetime={publishedAt.toISOString()}>{formatDate(publishedAt, dateFormat)}</time>
+		</dd>
+	</div>
+	{
+		updatedAt && (
+			<div>
+				<dt>Updated</dt>
+				<dd>
+					<time datetime={updatedAt.toISOString()}>{formatDate(updatedAt, dateFormat)}</time>
+				</dd>
+			</div>
+		)
+	}
+</dl>
+
+<style>
+	div {
+		align-items: baseline;
+		display: flex;
+	}
+	dl {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem 0;
+	}
+	dt {
+		margin-inline-end: 1ch;
+	}
+	dt::after {
+		content: ': ';
+	}
+	li {
+		display: flex;
+	}
+	time {
+		font-weight: bold;
+	}
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 12px;
+		margin: 0;
+	}
+</style>

@@ -1,0 +1,180 @@
+---
+import Tag from '../Tag.astro';
+
+interface Props {
+	index: number;
+	size: number;
+	slug: string;
+	title: string;
+	tags: string[];
+}
+
+const { index, size, slug, title, tags } = Astro.props;
+---
+
+<a
+	data-index={index}
+	data-reverse-index={size - index + 1}
+	data-mod-2={index % 2}
+	data-mod-3={index % 3}
+	href={`/blog/${slug}/`}
+>
+	<h2 set:html={title} />
+	<ul>
+		{
+			tags.map((tag) => (
+				<li>
+					<Tag text={tag} />
+				</li>
+			))
+		}
+	</ul>
+</a>
+
+<style>
+	h2 {
+		cursor: pointer;
+		font-size: 1.25rem;
+		line-height: 1.4;
+		margin-block-start: 0;
+		margin-block-end: 0.75rem;
+	}
+
+	a {
+		all: unset;
+		border-radius: 10px;
+		color: currentColor;
+		display: block;
+		padding-block: 11px;
+		padding-inline: 12px;
+		position: relative;
+		&::before {
+			border-radius: 10px;
+			border: var(--border-width) solid var(--c-text);
+			content: '';
+			inset: calc(var(--border-width) * -0.5);
+			position: absolute;
+			z-index: -1;
+			@media (prefers-color-scheme: light) {
+				box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-text);
+			}
+		}
+		&:focus-visible {
+			&::before {
+				border: var(--border-width) solid var(--c-active);
+				@media (prefers-color-scheme: light) {
+					box-shadow: var(--border-width) var(--border-width) 0px 0px var(--c-active);
+				}
+			}
+			h2 {
+				color: var(--c-active);
+			}
+		}
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px 12px;
+		justify-content: end;
+	}
+
+	@media (min-width: 600px) {
+		a {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding-block-end: 16px;
+			&:focus-visible {
+				> * {
+					position: relative;
+					z-index: 1;
+				}
+				&::before {
+					border: var(--border-width) solid var(--c-active);
+					user-select: none;
+					z-index: 1;
+					@media (prefers-color-scheme: light) {
+						box-shadow: none;
+					}
+				}
+			}
+			&::before {
+				border-radius: 0;
+				@media (prefers-color-scheme: light) {
+					background-color: var(--c-bg);
+					border-width: var(--border-width);
+					box-shadow: none;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 600px and prefers-color-scheme: light) {
+		a {
+			&:focus-visible::after {
+				color: var(--c-active);
+				user-select: none;
+				z-index: 0;
+			}
+			&::after {
+				background-color: currentColor;
+				bottom: 0;
+				content: '';
+				inset: calc(var(--border-width) * -0.5);
+				position: absolute;
+				z-index: -2;
+			}
+		}
+	}
+
+	@media (min-width: 600px and max-width: 999px and prefers-color-scheme: light) {
+		a {
+			/* every 1st */
+			&[data-mod-2='1']::after {
+				left: var(--border-width);
+			}
+			/* last in top row */
+			&[data-index='1'][data-reverse-index='1']::after,
+			&[data-index='2']::after {
+				top: calc(var(--border-width) * 1);
+			}
+			/* last + every 2nd */
+			&[data-reverse-index='1']::after,
+			&[data-mod-2='0']::after {
+				right: calc(var(--border-width) * -2);
+			}
+			/* last 2 */
+			&[data-reverse-index='1']::after,
+			&[data-reverse-index='2']::after {
+				bottom: calc(var(--border-width) * -2);
+			}
+		}
+	}
+
+	@media (min-width: 1000px and prefers-color-scheme: light) {
+		a {
+			/* every 1st */
+			&[data-mod-3='1']::after {
+				left: var(--border-width);
+			}
+			/* last in top row */
+			&[data-index='1'][data-reverse-index='1']::after,
+			&[data-index='2'][data-reverse-index='1']::after,
+			&[data-index='3']::after {
+				top: calc(var(--border-width) * 1);
+			}
+			/* last + every 3rd */
+			&[data-reverse-index='1']::after,
+			&[data-mod-3='0']::after {
+				right: calc(var(--border-width) * -2);
+			}
+			/* last 3 */
+			&[data-reverse-index='1']::after,
+			&[data-reverse-index='2']::after,
+			&[data-reverse-index='3']::after {
+				bottom: calc(var(--border-width) * -2);
+			}
+		}
+	}
+</style>

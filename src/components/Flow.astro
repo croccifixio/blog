@@ -1,0 +1,27 @@
+---
+interface Props {
+	steps: string[];
+}
+
+const { steps } = Astro.props;
+---
+
+{
+	steps.map((step, index) => (
+		<span class="flow">
+			<span class="name" set:html={step} />
+			{index + 1 < steps.length && <> &rarr; </>}
+		</span>
+	))
+}
+
+<style>
+	.name {
+		border: 2px solid var(--c-text);
+		border-radius: 4px;
+		padding: 0.05em 0.3em 0.1em;
+	}
+	.flow {
+		display: inline;
+	}
+</style>

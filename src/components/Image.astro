@@ -1,0 +1,10 @@
+---
+interface Props {
+	alt: string;
+	src: string | string[];
+}
+
+const { alt = '', src } = Astro.props;
+---
+
+<img {alt} src={`${Astro.url.pathname}/${src}`} />

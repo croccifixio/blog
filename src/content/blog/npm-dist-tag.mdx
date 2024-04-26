@@ -1,0 +1,68 @@
+---
+publishedAt: "2023-12-04"
+title: "Modifying Tags on&nbsp;NPM"
+tags: ["npm"]
+description: [
+  "NPM supports tagging versions of a package when publishing and — thankfully — after publishing."
+]
+seoTitle: "Modifying Tags on NPM"
+sources: [
+	{
+		text: "npm-dist-tag docs",
+		url: "https://docs.npmjs.com/cli/v9/commands/npm-dist-tag"
+	}
+]
+dependencies: {
+  npm: "9.8.1"
+}
+---
+
+import FootnoteList from '../../components/Footnote/List.astro';
+import FootnoteListItem from '../../components/Footnote/ListItem.astro';
+import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
+
+At its core, publishing a package to the NPM registry boils down to a single command:
+
+```
+npm publish
+```
+
+There is, however, more nuance once we dig below the surface. In this article, I'll briefly cover the concept of tags from the perspective of a publisher.
+
+NPM supports tagging versions of a package<FootnoteTrigger index={1} />. Tags are essentially aliases for a particular version. The `latest` tag is applied by default any time a new version of a package is published.
+
+If you want users to be able to opt in to download a prerelease version of your package via the NPM registry, you'll likely want to avoid publishing that prerelease version of your package with the `latest` tag. Assume we were working on a package that was on version `1.0.0`. We could publish a minor prerelease version by first bumping the version in the local `package.json` to `1.1.0-beta.0`<FootnoteTrigger index={2} />, then using the `—-tag` flag to declare a custom tag as shown:
+
+```
+npm publish --tag beta
+```
+
+This would push version `1.1.0-beta.0` of the package to the NPM registry and apply the custom `beta` tag.
+
+Mistakes do happen and it's well within the realm of possibility that we misspell the `beta` tag or forget to declare it in the first place. Let's explore the latter situation: we accidentally published version `1.1.0-beta.0` of our package without specifying the tag to be used — causing it to default to the `latest` tag. Thankfully, it's possible to modify the tag of an already published package version by using `npm dist-tag`. To apply the `beta` tag retroactively, we'd use the following command:
+
+```
+npm dist-tag add my-package@1.1.0-beta.0 beta
+```
+
+Doing so applies the `beta` tag to version `1.1.0-beta.0` of our package. It also has another side effect: the `latest` tag will be moved to the previously published version of our package: `1.0.0`. This happens because, in the NPM registry, a single version of a package cannot have multiple tags at the same time.
+
+## Footnotes
+
+{<FootnoteList>
+	<FootnoteListItem index={1} type="blocks">
+		<p>The tagging system has 2 rules:</p>
+		<ol>
+			<li><p>There is an "optional" (see the next rule below) 1-to-1 bidirectional mapping between a version and a tag, i.e., a version can have at most one tag and a tag can be applied to at most one version.</p></li>
+			<li><p>The <code>latest</code> tag must exist.</p></li>
+		</ol>
+	</FootnoteListItem>
+	<FootnoteListItem index={2} type="blocks">
+		<p>While modifying the version number manually in the <code>package.json</code> is totally fine, the npm CLI also provides a way to do just this. Bumping the version from <code>1.0.0</code> to <code>1.1.0-beta.0</code> can be done by running the following command:</p>
+		<pre><code>npm version preminor --preid=beta</code></pre>
+		<p>The following command can then be used to bump the prerelease version form <code>1.1.0-beta.0</code> to <code>1.1.0-beta.1</code>:</p>
+		<pre><code>npm version prerelease</code></pre>
+		<p>When ready to release a stable version, going from <code>1.1.0-beta.1</code> to <code>1.1.0</code> can be done with the more familiar:</p>
+		<pre><code>npm version minor</code></pre>
+	</FootnoteListItem>
+</FootnoteList>}

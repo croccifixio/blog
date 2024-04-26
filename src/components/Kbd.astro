@@ -1,0 +1,30 @@
+---
+interface Props {
+	keys: string[];
+	separator: string;
+}
+
+const { keys, separator = '+' } = Astro.props;
+---
+
+{
+	keys.length === 1 ? (
+		<kbd class="key">{keys[0]}</kbd>
+	) : (
+		<kbd>
+			{keys.map((key, index) => (
+				<>
+					<kbd class="key">{key}</kbd>
+					{index + 1 < keys.length && <>&nbsp;{separator}&nbsp;</>}
+				</>
+			))}
+		</kbd>
+	)
+}
+
+<style>
+	.key {
+		border: 2px solid var(--c-gray);
+		padding: 0.05em 0.3em 0.1em;
+	}
+</style>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+
+import { SITE_TITLE, SITE_URL } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+const postsWithConent = await Promise.all(
+	posts.map(async (post) => ({
+		...post,
+		Content: await post.render().then(({ Content }) => Content),
+	})),
+);
+---
+
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>{SITE_TITLE}</title>
+	<link href={`${SITE_URL}/atom.xml`} rel="self" type="application/atom+xml" />
+	<link href={SITE_URL} />
+	<generator uri="https://astro.build">Astro</generator>
+	<updated>{posts[0].data.publishedAt.toISOString()}</updated>
+	<id>{SITE_URL}/atom.xml</id>
+	{
+		postsWithConent.map((post) => {
+			const url = `${SITE_URL}/blog/${post.slug}`;
+			return (
+				<entry xml:lang="en">
+					<title>{post.data.seoTitle}</title>
+					<published>{post.data.publishedAt.toISOString()}</published>
+					<updated>{(post.data.updatedAt ?? post.data.publishedAt).toISOString()}</updated>
+					<link href={url} type="text/html" />
+					<id>{url}</id>
+					<author>
+						<name>Emmanuel Odongo</name>
+						<email>emmanuel@odongo.pl</email>
+					</author>
+					<content type="xhtml">
+						<post.Content />
+					</content>
+				</entry>
+			);
+		})
+	}
+</feed>

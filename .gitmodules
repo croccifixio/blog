@@ -1,3 +1,3 @@
-[submodule "static/fonts"]
-	path = static/fonts
+[submodule "public/fonts"]
+	path = public/fonts
 	url = git@git.sr.ht:~croccifixio/fonts

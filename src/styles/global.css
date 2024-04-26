@@ -1,0 +1,43 @@
+@import url("./_reset.css");
+@import url("./_normalise.css");
+@import url("./_typography.css");
+@import url("./config/_colours.css");
+@import url("./config/_fonts.css");
+@import url("./config/_variables.css");
+@import url("./components/_dropdown-list.css");
+@import url("./_blog-post-content.css");
+@import url("./_utils.css");
+@import url("./_typography.css");
+
+html {
+	height: 100%;
+}
+
+body {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	margin: 0;
+	min-height: 100%;
+}
+
+main {
+	margin: 0 auto 3rem;
+	max-width: 80ch;
+	padding: 1.25rem;
+}
+
+header {
+	align-items: baseline;
+	display: flex;
+	justify-content: space-between;
+}
+
+footer {
+	padding: 3rem 0 1rem;
+	text-align: center;
+}
+
+summary,
+details {
+   all: revert;
+}

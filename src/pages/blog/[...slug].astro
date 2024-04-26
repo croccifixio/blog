@@ -1,0 +1,57 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+import BlogPostMeta from '../../components/BlogPost/Meta.astro';
+import BlogPostSources from '../../components/BlogPost/Sources.astro';
+import BlogPostTitle from '../../components/BlogPost/Title.astro';
+import DependencyTable from '../../components/DependencyTable.astro';
+import Hr from '../../components/Hr/Hr.astro';
+import Layout from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout {...post.data}>
+	<BlogPostTitle text={post.data.title} />
+	<Hr spacing="2.25rem 1.5rem" />
+	<BlogPostMeta
+		publishedAt={post.data.publishedAt}
+		tags={post.data.tags}
+		updatedAt={post.data.updatedAt}
+	/>
+	{
+		post.data.dependencies ? (
+			<>
+				<div style="margin-block-start: 1.5rem;">
+					<DependencyTable dependencies={post.data.dependencies} />
+				</div>
+				<Hr spacing="2.25rem" />
+			</>
+		) : (
+			<Hr spacing="1.25rem 2.25rem" />
+		)
+	}
+
+	<div class="blog-post-content">
+		<Content />
+	</div>
+
+	{
+		post.data.sources && (
+			<>
+				<Hr spacing="2.25rem 1.5rem" />
+				<BlogPostSources sources={post.data.sources} />
+			</>
+		)
+	}
+</Layout>

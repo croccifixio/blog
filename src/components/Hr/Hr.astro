@@ -1,0 +1,76 @@
+---
+import SinusoidalPattern from './SinusoidalPattern.astro';
+import TriangularPattern from './TriangularPattern.astro';
+import { ignoreWhiteSpace } from '../../utils/string';
+
+interface Props {
+	spacing: string;
+}
+
+const { spacing = '0' } = Astro.props;
+
+const periods = 100;
+const waves = {
+	sinusoidal: {
+		amplitude: 8,
+		wavelength: 20,
+	},
+	triangular: {
+		amplitude: 12,
+		wavelength: 22,
+	},
+};
+---
+
+<div
+	style={ignoreWhiteSpace(`
+		--periods: ${periods};
+		--sinusoidal-wave-amplitude: ${waves.sinusoidal.amplitude};
+		--sinusoidal-wave-wavelength: ${waves.sinusoidal.wavelength};
+		--triangular-wave-amplitude: ${waves.triangular.amplitude};
+		--triangular-wave-wavelength: ${waves.triangular.wavelength};
+    margin-block: ${spacing};
+	`)}
+>
+	<svg xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<SinusoidalPattern
+				amplitude={waves.sinusoidal.amplitude}
+				{periods}
+				wavelength={waves.sinusoidal.wavelength}
+			/>
+			<TriangularPattern
+				amplitude={waves.triangular.amplitude}
+				{periods}
+				wavelength={waves.triangular.wavelength}
+			/>
+		</defs>
+		<rect></rect>
+	</svg>
+</div>
+
+<style>
+	div {
+		overflow: hidden;
+	}
+
+	rect {
+		fill: url(#sinusoidal-wave);
+	}
+
+	:is(rect, svg) {
+		height: calc(1px * var(--sinusoidal-wave-amplitude));
+		width: calc(1px * var(--periods) * var(--sinusoidal-wave-wavelength));
+	}
+
+	@media (prefers-color-scheme: light) {
+		rect {
+			fill: url(#triangular-wave);
+		}
+
+		:is(rect, svg) {
+			height: calc(1px * var(--triangular-wave-amplitude));
+			width: calc(1px * var(--periods) * var(--triangular-wave-wavelength));
+		}
+	}
+</style>

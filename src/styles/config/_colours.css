@@ -1,0 +1,31 @@
+:root {
+	color-scheme: light dark;
+	--c-active: hsl(105, 63%, 56%);
+	--c-bg: hsl(0, 0%, 6%);
+	--c-button: hsl(0, 0%, 10%);
+	--c-button-bg: hsl(233, 82%, 83%);
+	--c-gray: hsl(0, 0%, 40%);
+	--c-link: hsl(41, 98%, 65%);
+	--c-text: hsl(0, 0%, 94%);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--c-active: hsl(307, 100%, 39%);
+		--c-bg: hsl(0, 0%, 94%);
+		--c-link: hsl(220, 63%, 48%);
+		--c-text: hsl(0, 0%, 6%);
+	}
+}
+
+html {
+	background: var(--c-bg);
+	color: var(--c-text);
+}
+
+@supports (background-color: -apple-system-control-background) and (color: text) {
+	:root {
+		--c-bg: -apple-system-control-background;
+		--c-text: text;
+	}
+}
