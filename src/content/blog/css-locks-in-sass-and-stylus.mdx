@@ -1,5 +1,6 @@
 ---
 publishedAt: "2019-12-01"
+updatedAt: "2024-04-27"
 title: "CSS Locks in Sass and&nbsp;Stylus"
 tags: ["css"]
 description: [
@@ -9,6 +10,9 @@ description: [
 seoTitle: "CSS Locks in Sass and Stylus"
 ---
 
+import FootnoteList from '../../components/Footnote/List.astro';
+import FootnoteListItem from '../../components/Footnote/ListItem.astro';
+import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
 import Image from '../../components/Image.astro';
 import StepHeading from '../../components/StepHeading.astro';
 
@@ -58,7 +62,7 @@ h2 {
 }
 ```
 
-Without the help of JavaScript, the only way to achieve such a transition is to make use of the CSS `calc()` function. While this article doesn't go into how the formula that we shall use in the `calc()` function was derived, [Florens Verschelde's article on CSS locks](https://fvsch.com/css-locks/) provides an in-depth explanation of the math, for those so inclined.
+Without the help of JavaScript, the only way to achieve such a transition is to make use of the CSS `calc()` function<FootnoteTrigger index={1} />. While this article doesn't go into how the formula that we shall use in the `calc()` function was derived, [Florens Verschelde's article on CSS locks](https://fvsch.com/css-locks/) provides an in-depth explanation of the math, for those so inclined.
 
 <StepHeading text="Units in calc() functions" />
 
@@ -122,7 +126,7 @@ h2 {
 
 <StepHeading text="CSS lock mixins" />
 
-Writing out the formula in `calc()` function by hand can be cumbersome. We could make use of a CSS preprocessor like sass to write a reusable mixin that generates the formula for us. Since the formula uses
+Writing out the formula in `calc()` function by hand can be cumbersome. We could make use of a CSS preprocessor like Sass to write a reusable mixin that generates the formula for us. Since the formula uses
 the other two values of the font size found outside the `calc()` function &mdash; 2rem and 4.5rem &mdash; the entire snippet above can be encapsulated in a mixin.
 
 ```scss
@@ -179,7 +183,7 @@ h2 {
 
 In the code snippet above, it is assumed that the breakpoint values are always given in pixels. By using an `@function` at-rule, we can automatically convert the breakpoint values to the relevant units each time the mixin is called. This means that we don't have to manually perform any conversions if the property in our mixin uses a unit other than `px`.
 
-The snippet below shows the same implementation in stylus:
+The snippet below shows the same implementation in Stylus:
 
 ```stylus
 convert-from-px($unit, $value)
@@ -204,3 +208,33 @@ h2
   css-lock(font-size, rem, 2, 4.5, 400, 1000)
   css-lock(margin-bottom, px, 30, 45, 400, 1000)
 ```
+
+## Footnotes
+
+<FootnoteList>
+	<FootnoteListItem index={1} type='blocks'>
+		In 2020, the CSS `clamp()` function became [widely supported](https://caniuse.com/css-math-functions). It's API is somewhat cumbersome, since it leaves expressing the scaling function (`5.3333px + 6.6667vi`) up to the caller of the function:
+
+    ```css
+    h2 {
+      font-size: clamp(32px, 5.3333px + 6.6667vi, 72px);
+    }
+    ```
+
+    As opposed to using the Sass mixin:
+
+    ```scss
+    h2 {
+      @include css-lock('font-size', 'rem', 2, 4.5, 25, 62.5);
+    }
+    ```
+
+    Considering the relative popularity of PostCSS when compared to Sass or Stylus, I feel obliged to mention that it's possible to achieve the same result using a PostCSS plugin such as [postcss-utopia](https://www.npmjs.com/package/postcss-utopia):
+
+    ```css
+    h2 {
+      font-size: utopia.clamp(32, 72, 400, 1000); /* all values are in px */
+    }
+    ```
+	</FootnoteListItem>
+</FootnoteList>
