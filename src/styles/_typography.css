@@ -46,7 +46,7 @@ samp {
   /* @include code-font(); */
 	font-family: "Cartograph CF", monospace;
 	font-feature-settings: 'ss03';
-	font-size: clamp(1.02rem, 0.9859rem + 0.1515vw, 1.12rem);
+	font-size: utopia.clamp(16.32, 17.92);
 	font-variant-ligatures: common-ligatures;
 }
 
@@ -56,8 +56,8 @@ kbd:not(.key) {
 
 p,
 li {
-	font-size: clamp(1.05rem, 1.0159rem + 0.1515vw, 1.15rem);
-	line-height: clamp(1.785rem, 1.6094rem + 0.7803vw, 2.3rem);
+	font-size: utopia.clamp(16.8, 18.4);
+	line-height: utopia.clamp(28.56, 36.8);
 	letter-spacing: 1px;
 }
 

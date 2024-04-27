@@ -4,11 +4,11 @@
 	}
 
 	& + .dropdown-list {
-		margin-block-start: clamp(1.5rem, 1.6705rem + -0.7576vw, 1rem);
+		margin-block-start: utopia.clamp(24, 16);
 	}
 
 	&[open] + details {
-		margin-block-start: clamp(2rem, 2.1705rem + -0.7576vw, 1.5rem);
+		margin-block-start: utopia.clamp(32, 24);
 	}
 
 	h2 {
@@ -24,10 +24,10 @@
 	}
 
 	li + li {
-    margin-block-start: clamp(1.5rem, 1.7557rem + -1.1364vw, 0.75rem);
+    margin-block-start: utopia.clamp(24, 12);
 	}
 
 	summary {
-    margin-block-end: clamp(1.25rem, 1.4205rem + -0.7576vw, 0.75rem);
+    margin-block-end: utopia.clamp(20, 12);
 	}
 }

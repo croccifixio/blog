@@ -6,7 +6,7 @@
 	}
 
 	h2 {
-		font-size: clamp(1.35rem, 1.1966rem + 0.6818vw, 1.8rem);
+		font-size: utopia.clamp(21.6, 28.8);
 		line-height: 1.4;
 		margin-block: 2rem 0.75rem;
 		text-transform: uppercase;
