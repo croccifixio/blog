@@ -97,9 +97,12 @@ ul {
 }
 
 sup {
-	font-size: 0.75em;
+	font-feature-settings: 'sups';
 	line-height: 0;
 	vertical-align: super;
+  a {
+    text-underline-offset: 0.05em;
+  }
 }
 
 .break-word,
