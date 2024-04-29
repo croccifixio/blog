@@ -25,33 +25,3 @@
 	font-weight: bold;
 	src: url('/fonts/CartographCF-BoldItalic.woff2') format('woff2');
 }
-
-/* @mixin body-font-bold() {
-	font-feature-settings: 'ss05';
-	font-style: normal;
-	font-weight: bold;
-}
-
-@mixin body-font-bold-italic() {
-	font-feature-settings: 'ss01', 'ss05';
-	font-style: italic;
-	font-weight: bold;
-}
-
-@mixin body-font-bold-italic-fancy() {
-	font-feature-settings: 'ss05';
-	font-style: italic;
-	font-weight: bold;
-}
-
-@mixin code-font() {
-	font-feature-settings: 'ss03';
-	font-variant-ligatures: common-ligatures;
-}
-
-@mixin code-font-bold-italic() {
-	font-feature-settings: 'ss01';
-	font-style: italic;
-	font-variant-ligatures: common-ligatures;
-	font-weight: bold;
-} */

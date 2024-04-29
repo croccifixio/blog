@@ -28,6 +28,8 @@ const { dependencies } = Astro.props;
 </table>
 
 <style>
+	@import url('/src/styles/config/_mixins.css');
+
 	table {
 		@media (max-width: 400px) {
 			width: 100%;
@@ -48,11 +50,9 @@ const { dependencies } = Astro.props;
 		border-right: var(--border-width) solid currentColor;
 		min-width: 66%;
 		padding: 0.1em 0.6em;
-	}
-
-	td:last-child {
-		font-feature-settings: 'ss03';
-		font-variant-ligatures: common-ligatures;
+		&:last-child {
+			@mixin code-font;
+		}
 	}
 
 	th {

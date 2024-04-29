@@ -1,8 +1,8 @@
 @import url("./_reset.css");
 @import url("./_normalise.css");
-@import url("./_typography.css");
 @import url("./config/_colours.css");
 @import url("./config/_fonts.css");
+@import url("./config/_mixins.css");
 @import url("./config/_variables.css");
 @import url("./components/_dropdown-list.css");
 @import url("./_blog-post-content.css");
