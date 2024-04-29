@@ -18,6 +18,7 @@ sources: [
 ]
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
 import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
@@ -70,29 +71,31 @@ In my case, the filled in command looks something like this:
 $$$ sudo create_ap wlp8s0 wlp8s0 MyHotspot MyPassword
 ```
 
-<FootnoteList>
-	<FootnoteListItem index={1} type="blocks">
-    Since the script runs a process in the console, once the terminal is closed the hotspot will be closed as well. To circumvent this consider using a terminal multiplexer such as [tmux](https://github.com/tmux/tmux/wiki) or [screen](https://www.gnu.org/software/screen/), which allows you to close a terminal and still have it running in the background.
+<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1} type="blocks">
+      Since the script runs a process in the console, once the terminal is closed the hotspot will be closed as well. To circumvent this consider using a terminal multiplexer such as [tmux](https://github.com/tmux/tmux/wiki) or [screen](https://www.gnu.org/software/screen/), which allows you to close a terminal and still have it running in the background.
 
-    A simplified workflow using tmux is presented below:
+      A simplified workflow using tmux is presented below:
 
-    - Create a tmux session called "hotspot".
+      - Create a tmux session called "hotspot".
+        ```
+        $$$ tmux new -s hotspot
+        ```
+
+      - Run the hotspot (consider aliasing the command below).
+        ```text /wireless_interface/ /hotspot_name/ /hotspot_password/
+        $$$ sudo create_ap wireless_interface wireless_interface hotspot_name hotspot_password
+        ```
+
+      - Enter your user password when prompted.
+
+      At this point you may close the terminal window. Alternatively, detach from the terminal by pressing <Kbd keys={["Ctrl", "B"]} /> followed by <Kbd keys={["D"]} />.
+      If you wish to stop the hotspot manually, run the following command in any terminal to kill the tmux session named __hotspot__:
+
       ```
-      $$$ tmux new -s hotspot
+      $$$ tmux kill-session -t hotspot
       ```
-
-    - Run the hotspot (consider aliasing the command below).
-      ```text /wireless_interface/ /hotspot_name/ /hotspot_password/
-      $$$ sudo create_ap wireless_interface wireless_interface hotspot_name hotspot_password
-      ```
-
-    - Enter your user password when prompted.
-
-    At this point you may close the terminal window. Alternatively, detach from the terminal by pressing <Kbd keys={["Ctrl", "B"]} /> followed by <Kbd keys={["D"]} />.
-    If you wish to stop the hotspot manually, run the following command in any terminal to kill the tmux session named __hotspot__:
-
-    ```
-    $$$ tmux kill-session -t hotspot
-    ```
-	</FootnoteListItem>
-</FootnoteList>
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>

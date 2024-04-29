@@ -18,6 +18,7 @@ sources: [
 ]
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
 import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
@@ -45,11 +46,13 @@ While embarking on my most recent attempt at switching off of Postman, I was rea
 
 The denial lasted a few seconds, but I've now successfully crossed over from an alternate universe into the one you and I currently live in, where **A** is for base64-encoded **ascii** and **B** is for **binary** string.
 
-{<FootnoteList>
-	<FootnoteListItem index={1}>
-		Copying and pasting off of stack-overflow, as was tradition in the pre-AI times.
-	</FootnoteListItem>
-	<FootnoteListItem index={2}>
-		I always reserve a healthy portion of that rage for Postman itself.
-	</FootnoteListItem>
-</FootnoteList>}
+{<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1}>
+      Copying and pasting off of stack-overflow, as was tradition in the pre-AI times.
+    </FootnoteListItem>
+    <FootnoteListItem index={2}>
+      I always reserve a healthy portion of that rage for Postman itself.
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}

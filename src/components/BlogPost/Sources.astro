@@ -24,21 +24,31 @@ const { sources } = Astro.props;
 </dl>
 
 <style>
+	@import url('/src/styles/config/_mixins.css');
+
 	dl {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem 0;
 	}
 	dt {
-		font-size: utopia.clamp(16.8, 18.4);
+		@mixin small-title-font;
+		&::after {
+			content: ': ';
+		}
 	}
-	dt::after {
-		content: ': ';
+	dd {
+		font-style: italic;
 	}
-	li + li {
-		margin-block-start: 0.75rem;
+	li {
+		@mixin small-block-font;
+		margin-inline-start: 2rem;
+		+ li {
+			margin-block-start: 0.25rem;
+		}
 	}
 	ul {
 		margin: 0;
+		list-style: disc;
 	}
 </style>

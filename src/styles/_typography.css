@@ -183,13 +183,12 @@ pre {
   kbd,
   pre,
   samp {
-    font-size: utopia.clamp(13.6, 15.58);
+    @mixin small-inline-font;
   }
 
   p,
   li {
-    font-size: utopia.clamp(14, 16);
-	  line-height: utopia.clamp(28, 32);
+    @mixin small-block-font;
   }
 
 	pre {

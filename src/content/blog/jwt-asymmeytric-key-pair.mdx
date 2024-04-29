@@ -12,6 +12,7 @@ dependencies: {
 }
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
 import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
@@ -124,54 +125,56 @@ The private key is then used to generate the public key<FootnoteTrigger index={2
 openssl ec -in privateKey.pem -pubout -out publicKey.pem
 ```
 
-<FootnoteList>
-	<FootnoteListItem index={1} type="blocks">
-    If you wanted to use a different algorithm, say <code>ES256</code>, but provided the key generated above, <code>jsonwebtoken</code> would throw a helpful error message specifying which curve it expects.
+<EndMatter>
+  <FootnoteList>
+    <FootnoteListItem index={1} type="blocks">
+      If you wanted to use a different algorithm, say <code>ES256</code>, but provided the key generated above, <code>jsonwebtoken</code> would throw a helpful error message specifying which curve it expects.
 
-    ```js {22,25}
-    import { randomUUID } from "crypto";
-    import { readFileSync } from "fs";
-    import { sign } from "jsonwebtoken";
+      ```js {22,25}
+      import { randomUUID } from "crypto";
+      import { readFileSync } from "fs";
+      import { sign } from "jsonwebtoken";
 
-    const PRIVATE_KEY = readFileSync("./privateKey.pem");
+      const PRIVATE_KEY = readFileSync("./privateKey.pem");
 
-    const user = {
-      id: randomUUID(),
-    };
+      const user = {
+        id: randomUUID(),
+      };
 
-    const claimSet = {
-      aud: "Audience",
-      iss: "Issuer",
-      jti: randomUUID(),
-      sub: user.id,
-    };
+      const claimSet = {
+        aud: "Audience",
+        iss: "Issuer",
+        jti: randomUUID(),
+        sub: user.id,
+      };
 
-    const token = sign(
-      claimSet,
-      PRIVATE_KEY,
-      {
-        algorithm: "ES256",
-        expiresIn: "20 minutes",
-      }
-    ); // => throws `"alg" parameter "ES256" requires curve "prime256v1".`
-    ```
+      const token = sign(
+        claimSet,
+        PRIVATE_KEY,
+        {
+          algorithm: "ES256",
+          expiresIn: "20 minutes",
+        }
+      ); // => throws `"alg" parameter "ES256" requires curve "prime256v1".`
+      ```
 
-    Generating a new key pair with the expected curve (`prime256v1` instead of `secp521r1`) should resolve the error.
-	</FootnoteListItem>
-	<FootnoteListItem index={2} type="blocks">
-    The node <code>crypto</code> module can generate a public key based off of the private key. So if the service issuing tokens needed to verify them too, we would only need to configure the private key:
+      Generating a new key pair with the expected curve (`prime256v1` instead of `secp521r1`) should resolve the error.
+    </FootnoteListItem>
+    <FootnoteListItem index={2} type="blocks">
+      The node <code>crypto</code> module can generate a public key based off of the private key. So if the service issuing tokens needed to verify them too, we would only need to configure the private key:
 
-    ```js
-    import { createPublicKey } from "crypto";
-    import { readFileSync } from "fs";
-    import { verify } from "jsonwebtoken";
+      ```js
+      import { createPublicKey } from "crypto";
+      import { readFileSync } from "fs";
+      import { verify } from "jsonwebtoken";
 
-    const PRIVATE_KEY = readFileSync("./privateKey.pem");
+      const PRIVATE_KEY = readFileSync("./privateKey.pem");
 
-    const PUBLIC_KEY = createPublicKey(PRIVATE_KEY)
-      .export({ format: "pem", type: "spki" });
+      const PUBLIC_KEY = createPublicKey(PRIVATE_KEY)
+        .export({ format: "pem", type: "spki" });
 
-    verify(token, PUBLIC_KEY);
-    ```
-	</FootnoteListItem>
-</FootnoteList>
+      verify(token, PUBLIC_KEY);
+      ```
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>

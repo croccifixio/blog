@@ -31,3 +31,22 @@
 	font-variant-ligatures: common-ligatures;
 	font-weight: bold;
 }
+
+@define-mixin small-title-font {
+	font-feature-settings: 'ss01';
+  font-size: utopia.clamp(16, 18);
+  font-style: normal;
+  font-weight: bold;
+  text-transform: none;
+}
+
+@define-mixin small-block-font {
+	font-feature-settings: 'ss01';
+  font-size: utopia.clamp(14, 16);
+  line-height: utopia.clamp(28, 32);
+}
+
+@define-mixin small-inline-font {
+	font-feature-settings: 'ss01';
+  font-size: utopia.clamp(13.6, 15.58);
+}

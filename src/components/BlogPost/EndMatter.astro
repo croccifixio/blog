@@ -1,0 +1,16 @@
+---
+import Sources from './Sources.astro';
+import Hr from '../Hr/Hr.astro';
+import type { Post } from '../../content/types';
+
+interface Props {
+	sources: Post['data']['sources'];
+}
+
+const { sources } = Astro.props;
+---
+
+<Hr spacing="3rem 1.75rem" />
+<slot />
+{sources && <Sources {sources} />}
+<Hr spacing="2.25rem 0" />

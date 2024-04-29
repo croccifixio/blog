@@ -26,6 +26,7 @@ sources: [
 ]
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import Flow from '../../components/Flow.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
@@ -132,11 +133,13 @@ By default, custom HTTPS is disabled. If you would like to enable it click on th
 
 After setting up your custom domain, your files should be available at <span class="input break-word pr-0">cdn.yoursite.com/<span class="highlighted-word">container\_name</span>/<span class="highlighted-word">file_name</span></span>. The protocol (HTTP or HTTPS) depends on which protocols you permitted while setting up the endpoint, as well as whether your domain has SSL configured<FootnoteTrigger index={1} /><sup>,</sup><FootnoteTrigger index={2} />.
 
-{<FootnoteList>
-	<FootnoteListItem index={1}>
-    If you make use of CSP (Content Security Policy) and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add a policy similar to the following: <span class="input break-word">img-src: https://cdn.yoursite.com</span>.
-	</FootnoteListItem>
-	<FootnoteListItem index={2}>
-    CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment; the browser may block some CDN content. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. This can be done with the help of a browser extension such as <a href="https://chrome.google.com/webstore/detail/cors-toggle/jioikioepegflmdnbocfhgmpmopmjkim">CORS Toggle</a> (Chrome Web Store) or <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/">CORS Everywhere</a> (Firefox Add-ons). Both of these extensions add a button to the browser that can be used to toggle CORS.
-	</FootnoteListItem>
-</FootnoteList>}
+{<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1}>
+      If you make use of CSP (Content Security Policy) and have strict enough policies, you may need to add any custom subdomain that you created to your list of allowed sources. For instance, if you are planning to use your CDN to serve images you would add a policy similar to the following: <span class="input break-word">img-src: https://cdn.yoursite.com</span>.
+    </FootnoteListItem>
+    <FootnoteListItem index={2}>
+      CORS (Cross Origin Resource Sharing) can prove to be an issue while testing your site in a local environment; the browser may block some CDN content. A simple way to get around this is by disabling the restriction on cross origin HTTP requests within the browser. This can be done with the help of a browser extension such as <a href="https://chrome.google.com/webstore/detail/cors-toggle/jioikioepegflmdnbocfhgmpmopmjkim">CORS Toggle</a> (Chrome Web Store) or <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/">CORS Everywhere</a> (Firefox Add-ons). Both of these extensions add a button to the browser that can be used to toggle CORS.
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}

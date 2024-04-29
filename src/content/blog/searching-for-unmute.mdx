@@ -9,6 +9,7 @@ description: [
 seoTitle: "Searching for Unmute"
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
 import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
@@ -70,17 +71,19 @@ I plan to add more features to make the app more usable, such as:
 - Ability to customise the keyboard shortcut
 - Ability to remember the input level (currently, unmuting the microphone sets the input level to the maximum value of 100)
 
-{<FootnoteList>
-  <FootnoteListItem index={1}>
-		It's <a href="https://arc.net" rel="nofollow">Arc</a>, thanks for asking.
-  </FootnoteListItem>
-  <FootnoteListItem index={2}>
-		There is a <a href="https://github.com/raycast/script-commands/blob/master/commands/system/audio/toggle-mic.applescript" rel="nofollow">Raycast script command containing a near identical script</a>.
-  </FootnoteListItem>
-  <FootnoteListItem index={3}>
-		Given I'm an avid Raycast user, I was absolutely thrilled to discover this plugin just a day after it was published.
-  </FootnoteListItem>
-  <FootnoteListItem index={4}>
-		As is the way with life, while doing some research for this article, I came across a number of free menu bar apps that cover the exact same functionality (and more) such as <a href="https://www.widgetworx.com/v2/#projects" rel="nofollow">Mic Müter</a> and <a href="https://apps.apple.com/us/app/mutekey/id1509590766" rel="nofollow">Mute Key</a> 🙃
-	</FootnoteListItem>
-</FootnoteList>}
+{<EndMatter>
+  <FootnoteList>
+    <FootnoteListItem index={1}>
+      It's <a href="https://arc.net" rel="nofollow">Arc</a>, thanks for asking.
+    </FootnoteListItem>
+    <FootnoteListItem index={2}>
+      There is a <a href="https://github.com/raycast/script-commands/blob/master/commands/system/audio/toggle-mic.applescript" rel="nofollow">Raycast script command containing a near identical script</a>.
+    </FootnoteListItem>
+    <FootnoteListItem index={3}>
+      Given I'm an avid Raycast user, I was absolutely thrilled to discover this plugin just a day after it was published.
+    </FootnoteListItem>
+    <FootnoteListItem index={4}>
+      As is the way with life, while doing some research for this article, I came across a number of free menu bar apps that cover the exact same functionality (and more) such as <a href="https://www.widgetworx.com/v2/#projects" rel="nofollow">Mic Müter</a> and <a href="https://apps.apple.com/us/app/mutekey/id1509590766" rel="nofollow">Mute Key</a> 🙃
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}

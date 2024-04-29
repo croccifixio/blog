@@ -1,9 +1,3 @@
----
-import Hr from '../../components/Hr/Hr.astro';
----
-
-<Hr spacing="3rem 1.25rem" />
-
 <h2 id="footnotes">Footnotes</h2>
 
 <ol role={'doc-endnotes' as any}>
@@ -11,7 +5,13 @@ import Hr from '../../components/Hr/Hr.astro';
 </ol>
 
 <style>
+	@import url('/src/styles/config/_mixins.css');
+
 	h2 {
+		@mixin small-title-font;
 		margin-block-start: 0;
+		&::after {
+			content: ':';
+		}
 	}
 </style>

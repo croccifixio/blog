@@ -2,7 +2,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
 import BlogPostMeta from '../../components/BlogPost/Meta.astro';
-import BlogPostSources from '../../components/BlogPost/Sources.astro';
 import BlogPostTitle from '../../components/BlogPost/Title.astro';
 import DependencyTable from '../../components/DependencyTable.astro';
 import Hr from '../../components/Hr/Hr.astro';
@@ -45,13 +44,4 @@ const { Content } = await post.render();
 	<div class="blog-post-content">
 		<Content />
 	</div>
-
-	{
-		post.data.sources && (
-			<>
-				<Hr spacing="2.25rem 1.5rem" />
-				<BlogPostSources sources={post.data.sources} />
-			</>
-		)
-	}
 </Layout>

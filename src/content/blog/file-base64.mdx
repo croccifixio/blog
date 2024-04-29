@@ -19,6 +19,8 @@ sources: [
 ]
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
+
 Encoding a file to base64 can be done using the `FileReader` API as shown below:
 
 ```ts
@@ -53,3 +55,5 @@ const decodeBase64 = ({
 ```
 
 Base64 encoding a file in the browser and storing the resulting string locally makes it possible to keep track of what files have been input by the user. If the base64 string was persisted, it can be decoded to recover the file contents, even after a page refresh.
+
+<EndMatter sources={frontmatter.sources} />

@@ -17,6 +17,7 @@ dependencies: {
 }
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
 import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
@@ -47,20 +48,22 @@ npm dist-tag add my-package@1.1.0-beta.0 beta
 
 Doing so applies the `beta` tag to version `1.1.0-beta.0` of our package. It also has another side effect: the `latest` tag will be moved to the previously published version of our package: `1.0.0`. This happens because, in the NPM registry, a single version of a package cannot have multiple tags at the same time.
 
-{<FootnoteList>
-	<FootnoteListItem index={1} type="blocks">
-		<p>The tagging system has 2 rules:</p>
-		<ol>
-			<li><p>There is an "optional" (see the next rule below) 1-to-1 bidirectional mapping between a version and a tag, i.e., a version can have at most one tag and a tag can be applied to at most one version.</p></li>
-			<li><p>The <code>latest</code> tag must exist.</p></li>
-		</ol>
-	</FootnoteListItem>
-	<FootnoteListItem index={2} type="blocks">
-		<p>While modifying the version number manually in the <code>package.json</code> is totally fine, the npm CLI also provides a way to do just this. Bumping the version from <code>1.0.0</code> to <code>1.1.0-beta.0</code> can be done by running the following command:</p>
-		<pre><code>npm version preminor --preid=beta</code></pre>
-		<p>The following command can then be used to bump the prerelease version form <code>1.1.0-beta.0</code> to <code>1.1.0-beta.1</code>:</p>
-		<pre><code>npm version prerelease</code></pre>
-		<p>When ready to release a stable version, going from <code>1.1.0-beta.1</code> to <code>1.1.0</code> can be done with the more familiar:</p>
-		<pre><code>npm version minor</code></pre>
-	</FootnoteListItem>
-</FootnoteList>}
+{<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1} type="blocks">
+      <p>The tagging system has 2 rules:</p>
+      <ol>
+        <li><p>There is an "optional" (see the next rule below) 1-to-1 bidirectional mapping between a version and a tag, i.e., a version can have at most one tag and a tag can be applied to at most one version.</p></li>
+        <li><p>The <code>latest</code> tag must exist.</p></li>
+      </ol>
+    </FootnoteListItem>
+    <FootnoteListItem index={2} type="blocks">
+      <p>While modifying the version number manually in the <code>package.json</code> is totally fine, the npm CLI also provides a way to do just this. Bumping the version from <code>1.0.0</code> to <code>1.1.0-beta.0</code> can be done by running the following command:</p>
+      <pre><code>npm version preminor --preid=beta</code></pre>
+      <p>The following command can then be used to bump the prerelease version form <code>1.1.0-beta.0</code> to <code>1.1.0-beta.1</code>:</p>
+      <pre><code>npm version prerelease</code></pre>
+      <p>When ready to release a stable version, going from <code>1.1.0-beta.1</code> to <code>1.1.0</code> can be done with the more familiar:</p>
+      <pre><code>npm version minor</code></pre>
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}

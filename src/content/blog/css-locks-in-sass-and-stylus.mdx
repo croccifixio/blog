@@ -10,6 +10,7 @@ description: [
 seoTitle: "CSS Locks in Sass and Stylus"
 ---
 
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
 import FootnoteList from '../../components/Footnote/List.astro';
 import FootnoteListItem from '../../components/Footnote/ListItem.astro';
 import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
@@ -209,30 +210,32 @@ h2
   css-lock(margin-bottom, px, 30, 45, 400, 1000)
 ```
 
-<FootnoteList>
-	<FootnoteListItem index={1} type='blocks'>
-		In 2020, the CSS `clamp()` function became [widely supported](https://caniuse.com/css-math-functions). It's API is somewhat cumbersome, since it leaves expressing the scaling function (`5.3333px + 6.6667vi`) up to the caller of the function:
+<EndMatter>
+  <FootnoteList>
+    <FootnoteListItem index={1} type='blocks'>
+      In 2020, the CSS `clamp()` function became [widely supported](https://caniuse.com/css-math-functions). It's API is somewhat cumbersome, since it leaves expressing the scaling function (`5.3333px + 6.6667vi`) up to the caller of the function:
 
-    ```css
-    h2 {
-      font-size: clamp(32px, 5.3333px + 6.6667vi, 72px);
-    }
-    ```
+      ```css
+      h2 {
+        font-size: clamp(32px, 5.3333px + 6.6667vi, 72px);
+      }
+      ```
 
-    As opposed to using the Sass mixin:
+      As opposed to using the Sass mixin:
 
-    ```scss
-    h2 {
-      @include css-lock('font-size', 'rem', 2, 4.5, 25, 62.5);
-    }
-    ```
+      ```scss
+      h2 {
+        @include css-lock('font-size', 'rem', 2, 4.5, 25, 62.5);
+      }
+      ```
 
-    Considering the relative popularity of PostCSS when compared to Sass or Stylus, I feel obliged to mention that it's possible to achieve the same result using a PostCSS plugin such as [postcss-utopia](https://www.npmjs.com/package/postcss-utopia):
+      Considering the relative popularity of PostCSS when compared to Sass or Stylus, I feel obliged to mention that it's possible to achieve the same result using a PostCSS plugin such as [postcss-utopia](https://www.npmjs.com/package/postcss-utopia):
 
-    ```css
-    h2 {
-      font-size: utopia.clamp(32, 72, 400, 1000); /* all values are in px */
-    }
-    ```
-	</FootnoteListItem>
-</FootnoteList>
+      ```css
+      h2 {
+        font-size: utopia.clamp(32, 72, 400, 1000); /* all values are in px */
+      }
+      ```
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>
