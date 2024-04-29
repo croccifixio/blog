@@ -8,6 +8,7 @@ const TARGET_FILE = path.normalize('./dist/atom.xml');
 
 const setDocType = (str) =>
 	str.replace('<!DOCTYPE html>', '<?xml version="1.0" encoding="utf-8"?>');
+const stripHrs = (str) => str.replace(/<div class="hr"(.+?)<\/svg> <\/div>/g, '');
 const stripStyles = (str) => str.replace(/<style[\s\S]+?<\/style>/g, '');
 const stripSpans = (str) => str.replace(/<span[\s\S]+?>/g, '').replace(/<\/span>/g, '');
 const stripAttributes = (str) =>
@@ -41,6 +42,7 @@ await fs.writeFile(
 	pipe(
 		content,
 		setDocType,
+		stripHrs,
 		stripStyles,
 		stripSpans,
 		stripAttributes,
