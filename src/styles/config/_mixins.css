@@ -14,8 +14,8 @@
 	font-weight: bold;
 }
 
-@define-mixin body-font-bold-italic-fancy {
-	font-feature-settings: 'ss05';
+@define-mixin title-font {
+	font-feature-settings: 'ss05', 'cpsp';
 	font-style: italic;
 	font-weight: bold;
 }
