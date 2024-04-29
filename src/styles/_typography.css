@@ -183,6 +183,23 @@ pre {
 		margin-block-start: 1rem;
 	}
 
+  p {
+    font-style: italic;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-size: utopia.clamp(13.6, 15.58);
+  }
+
+  p,
+  li {
+    font-size: utopia.clamp(14, 16);
+	  line-height: utopia.clamp(28, 32);
+  }
+
 	pre {
 		margin-block-end: 1rem;
 

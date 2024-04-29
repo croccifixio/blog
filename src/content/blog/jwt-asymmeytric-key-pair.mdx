@@ -124,8 +124,6 @@ The private key is then used to generate the public key<FootnoteTrigger index={2
 openssl ec -in privateKey.pem -pubout -out publicKey.pem
 ```
 
-## Footnotes
-
 <FootnoteList>
 	<FootnoteListItem index={1} type="blocks">
     If you wanted to use a different algorithm, say <code>ES256</code>, but provided the key generated above, <code>jsonwebtoken</code> would throw a helpful error message specifying which curve it expects.
