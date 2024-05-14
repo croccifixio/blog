@@ -1,12 +1,12 @@
 ---
-import { navItems } from '../consts/nav.ts';
+import { getNavItems } from '../utils/nav.ts';
 ---
 
 <nav>
 	<ul>
 		{
-			navItems.map(({ name, path }) => (
-				<li class:list={{ 'sr-only': path === Astro.url.pathname }}>
+			getNavItems(Astro.url.pathname).map(({ isActive, name, path }) => (
+				<li class:list={{ 'sr-only': isActive }}>
 					<a href={path}>{name}</a>
 				</li>
 			))

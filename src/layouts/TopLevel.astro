@@ -2,10 +2,10 @@
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import TopLevelTitle from '../components/TopLevelTitle.astro';
-import { navItems } from '../consts/nav';
+import { getNavItems } from '../utils/nav';
 
 const { name = '', description = '' } =
-	navItems.find(({ path }) => path === Astro.url.pathname) ?? {};
+	getNavItems(Astro.url.pathname).find(({ isActive }) => isActive) ?? {};
 ---
 
 <html lang="en">
