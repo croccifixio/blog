@@ -17,6 +17,10 @@
 		margin-block: 1.5rem 0.5rem;
 	}
 
+  p {
+    text-wrap: pretty;
+  }
+
 	img {
 		display: block;
 		margin: 3rem auto;
