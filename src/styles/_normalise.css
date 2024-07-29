@@ -2,3 +2,8 @@ summary,
 details {
    all: revert;
 }
+
+::-webkit-details-marker {
+  display: inline-block;
+  margin-block-end: 0.1em;
+}
