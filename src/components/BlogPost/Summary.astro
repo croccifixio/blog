@@ -80,6 +80,18 @@ const { index, size, slug, title, tags } = Astro.props;
 		justify-content: end;
 	}
 
+	@media (max-width: 600px) and (prefers-color-scheme: dark) {
+		a::before {
+			content: none;
+		}
+		h2 {
+			margin-block: 1rem;
+		}
+		ul {
+			display: none;
+		}
+	}
+
 	@media (min-width: 600px) {
 		a {
 			display: flex;

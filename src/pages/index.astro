@@ -6,6 +6,7 @@ import type { Post } from '../content/types';
 import Layout from '../layouts/TopLevel.astro';
 import { formatDate } from '../utils/date';
 import BlogPostSummary from '../components/BlogPost/Summary.astro';
+import Hr from '../components/Hr/Hr.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
@@ -41,6 +42,9 @@ const { postsGrid } = posts.reduce(
 					data-mod-3={index % 3}
 					data-year={year}
 				>
+					<div>
+						<Hr spacing="0" />
+					</div>
 					<article>
 						<BlogPostSummary
 							{index}
@@ -62,6 +66,18 @@ const { postsGrid } = posts.reduce(
 		flex-direction: column;
 		gap: 1.5em;
 		list-style: none;
+	}
+
+	@media (prefers-color-scheme: light) {
+		li > div {
+			display: none;
+		}
+	}
+
+	@media (max-width: 600px) and (prefers-color-scheme: dark) {
+		ul {
+			gap: 0;
+		}
 	}
 
 	@media (min-width: 600px) {
@@ -122,6 +138,9 @@ const { postsGrid } = posts.reduce(
 					top: calc((var(--border-width) * -0.5));
 					word-break: break-all;
 					width: calc(1ch + 1.5rem);
+				}
+				> div {
+					display: none;
 				}
 			}
 		}
