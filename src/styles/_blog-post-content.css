@@ -10,6 +10,7 @@
 		line-height: 1.4;
 		margin-block: 2rem 0.75rem;
 		text-transform: uppercase;
+    text-wrap: balance;
 	}
 
 	h3 {
