@@ -1,4 +1,5 @@
 ---
+import AsciiArt from '../components/AsciiArt.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Nav from '../components/Nav.astro';
 import TopLevelTitle from '../components/TopLevelTitle.astro';
@@ -30,4 +31,6 @@ const { name = '', description = '' } =
 			<slot />
 		</main>
 	</body>
+
+	<AsciiArt />
 </html>
