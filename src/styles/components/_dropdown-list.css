@@ -24,10 +24,23 @@
 	}
 
 	li + li {
-    margin-block-start: utopia.clamp(24, 12);
+		margin-block-start: utopia.clamp(24, 12);
 	}
 
 	summary {
-    margin-block-end: utopia.clamp(20, 12);
+		align-items: center;
+		display: flex;
+		gap: 0.5ch;
+		list-style-type: none;
+		margin-block-end: utopia.clamp(20, 12);
+	}
+
+	summary::before {
+		content: '►';
+		user-select: none;
+	}
+
+	&[open] > summary::before {
+		content: '▼'
 	}
 }
