@@ -1,15 +1,15 @@
 {
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/mdx": "^2.3.1",
-    "@astrojs/sitemap": "^3.1.4",
-    "@fxts/core": "^0.28.1",
-    "@js-temporal/polyfill": "^0.4.4",
-    "@shikijs/transformers": "^1.3.0",
-    "astro": "^4.7.0",
-    "postcss-mixins": "^10.0.1",
-    "postcss-utopia": "^1.0.3",
-    "typescript": "^5.4.5"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
+    "@fxts/core": "^1.13.2",
+    "@js-temporal/polyfill": "^0.5.1",
+    "@shikijs/transformers": "^3.7.0",
+    "astro": "^5.10.0",
+    "postcss-mixins": "^11.0.3",
+    "postcss-utopia": "^1.1.0",
+    "typescript": "^5.8.3"
   },
   "license": "EUPL",
   "private": true,
@@ -24,6 +24,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "wrangler": "^3.52.0"
+    "wrangler": "^4.20.5"
   }
 }
