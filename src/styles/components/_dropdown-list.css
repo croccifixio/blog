@@ -1,4 +1,20 @@
 .dropdown-list {
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+  }
+
+  &::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow-y: clip;
+    transition: block-size .2s, content-visibility .2s allow-discrete, opacity .2s;
+  }
+
+  &[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+
 	&:first-of-type {
 		margin-block-start: 0.75em;
 	}
@@ -7,7 +23,7 @@
 		margin-block-start: utopia.clamp(24, 16);
 	}
 
-	&[open] + details {
+	&[open] + & {
 		margin-block-start: utopia.clamp(32, 24);
 	}
 
