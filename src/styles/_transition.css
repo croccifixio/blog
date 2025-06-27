@@ -1,0 +1,14 @@
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  article h1,
+  article h2 {
+    view-transition-name: post-title;
+  }
+
+  nav ul li {
+    view-transition-name: nav-link;
+  }
+}

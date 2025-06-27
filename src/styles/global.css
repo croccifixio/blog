@@ -6,8 +6,9 @@
 @import url("./config/_variables.css");
 @import url("./components/_dropdown-list.css");
 @import url("./_blog-post-content.css");
-@import url("./_utils.css");
+@import url("./_transition.css");
 @import url("./_typography.css");
+@import url("./_utils.css");
 
 html {
 	height: 100%;
