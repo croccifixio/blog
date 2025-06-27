@@ -34,6 +34,10 @@
 		margin-inline-start: 0.2em;
 	}
 
+  ul {
+    padding-block-end: 2px;
+  }
+
 	li a:first-of-type {
 		font-style: italic;
 		font-weight: bold;
