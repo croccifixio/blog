@@ -91,7 +91,10 @@ import BlogPostSummary from '../components/BlogPost/Summary.astro';
 
 		.post-list-item {
 			outline: var(--border-width) solid var(--c-text);
-			outline-offset: calc(var(--border-width) / -2);
+
+			&:not(:focus) {
+				outline-offset: calc(var(--border-width) / -2);
+			}
 
 			&:only-child {
 				min-height: 100%;
