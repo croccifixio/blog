@@ -33,7 +33,9 @@
 	}
 
 	:is(ol, ul) {
-		margin-block: 1rem 2rem;
+		margin-block-start: 1rem;
+		margin-block-end: 2rem;
+		margin-block-end: 1lh;
 	}
 
 	time {

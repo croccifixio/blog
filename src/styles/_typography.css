@@ -76,10 +76,13 @@ p + p,
 :not(li) > p ~ pre,
 pre + p {
 	margin-block-start: 2rem;
+	margin-block-start: 1lh;
 }
 
 li > p ~ pre {
-	margin-block: 1rem 2rem;
+	margin-block-start: 1rem;
+	margin-block-end: 2rem;
+	margin-block-end: 1lh;
 }
 
 h1,
@@ -173,6 +176,7 @@ pre {
 [role="doc-endnotes"] {
 	li + li {
 		margin-block-start: 1rem;
+		margin-block-start: 0.5lh;
 	}
 
   p {
