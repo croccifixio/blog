@@ -1,21 +1,176 @@
 ---
-publishedAt: "1970-01-01"
-title: "zsh Completions"
+publishedAt: "2025-09-07"
+title: "In Which I Learn the Bare Minimum About zsh Completions"
 tags: ["zsh"]
 description: [
-  "..."
+  "Upgrading some custom zsh functions by implementing completions for them."
 ]
-seoTitle: "..."
+seoTitle: "In Which I Learn the Bare Minimum About zsh Completions"
 sources: [
 	{
-		text: "zsh Coompletions HowTo",
+		text: "zsh Completions HowTo",
 		url: "https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org"
 	},
 	{
 		text: "Writing zsh completions for CLIs with subcommands",
 		url: "https://www.dolthub.com/blog/2021-11-15-zsh-completions-with-subcommands/"
-	}
+	},
+  {
+    text: "How to Prerelease an npm Package",
+    url: "https://cloudfour.com/thinks/how-to-prerelease-an-npm-package/"
+  }
 ]
 ---
 
-Talk about completions for `wm` and `nv`.
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
+import FootnoteList from '../../components/Footnote/List.astro';
+import FootnoteListItem from '../../components/Footnote/ListItem.astro';
+import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
+import Kbd from '../../components/Kbd.astro';
+import Image from '../../components/Image.astro';
+import StepHeading from '../../components/StepHeading.astro';
+
+I have a bit of a problem. Whenever I find myself running the same command(s) in the terminal within a short timeframe<FootnoteTrigger index={1} />, I experience a strong urge to reduce the number of characters I need to type. In some cases, the dynamic parts of the command(s) are a tad too unwieldy to easily abstract into a reusable form<FootnoteTrigger index={2} />. That's usually enough to stifle the urge. However, the other 146 times, I end up adding an alias/function to my shell config; but who's counting.
+
+Admittedly, I don't use all of my custom aliases/functions regularly. Some I barely recognise as they haven't been of use in years. But there are about a handful or so that see active usage multiple times a day.
+
+I've been using a tool called [`atuin`](https://github.com/atuinsh/atuin) for the last 16 months to keep track of my shell history. In that time these are my top 10 commands:
+
+```
+[▮▮▮▮▮▮▮▮▮▮] 7723 gs
+[▮▮▮       ] 3012 gl
+[▮▮▮       ] 2698 gap
+[▮▮▮       ] 2506 wm
+[▮▮        ] 2189 nsd
+[▮▮        ] 2087 wl
+[▮▮        ] 1843 ll
+[▮▮        ] 1772 cd
+[▮▮        ] 1685 wq
+[▮         ] 1528 just
+```
+
+`cd` is a built-in command, [`just`](https://github.com/casey/just) is a command runner similar to `make`, and `ll` is arguably the most well-known shell alias<FootnoteTrigger index={3} />. The rest are my own bespoke custom aliases. And yes, I'm struggling to come to terms with the fact that I run `gs` (my alias for `git status`) roughly 28 times a day<FootnoteTrigger index={4} />.
+
+Recently, I added `zsh` completions to 2 of my custom shell functions for different reasons, which I'll go into below:
+
+<StepHeading text="Avoiding Typos" />
+
+I've been using a CLI time tracker called `watson` for a number of years. To start tracking a project, I use the following command:
+
+```
+watson start <project>
+```
+
+or more precisely, as indicated by my shell history statistics, I use the `wm` alias:
+
+```
+wm <project>
+```
+
+`<project>` can be any string, which is only great if you can type correctly most of the time. I like to track miscellaneous activities such as triaging tickets, and catching up on email and Slack messages under a project I call "prep". The sheer number of times I typed `wm prpe` instead of `wm prep` was high enough that I needed to come up with a solution.
+
+I implemented completions for my `wm` function meaning that I can now start tracking the "prep" project by typing `wm p` and then hitting <Kbd keys={["Tab"]} /> followed by <Kbd keys={['Enter']} />.
+
+The completion is fairly simple given that there is only one positional argument (the name of the project):
+
+```zsh
+#compdef wm
+
+_wm() {
+  local -a projects
+  projects=(
+    'discover:Work on the Discover feature'
+    'meeting:Start a new meeting'
+    'prep:Miscellaneous work'
+    'review:Code review'
+    'user-library:Work on the User Library feature'
+  )
+  _describe 'projects' projects && ret=0
+}
+
+_wm "$@"
+```
+
+This completion resides in a file called `_wm`. The path of this file's parent directory must be added to the `FPATH` environment variable for the completions to work. Personally, I place all my completion files in the `~/.config/zsh/completions` directory, so I set the `FPATH` as follows:
+
+```zsh
+export FPATH="$FPATH:$HOME/.config/zsh/completions"
+```
+
+<StepHeading text="Memory Aid" />
+
+Publishing npm packages is fairly simple on paper. My `nv` alias reflected that:
+
+```zsh
+alias nv="npm version"
+```
+
+Every few weeks or months, I'd want to publish a beta version of a package. Each time, I would search online for a guide on using `npm version` because I couldn't quite recall the flags I needed to pass. At times, I even resorted to manually bumping the version number in `package.json`.
+
+Armed with my recently-acquired, albeit basic, knowledge of zsh completions, I was eager to make the hard-to-recall flags a thing of the past. But before I could do that, the alias needed to be upgraded into a much more refined function:
+
+```zsh
+nv () {
+  local identifier="$1"
+  local prerelease_tag="$2"
+  [ -z $identifier ] && echo "Usage: nv <identifier> [prerelease_tag]" && return 1
+  [ -z $prerelease_tag ] && npm version $identifier && return 0
+  if [[ $identifier = "major" && $(npm pkg get version) =~ "\.0\.0-${prerelease_tag}\.[0-9]+\"$" ]] ||
+     [[ $identifier = "minor" && $(npm pkg get version) =~ "[1-9][0-9]*\.0-${prerelease_tag}\.[0-9]+\"$" ]] ||
+     [[ $identifier = "patch" && $(npm pkg get version) =~ "[1-9][0-9]*-${prerelease_tag}\.[0-9]+\"$" ]]
+  then
+    npm version prerelease
+  else
+    npm version "pre${identifier}" --preid="${prerelease_tag}"
+  fi
+}
+```
+
+I saved the completion to a file called `_nv` that I made sure can be found using the `FPATH` environment variable. Since my `nv` function accepts 2 arguments, the first of which is mandatory, the completion first suggests the 3 semver identifiers ("major", "minor" and "patch") and then 2 optional prerelease tags ("beta" and "rc") for me to choose from:
+
+```zsh
+#compdef nv
+
+_nv() {
+  local line state
+
+  _arguments -C \
+    "1: :->id" \
+    "*::arg:->tag"
+
+  case "$state" in
+    id)
+      _values "Version identifier" \
+        "patch" \
+        "minor" \
+        "major"
+      ;;
+    tag)
+      _values "Pre-release tag" \
+        "beta[]" \
+        "rc[]"
+      ;;
+  esac
+}
+```
+
+Below is the `nv` function in action:
+
+<Image alt="Terminal output showing the completions for the nv function being used" src="nv.svg" />
+
+{<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1}>
+      The timeframe varies from a few hours to a few weeks. That's still short, right?
+    </FootnoteListItem>
+    <FootnoteListItem index={2}>
+      In those cases, I'm perfectly fine searching through my shell history.
+    </FootnoteListItem>
+    <FootnoteListItem index={2}>
+      Don't quote me on that.
+    </FootnoteListItem>
+    <FootnoteListItem index={3}>
+      It seems like adding new aliases/functions to my shell isn't my only problem...
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}
