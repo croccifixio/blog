@@ -40,7 +40,7 @@ code,
 kbd,
 pre,
 samp {
-  @mixin code-font;
+	@mixin code-font;
 	font-family: "Cartograph CF", monospace;
 	font-size: utopia.clamp(16.32, 17.92);
 }
@@ -72,14 +72,14 @@ pre {
 	text-shadow: none;
 }
 
-p + p,
-:not(li) > p ~ pre,
-pre + p {
+p+p,
+:not(li)>p~pre,
+pre+p {
 	margin-block-start: 2rem;
 	margin-block-start: 1lh;
 }
 
-li > p ~ pre {
+li>p~pre {
 	margin-block-start: 1rem;
 	margin-block-end: 2rem;
 	margin-block-end: 1lh;
@@ -103,24 +103,25 @@ sup {
 	font-feature-settings: 'sups';
 	line-height: 0;
 	vertical-align: super;
-  a {
-    text-underline-offset: 0.05em;
-  }
+
+	a {
+		text-underline-offset: 0.05em;
+	}
 }
 
 .break-word,
-.break-word > * {
+.break-word>* {
 	word-break: break-word;
 }
 
 .highlighted-word {
-  font-feature-settings: 'ss05';
+	font-feature-settings: 'ss05';
 	font-style: italic !important;
 	font-weight: bold !important;
-  text-decoration-color: var(--c-active) !important;
-  text-decoration-line: underline !important;
-  text-decoration-thickness: 0.1em !important;
-  text-underline-offset: 0.35em;
+	text-decoration-color: var(--c-active) !important;
+	text-decoration-line: underline !important;
+	text-decoration-thickness: 0.1em !important;
+	text-underline-offset: 0.35em;
 }
 
 .code-prompt {
@@ -153,20 +154,24 @@ pre {
 	white-space: pre;
 
 	code {
-    display: grid !important;
+		display: grid !important;
 		overflow: auto;
 		padding: 1em;
 	}
 
-  .line {
-    position: relative;
+	.line {
+		position: relative;
 
-    &.highlighted::before {
-      content: ' ';
-      inset: 0 -1em;
-      position: absolute;
-    }
-  }
+		&:empty {
+			height: 1lh;
+		}
+
+		&.highlighted::before {
+			content: ' ';
+			inset: 0 -1em;
+			position: absolute;
+		}
+	}
 
 	&:focus-visible {
 		outline: var(--border-width) solid var(--c-active);
@@ -174,35 +179,35 @@ pre {
 }
 
 [role="doc-endnotes"] {
-	li + li {
+	li+li {
 		margin-block-start: 1rem;
 		margin-block-start: 0.5lh;
 	}
 
-  p {
-    font-style: italic;
-  }
+	p {
+		font-style: italic;
+	}
 
-  code,
-  kbd,
-  pre,
-  samp {
-    @mixin small-inline-font;
-  }
+	code,
+	kbd,
+	pre,
+	samp {
+		@mixin small-inline-font;
+	}
 
-  p,
-  li {
-    @mixin small-block-font;
-  }
+	p,
+	li {
+		@mixin small-block-font;
+	}
 
 	pre {
 		margin-block-end: 1rem;
 
-		+ p {
+		+p {
 			margin-block-start: 1rem;
 		}
 
-		+ [role="doc-backlink"] {
+		+[role="doc-backlink"] {
 			display: block;
 			margin-block-start: -0.75rem;
 		}
@@ -210,30 +215,31 @@ pre {
 }
 
 @media (prefers-color-scheme: dark) {
-  pre,
-  pre span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
 
-  pre .line.highlighted::before {
-    background-color: #83ffed1a !important;
-  }
+	pre,
+	pre span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
+		font-style: var(--shiki-dark-font-style) !important;
+		font-weight: var(--shiki-dark-font-weight) !important;
+		text-decoration: var(--shiki-dark-text-decoration) !important;
+	}
+
+	pre .line.highlighted::before {
+		background-color: #83ffed1a !important;
+	}
 }
 
 @media (prefers-color-scheme: light) {
-  pre {
-    background: none !important;
+	pre {
+		background: none !important;
 
-    .line.highlighted::before {
-      background-color: #91c6ff33 !important;
-    }
+		.line.highlighted::before {
+			background-color: #91c6ff33 !important;
+		}
 
-    .highlighted-word {
-      text-decoration-thickness: 0.15em !important;
-    }
-  }
+		.highlighted-word {
+			text-decoration-thickness: 0.15em !important;
+		}
+	}
 }
