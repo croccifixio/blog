@@ -1,0 +1,145 @@
+---
+publishedAt: "2025-08-24"
+title: "Replacing mackup with rsync"
+tags: []
+description:
+  - "Backing up config file using rsync."
+seoTitle: "Replacing mackup with rsync"
+sources: [
+  {
+    text: "MacOS Sonoma Breaks Symlinks",
+    url: "https://adamtaylor.me/posts/sonoma-breaks-symlinks"
+  }
+]
+---
+
+import EndMatter from '../../components/BlogPost/EndMatter.astro';
+import FootnoteList from '../../components/Footnote/List.astro';
+import FootnoteListItem from '../../components/Footnote/ListItem.astro';
+import FootnoteTrigger from '../../components/Footnote/Trigger.astro';
+
+## The mackup Way
+
+[`mackup`](https://github.com/lra/mackup) is an open-source tool for backing up files (primarily configuration files and application data). It does so by copying the files to a destination path and replacing the original files with a symlink. This way, all the files that you back up exist under the same path, which if desired, could be backed up to the cloud.
+
+What made `mackup` stand out to me was the simplicity of its configuration, which consists of 2 sections: One section specifies where the backups should be stored, and the other specifies which applications you want to back up. It contains over 500 application presets; a preset consisting of a list of paths to be backed up.
+
+Below is an example config file (which lives at `$HOME/.mackup.cfg`) specifying that we want to back up Kakoune and VSCodium files to Dropbox at the `mackup/backup` path:
+
+```toml
+[storage]
+engine = dropbox
+directory = mackup/laptop
+
+[applications_to_sync]
+kakoune
+vscodium
+```
+
+In the above example, `vscodium` references a built-in preset. Its contents, which can be [viewed on the GitHub repo](https://github.com/lra/mackup/blob/master/mackup/applications/vscodium.cfg), are shown below:
+
+```toml
+[application]
+name = VSCodium
+
+[configuration_files]
+Library/Application Support/VSCodium/User/snippets
+Library/Application Support/VSCodium/User/keybindings.json
+Library/Application Support/VSCodium/User/settings.json
+
+[xdg_configuration_files]
+VSCodium/User/snippets
+VSCodium/User/keybindings.json
+VSCodium/User/settings.json
+```
+
+Paths relative to the `$HOME` directory are listed under the `[configuration_files]` section. Paths relative to the `$XDG_CONFIG_HOME` directory are listed under the `[xdg_configuration_files]` section.
+
+`mackup` supports custom presets. In the example config presented earlier, `kakoune` is a custom preset. I defined it locally at `$HOME/.mackup/kakoune.cfg` with the following contents:
+
+```toml
+[application]
+name = Kakoune
+
+[xdg_configuration_files]
+kak/global.kak
+kak/kakrc
+kak/mappings.kak
+kak/plugins.kak
+kak/snippets
+kak/utils.kak
+```
+
+Files can be backed up by running:
+
+```
+mackup backup
+```
+
+## Symbolic Links Thwarted by Security Improvements
+
+macOS Sonoma introduced [file system restrictions that prevent symlinking of certain `.plist`](https://github.com/lra/mackup/issues/1924#issuecomment-2026186178) files. While symlinking more traditional dot files such as `.zshrc` still works, if you plan to back up any `.plist` files, they'll need to be copied rather than symlinked.
+
+`mackup` can be used in a way that [copies instead of symlinks](https://github.com/lra/mackup/issues/1924#issuecomment-2032982796):
+
+```
+mackup backup --force
+mackup uninstall --force
+```
+
+After upgrading to macOS Sonoma, I was able to continue using `mackup` by running these 2 commands. This workflow was mostly OK in that it worked. However, around this time I also switched from VSCode to VSCodium.
+
+VSCodium uses the OpenVSX registry for sourcing its extensions. This registry is much smaller than the VSCode Marketplace, so it wasn't too surprising that some of the extensions I had grown accustomed to using were not available. It is possible, though, to download extensions from the VSCode Marketplace using a web browser and then manually install them in VSCodium. Another downside of this approach, besides the manual installation process, is that extensions installed in this way do not update automatically<FootnoteTrigger index={1} />.
+
+Previously, I was OK with using the [Settings Sync extension](https://open-vsx.org/extension/Shan/code-settings-sync) to upload a list of my installed extensions to a private GitHub gist. In early 2025, the "Download VSIX" link that used to feature on an extension's page on the VSCode Marketplace was removed. I used to rely on this link to download extensions that were not available on the OpenVSX registry. While it is still possible to [download extensions from the VSCode Marketplace via a web browser](https://www.reddit.com/r/vscode/comments/1i2v8u2/need_help_finding_how_to_download_the_vsix_file/), the process is far from straightforward.
+
+So just like that, the scope of files I wanted to back up expanded to include the actual code for extensions I used. These extensions come bundled with their own node modules, leading to a steep increase in the number of files that I was backing up. Since I was now copying files instead of symlinking, the backup process became a lot slower -- from a few seconds to close to a minute.
+
+Rather than implement separate solutions depending on the type of file being backed up, i.e. copying `.plist` files and symlinking everything else, I opted to improve the current one size fits all approach by replacing `mackup` with `rsync`. The 2 `mackup` commands from my previous way of doing things copied all the files to the backup destination each time I ran them. `rysnc`, on the other hand, will by default skip copying if the destination includes a file with the same size and last-modified time.
+
+## rsync to the Rescue
+
+My backup solution is now a humble zsh function:
+
+```zsh
+backup () {
+  local tmp="$(mktemp -t backup)"
+  cat $XDG_CONFIG_HOME/backup/.*.cfg > $tmp
+  rsync \
+    --archive \
+    --compress \
+    --delete-after \
+    --files-from=$tmp \
+    --human-readable \
+    --ignore-missing-args \
+    --partial \
+    --progress \
+    --recursive \
+    --update \
+    --verbose \
+    $HOME \
+    $BACKUP_DESTINATION
+  rm -f -- $tmp
+}
+```
+
+The script creates a temporary file, to which it writes all the paths that I would like backed up. The file is passed to `rsync` using the `--files-from` flag. Once `rsync` is done, the temporary file is deleted.
+
+Inspired by the configuration files used by `mackup`, I too split the list of paths into separate files, with one file per application. The equivalent to `mackup`'s VSCodium preset is a `$XDG_CONFIG_HOME/backup/.vscodium.cfg` file with the following contents:
+
+```
+Library/Application Support/VSCodium/User/snippets
+Library/Application Support/VSCodium/User/keybindings.json
+Library/Application Support/VSCodium/User/settings.json
+.config/VSCodium/User/snippets
+.config/VSCodium/User/keybindings.json
+.config/VSCodium/User/settings.json
+```
+
+{<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1} type="blocks">
+<p>The lack of updates (automatic or not) didn't bother me too much, as I had &mdash; over time &mdash; become averse to any part of my editor automatically updating. This was due to being burnt numerous times by VSCode updates breaking some part of my workflow. To be fair, in most cases, a patch would be released after a few days. However, every now and then, some controversial changes would be released; and no patches were forthcoming for those. One such example was with VSCode 1.74, which included a change that <a href="https://github.com/microsoft/vscode/issues/181298">broke Customize UI</a>, a popular extension used to modify the chrome and layout of VSCode. This change was what finally convinced me to jump ship and embrace VSCodium. Needless to say, I disabled automatic updates after that.</p>
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}
