@@ -12,15 +12,17 @@ const { slug, title, tags } = Astro.props;
 
 <a href={`/blog/${slug}/`}>
 	<h2 set:html={title} />
-	<ul>
-		{
-			tags.map((tag) => (
-				<li>
-					<Tag text={tag} />
-				</li>
-			))
-		}
-	</ul>
+	{
+		tags.length > 0 && (
+			<ul>
+				{tags.map((tag) => (
+					<li>
+						<Tag text={tag} />
+					</li>
+				))}
+			</ul>
+		)
+	}
 </a>
 
 <style>
