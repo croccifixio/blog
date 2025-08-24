@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { entries, groupBy, map, pipe, reverse, sort } from '@fxts/core';
+import { entries, filter, groupBy, map, pipe, reverse, sort } from '@fxts/core';
 
 import Layout from '../layouts/TopLevel.astro';
 import { formatDate } from '../utils/date';
@@ -11,6 +11,7 @@ import BlogPostSummary from '../components/BlogPost/Summary.astro';
 	{
 		pipe(
 			getCollection('blog'),
+			filter((post) => post.data.publishedAt.valueOf() > 0),
 			sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()),
 			map((post) => ({ ...post, year: formatDate(post.data.publishedAt, 'Y')!.trim() })),
 			groupBy((post) => post.year),
