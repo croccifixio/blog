@@ -1,6 +1,6 @@
 ---
 publishedAt: "1970-01-01"
-title: "zsh Completions"
+title: "In Which I Learn the Bare Minimum About zsh Completions"
 tags: ["zsh"]
 description: [
   "..."
@@ -8,14 +8,151 @@ description: [
 seoTitle: "..."
 sources: [
 	{
-		text: "zsh Coompletions HowTo",
+		text: "zsh Completions HowTo",
 		url: "https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org"
 	},
 	{
 		text: "Writing zsh completions for CLIs with subcommands",
 		url: "https://www.dolthub.com/blog/2021-11-15-zsh-completions-with-subcommands/"
-	}
+	},
+  {
+    text: "How to Prerelease an npm Package",
+    url: "https://cloudfour.com/thinks/how-to-prerelease-an-npm-package/"
+  }
 ]
 ---
 
-Talk about completions for `wm` and `nv`.
+I have a bit of a problem. Whenever I find myself running the same command(s) in the terminal within a short timeframe<FootnoteTrigger index={1} />, I experience a strong urge to reduce the number of characters I need to type. In some cases, the dynamic parts of the command(s) are a tad too unwieldy to easily abstract into a reusable form that's useful beyond my exact use case at the time. That's usually enough of a vibe-kill for me, and the urge dies. However, the other 146 times I end up adding an alias/function to my shell config; but who's counting.
+
+Admittedly, I don't use all of my custom aliases/functions regularly. Some I haven't used in years and barely even recognise them today. But I use about a handful or so multiple times a day.
+
+I've been using a tool called [`atuin`]() for the last 16 months to keep track of my shell history. In that time these are my top 10 commands:
+
+```
+[▮▮▮▮▮▮▮▮▮▮] 7723 gs
+[▮▮▮       ] 3012 gl
+[▮▮▮       ] 2698 gap
+[▮▮▮       ] 2506 wm
+[▮▮        ] 2189 nsd
+[▮▮        ] 2087 wl
+[▮▮        ] 1843 ll
+[▮▮        ] 1772 cd
+[▮▮        ] 1685 wq
+[▮         ] 1528 just
+```
+
+`cd` is a built-in command, [`just`](https://github.com/casey/just) is a command runner similar to `make`, and `ll` is arguably the most well-known shell alias<FootnoteTrigger index={2} />. The rest are my own bespoke custom aliases. I'm struggling to come to terms with the fact that I run `gs` (my alias for `git status`) roughly 28 times a day<FootnoteTrigger index={3} />.
+
+Recently, I added `zsh` completions to 2 of my custom shell functions for different reasons, which I'll go into below:
+
+<StepHeading text="Typo" />
+
+I've been using a CLI time tracker called `watson` for a number of years. To start tracking a project, I use the following command:
+
+```
+watson start <project>
+```
+
+or If using my alias:
+
+```
+wm <project>
+```
+
+`<project>` can be any string, which is only great if you can type correctly most of the time. I like to track miscellaneous activity such as triaging tickets and catching up on email and Slack messages under a project I call "prep". The sheer number of times I typed `wm prpe` instead of `wm prep` was high enough that I needed to come up with a solution.
+
+Since `zsh` completions can be accepted by pressing the <Kbd keys={["Tab"]} /> key, I implemented a completions for my `wm` function so that I could type `wm p` and then hit <Kbd keys={["Tab"]} /> to start tracking the "prep" project. Primarily due to the fewer number of characters I now need to type, my rate of typos when starting to track the "prep" project has reached unprecedented lows.
+
+Given that there is only one positional argument, the completion is fairly simple:
+
+```zsh
+#compdef wm
+
+_wm() {
+  local -a projects
+  projects=(
+    'discover:Work on the Discover page'
+    'meeting:Start a new meeting'
+    'prep:Miscellaneous work'
+    'review:Code review'
+    'user-library:Work on the User Library'
+  )
+  _describe 'projects' projects && ret=0
+}
+
+_wm "$@"
+```
+
+<StepHeading text="Memory Aid" />
+
+Publishing npm packages is fairly simple on paper. My `nv` alias reflected that:
+
+```zsh
+alias nv="npm version"
+```
+
+Every few weeks or months, I'd want to publish a beta version of a package. After about a year of referencing and rereferencing this guide on [prereleasing npm packages](https://cloudfour.com/thinks/how-to-prerelease-an-npm-package/) before each beta update, I realised I could come up with an abstraction that didn't require me to recall the flags I needed to pass.
+
+The alias evolved into a much more refined function:
+
+```zsh
+nv () {
+  local identifier="$1"
+  local prerelease_tag="$2"
+
+  if [ -z "$identifier" ]; then
+    echo "Usage: nv <identifier> [prerelease_tag]"
+    return 1
+  fi
+
+  if [ -n "$prerelease_tag" ]; then
+    npm version "pre${identifier}" --preid="${prerelease_tag}"
+  else
+    npm version $identifier
+  fi
+}
+```
+
+The completion file suggests the 3 semver identifiers and then 2 optional prerelease tags for me to choose from:
+
+```zsh
+#compdef nv
+
+_nv() {
+  local line state
+
+  _arguments -C \
+    "1: :->id" \
+    "*::arg:->tag"
+
+  case "$state" in
+    id)
+      _values "Version identifier" \
+        "patch" \
+        "minor" \
+        "major"
+      ;;
+    tag)
+      _values "Pre-release tag" \
+        "beta[]" \
+        "rc[]"
+      ;;
+  esac
+}
+```
+
+TODO: add gif
+
+{<EndMatter sources={frontmatter.sources}>
+  <FootnoteList>
+    <FootnoteListItem index={1}>
+      The timeframe varies from a few hours to a few weeks. That's still short, right?
+    </FootnoteListItem>
+    <FootnoteListItem index={2}>
+      Don't quote me on that.
+    </FootnoteListItem>
+    <FootnoteListItem index={3}>
+      It seems like adding new aliases/functions to my shell isn't my only problem...
+    </FootnoteListItem>
+  </FootnoteList>
+</EndMatter>}
